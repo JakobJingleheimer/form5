@@ -1,0 +1,155 @@
+.InputField[arrangement="inline"] {
+	align-items: center;
+	gap: var(--grid-gutter);
+	grid-template-columns: max-content 1fr;
+	position: relative;
+}
+.InputField[arrangement="stacked"] {
+	align-items: baseline;
+	justify-content: space-between;
+}
+.InputField[arrangement="inline"],
+.InputField[arrangement="stacked"] {
+	display: grid;
+	gap: calc(var(--grid-gutter) / 2);
+}
+.InputField[arrangement="stand-alone"] {
+	display: inline;
+}
+
+.Input {
+	background-color: unset;
+	border: 1px solid var(--colour-medium);
+	border-radius: var(--default-border-radius);
+	padding: var(--default-padding);
+}
+.Input:focus {
+	outline-color: var(--colour-primary);
+}
+.Input:disabled {
+	cursor: default;
+}
+.Input:disabled,
+.Input[readonly] {
+	background-color: var(--colour-medium);
+	color: var(--colour-muted);
+}
+.Input[readonly],
+.Input[readonly] + .Label {
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+.Input[type="number"] {
+	text-align: right;
+}
+
+.Input:not([type="checkbox"]):not([type="radio"]) + .Label {
+	order: -1;
+}
+.Input + .Label {
+	text-transform: capitalize;
+}
+
+.Input:required + .Label::after {
+	content: '*';
+	margin-left: 0.1em;
+}
+.Input[touched]:invalid:focus {
+	outline-color: var(--colour-danger);
+}
+.Input[touched]:invalid,
+.Error {
+	border-color: var(--colour-danger);
+}
+.Input[touched]:invalid,
+.Input[touched]:invalid + .Label,
+.Error {
+	color: var(--colour-danger);
+}
+
+.Error {
+	background-color: var(--colour-background);
+	border: 1px solid;
+	border-radius: var(--default-border-radius);
+	display: inline-block;
+	padding: 0.5em;
+	position: absolute;
+	z-index: 1;
+}
+.Error::after {
+	background-color: inherit;
+	border: inherit;
+	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
+	content: '';
+	display: block;
+	height: 0.5em;
+	position: absolute;
+	width: 0.5em;
+}
+
+@media only screen and (max-width: 736px) {
+	/* On mobile, position errors below field */
+	.Error {
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, calc(100% + 1em));
+	}
+	.Error::after {
+		left: 50%;
+		top: 0;
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+}
+
+@media only screen and (min-width: 737px) {
+	/* On mobile, position errors right of field */
+	.Error {
+		right: 0;
+		top: 50%;
+		transform: translate(calc(100% + 1em),-50%);
+	}
+	.Error::after {
+		bottom: 50%;
+		left: 0;
+		transform: translate(-50%, 50%) rotate(225deg);
+	}
+}
+
+input[variant="toggle"] {
+	align-items: center;
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: #eee;
+	border-radius: 1rem;
+	display: inline-flex;
+	flex-direction: row;
+	height: 1rem;
+	justify-content: center;
+	padding: unset;
+	width: 2rem;
+}
+
+input[variant="toggle"]::after {
+	align-self: flex-end;
+	background-color: #aaa;
+	border-radius: 100%;
+	content: '';
+	display: inline-block;
+	height: 100%;
+	transform: translateX(calc(-50% + 1px));
+	width: 50%;
+	transition:
+		background-color var(--default-transition),
+		transform var(--default-transition);
+}
+input[variant="toggle"]:checked::after {
+	background-color: var(--colour-primary);
+	transform: translateX(50%);
+}
+input[variant="toggle"][appearane="danger"]:checked::after {
+	background-color: var(--colour-danger);
+}
+input[variant="toggle"][appearane="success"]:checked::after {
+	background-color: var(--colour-success);
+}
