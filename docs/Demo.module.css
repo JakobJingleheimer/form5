@@ -1,0 +1,32 @@
+.Column {
+	flex: 1;
+}
+
+@media only screen and (min-width: 737px) {
+	.Output {
+		order: 1;
+	}
+}
+
+.Output {
+	font-family: monospace;
+}
+
+.DataHeading {
+	background-color: var(--colour-medium);
+	border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
+	font-weight: bold;
+}
+
+.DataHeading,
+.Data {
+	display: block;
+	padding: 1rem;
+}
+
+.Data {
+	background-color: var(--colour-light);
+	border-radius: 0 0 var(--default-border-radius) var(--default-border-radius);
+	line-height: 1.4;
+	white-space: pre-wrap;
+}

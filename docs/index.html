@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>React Form5 Demo</title>
+		<link href="./build/app.css" rel="stylesheet" type="text/css" />
+		<style>
+			:root {
+				--colour-background: #fff;
+
+				--colour-light: #f0f0f0;
+				--colour-medium: #e0e0e0;
+				--colour-muted: #666;
+				--colour-shadow: rgba(34, 36, 38, 0.15);
+				--colour-text-deemphasised: #444;
+				--colour-text-normal: #000;
+
+				--colour-primary: hsl(200, 62%, 50%);
+				--colour-danger: #ee4400;
+				--colour-success: var(--colour-brand);
+				--colour-warning: hsl(44, 100%, 45%);
+
+				--grid-gutter: 2rem;
+
+				--default-border-radius: 0.2em;
+				--default-boxshadow: 0px 1px 2px 0 var(--colour-shadow);
+				--default-padding: 0.5em;
+				--default-transition: 0.15s ease-in-out;
+
+				font-size: 100%;
+				height: 100%;
+			}
+
+			img { max-width: 100% }
+			label { cursor: pointer }
+		</style>
+		<style>
+			#app {
+				display: flex;
+				flex-direction: column;
+				gap: var(--grid-gutter);
+				margin: var(--grid-gutter)
+			}
+			@media only screen and (min-width: 737px) {
+				#app {
+					flex-direction: row;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main id="app">If you're using some archaic browser like IE or Safari, you're part of the problem.</main>
+
+		<script type="module" src="./build/app.js"></script>
+	</body>
+</html>

@@ -10,14 +10,14 @@ build({
 		'process.env.NODE_ENV': '"development"',
 	},
 	entryPoints: [
-		'./demo/app.jsx',
+		'./docs/app.jsx',
 	],
 	format: 'esm',
 	inject: [
 		'./react-shim.js',
 	],
 	logLevel: 'debug',
-	outdir: './demo/build',
+	outdir: './docs/build',
 	platform: 'neutral',
 	plugins: [
 		cssModulesPlugin({
