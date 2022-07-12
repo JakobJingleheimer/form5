@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import _isEmpty from 'lodash-es/isEmpty.js';
 import _map from 'lodash-es/map.js';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -73,7 +74,6 @@ const Input = ({
 				name={name}
 				id={id}
 				onInvalid={(e) => {
-					// e.preventDefault();
 					e.nativeEvent.stopImmediatePropagation();
 					setError(e.target.validationMessage);
 					setTouched(true);
@@ -89,11 +89,15 @@ const Input = ({
 				htmlFor={id}
 			>{label}</label>)}
 			{!!error && (
-				<dialog className={styles.Error} open>{error}</dialog>
+				<dialog
+					className={styles.Error}
+					data-testid="input-error"
+					open
+				>{error}</dialog>
 			)}
-			{!!options?.size && (
-				<datalist id={others.list}>{_map(options, ({ name }, key) => (
-					<option key={key} value={key}>{name}</option>
+			{!_isEmpty(options) && (
+				<datalist data-testid={others.list} id={others.list}>{_map(options, (label, key) => (
+					<option key={key} value={key}>{label}</option>
 				))}</datalist>
 			)}
 		</div>
@@ -119,6 +123,7 @@ Input.propTypes = {
 	as: PropTypes.elementType,
 	label: PropTypes.string,
 	name: PropTypes.string.isRequired,
+	options: PropTypes.object,
 	variant: PropTypes.oneOf(Object.values(Input.VARIANTS)),
 };
 

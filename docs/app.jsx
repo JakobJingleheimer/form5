@@ -1,12 +1,10 @@
 import classnames from 'classnames';
 import { render } from 'react-dom';
 
-import {
-	Button,
-	FileInput,
-	Input,
-	Form,
-} from '../lib/index.js';
+import Button from '../lib/Button/index.jsx';
+import FileInput from '../lib/FileInput/index.jsx';
+import Input from '../lib/Input/index.jsx';
+import Form from '../lib/Form/index.jsx';
 
 import '../node_modules/reset.css/reset.css';
 import styles from './Demo.module.css';
