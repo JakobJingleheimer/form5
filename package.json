@@ -1,6 +1,6 @@
 {
   "name": "react-form5",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A set of mostly unopinionated react components leveraging native APIs; supports controlled and uncontrolled state.",
   "type": "module",
   "directories": {
