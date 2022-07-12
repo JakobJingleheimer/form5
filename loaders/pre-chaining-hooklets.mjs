@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 import { transform } from 'esbuild';
 
@@ -22,7 +22,7 @@ const loadHandlers = {
 };
 
 async function loadBin(url, context, defaultLoad) {
-	const dirs =  path
+	const dirs = path
 		.dirname(url.pathname)
 		.split(path.sep);
 	const parentDir = dirs.at(-1);
