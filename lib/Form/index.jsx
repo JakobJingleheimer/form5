@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 
 import composeData, {
 	FIELD_TAGS,
-} from './composeData.js';
-import deepDiff from './deepDiff.js';
+} from '../composeData.js';
+import deepDiff from '../deepDiff.js';
 
 import styles from './Form.module.css';
 
@@ -27,7 +27,7 @@ export default class Form extends PureComponent {
 		);
 	};
 
-	handleSubmit = (event, initValues, cb) => {
+	onSubmit = (event, initValues, cb) => {
 		event.preventDefault();
 
 		if (!event.target.reportValidity()) return;
@@ -39,6 +39,7 @@ export default class Form extends PureComponent {
 			composeData,
 			Object.create(null),
 		);
+
 		const delta = deepDiff(initValues, values);
 
 		this.initValues = values; // reset starting values for potential subsequent submit
@@ -48,12 +49,12 @@ export default class Form extends PureComponent {
 
 	render() {
 		const {
-			handleSubmit,
+			onSubmit,
 			initValues,
 			props: {
 				children,
 				className,
-				onSubmit,
+				onSubmit: pOnSubmit,
 				...props
 			},
 			setRef,
@@ -64,7 +65,7 @@ export default class Form extends PureComponent {
 				{...props}
 				className={classNames(styles.Form, className)}
 				noValidate
-				onSubmit={(e) => handleSubmit(e, initValues, onSubmit)}
+				onSubmit={(e) => onSubmit(e, initValues, pOnSubmit)}
 				ref={setRef}
 			>
 				{children}

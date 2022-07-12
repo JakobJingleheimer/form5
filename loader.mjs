@@ -1,3 +1,4 @@
+import fs from 'fs/promises';
 import path from 'path';
 
 import { transform } from 'esbuild';
@@ -8,8 +9,6 @@ export async function load(resolvedUrl, context, defaultLoad) {
 	const ext = path.extname(url.pathname).slice(1);
 
 	const handler = loadHandlers[ext];
-
-	url.ext = ext;
 
 	if (handler) return handler(url, context, defaultLoad);
 
@@ -23,14 +22,20 @@ const loadHandlers = {
 };
 
 async function loadBin(url, context, defaultLoad) {
-	const parentDir = path
+	const dirs =  path
 		.dirname(url.pathname)
-		.split(path.sep)
-		.at(-1);
+		.split(path.sep);
+	const parentDir = dirs.at(-1);
+	const grandparentDir = dirs.at(-3);
 
-	const format = (!url.ext && parentDir === 'bin')
-		? 'commonjs'
-		: undefined;
+	let format;
+
+	if (parentDir === 'bin' && grandparentDir === 'node_modules') {
+		const libPkgUrl = new URL('../package.json', url)
+		const { type = 'commonjs' } = await fs.readFile(libPkgUrl).then(JSON.parse);
+
+		format = type;
+	}
 
 	return defaultLoad(url.href, {
 		...context,
