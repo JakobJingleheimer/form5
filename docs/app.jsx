@@ -1,13 +1,15 @@
 import classnames from 'classnames';
-import { render } from 'react-dom';
+import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
 
-import Button from '../lib/Button/index.jsx';
-import FileInput from '../lib/FileInput/index.jsx';
-import Input from '../lib/Input/index.jsx';
-import Form from '../lib/Form/index.jsx';
+import Button from 'react-form5/Button';
+import FileInput from 'react-form5/FileInput';
+import Input from 'react-form5/Input';
+import Form from 'react-form5/Form';
 
 import '../node_modules/reset.css/reset.css';
 import styles from './Demo.module.css';
+
 
 Object.defineProperty(File.prototype, "toJSON", {
 	value(...args) {
@@ -16,7 +18,7 @@ Object.defineProperty(File.prototype, "toJSON", {
 });
 
 function TestForm() {
-	const [{ delta, values}, setData] = React.useState({ delta: null, values: null});
+	const [{ delta, values}, setData] = useState({ delta: null, values: null});
 
 	return (
 		<>
@@ -119,7 +121,5 @@ function TestForm() {
 	);
 }
 
-render(
-	<TestForm />,
-	document.getElementById('app')
-);
+createRoot(document.getElementById('app'))
+	.render(<TestForm />);
