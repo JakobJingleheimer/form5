@@ -32,7 +32,7 @@ export default class FileInput extends PureComponent {
 	};
 
 	handlePreviews(file) {
-		const output = Object.create(null);
+		const output = { __proto__: null };
 		output.file = file;
 
 		if (file.type.match('image.*')) {

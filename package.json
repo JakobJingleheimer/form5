@@ -1,25 +1,28 @@
 {
   "name": "react-form5",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A set of mostly unopinionated react components leveraging native APIs; supports controlled and uncontrolled state.",
   "type": "module",
   "directories": {
     "lib": "lib"
   },
   "exports": {
-    ".": "./build/index.js",
+    ".": "./lib/barrel.js",
     "./Button": "./lib/Button/index.jsx",
     "./FileInput": "./lib/FileInput/index.jsx",
     "./Input": "./lib/Input/index.jsx",
     "./Form": "./lib/Form/index.jsx",
+    "./composeData": "./lib/composeData.js",
+    "./deepDiff": "./lib/deepDiff.js",
     "./package.json": "./package.json"
   },
   "scripts": {
     "demo": "rm -rf ./demo/build/* && node ./build.js",
     "preversion": "npm run test:coverage",
     "test": "c8 --check-coverage concurrently --kill-others-on-fail --prefix none npm:test:*",
-    "test:unit": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/jsx.mjs --loader=./loaders/css.mjs --loader=./loaders/bin.mjs' mocha --extension '.spec.js' './lib'",
-    "test:ui": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/jsx.mjs --loader=./loaders/css.mjs --loader=./loaders/bin.mjs' mocha --extension '.test.jsx' -require global-jsdom/register './lib'"
+    "test:node": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs' node ./node.test.mjs",
+    "test:unit": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --loader=./loaders/bin.mjs' mocha --extension '.spec.js' './lib'",
+    "test:ui": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --loader=./loaders/bin.mjs' mocha --extension '.test.jsx' -require global-jsdom/register './lib'"
   },
   "repository": "github:JakobJingleheimer/react-form5",
   "keywords": [
@@ -41,8 +44,8 @@
   "peerDependencies": {
     "classnames": "*",
     "prop-types": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
@@ -50,11 +53,14 @@
     "chai": "^4.3.0",
     "classnames": "*",
     "concurrently": "^7.2.2",
-    "esbuild": "^0.14.2",
+    "css-parse": "^2.0.0",
+    "esbuild": "^0.15.6",
     "esbuild-css-modules-plugin": "^2.0.9",
     "global-jsdom": "^8.4.0",
     "jsdom": "^19.0.0",
     "mocha": "^10.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "reset.css": "^2.0.2"
   },
   "engines": {
@@ -63,7 +69,7 @@
   "c8": {
     "branches": 100,
     "exclude": [
-      "loader.mjs",
+      "loaders/*",
       "*.setup.*",
       "**/*.fixture.js",
       "**/*.spec.{js,cjs,mjs,ts,tsx,jsx}"

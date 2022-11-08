@@ -13,9 +13,7 @@ build({
 		'./demo/app.jsx',
 	],
 	format: 'esm',
-	inject: [
-		'./react-shim.js',
-	],
+	jsx: 'automatic',
 	logLevel: 'debug',
 	outdir: './demo/build',
 	platform: 'neutral',

@@ -15,7 +15,7 @@ import styles from './Form.module.css';
 export default class Form extends PureComponent {
 	static FIELD_TAGS = FIELD_TAGS;
 
-	initValues = Object.create(null);
+	initValues = { __proto__: null };
 
 	setRef = (el) => {
 		if (!el) return;
@@ -37,7 +37,7 @@ export default class Form extends PureComponent {
 		const values = _reduce(
 			[...event.target.elements],
 			composeData,
-			Object.create(null),
+			{ __proto__: null },
 		);
 
 		const delta = deepDiff(initValues, values);
