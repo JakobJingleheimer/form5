@@ -109,3 +109,5 @@ export default class FileInput extends PureComponent {
 		</>);
 	}
 }
+
+FileInput.displayName = 'Form5FileInput';

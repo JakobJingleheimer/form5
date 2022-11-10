@@ -99,6 +99,9 @@ const Input = ({
 		</div>
 	);
 };
+
+Input.displayName = 'Form5Input';
+
 Input.ARRANGEMENTS = {
 	INLINE: 'inline',
 	STACKED: 'stacked',

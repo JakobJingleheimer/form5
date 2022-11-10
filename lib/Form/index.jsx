@@ -74,6 +74,8 @@ export default class Form extends PureComponent {
 	}
 }
 
+Form.displayName = 'Form5Form';
+
 Form.propTypes = {
 	onSubmit: PropTypes.func.isRequired,
 };
