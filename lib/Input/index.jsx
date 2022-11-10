@@ -12,7 +12,6 @@ const Input = ({
 	as: Field,
 	className,
 	fluid,
-	inline,
 	label,
 	name,
 	id = name, // must come after `name`
@@ -62,15 +61,12 @@ const Input = ({
 			className={classnames(
 				styles.InputField,
 				{
-					[styles.inline]: inline,
-					[styles.fluid]: fluid,
+					[styles.FluidInputField]: fluid,
 				},
 			)}
 		>
 			<Field
-				className={classnames(styles.Input, {
-					[styles.fluid]: fluid,
-				})}
+				className={styles.Input}
 				name={name}
 				id={id}
 				onInvalid={(e) => {
@@ -121,6 +117,7 @@ Input.defaultProps = {
 Input.propTypes = {
 	arrangement: PropTypes.oneOf(Object.values(Input.ARRANGEMENTS)),
 	as: PropTypes.elementType,
+	fluid: PropTypes.bool,
 	label: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	options: PropTypes.object,

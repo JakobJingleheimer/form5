@@ -17,6 +17,10 @@
 	display: inline;
 }
 
+.FluidInputField {
+	grid-template-columns: 100%;
+}
+
 .Input {
 	background-color: unset;
 	border: 1px solid var(--colour-medium);
