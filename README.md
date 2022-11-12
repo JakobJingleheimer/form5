@@ -176,9 +176,14 @@ A file picker for uploading from disk. The main difference between this componen
 
 #### Input
 
-This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`) that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange` listeners to track `pristine` and `touched` (to avoid erroneously invalidating the field); its internal handlers are first called and then handlers passed via props.
+This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`)
+that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange`
+listeners to track `pristine` and `touched` (to avoid erroneously invalidating the field); its
+internal handlers are first called and then handlers passed via props.
 
-It also offers a small easter-egg: a toggle, which is effectively a checkbox with fancy styling.
+To create a list of values within a single property, append `[]` to the `name` attribute, like `<Input name="foo[]" />`; to avoid conflicting with the likes of react, a number may optionally be included within the brackets, like `<Input name="foo[0]" />`, but the number (index) itself will be ignored (sequence in data objects is determined by the input's place in the DOM).
+
+`<input>` also offers a small easter-egg: a toggle, which is effectively a checkbox with fancy styling.
 
 prop | purpose | default
 :--- | :--- | :---

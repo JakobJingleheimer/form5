@@ -27,6 +27,9 @@ const Button = ({
 		}
 	</button>
 );
+
+Button.displayName = 'Form5Button';
+
 Button.APPEARANCES = {
 	AFFIRMING: 'affirming',
 	BASIC: 'basic',
