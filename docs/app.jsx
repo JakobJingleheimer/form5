@@ -45,17 +45,20 @@ function TestForm() {
 
 				<Input
 					defaultValue="Jacob"
+					fluid
 					label="forename"
 					name="forename"
 					type="text"
 				/>
 				<Input
 					defaultValue="Jingleheimer"
+					fluid
 					label="surname"
 					name="surname"
 					type="text"
 				/>
 				<Input
+					fluid
 					label="age"
 					name="age"
 					type="number"
@@ -65,6 +68,7 @@ function TestForm() {
 					name="contact"
 				>
 					<Input
+						fluid
 						label="email"
 						name="email"
 						placeholder="john.doe@example.com"
@@ -72,6 +76,7 @@ function TestForm() {
 						type="email"
 					/>
 					<Input
+						fluid
 						label="phone"
 						name="phoneNumber"
 						onKeyPress={({ target }) => { target.value = target.value.replace(/\D/, '') }}
