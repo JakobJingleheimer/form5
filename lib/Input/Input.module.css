@@ -1,24 +1,32 @@
+.InputField {
+	gap: calc(var(--grid-gutter) / 2);
+}
 .InputField[arrangement="inline"] {
 	align-items: center;
-	gap: var(--grid-gutter);
 	grid-template-columns: max-content 1fr;
-	position: relative;
-}
-.InputField[arrangement="stacked"] {
-	align-items: baseline;
-	justify-content: space-between;
 }
 .InputField[arrangement="inline"],
 .InputField[arrangement="stacked"] {
 	display: grid;
-	gap: calc(var(--grid-gutter) / 2);
+}
+.InputField[arrangement="stacked"] {
+	justify-content: space-between;
+}
+.InputField[arrangement="stacked"],
+.InputField[arrangement="stand-alone"] {
+	align-items: baseline;
 }
 .InputField[arrangement="stand-alone"] {
-	display: inline;
+	display: inline-flex;
 }
 
 .FluidInputField {
 	grid-template-columns: 100%;
+}
+
+.InnerWrapper {
+	display: flex;
+	position: relative;
 }
 
 .Input {
@@ -38,36 +46,37 @@
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-.Input[readonly],
-.Input[readonly] + .Label {
+.InputField[readonly] .Input,
+.InputField[readonly] .Label {
 	cursor: not-allowed;
-	pointer-events: none;
 }
 
 .Input[type="number"] {
 	text-align: right;
 }
 
-.Input:not([type="checkbox"]):not([type="radio"]) + .Label {
-	order: -1;
+.Input:not([type="checkbox"]):not([type="radio"]) {
+	width: 100%;
 }
-.Input + .Label {
+
+.Label {
+	order: -1;
 	text-transform: capitalize;
 }
 
-.Input:required + .Label::after {
+.InputField[required] .Label::after {
 	content: '*';
 	margin-left: 0.1em;
 }
-.Input[touched]:invalid:focus {
+.InputField[touched][invalid] .Input:focus {
 	outline-color: var(--colour-danger);
 }
-.Input[touched]:invalid,
+.InputField[touched][invalid] .Input,
 .Error {
 	border-color: var(--colour-danger);
 }
-.Input[touched]:invalid,
-.Input[touched]:invalid + .Label,
+.InputField[touched][invalid],
+.InputField[touched][invalid],
 .Error {
 	color: var(--colour-danger);
 }
@@ -89,6 +98,7 @@
 	display: block;
 	height: 0.5em;
 	position: absolute;
+	translate: -50% -50%;
 	width: 0.5em;
 }
 
@@ -97,26 +107,28 @@
 	.Error {
 		bottom: 0;
 		left: 50%;
-		transform: translate(-50%, calc(100% + 1em));
+		translate: -50% calc(100% + 1em);
 	}
 	.Error::after {
 		left: 50%;
 		top: 0;
-		transform: translate(-50%, -50%) rotate(-45deg);
+		translate: -50% -50%;
+		rotate: -45deg;
 	}
 }
 
 @media only screen and (min-width: 737px) {
 	/* On mobile, position errors right of field */
 	.Error {
-		right: 0;
+		margin-left: auto;
+		margin-right: 0;
 		top: 50%;
-		transform: translate(calc(100% + 1em),-50%);
+		translate: calc(100% + 1em) -50%;
 	}
 	.Error::after {
-		bottom: 50%;
 		left: 0;
-		transform: translate(-50%, 50%) rotate(225deg);
+		rotate: 225deg;
+		top: 50%;
 	}
 }
 
@@ -141,15 +153,15 @@ input[variant="toggle"]::after {
 	content: '';
 	display: inline-block;
 	height: 100%;
-	transform: translateX(calc(-50% + 1px));
-	width: 50%;
 	transition:
 		background-color var(--default-transition),
-		transform var(--default-transition);
+		translate var(--default-transition);
+	translate: calc(-50% + 1px);
+	width: 50%;
 }
 input[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
-	transform: translateX(50%);
+	translate: 50%;
 }
 input[variant="toggle"][appearane="danger"]:checked::after {
 	background-color: var(--colour-danger);

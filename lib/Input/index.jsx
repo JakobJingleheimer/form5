@@ -18,6 +18,8 @@ const Input = ({
 	onBlur,
 	onChange,
 	options,
+	readOnly,
+	required,
 	type,
 	value,
 	...others
@@ -25,16 +27,21 @@ const Input = ({
 	const [error, setError] = useState('');
 	const [pristine, setPristine] = useState(true);
 	const [touched, setTouched] = useState(false);
+	const isInvalid = !!error;
 
 	if (options) others.list = `${name}_options`;
 
 	others.onBlur = (e) => {
+		if (readOnly) return;
+
 		setTouched(true);
 		if (e.target.checkValidity()) setError('');
 		onBlur(e);
 	};
 
 	others.onChange = (e) => {
+		if (readOnly) return;
+
 		setPristine(false);
 		setTouched(true);
 
@@ -55,6 +62,11 @@ const Input = ({
 		}, e);
 	}
 
+	const sharedConstraints = {
+		readOnly,
+		required,
+	};
+
 	return (
 		<div
 			arrangement={arrangement}
@@ -64,33 +76,38 @@ const Input = ({
 					[styles.FluidInputField]: fluid,
 				},
 			)}
+			invalid={isInvalid ? '' : null}
+			{...sharedConstraints}
+			pristine={pristine ? '' : null}
+			touched={touched ? '' : null}
 		>
-			<Field
-				className={styles.Input}
-				name={name}
-				id={id}
-				onInvalid={(e) => {
-					e.nativeEvent.stopImmediatePropagation();
-					setError(e.target.validationMessage);
-					setTouched(true);
-				}}
-				pristine={pristine ? 'true' : null}
-				touched={touched ? 'true' : null}
-				type={type}
-				value={value}
-				{...others}
-			/>
+			<div className={styles.InnerWrapper}>
+				<Field
+					className={styles.Input}
+					name={name}
+					id={id}
+					onInvalid={(e) => {
+						e.nativeEvent.stopImmediatePropagation();
+						setError(e.target.validationMessage);
+						setTouched(true);
+					}}
+					{...sharedConstraints}
+					type={type}
+					value={value}
+					{...others}
+				/>
+				{isInvalid && (
+					<dialog
+						className={styles.Error}
+						data-testid="input-error"
+						open
+					>{error}</dialog>
+				)}
+			</div>
 			{!!label && (<label
 				className={styles.Label}
 				htmlFor={id}
 			>{label}</label>)}
-			{!!error && (
-				<dialog
-					className={styles.Error}
-					data-testid="input-error"
-					open
-				>{error}</dialog>
-			)}
 			{!_isEmpty(options) && (
 				<datalist data-testid={others.list} id={others.list}>{_map(options, (label, key) => (
 					<option key={key} value={key}>{label}</option>
