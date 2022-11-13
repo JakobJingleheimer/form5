@@ -24583,14 +24583,15 @@ var import_client = __toESM(require_client(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11024-FYK079YT7K0o/react-form5/lib/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-15375-RVO1I8THEIZ3/react-form5/lib/Button/Button.module.css.js
 var digest = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
-var css = `._Button_z7ita_1 {
+var css = `._Button_13og3_1 {
 	border: none;
+	cursor: pointer;
 	padding: var(--default-padding);
 }
 
-._fluid_z7ita_6 { width: 100% }
+._fluid_13og3_7 { width: 100% }
 
 button[variant="cta"] {
 	color: var(--colour-background);
@@ -24645,7 +24646,7 @@ button[variant="glyph"][appearance="warning"] {
     document.head.appendChild(el);
   }
 })();
-var Button_module_css_default = { "Button": "_Button_z7ita_1", "fluid": "_fluid_z7ita_6" };
+var Button_module_css_default = { "Button": "_Button_13og3_1", "fluid": "_fluid_13og3_7" };
 
 // lib/Button/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -24666,6 +24667,7 @@ var Button = ({
   ),
   children: !!Icon ? Icon : label
 });
+Button.displayName = "Form5Button";
 Button.APPEARANCES = {
   AFFIRMING: "affirming",
   BASIC: "basic",
@@ -26092,8 +26094,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11024-FYK079YT7K0o/react-form5/lib/FileInput/FileInput.module.css.js
-var digest2 = "c6044d974b2031bcec4c080535b5a0fe0d4ca494661a6782d4b3489a579cfe79";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-15375-RVO1I8THEIZ3/react-form5/lib/FileInput/FileInput.module.css.js
+var digest2 = "48a38f646c9e720333d8895a86bed7b6cd87d2da7c9561c2a902001de7f85310";
 var css2 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26214,6 +26216,7 @@ __publicField(FileInput, "defaultProps", {
   onChange: () => {
   }
 });
+FileInput.displayName = "Form5FileInput";
 
 // lib/Input/index.jsx
 var import_classnames3 = __toESM(require_classnames(), 1);
@@ -26250,79 +26253,92 @@ var isEmpty_default = isEmpty;
 var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_react2 = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11024-FYK079YT7K0o/react-form5/lib/Input/Input.module.css.js
-var digest3 = "7a6eeeb25d7f7f2d7bb2511e2ffacf9dae899a5fd100430f2a2c4d93f6b97380";
-var css3 = `._InputField_1qkdg_1[arrangement="inline"] {
-	align-items: center;
-	gap: var(--grid-gutter);
-	grid-template-columns: max-content 1fr;
-	position: relative;
-}
-._InputField_1qkdg_1[arrangement="stacked"] {
-	align-items: baseline;
-	justify-content: space-between;
-}
-._InputField_1qkdg_1[arrangement="inline"],
-._InputField_1qkdg_1[arrangement="stacked"] {
-	display: grid;
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-15375-RVO1I8THEIZ3/react-form5/lib/Input/Input.module.css.js
+var digest3 = "1bdb4182902e4fc3e9ac96c0cd8ac3da34b348dbc03ae3ffaade7b2ca5b5b181";
+var css3 = `._InputField_1cvxz_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_1qkdg_1[arrangement="stand-alone"] {
-	display: inline;
+._InputField_1cvxz_1[arrangement="inline"] {
+	align-items: center;
+	grid-template-columns: max-content 1fr;
+}
+._InputField_1cvxz_1[arrangement="inline"],
+._InputField_1cvxz_1[arrangement="stacked"] {
+	display: grid;
+}
+._InputField_1cvxz_1[arrangement="stacked"] {
+	justify-content: space-between;
+}
+._InputField_1cvxz_1[arrangement="stacked"],
+._InputField_1cvxz_1[arrangement="stand-alone"] {
+	align-items: baseline;
+}
+._InputField_1cvxz_1[arrangement="stand-alone"] {
+	display: inline-flex;
 }
 
-._Input_1qkdg_1 {
+._FluidInputField_1cvxz_23 {
+	grid-template-columns: 100%;
+}
+
+._InnerWrapper_1cvxz_27 {
+	display: flex;
+	position: relative;
+}
+
+._Input_1cvxz_1 {
 	background-color: unset;
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_1qkdg_1:focus {
+._Input_1cvxz_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_1qkdg_1:disabled {
+._Input_1cvxz_1:disabled {
 	cursor: default;
 }
-._Input_1qkdg_1:disabled,
-._Input_1qkdg_1[readonly] {
+._Input_1cvxz_1:disabled,
+._Input_1cvxz_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._Input_1qkdg_1[readonly],
-._Input_1qkdg_1[readonly] + ._Label_1qkdg_38 {
+._InputField_1cvxz_1[readonly] ._Input_1cvxz_1,
+._InputField_1cvxz_1[readonly] ._Label_1cvxz_50 {
 	cursor: not-allowed;
-	pointer-events: none;
 }
 
-._Input_1qkdg_1[type="number"] {
+._Input_1cvxz_1[type="number"] {
 	text-align: right;
 }
 
-._Input_1qkdg_1:not([type="checkbox"]):not([type="radio"]) + ._Label_1qkdg_38 {
-	order: -1;
+._Input_1cvxz_1:not([type="checkbox"]):not([type="radio"]) {
+	width: 100%;
 }
-._Input_1qkdg_1 + ._Label_1qkdg_38 {
+
+._Label_1cvxz_50 {
+	order: -1;
 	text-transform: capitalize;
 }
 
-._Input_1qkdg_1:required + ._Label_1qkdg_38::after {
+._InputField_1cvxz_1[required] ._Label_1cvxz_50::after {
 	content: '*';
 	margin-left: 0.1em;
 }
-._Input_1qkdg_1[touched]:invalid:focus {
+._InputField_1cvxz_1[touched][invalid] ._Input_1cvxz_1:focus {
 	outline-color: var(--colour-danger);
 }
-._Input_1qkdg_1[touched]:invalid,
-._Error_1qkdg_62 {
+._InputField_1cvxz_1[touched][invalid] ._Input_1cvxz_1,
+._Error_1cvxz_75 {
 	border-color: var(--colour-danger);
 }
-._Input_1qkdg_1[touched]:invalid,
-._Input_1qkdg_1[touched]:invalid + ._Label_1qkdg_38,
-._Error_1qkdg_62 {
+._InputField_1cvxz_1[touched][invalid],
+._InputField_1cvxz_1[touched][invalid],
+._Error_1cvxz_75 {
 	color: var(--colour-danger);
 }
 
-._Error_1qkdg_62 {
+._Error_1cvxz_75 {
 	background-color: var(--colour-background);
 	border: 1px solid;
 	border-radius: var(--default-border-radius);
@@ -26331,7 +26347,7 @@ var css3 = `._InputField_1qkdg_1[arrangement="inline"] {
 	position: absolute;
 	z-index: 1;
 }
-._Error_1qkdg_62::after {
+._Error_1cvxz_75::after {
 	background-color: inherit;
 	border: inherit;
 	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
@@ -26339,34 +26355,37 @@ var css3 = `._InputField_1qkdg_1[arrangement="inline"] {
 	display: block;
 	height: 0.5em;
 	position: absolute;
+	translate: -50% -50%;
 	width: 0.5em;
 }
 
 @media only screen and (max-width: 736px) {
 	/* On mobile, position errors below field */
-	._Error_1qkdg_62 {
+	._Error_1cvxz_75 {
 		bottom: 0;
 		left: 50%;
-		transform: translate(-50%, calc(100% + 1em));
+		translate: -50% calc(100% + 1em);
 	}
-	._Error_1qkdg_62::after {
+	._Error_1cvxz_75::after {
 		left: 50%;
 		top: 0;
-		transform: translate(-50%, -50%) rotate(-45deg);
+		translate: -50% -50%;
+		rotate: -45deg;
 	}
 }
 
 @media only screen and (min-width: 737px) {
 	/* On mobile, position errors right of field */
-	._Error_1qkdg_62 {
-		right: 0;
+	._Error_1cvxz_75 {
+		margin-left: auto;
+		margin-right: 0;
 		top: 50%;
-		transform: translate(calc(100% + 1em),-50%);
+		translate: calc(100% + 1em) -50%;
 	}
-	._Error_1qkdg_62::after {
-		bottom: 50%;
+	._Error_1cvxz_75::after {
 		left: 0;
-		transform: translate(-50%, 50%) rotate(225deg);
+		rotate: 225deg;
+		top: 50%;
 	}
 }
 
@@ -26391,15 +26410,15 @@ input[variant="toggle"]::after {
 	content: '';
 	display: inline-block;
 	height: 100%;
-	transform: translateX(calc(-50% + 1px));
-	width: 50%;
 	transition:
 		background-color var(--default-transition),
-		transform var(--default-transition);
+		translate var(--default-transition);
+	translate: calc(-50% + 1px);
+	width: 50%;
 }
 input[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
-	transform: translateX(50%);
+	translate: 50%;
 }
 input[variant="toggle"][appearane="danger"]:checked::after {
 	background-color: var(--colour-danger);
@@ -26416,7 +26435,7 @@ input[variant="toggle"][appearane="success"]:checked::after {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_1qkdg_1", "Input": "_Input_1qkdg_1", "Label": "_Label_1qkdg_38", "Error": "_Error_1qkdg_62" };
+var Input_module_css_default = { "InputField": "_InputField_1cvxz_1", "FluidInputField": "_FluidInputField_1cvxz_23", "InnerWrapper": "_InnerWrapper_1cvxz_27", "Input": "_Input_1cvxz_1", "Label": "_Label_1cvxz_50", "Error": "_Error_1cvxz_75" };
 
 // lib/Input/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26425,13 +26444,14 @@ var Input = ({
   as: Field,
   className,
   fluid,
-  inline,
   label,
   name,
   id = name,
   onBlur,
   onChange,
   options,
+  readOnly,
+  required,
   type,
   value,
   ...others
@@ -26439,15 +26459,20 @@ var Input = ({
   const [error, setError] = (0, import_react2.useState)("");
   const [pristine, setPristine] = (0, import_react2.useState)(true);
   const [touched, setTouched] = (0, import_react2.useState)(false);
+  const isInvalid = !!error;
   if (options)
     others.list = `${name}_options`;
   others.onBlur = (e) => {
+    if (readOnly)
+      return;
     setTouched(true);
     if (e.target.checkValidity())
       setError("");
     onBlur(e);
   };
   others.onChange = (e) => {
+    if (readOnly)
+      return;
     setPristine(false);
     setTouched(true);
     if (e.target.checkValidity())
@@ -26465,43 +26490,52 @@ var Input = ({
       value: options?.[value2] || value2
     }, e);
   };
+  const sharedConstraints = {
+    readOnly,
+    required
+  };
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
     arrangement,
     className: (0, import_classnames3.default)(
       Input_module_css_default.InputField,
       {
-        [Input_module_css_default.inline]: inline,
-        [Input_module_css_default.fluid]: fluid
+        [Input_module_css_default.FluidInputField]: fluid
       }
     ),
+    invalid: isInvalid ? "" : null,
+    ...sharedConstraints,
+    pristine: pristine ? "" : null,
+    touched: touched ? "" : null,
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
-        className: (0, import_classnames3.default)(Input_module_css_default.Input, {
-          [Input_module_css_default.fluid]: fluid
-        }),
-        name,
-        id,
-        onInvalid: (e) => {
-          e.nativeEvent.stopImmediatePropagation();
-          setError(e.target.validationMessage);
-          setTouched(true);
-        },
-        pristine: pristine ? "true" : null,
-        touched: touched ? "true" : null,
-        type,
-        value,
-        ...others
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+        className: Input_module_css_default.InnerWrapper,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+            className: Input_module_css_default.Input,
+            name,
+            id,
+            onInvalid: (e) => {
+              e.nativeEvent.stopImmediatePropagation();
+              setError(e.target.validationMessage);
+              setTouched(true);
+            },
+            ...sharedConstraints,
+            type,
+            value,
+            ...others
+          }),
+          isInvalid && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dialog", {
+            className: Input_module_css_default.Error,
+            "data-testid": "input-error",
+            open: true,
+            children: error
+          })
+        ]
       }),
       !!label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
         className: Input_module_css_default.Label,
         htmlFor: id,
         children: label
-      }),
-      !!error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dialog", {
-        className: Input_module_css_default.Error,
-        "data-testid": "input-error",
-        open: true,
-        children: error
       }),
       !isEmpty_default(options) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
         "data-testid": others.list,
@@ -26514,6 +26548,7 @@ var Input = ({
     ]
   });
 };
+Input.displayName = "Form5Input";
 Input.ARRANGEMENTS = {
   INLINE: "inline",
   STACKED: "stacked",
@@ -26534,6 +26569,7 @@ Input.defaultProps = {
 Input.propTypes = {
   arrangement: import_prop_types2.default.oneOf(Object.values(Input.ARRANGEMENTS)),
   as: import_prop_types2.default.elementType,
+  fluid: import_prop_types2.default.bool,
   label: import_prop_types2.default.string,
   name: import_prop_types2.default.string.isRequired,
   options: import_prop_types2.default.object,
@@ -26582,9 +26618,12 @@ var FIELD_TAGS = {
   SELECT: "select",
   TEXTAREA: "textarea"
 };
+var listNameRgx = /\[\d*\]$/;
+var isListName = (name) => listNameRgx.test(name);
 function composeData(values, {
   checked,
   dataTransfer,
+  disabled,
   elements,
   files,
   name,
@@ -26594,53 +26633,87 @@ function composeData(values, {
   ...attrs
 }, i, form) {
   const tag = FIELD_TAGS[tagName];
-  if (tag && name) {
-    if (tag === "fieldset") {
+  if (!tag)
+    return values;
+  if (tag === "fieldset") {
+    if (disabled)
+      for (const nestedField of elements)
+        nestedField.disabled = disabled;
+    if (name) {
       const nestedFieldCount = elements.length;
-      const nestedFields = form.splice(
+      form.splice(
         i + 1,
         nestedFieldCount,
         ...Array(nestedFieldCount).fill({ tagName: "NESTED_FIELD" })
       );
       values[name] = reduce_default(
-        nestedFields,
+        elements,
         composeData,
         { __proto__: null }
       );
-    } else if (tag === "select" && attrs.multiple) {
-      values[name] = attrs.selectedOptions.map(({ value: value2 }) => value2);
-    } else if (type === "file") {
-      values[name] = files || dataTransfer;
-    } else if (type === "checkbox") {
-      values[name] = checked;
-    } else if (type === "number") {
-      if (value.length)
-        values[name] = +value;
-      else
-        values[name] = null;
-    } else if (type === "radio") {
-      if (checked)
-        values[name] = value;
-      else
-        values[name] ??= null;
-    } else
-      values[name] ??= value || null;
+    }
+    return values;
   }
+  if (!name) {
+    return values;
+  }
+  if (disabled) {
+    values[name] = null;
+    return values;
+  }
+  if (tag === "select" && attrs.multiple) {
+    values[name] = attrs.selectedOptions.map(({ value: value2 }) => value2);
+    return values;
+  }
+  const val = getFieldVal({
+    checked,
+    files,
+    dataTransfer,
+    type,
+    value
+  });
+  const strippedName = name.replace(listNameRgx, "");
+  if (isArray_default(values[strippedName]))
+    values[strippedName].push(val);
+  else if (isListName(name))
+    values[strippedName] = [val];
+  else
+    values[name] ??= val;
   return values;
+}
+function getFieldVal({
+  checked,
+  files,
+  dataTransfer,
+  type,
+  value
+}) {
+  switch (type) {
+    case "checkbox":
+      return checked;
+    case "file":
+      return files || dataTransfer;
+    case "number":
+      return value.length ? +value : null;
+    case "radio":
+      return checked ? value : null;
+    default:
+      return value || null;
+  }
 }
 
 // lib/deepDiff.js
 function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
-  if (!isObject_default(newVals) || Array.isArray(newVals) || newVals instanceof FileList || newVals instanceof File) {
-    if (newVals !== oldVals) {
-      return typeof newVals !== "undefined" ? newVals : null;
-    }
-    return;
+  if (!isObject_default(newVals) || isArray_default(newVals) || newVals instanceof FileList || newVals instanceof File) {
+    if (newVals === oldVals)
+      return;
+    if (typeof newVals !== "undefined")
+      return newVals;
+    return null;
   }
   const oldKeys = keys_default(oldVals).sort();
   const newKeys = keys_default(newVals).sort();
-  for (let nK = 0, n = newKeys.length; nK < n; nK++) {
-    const newKey = newKeys[nK];
+  for (const newKey of newKeys) {
     const newVal = newVals[newKey];
     const oK = oldKeys.indexOf(newKey);
     const oldVal = oldVals[newKey];
@@ -26648,20 +26721,20 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
       delta[newKey] = newVal;
     } else {
       const val = deepDiff(oldVal, newVal, delta[newKey]);
-      if (typeof val !== "undefined" && !isObject_default(val) || !isEmpty_default(val))
+      if (typeof val !== "undefined" && !isObject_default(val) || isArray_default(val) || !isEmpty_default(val)) {
         delta[newKey] = val;
+      }
     }
     oldKeys.splice(oK, 1);
   }
-  for (let o = oldKeys.length - 1; o > -1; o--) {
-    const oldKey = oldKeys[o];
+  for (const oldKey of oldKeys) {
     const oldVal = oldVals[oldKey];
     delta[oldKey] = deepDiff(oldVal);
   }
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11024-FYK079YT7K0o/react-form5/lib/Form/Form.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-15375-RVO1I8THEIZ3/react-form5/lib/Form/Form.module.css.js
 var digest4 = "dae0b6b4ca1f654c97e6d6b20f692633cac8384291ddf4b16632b9431fbf587d";
 var css4 = `._Form_13cn9_1,
 fieldset {
@@ -26729,11 +26802,12 @@ var Form = class extends import_react3.PureComponent {
   }
 };
 __publicField(Form, "FIELD_TAGS", FIELD_TAGS);
+Form.displayName = "Form5Form";
 Form.propTypes = {
   onSubmit: import_prop_types3.default.func.isRequired
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11024-FYK079YT7K0o/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-15375-RVO1I8THEIZ3/react-form5/docs/Demo.module.css.js
 var digest5 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css5 = `._Column_xjact_1 {
 	flex: 1;
@@ -26830,17 +26904,20 @@ function TestForm() {
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
             defaultValue: "Jacob",
+            fluid: true,
             label: "forename",
             name: "forename",
             type: "text"
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
             defaultValue: "Jingleheimer",
+            fluid: true,
             label: "surname",
             name: "surname",
             type: "text"
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+            fluid: true,
             label: "age",
             name: "age",
             type: "number"
@@ -26849,6 +26926,7 @@ function TestForm() {
             name: "contact",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+                fluid: true,
                 label: "email",
                 name: "email",
                 placeholder: "john.doe@example.com",
@@ -26856,6 +26934,7 @@ function TestForm() {
                 type: "email"
               }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+                fluid: true,
                 label: "phone",
                 name: "phoneNumber",
                 onKeyPress: ({ target }) => {
