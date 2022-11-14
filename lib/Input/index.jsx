@@ -35,8 +35,10 @@ const Input = ({
 		if (readOnly) return;
 
 		setTouched(true);
-		if (e.target.checkValidity()) setError('');
+
 		onBlur(e);
+
+		if (e.target.checkValidity()) setError('');
 	};
 
 	others.onChange = (e) => {
@@ -44,8 +46,6 @@ const Input = ({
 
 		setPristine(false);
 		setTouched(true);
-
-		if (e.target.checkValidity()) setError('');
 
 		let {
 			checked,
@@ -60,6 +60,8 @@ const Input = ({
 			name,
 			value: options?.[value] || value,
 		}, e);
+
+		if (e.target.checkValidity()) setError('');
 	}
 
 	const sharedConstraints = {
