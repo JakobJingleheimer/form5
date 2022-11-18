@@ -21,7 +21,7 @@ export default class Form extends PureComponent {
 		if (!el) return;
 
 		this.initValues = _reduce(
-			[...el.elements],
+			Array.from(el.elements),
 			composeData,
 			this.initValues,
 		);
@@ -35,7 +35,7 @@ export default class Form extends PureComponent {
 		event.stopPropagation();
 
 		const values = _reduce(
-			[...event.target.elements],
+			Array.from(event.target.elements),
 			composeData,
 			{ __proto__: null },
 		);
