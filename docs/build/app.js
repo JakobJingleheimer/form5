@@ -24583,8 +24583,8 @@ var import_client = __toESM(require_client(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9125-jYo3XgOde7lq/react-form5/lib/Button/Button.module.css.js
-var digest = "5b4ce3946d4bb8dfc90890c57b7143a54d4db84862fd3e73412f5c7d5bd5255b";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-22596-3cN1dZRbWPt3/react-form5/lib/Button/Button.module.css.js
+var digest = "1954d9c69cf0d2cf057147a563326519bb360557c24e39a687e319b8c5e6a7bb";
 var css = `._Button_13og3_1 {
 	border: none;
 	cursor: pointer;
@@ -26094,8 +26094,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9125-jYo3XgOde7lq/react-form5/lib/FileInput/FileInput.module.css.js
-var digest2 = "4ed6c229ff3d1662ce30b511ba6c63859a283c3254fbcf3e5d35b0faebe2d002";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-22596-3cN1dZRbWPt3/react-form5/lib/FileInput/FileInput.module.css.js
+var digest2 = "d6de89bec6d003ab54fe6bb0a94106984d8a9f7c44dad558ebf1eee5a6fe1dd2";
 var css2 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26253,8 +26253,8 @@ var isEmpty_default = isEmpty;
 var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_react2 = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9125-jYo3XgOde7lq/react-form5/lib/Input/Input.module.css.js
-var digest3 = "ff337d63c4540ddac0a155e00080e48f8c5cd3c99905d8d9de742b9602130eb6";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-22596-3cN1dZRbWPt3/react-form5/lib/Input/Input.module.css.js
+var digest3 = "c9bb48ae54a1ac06ff7e0b5fd4d0c86c73f73ba7867356ab3d44b7fc6841a8da";
 var css3 = `._InputField_1cvxz_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26647,7 +26647,7 @@ function composeData(values, {
         ...Array(nestedFieldCount).fill({ tagName: "NESTED_FIELD" })
       );
       values[name] = reduce_default(
-        elements,
+        Array.from(elements),
         composeData,
         { __proto__: null }
       );
@@ -26734,8 +26734,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9125-jYo3XgOde7lq/react-form5/lib/Form/Form.module.css.js
-var digest4 = "f4a8ca06b5f3a9279cd103ccc6b8266640465980aac3bd009940802d11c64150";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-22596-3cN1dZRbWPt3/react-form5/lib/Form/Form.module.css.js
+var digest4 = "23dc4f1f2793ea020cde3d18352e6a688a116ff613f55939bf72c1fbbd104e5e";
 var css4 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26760,7 +26760,7 @@ var Form = class extends import_react3.PureComponent {
     if (!el)
       return;
     this.initValues = reduce_default(
-      [...el.elements],
+      Array.from(el.elements),
       composeData,
       this.initValues
     );
@@ -26771,7 +26771,7 @@ var Form = class extends import_react3.PureComponent {
       return;
     event.stopPropagation();
     const values = reduce_default(
-      [...event.target.elements],
+      Array.from(event.target.elements),
       composeData,
       { __proto__: null }
     );
@@ -26807,7 +26807,7 @@ Form.propTypes = {
   onSubmit: import_prop_types3.default.func.isRequired
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9125-jYo3XgOde7lq/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-22596-3cN1dZRbWPt3/react-form5/docs/Demo.module.css.js
 var digest5 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css5 = `._Column_xjact_1 {
 	flex: 1;
