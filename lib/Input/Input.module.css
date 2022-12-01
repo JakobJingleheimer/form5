@@ -26,6 +26,7 @@
 
 .InnerWrapper {
 	display: flex;
+	flex: 1;
 	position: relative;
 }
 
@@ -119,13 +120,15 @@
 
 @media only screen and (min-width: 737px) {
 	/* Above mobile, position errors right of field */
-	.InputField[arrangement="inline"] .Error {
+	.InputField[arrangement="inline"] .Error,
+	.InputField[arrangement="stand-alone"] .Error {
 		margin-left: auto;
 		margin-right: 0;
 		top: 50%;
 		translate: calc(100% + 1em) -50%;
 	}
-	.InputField[arrangement="inline"] .Error::after {
+	.InputField[arrangement="inline"] .Error::after,
+	.InputField[arrangement="stand-alone"] .Error::after {
 		left: 0;
 		rotate: 225deg;
 		top: 50%;

@@ -1,19 +1,48 @@
-# Requirements
+# Form5
+
+## Requirements
 
 * CSS modules
 * React 17+
 
-# Demo
+This package distributes JSX so you can decide how it gets compiled.
+
+## Demo
 
 [https://JakobJingleheimer.github.io/react-form5](https://jakobjingleheimer.github.io/react-form5)
 
-# Usage
+## Key features
+
+Use what you want. No component requires any other component (ex `<Form>` works just fine with plain `<input>`, `<select>`, etc). You can also use the utilities that underpin `<Form>` without the react component itself (you're free to re-invent the wheel), just import them and go:
+
+```js
+import composeData from 'react-form5/composeData';
+import deepDiff from 'react-form5/deepDiff';
+```
+
+### Just the tip
+
+A good practice in data management is to keep it minimal. When changing data, it's generally best to track only what changed (especially important for large data models). Out of the box, Form5 provides a deep diff to `<Form>`'s onSubmit handler.
+
+### Model for model
+
+Form5 supports a 1:1 DOM to data model mapping: To create nested data objects, use a plain old `<fieldset>`; when a `name` prop is supplied, the data object provided to `onSubmit` will nest fields inside under that name. [See examples below](#component-consumption).
+
+### Native
+
+This package leverages as much native APIs as possible: HTML5's [Constraints Validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation), CSS variables, latest media queries and properties, etc. Anything that doesn't is as closely aligned and friendly as possible to any existing native APIs (with a couple small but personally frustrating exceptions—the lesser of two evils).
+
+### Performance
+
+Performance was one of the main reasons I created this; I was gobsmacked by the _horrendous_ performance of leading libs \*cough\* formik \*cough\*; that may not be the case anymore (I haven't checked). There are no redundant/superfluous re-renders etc from this package and no divitis.
+
+## Usage
 
 This package encourages/supports (and enforces a bit) accessibility. It leverages the native [Constraints Validation API](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation), and very rudimentary structural styling via [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout).
 
 State can be controlled or uncontrolled without impacting the validation this package facilitates.
 
-## Styling configuration
+### Styling configuration
 
 General layout structure and basic validation state appearance is handled by this package. There are some css variables that are consumed if available:
 
@@ -38,7 +67,7 @@ Labels of fields set to required are automatically styled with an "*" in an acce
 
 Implementer's css modules are consumed via css modules (passed as normal via `className`).
 
-## Component consumption
+### Component consumption
 
 If a field is supplied validation props (`minLength`, `required`, etc), the component will automatically trigger its fields ("form controls") to self-validate and display relevant errors upon submit. Each field supports supplying custom validation messages via the Constraints Validation API—when no custom message(s) are supplied, browser defaults (which are pretty good and support i18n for free) are used. A Form submitted with invalid fields will abort the submission (the supplied `onSubmit` callback will not be called).
 
@@ -150,15 +179,13 @@ const SFC = (props) => (
 )
 ```
 
-### Form
+#### `<Form>`
 
 This component facilitates validation and provides a data model object for uncontrolled fields. Fields wrapped in a name `fieldset` result in a nested object.
 
 It also provides a `delta` of data changes, useful for `PATCH`ing existing field(s) changed by the user: the delta object contains only properties differing from their initial value. Ex an existing user changes their forename: `delta = { forename: 'Jakob' }`
 
-### Form controls
-
-#### Button
+#### `<Button>`
 
 The most important difference here is the `type` prop defaults to `button` instead of `submit` because forgetting to override "submit" has confusing, adverse behaviour.
 
@@ -170,11 +197,11 @@ appearance | alter the aesthetics of the element | `primary`
 fluid | whether the button should act like a liquid: fill its container | `false`
 variant | the kind of appearance the button takes on (classic CTA, icon, etc) | `cta`
 
-#### FileInput
+#### `<FileInput>`
 
 A file picker for uploading from disk. The main difference between this component and this package's `<Input>` component is that it generates a preview for image-type files or lists filenames of selected files (when a preview cannot be generated).
 
-#### Input
+#### `<Input>`
 
 This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`)
 that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange`
