@@ -7,7 +7,7 @@ import { useState } from 'react';
 import styles from './Input.module.css';
 
 
-const Input = ({
+export default function Input({
 	arrangement,
 	as: Field,
 	className,
@@ -17,13 +17,14 @@ const Input = ({
 	id = name, // must come after `name`
 	onBlur,
 	onChange,
+	onFocus,
 	options,
 	readOnly,
 	required,
 	type,
 	value,
 	...others
-}) => {
+}) {
 	const [error, setError] = useState('');
 	const [pristine, setPristine] = useState(true);
 	const [touched, setTouched] = useState(false);
@@ -62,6 +63,11 @@ const Input = ({
 		}, e);
 
 		if (e.target.checkValidity()) setError('');
+	}
+	others.onFocus = (e) => {
+		if (dtTypes.has(type)) e.target.showPicker();
+
+		onFocus(e);
 	}
 
 	const sharedConstraints = {
@@ -134,6 +140,7 @@ Input.defaultProps = {
 	as: 'input',
 	onBlur() {},
 	onChange() {},
+	onFocus() {},
 	type: 'text',
 };
 Input.propTypes = {
@@ -142,8 +149,16 @@ Input.propTypes = {
 	fluid: PropTypes.bool,
 	label: PropTypes.string,
 	name: PropTypes.string.isRequired,
+	onBlur: PropTypes.func,
+	onChange: PropTypes.func,
+	onFocus: PropTypes.func,
 	options: PropTypes.object,
 	variant: PropTypes.oneOf(Object.values(Input.VARIANTS)),
 };
 
-export default Input;
+const dtTypes = new Set([
+	'date',
+	'datetime',
+	'datetime-local',
+	'time',
+]);

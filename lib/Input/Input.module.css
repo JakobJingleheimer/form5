@@ -52,12 +52,19 @@
 	cursor: not-allowed;
 }
 
-.Input[type="number"] {
-	text-align: right;
-}
-
 .Input:not([type="checkbox"]):not([type="radio"]) {
 	width: 100%;
+}
+
+.Input[type="date"],
+.Input[type="datetime"],
+.Input[type="datetime-local"],
+.Input[type="time"] {
+	font: inherit;
+}
+
+.Input[type="number"] {
+	text-align: right;
 }
 
 .Label {
