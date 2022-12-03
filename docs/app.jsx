@@ -101,6 +101,12 @@ function TestForm() {
 				</fieldset>
 
 				<Input
+					label="favourite date"
+					name="favouriteDate"
+					type="date"
+				/>
+
+				<Input
 					label="togglable"
 					name="togglable"
 					type="checkbox"

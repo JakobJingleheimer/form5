@@ -24583,8 +24583,8 @@ var import_client = __toESM(require_client(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-5358-AoAJyf4R4xms/react-form5/lib/Button/Button.module.css.js
-var digest = "8c940996d83a4fbb29fc4da3507724dfbaf379f232dbc3126885d036358cc524";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9529-N21JF2ELN1cn/react-form5/lib/Button/Button.module.css.js
+var digest = "47a689c2d8cef702f8d94593f0141b6b2d253ca77cc731a435d1e4936257b591";
 var css = `._Button_13og3_1 {
 	border: none;
 	cursor: pointer;
@@ -26094,7 +26094,7 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-5358-AoAJyf4R4xms/react-form5/lib/FileInput/FileInput.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9529-N21JF2ELN1cn/react-form5/lib/FileInput/FileInput.module.css.js
 var digest2 = "462f8c9b8c312a80da367cb54d006515afcc9f6e6976afc60125062e5efea0f1";
 var css2 = `._FileInput_rg1n0_1 {
 	display: block;
@@ -26253,93 +26253,100 @@ var isEmpty_default = isEmpty;
 var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_react2 = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-5358-AoAJyf4R4xms/react-form5/lib/Input/Input.module.css.js
-var digest3 = "4d84ac66f4b14e4eda18e730052ca48ba45bdaaa816643c6027746efdd425e02";
-var css3 = `._InputField_qtphd_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9529-N21JF2ELN1cn/react-form5/lib/Input/Input.module.css.js
+var digest3 = "fa704581077a23a22a06ff7ea6b1af7c5a89d60128f9f108069356d1b2ec72f5";
+var css3 = `._InputField_96onm_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_qtphd_1[arrangement="inline"] {
+._InputField_96onm_1[arrangement="inline"] {
 	align-items: center;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_qtphd_1[arrangement="inline"],
-._InputField_qtphd_1[arrangement="stacked"] {
+._InputField_96onm_1[arrangement="inline"],
+._InputField_96onm_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_qtphd_1[arrangement="stacked"] {
+._InputField_96onm_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_qtphd_1[arrangement="stacked"],
-._InputField_qtphd_1[arrangement="stand-alone"] {
+._InputField_96onm_1[arrangement="stacked"],
+._InputField_96onm_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_qtphd_1[arrangement="stand-alone"] {
+._InputField_96onm_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._FluidInputField_qtphd_23 {
+._FluidInputField_96onm_23 {
 	grid-template-columns: 100%;
 }
 
-._InnerWrapper_qtphd_27 {
+._InnerWrapper_96onm_27 {
 	display: flex;
 	flex: 1;
 	position: relative;
 }
 
-._Input_qtphd_1 {
+._Input_96onm_1 {
 	background-color: unset;
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_qtphd_1:focus {
+._Input_96onm_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_qtphd_1:disabled {
+._Input_96onm_1:disabled {
 	cursor: default;
 }
-._Input_qtphd_1:disabled,
-._Input_qtphd_1[readonly] {
+._Input_96onm_1:disabled,
+._Input_96onm_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._InputField_qtphd_1[readonly] ._Input_qtphd_1,
-._InputField_qtphd_1[readonly] ._Label_qtphd_51 {
+._InputField_96onm_1[readonly] ._Input_96onm_1,
+._InputField_96onm_1[readonly] ._Label_96onm_51 {
 	cursor: not-allowed;
 }
 
-._Input_qtphd_1[type="number"] {
-	text-align: right;
-}
-
-._Input_qtphd_1:not([type="checkbox"]):not([type="radio"]) {
+._Input_96onm_1:not([type="checkbox"]):not([type="radio"]) {
 	width: 100%;
 }
 
-._Label_qtphd_51 {
+._Input_96onm_1[type="date"],
+._Input_96onm_1[type="datetime"],
+._Input_96onm_1[type="datetime-local"],
+._Input_96onm_1[type="time"] {
+	font: inherit;
+}
+
+._Input_96onm_1[type="number"] {
+	text-align: right;
+}
+
+._Label_96onm_51 {
 	order: -1;
 	text-transform: capitalize;
 }
 
-._InputField_qtphd_1[required] ._Label_qtphd_51::after {
+._InputField_96onm_1[required] ._Label_96onm_51::after {
 	content: '*';
 	margin-left: 0.1em;
 }
-._InputField_qtphd_1[touched][invalid] ._Input_qtphd_1:focus {
+._InputField_96onm_1[touched][invalid] ._Input_96onm_1:focus {
 	outline-color: var(--colour-danger);
 }
-._InputField_qtphd_1[touched][invalid] ._Input_qtphd_1,
-._Error_qtphd_76 {
+._InputField_96onm_1[touched][invalid] ._Input_96onm_1,
+._Error_96onm_83 {
 	border-color: var(--colour-danger);
 }
-._InputField_qtphd_1[touched][invalid],
-._InputField_qtphd_1[touched][invalid],
-._Error_qtphd_76 {
+._InputField_96onm_1[touched][invalid],
+._InputField_96onm_1[touched][invalid],
+._Error_96onm_83 {
 	color: var(--colour-danger);
 }
 
-._Error_qtphd_76 {
+._Error_96onm_83 {
 	background-color: var(--colour-background);
 	border: 1px solid;
 	border-radius: var(--default-border-radius);
@@ -26348,7 +26355,7 @@ var css3 = `._InputField_qtphd_1 {
 	position: absolute;
 	z-index: 1;
 }
-._Error_qtphd_76::after {
+._Error_96onm_83::after {
 	background-color: inherit;
 	border: inherit;
 	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
@@ -26362,13 +26369,13 @@ var css3 = `._InputField_qtphd_1 {
 
 @media only screen and (max-width: 736px) {
 	/* On mobile, position errors below field */
-	._Error_qtphd_76 {
+	._Error_96onm_83 {
 		bottom: 0;
 		left: 0;
 		margin: 0 auto;
 		translate: 0 calc(100% + 1em);
 	}
-	._Error_qtphd_76::after {
+	._Error_96onm_83::after {
 		left: 50%;
 		rotate: -45deg;
 		top: 0;
@@ -26377,26 +26384,26 @@ var css3 = `._InputField_qtphd_1 {
 
 @media only screen and (min-width: 737px) {
 	/* Above mobile, position errors right of field */
-	._InputField_qtphd_1[arrangement="inline"] ._Error_qtphd_76,
-	._InputField_qtphd_1[arrangement="stand-alone"] ._Error_qtphd_76 {
+	._InputField_96onm_1[arrangement="inline"] ._Error_96onm_83,
+	._InputField_96onm_1[arrangement="stand-alone"] ._Error_96onm_83 {
 		margin-left: auto;
 		margin-right: 0;
 		top: 50%;
 		translate: calc(100% + 1em) -50%;
 	}
-	._InputField_qtphd_1[arrangement="inline"] ._Error_qtphd_76::after,
-	._InputField_qtphd_1[arrangement="stand-alone"] ._Error_qtphd_76::after {
+	._InputField_96onm_1[arrangement="inline"] ._Error_96onm_83::after,
+	._InputField_96onm_1[arrangement="stand-alone"] ._Error_96onm_83::after {
 		left: 0;
 		rotate: 225deg;
 		top: 50%;
 	}
 
-	._InputField_qtphd_1[arrangement="stacked"] ._Error_qtphd_76 {
+	._InputField_96onm_1[arrangement="stacked"] ._Error_96onm_83 {
 		margin: auto;
 		top: 100%;
 		translate: 0 1em;
 	}
-	._InputField_qtphd_1[arrangement="stacked"] ._Error_qtphd_76::after {
+	._InputField_96onm_1[arrangement="stacked"] ._Error_96onm_83::after {
 		left: 50%;
 		rotate: 315deg;
 		top: 0;
@@ -26450,11 +26457,11 @@ input[variant="toggle"][appearane="success"]:checked::after {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_qtphd_1", "FluidInputField": "_FluidInputField_qtphd_23", "InnerWrapper": "_InnerWrapper_qtphd_27", "Input": "_Input_qtphd_1", "Label": "_Label_qtphd_51", "Error": "_Error_qtphd_76" };
+var Input_module_css_default = { "InputField": "_InputField_96onm_1", "FluidInputField": "_FluidInputField_96onm_23", "InnerWrapper": "_InnerWrapper_96onm_27", "Input": "_Input_96onm_1", "Label": "_Label_96onm_51", "Error": "_Error_96onm_83" };
 
 // lib/Input/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
-var Input = ({
+function Input({
   arrangement,
   as: Field,
   className,
@@ -26464,13 +26471,14 @@ var Input = ({
   id = name,
   onBlur,
   onChange,
+  onFocus,
   options,
   readOnly,
   required,
   type,
   value,
   ...others
-}) => {
+}) {
   const [error, setError] = (0, import_react2.useState)("");
   const [pristine, setPristine] = (0, import_react2.useState)(true);
   const [touched, setTouched] = (0, import_react2.useState)(false);
@@ -26504,6 +26512,11 @@ var Input = ({
     }, e);
     if (e.target.checkValidity())
       setError("");
+  };
+  others.onFocus = (e) => {
+    if (dtTypes.has(type))
+      e.target.showPicker();
+    onFocus(e);
   };
   const sharedConstraints = {
     readOnly,
@@ -26562,7 +26575,7 @@ var Input = ({
       })
     ]
   });
-};
+}
 Input.displayName = "Form5Input";
 Input.ARRANGEMENTS = {
   INLINE: "inline",
@@ -26579,6 +26592,8 @@ Input.defaultProps = {
   },
   onChange() {
   },
+  onFocus() {
+  },
   type: "text"
 };
 Input.propTypes = {
@@ -26587,10 +26602,18 @@ Input.propTypes = {
   fluid: import_prop_types2.default.bool,
   label: import_prop_types2.default.string,
   name: import_prop_types2.default.string.isRequired,
+  onBlur: import_prop_types2.default.func,
+  onChange: import_prop_types2.default.func,
+  onFocus: import_prop_types2.default.func,
   options: import_prop_types2.default.object,
   variant: import_prop_types2.default.oneOf(Object.values(Input.VARIANTS))
 };
-var Input_default = Input;
+var dtTypes = /* @__PURE__ */ new Set([
+  "date",
+  "datetime",
+  "datetime-local",
+  "time"
+]);
 
 // node_modules/lodash-es/_arrayReduce.js
 function arrayReduce(array, iteratee, accumulator, initAccum) {
@@ -26749,8 +26772,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-5358-AoAJyf4R4xms/react-form5/lib/Form/Form.module.css.js
-var digest4 = "c3072f9426300f8fd44c5b249e422f59e073a03a5372f92ce7974e95f9e7acc2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9529-N21JF2ELN1cn/react-form5/lib/Form/Form.module.css.js
+var digest4 = "c823811eea73787c642065badd48249e4d0be76d916635f1a60c47231d87262f";
 var css4 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26822,7 +26845,7 @@ Form.propTypes = {
   onSubmit: import_prop_types3.default.func.isRequired
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-5358-AoAJyf4R4xms/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9529-N21JF2ELN1cn/react-form5/docs/Demo.module.css.js
 var digest5 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css5 = `._Column_xjact_1 {
 	flex: 1;
@@ -26917,21 +26940,21 @@ function TestForm() {
             type: "submit",
             children: "Submit"
           }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             defaultValue: "Jacob",
             fluid: true,
             label: "forename",
             name: "forename",
             type: "text"
           }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             defaultValue: "Jingleheimer",
             fluid: true,
             label: "surname",
             name: "surname",
             type: "text"
           }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             fluid: true,
             label: "age",
             name: "age",
@@ -26940,7 +26963,7 @@ function TestForm() {
           /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
             name: "contact",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 fluid: true,
                 label: "email",
                 name: "email",
@@ -26948,7 +26971,7 @@ function TestForm() {
                 required: true,
                 type: "email"
               }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 fluid: true,
                 label: "phone",
                 name: "phoneNumber",
@@ -26958,14 +26981,14 @@ function TestForm() {
                 placeholder: "555-5555-555",
                 type: "tel"
               }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 id: "preferEmail",
                 label: "prefer email",
                 name: "preferedContact",
                 type: "radio",
                 value: "email"
               }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 id: "preferPhone",
                 label: "prefer phone",
                 name: "preferedContact",
@@ -26974,19 +26997,24 @@ function TestForm() {
               })
             ]
           }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+            label: "favourite date",
+            name: "favouriteDate",
+            type: "date"
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             label: "togglable",
             name: "togglable",
             type: "checkbox",
-            variant: Input_default.VARIANTS.TOGGLE
+            variant: Input.VARIANTS.TOGGLE
           }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input_default, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             checked: true,
             label: "read-only",
             name: "readonly",
             readOnly: true,
             type: "checkbox",
-            variant: Input_default.VARIANTS.TOGGLE
+            variant: Input.VARIANTS.TOGGLE
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileInput, {
             icon: "\u{1F4C2}",
