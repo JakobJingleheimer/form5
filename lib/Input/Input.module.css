@@ -31,7 +31,7 @@
 }
 
 .Input {
-	background-color: unset;
+	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
