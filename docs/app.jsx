@@ -129,8 +129,9 @@ function TestForm() {
 				/>
 
 				<Button.Group>
-					<Button appearance={Button.APPEARANCES.WARNING}>Button</Button>
-					<Button appearance={Button.APPEARANCES.AFFIRMING}>Group</Button>
+					<Button appearance={Button.APPEARANCES.WARNING}>Group</Button>
+					<Button appearance={Button.APPEARANCES.BASIC}>of</Button>
+					<Button appearance={Button.APPEARANCES.AFFIRMING}>of</Button>
 				</Button.Group>
 			</Form>
 		</>
