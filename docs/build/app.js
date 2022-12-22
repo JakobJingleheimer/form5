@@ -956,13 +956,13 @@ var require_react_development = __commonJS({
               }
             }
           }
-          var elementType = {
+          var elementType2 = {
             $$typeof: REACT_FORWARD_REF_TYPE,
             render
           };
           {
             var ownName;
-            Object.defineProperty(elementType, "displayName", {
+            Object.defineProperty(elementType2, "displayName", {
               enumerable: false,
               configurable: true,
               get: function() {
@@ -976,7 +976,7 @@ var require_react_development = __commonJS({
               }
             });
           }
-          return elementType;
+          return elementType2;
         }
         var REACT_MODULE_REFERENCE;
         {
@@ -1002,14 +1002,14 @@ var require_react_development = __commonJS({
               error("memo: The first argument must be a component. Instead received: %s", type === null ? "null" : typeof type);
             }
           }
-          var elementType = {
+          var elementType2 = {
             $$typeof: REACT_MEMO_TYPE,
             type,
             compare: compare === void 0 ? null : compare
           };
           {
             var ownName;
-            Object.defineProperty(elementType, "displayName", {
+            Object.defineProperty(elementType2, "displayName", {
               enumerable: false,
               configurable: true,
               get: function() {
@@ -1023,7 +1023,7 @@ var require_react_development = __commonJS({
               }
             });
           }
-          return elementType;
+          return elementType2;
         }
         function resolveDispatcher() {
           var dispatcher = ReactCurrentDispatcher.current;
@@ -10069,9 +10069,9 @@ var require_react_dom_development = __commonJS({
         }
         function getSuspenseInstanceFallbackErrorDetails(instance) {
           var dataset = instance.nextSibling && instance.nextSibling.dataset;
-          var digest6, message, stack;
+          var digest7, message, stack;
           if (dataset) {
-            digest6 = dataset.dgst;
+            digest7 = dataset.dgst;
             {
               message = dataset.msg;
               stack = dataset.stck;
@@ -10080,7 +10080,7 @@ var require_react_dom_development = __commonJS({
           {
             return {
               message,
-              digest: digest6,
+              digest: digest7,
               stack
             };
           }
@@ -12804,12 +12804,12 @@ var require_react_dom_development = __commonJS({
             }
           }
           function updateElement(returnFiber, current2, element, lanes) {
-            var elementType = element.type;
-            if (elementType === REACT_FRAGMENT_TYPE) {
+            var elementType2 = element.type;
+            if (elementType2 === REACT_FRAGMENT_TYPE) {
               return updateFragment2(returnFiber, current2, element.props.children, lanes, element.key);
             }
             if (current2 !== null) {
-              if (current2.elementType === elementType || isCompatibleFamilyForHotReloading(current2, element) || typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === current2.type) {
+              if (current2.elementType === elementType2 || isCompatibleFamilyForHotReloading(current2, element) || typeof elementType2 === "object" && elementType2 !== null && elementType2.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType2) === current2.type) {
                 var existing = useFiber(current2, element.props);
                 existing.ref = coerceRef(returnFiber, current2, element);
                 existing.return = returnFiber;
@@ -13237,8 +13237,8 @@ var require_react_dom_development = __commonJS({
             var child = currentFirstChild;
             while (child !== null) {
               if (child.key === key) {
-                var elementType = element.type;
-                if (elementType === REACT_FRAGMENT_TYPE) {
+                var elementType2 = element.type;
+                if (elementType2 === REACT_FRAGMENT_TYPE) {
                   if (child.tag === Fragment3) {
                     deleteRemainingChildren(returnFiber, child.sibling);
                     var existing = useFiber(child, element.props.children);
@@ -13250,7 +13250,7 @@ var require_react_dom_development = __commonJS({
                     return existing;
                   }
                 } else {
-                  if (child.elementType === elementType || isCompatibleFamilyForHotReloading(child, element) || typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === child.type) {
+                  if (child.elementType === elementType2 || isCompatibleFamilyForHotReloading(child, element) || typeof elementType2 === "object" && elementType2 !== null && elementType2.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType2) === child.type) {
                     deleteRemainingChildren(returnFiber, child.sibling);
                     var _existing = useFiber(child, element.props);
                     _existing.ref = coerceRef(returnFiber, child, element);
@@ -15443,12 +15443,12 @@ var require_react_dom_development = __commonJS({
             digest: null
           };
         }
-        function createCapturedValue(value, digest6, stack) {
+        function createCapturedValue(value, digest7, stack) {
           return {
             value,
             source: null,
             stack: stack != null ? stack : null,
-            digest: digest6 != null ? digest6 : null
+            digest: digest7 != null ? digest7 : null
           };
         }
         function showErrorDialog(boundary, errorInfo) {
@@ -16248,10 +16248,10 @@ var require_react_dom_development = __commonJS({
           }
           return null;
         }
-        function mountLazyComponent(_current, workInProgress2, elementType, renderLanes2) {
+        function mountLazyComponent(_current, workInProgress2, elementType2, renderLanes2) {
           resetSuspendedCurrentOnMountInLegacyMode(_current, workInProgress2);
           var props = workInProgress2.pendingProps;
-          var lazyComponent = elementType;
+          var lazyComponent = elementType2;
           var payload = lazyComponent._payload;
           var init = lazyComponent._init;
           var Component = init(payload);
@@ -16722,10 +16722,10 @@ var require_react_dom_development = __commonJS({
               );
             }
             if (isSuspenseInstanceFallback(suspenseInstance)) {
-              var digest6, message, stack;
+              var digest7, message, stack;
               {
                 var _getSuspenseInstanceF = getSuspenseInstanceFallbackErrorDetails(suspenseInstance);
-                digest6 = _getSuspenseInstanceF.digest;
+                digest7 = _getSuspenseInstanceF.digest;
                 message = _getSuspenseInstanceF.message;
                 stack = _getSuspenseInstanceF.stack;
               }
@@ -16735,7 +16735,7 @@ var require_react_dom_development = __commonJS({
               } else {
                 error2 = new Error("The server could not finish this Suspense boundary, likely due to an error during server rendering. Switched to client rendering.");
               }
-              var capturedValue = createCapturedValue(error2, digest6, stack);
+              var capturedValue = createCapturedValue(error2, digest7, stack);
               return retrySuspenseComponentWithoutHydrating(current2, workInProgress2, renderLanes2, capturedValue);
             }
             var hasContextChanged2 = includesSomeLane(renderLanes2, current2.childLanes);
@@ -17314,8 +17314,8 @@ var require_react_dom_development = __commonJS({
               return mountIndeterminateComponent(current2, workInProgress2, workInProgress2.type, renderLanes2);
             }
             case LazyComponent: {
-              var elementType = workInProgress2.elementType;
-              return mountLazyComponent(current2, workInProgress2, elementType, renderLanes2);
+              var elementType2 = workInProgress2.elementType;
+              return mountLazyComponent(current2, workInProgress2, elementType2, renderLanes2);
             }
             case FunctionComponent: {
               var Component = workInProgress2.type;
@@ -20761,10 +20761,10 @@ var require_react_dom_development = __commonJS({
             for (var i = 0; i < recoverableErrors.length; i++) {
               var recoverableError = recoverableErrors[i];
               var componentStack = recoverableError.stack;
-              var digest6 = recoverableError.digest;
+              var digest7 = recoverableError.digest;
               onRecoverableError(recoverableError.value, {
                 componentStack,
-                digest: digest6
+                digest: digest7
               });
             }
           }
@@ -24552,10 +24552,10 @@ var require_react_jsx_runtime_development = __commonJS({
             return jsxWithValidation(type, props, key, false);
           }
         }
-        var jsx6 = jsxWithValidationDynamic;
+        var jsx7 = jsxWithValidationDynamic;
         var jsxs4 = jsxWithValidationStatic;
         exports2.Fragment = REACT_FRAGMENT_TYPE;
-        exports2.jsx = jsx6;
+        exports2.jsx = jsx7;
         exports2.jsxs = jsxs4;
       })();
     }
@@ -24575,23 +24575,62 @@ var require_jsx_runtime = __commonJS({
 });
 
 // docs/app.jsx
-var import_classnames5 = __toESM(require_classnames(), 1);
+var import_classnames6 = __toESM(require_classnames(), 1);
 var import_react4 = __toESM(require_react(), 1);
 var import_client = __toESM(require_client(), 1);
 
 // lib/Button/index.jsx
+var import_classnames2 = __toESM(require_classnames(), 1);
+var import_prop_types2 = __toESM(require_prop_types(), 1);
+
+// lib/Group/index.jsx
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-40439-032HTMqHzn0d/react-form5/lib/Button/Button.module.css.js
-var digest = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
-var css = `._Button_13og3_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12723-vaUZuOwFMXJh/react-form5/lib/Group/Group.module.css.js
+var digest = "94708d75a39f8eed80100483f45f221041cc48f70dd006da553489992390aa49";
+var css = `._Group_4f7x4_1 {
+    display: flex;
+    gap: 0.1em;
+}
+`;
+(function() {
+  if (!document.getElementById(digest)) {
+    var el = document.createElement("style");
+    el.id = digest;
+    el.textContent = css;
+    document.head.appendChild(el);
+  }
+})();
+var Group_module_css_default = { "Group": "_Group_4f7x4_1" };
+
+// lib/Group/index.jsx
+var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
+var Group = ({
+  as: Tag,
+  className,
+  ...others
+}) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
+  className: (0, import_classnames.default)(Group_module_css_default.Group, className),
+  ...others
+});
+Group.defaultProps = {
+  as: "div"
+};
+Group.propTypes = {
+  as: import_prop_types.elementType
+};
+var Group_default = Group;
+
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12723-vaUZuOwFMXJh/react-form5/lib/Button/Button.module.css.js
+var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
+var css2 = `._Button_1aggl_1 {
 	border: none;
 	cursor: pointer;
 	padding: var(--default-padding);
 }
 
-._fluid_13og3_7 { width: 100% }
+._fluid_1aggl_7 { width: 100% }
 
 button[variant="cta"] {
 	color: var(--colour-background);
@@ -24637,16 +24676,28 @@ button[variant="glyph"][appearance="affirming"] {
 button[variant="glyph"][appearance="warning"] {
 	fill: var(--colour-warning);
 }
+
+._ButtonGroup_1aggl_54 > ._Button_1aggl_1 {
+	flex: 1;
+}
+._ButtonGroup_1aggl_54 > ._Button_1aggl_1:first-child {
+	border-top-right-radius: unset;
+	border-bottom-right-radius: unset;
+}
+._ButtonGroup_1aggl_54 > ._Button_1aggl_1:last-child {
+	border-top-left-radius: unset;
+	border-bottom-left-radius: unset;
+}
 `;
 (function() {
-  if (!document.getElementById(digest)) {
+  if (!document.getElementById(digest2)) {
     var el = document.createElement("style");
-    el.id = digest;
-    el.textContent = css;
+    el.id = digest2;
+    el.textContent = css2;
     document.head.appendChild(el);
   }
 })();
-var Button_module_css_default = { "Button": "_Button_13og3_1", "fluid": "_fluid_13og3_7" };
+var Button_module_css_default = { "Button": "_Button_1aggl_1", "fluid": "_fluid_1aggl_7", "ButtonGroup": "_ButtonGroup_1aggl_54" };
 
 // lib/Button/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -24658,7 +24709,7 @@ var Button = ({
   ...others
 }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
   ...others,
-  className: (0, import_classnames.default)(
+  className: (0, import_classnames2.default)(
     Button_module_css_default.Button,
     className,
     {
@@ -24690,19 +24741,19 @@ Button.defaultProps = {
   variant: Button.VARIANTS.CTA
 };
 Button.propTypes = {
-  appearance: import_prop_types.default.oneOf(Object.values(Button.APPEARANCES)),
-  fluid: import_prop_types.default.bool,
-  type: import_prop_types.default.oneOf(Object.values(Button.TYPES)),
-  variant: import_prop_types.default.oneOf(Object.values(Button.VARIANTS))
+  appearance: import_prop_types2.default.oneOf(Object.values(Button.APPEARANCES)),
+  fluid: import_prop_types2.default.bool,
+  type: import_prop_types2.default.oneOf(Object.values(Button.TYPES)),
+  variant: import_prop_types2.default.oneOf(Object.values(Button.VARIANTS))
 };
-Button.Group = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Group, {
-  className: (0, import_classnames.default)(className, Button_module_css_default.ButtonGroup),
+Button.Group = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Group_default, {
+  className: (0, import_classnames2.default)(className, Button_module_css_default.ButtonGroup),
   ...props
 });
 var Button_default = Button;
 
 // lib/FileInput/index.jsx
-var import_classnames2 = __toESM(require_classnames(), 1);
+var import_classnames3 = __toESM(require_classnames(), 1);
 
 // node_modules/lodash-es/_arrayMap.js
 function arrayMap(array, iteratee) {
@@ -26094,9 +26145,9 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-40439-032HTMqHzn0d/react-form5/lib/FileInput/FileInput.module.css.js
-var digest2 = "d9a30ff6c2cb62459d25707631d70c8a6ce929865e7347eccda9958f239114ba";
-var css2 = `._FileInput_rg1n0_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12723-vaUZuOwFMXJh/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "d9a30ff6c2cb62459d25707631d70c8a6ce929865e7347eccda9958f239114ba";
+var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
 
@@ -26111,10 +26162,10 @@ var css2 = `._FileInput_rg1n0_1 {
 }
 `;
 (function() {
-  if (!document.getElementById(digest2)) {
+  if (!document.getElementById(digest3)) {
     var el = document.createElement("style");
-    el.id = digest2;
-    el.textContent = css2;
+    el.id = digest3;
+    el.textContent = css3;
     document.head.appendChild(el);
   }
 })();
@@ -26183,7 +26234,7 @@ var FileInput = class extends import_react.PureComponent {
           })
         }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-          className: (0, import_classnames2.default)(FileInput_module_css_default.FileInput, className),
+          className: (0, import_classnames3.default)(FileInput_module_css_default.FileInput, className),
           htmlFor: name,
           children: [
             /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
@@ -26219,7 +26270,7 @@ __publicField(FileInput, "defaultProps", {
 FileInput.displayName = "Form5FileInput";
 
 // lib/Input/index.jsx
-var import_classnames3 = __toESM(require_classnames(), 1);
+var import_classnames4 = __toESM(require_classnames(), 1);
 
 // node_modules/lodash-es/isEmpty.js
 var mapTag4 = "[object Map]";
@@ -26250,12 +26301,12 @@ function isEmpty(value) {
 var isEmpty_default = isEmpty;
 
 // lib/Input/index.jsx
-var import_prop_types2 = __toESM(require_prop_types(), 1);
+var import_prop_types3 = __toESM(require_prop_types(), 1);
 var import_react2 = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-40439-032HTMqHzn0d/react-form5/lib/Input/Input.module.css.js
-var digest3 = "24c2b9d83cdc0c02b638e8229cb313d7dc788101634c2e3ac25bd778da67bd77";
-var css3 = `._InputField_uatjn_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12723-vaUZuOwFMXJh/react-form5/lib/Input/Input.module.css.js
+var digest4 = "24c2b9d83cdc0c02b638e8229cb313d7dc788101634c2e3ac25bd778da67bd77";
+var css4 = `._InputField_uatjn_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
 ._InputField_uatjn_1[arrangement="inline"] {
@@ -26450,10 +26501,10 @@ input[variant="toggle"][appearane="success"]:checked::after {
 }
 `;
 (function() {
-  if (!document.getElementById(digest3)) {
+  if (!document.getElementById(digest4)) {
     var el = document.createElement("style");
-    el.id = digest3;
-    el.textContent = css3;
+    el.id = digest4;
+    el.textContent = css4;
     document.head.appendChild(el);
   }
 })();
@@ -26524,7 +26575,7 @@ function Input({
   };
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
     arrangement,
-    className: (0, import_classnames3.default)(
+    className: (0, import_classnames4.default)(
       Input_module_css_default.InputField,
       {
         [Input_module_css_default.FluidInputField]: fluid
@@ -26597,16 +26648,16 @@ Input.defaultProps = {
   type: "text"
 };
 Input.propTypes = {
-  arrangement: import_prop_types2.default.oneOf(Object.values(Input.ARRANGEMENTS)),
-  as: import_prop_types2.default.elementType,
-  fluid: import_prop_types2.default.bool,
-  label: import_prop_types2.default.string,
-  name: import_prop_types2.default.string.isRequired,
-  onBlur: import_prop_types2.default.func,
-  onChange: import_prop_types2.default.func,
-  onFocus: import_prop_types2.default.func,
-  options: import_prop_types2.default.object,
-  variant: import_prop_types2.default.oneOf(Object.values(Input.VARIANTS))
+  arrangement: import_prop_types3.default.oneOf(Object.values(Input.ARRANGEMENTS)),
+  as: import_prop_types3.default.elementType,
+  fluid: import_prop_types3.default.bool,
+  label: import_prop_types3.default.string,
+  name: import_prop_types3.default.string.isRequired,
+  onBlur: import_prop_types3.default.func,
+  onChange: import_prop_types3.default.func,
+  onFocus: import_prop_types3.default.func,
+  options: import_prop_types3.default.object,
+  variant: import_prop_types3.default.oneOf(Object.values(Input.VARIANTS))
 };
 var dtTypes = /* @__PURE__ */ new Set([
   "date",
@@ -26645,9 +26696,9 @@ function reduce(collection, iteratee, accumulator) {
 var reduce_default = reduce;
 
 // lib/Form/index.jsx
-var import_classnames4 = __toESM(require_classnames(), 1);
+var import_classnames5 = __toESM(require_classnames(), 1);
 var import_react3 = __toESM(require_react(), 1);
-var import_prop_types3 = __toESM(require_prop_types(), 1);
+var import_prop_types4 = __toESM(require_prop_types(), 1);
 
 // lib/composeData.js
 var FIELD_TAGS = {
@@ -26772,19 +26823,19 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-40439-032HTMqHzn0d/react-form5/lib/Form/Form.module.css.js
-var digest4 = "1699639d46dd636210fe51f734c18aeb50620d810a094f3eb271ad30906bbe61";
-var css4 = `._Form_13cn9_1,
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12723-vaUZuOwFMXJh/react-form5/lib/Form/Form.module.css.js
+var digest5 = "1699639d46dd636210fe51f734c18aeb50620d810a094f3eb271ad30906bbe61";
+var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
 	gap: var(--grid-gutter);
 }
 `;
 (function() {
-  if (!document.getElementById(digest4)) {
+  if (!document.getElementById(digest5)) {
     var el = document.createElement("style");
-    el.id = digest4;
-    el.textContent = css4;
+    el.id = digest5;
+    el.textContent = css5;
     document.head.appendChild(el);
   }
 })();
@@ -26831,7 +26882,7 @@ var Form = class extends import_react3.PureComponent {
     } = this;
     return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("form", {
       ...props,
-      className: (0, import_classnames4.default)(Form_module_css_default.Form, className),
+      className: (0, import_classnames5.default)(Form_module_css_default.Form, className),
       noValidate: true,
       onSubmit: (e) => onSubmit(e, initValues, pOnSubmit),
       ref: setRef,
@@ -26842,12 +26893,12 @@ var Form = class extends import_react3.PureComponent {
 __publicField(Form, "FIELD_TAGS", FIELD_TAGS);
 Form.displayName = "Form5Form";
 Form.propTypes = {
-  onSubmit: import_prop_types3.default.func.isRequired
+  onSubmit: import_prop_types4.default.func.isRequired
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-40439-032HTMqHzn0d/react-form5/docs/Demo.module.css.js
-var digest5 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
-var css5 = `._Column_xjact_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12723-vaUZuOwFMXJh/react-form5/docs/Demo.module.css.js
+var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
+var css6 = `._Column_xjact_1 {
 	flex: 1;
 }
 
@@ -26881,10 +26932,10 @@ var css5 = `._Column_xjact_1 {
 }
 `;
 (function() {
-  if (!document.getElementById(digest5)) {
+  if (!document.getElementById(digest6)) {
     var el = document.createElement("style");
-    el.id = digest5;
-    el.textContent = css5;
+    el.id = digest6;
+    el.textContent = css6;
     document.head.appendChild(el);
   }
 })();
@@ -26902,7 +26953,7 @@ function TestForm() {
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-        className: (0, import_classnames5.default)(Demo_module_css_default.Column, Demo_module_css_default.Output),
+        className: (0, import_classnames6.default)(Demo_module_css_default.Column, Demo_module_css_default.Output),
         children: [
           delta && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
             children: [
@@ -27020,6 +27071,18 @@ function TestForm() {
             icon: "\u{1F4C2}",
             label: "profile photo",
             name: "profilePhoto"
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button_default.Group, {
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
+                appearance: Button_default.APPEARANCES.WARNING,
+                children: "Button"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
+                appearance: Button_default.APPEARANCES.AFFIRMING,
+                children: "Group"
+              })
+            ]
           })
         ]
       })

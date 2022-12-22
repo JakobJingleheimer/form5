@@ -127,6 +127,11 @@ function TestForm() {
 					label="profile photo"
 					name="profilePhoto"
 				/>
+
+				<Button.Group>
+					<Button appearance={Button.APPEARANCES.WARNING}>Button</Button>
+					<Button appearance={Button.APPEARANCES.AFFIRMING}>Group</Button>
+				</Button.Group>
 			</Form>
 		</>
 	);
