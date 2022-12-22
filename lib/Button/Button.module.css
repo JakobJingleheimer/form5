@@ -50,3 +50,15 @@ button[variant="glyph"][appearance="affirming"] {
 button[variant="glyph"][appearance="warning"] {
 	fill: var(--colour-warning);
 }
+
+.ButtonGroup > .Button {
+	flex: 1;
+}
+.ButtonGroup > .Button:first-child {
+	border-top-right-radius: unset;
+	border-bottom-right-radius: unset;
+}
+.ButtonGroup > .Button:last-child {
+	border-top-left-radius: unset;
+	border-bottom-left-radius: unset;
+}
