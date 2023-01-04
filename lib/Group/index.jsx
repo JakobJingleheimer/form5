@@ -1,7 +1,5 @@
 import classnames from 'classnames';
-import {
-	elementType,
-} from 'prop-types';
+import PropTypes from 'prop-types';
 
 import styles from './Group.module.css';
 
@@ -20,7 +18,7 @@ Group.defaultProps = {
 	as: 'div',
 };
 Group.propTypes = {
-	as: elementType,
+	as: PropTypes.elementType,
 };
 
 export default Group;
