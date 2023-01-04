@@ -37,29 +37,58 @@ describe('<Input>', () => {
 		expect(input.value).to.equal(value);
 	});
 
-	it('should display errors', async () => {
-		const { getByLabelText, queryByTestId } = render(
-			<Input
-				id="bar"
-				label={labelText}
-				name="foo"
-				required
-				type="text"
-				value="abc"
-			/>
-		);
+	describe('displaying errors', () => {
+		let getByLabelText;
+		let queryByTestId;
+		let input;
 
-		const input = getByLabelText(labelText);
+		beforeEach(() => {
+			({ getByLabelText, queryByTestId } = render(
+				<Input
+					id="bar"
+					label={labelText}
+					name="foo"
+					required
+					type="email"
+					value="abc"
+				/>
+			));
+			input = getByLabelText(labelText);
+		});
 
-		input.focus();
-		expect(queryByTestId('input-error')).to.be.null;
+		it('should NOT display an error initially', () => {
+			expect(queryByTestId('input-error')).to.be.null;
+		});
 
-		fireEvent.change(input, { target: { value: '' } });
-		input.blur();
+		it('should NOT display an error on focus', () => {
+			fireEvent.focus(input);
+			expect(queryByTestId('input-error')).to.be.null;
+		});
 
-		const error = queryByTestId('input-error');
-		expect(error).to.not.be.null;
-		expect(error.textContent).to.be.not.empty;
+		it('should NOT display an error on change', () => {
+			fireEvent.change(input, { target: { value: '' } });
+			expect(queryByTestId('input-error')).to.be.null;
+		});
+
+		function triggerErrorDisplay() {
+			fireEvent.change(input, { target: { value: '' } });
+			fireEvent.blur(input);
+
+			return queryByTestId('input-error');
+		}
+
+		it('should display an error on blur', () => {
+			const error = triggerErrorDisplay();
+			expect(error.textContent).to.be.not.empty;
+		});
+
+		it('should clear the error on subsequent change', () => {
+			triggerErrorDisplay();
+
+			fireEvent.change(input, { target: { value: 'jakob@example.com' } });
+
+			expect(queryByTestId('input-error')).to.be.null;
+		});
 	});
 
 	it('should make a list when options are provided', () => {

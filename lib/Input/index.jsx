@@ -62,8 +62,9 @@ export default function Input({
 			value: options?.[value] || value,
 		}, e);
 
-		if (e.target.checkValidity()) setError('');
+		if (isInvalid && e.target.checkValidity()) setError('');
 	}
+
 	others.onFocus = (e) => {
 		if (dtTypes.has(type)) e.target.showPicker();
 
