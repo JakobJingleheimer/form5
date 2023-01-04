@@ -956,13 +956,13 @@ var require_react_development = __commonJS({
               }
             }
           }
-          var elementType2 = {
+          var elementType = {
             $$typeof: REACT_FORWARD_REF_TYPE,
             render
           };
           {
             var ownName;
-            Object.defineProperty(elementType2, "displayName", {
+            Object.defineProperty(elementType, "displayName", {
               enumerable: false,
               configurable: true,
               get: function() {
@@ -976,7 +976,7 @@ var require_react_development = __commonJS({
               }
             });
           }
-          return elementType2;
+          return elementType;
         }
         var REACT_MODULE_REFERENCE;
         {
@@ -1002,14 +1002,14 @@ var require_react_development = __commonJS({
               error("memo: The first argument must be a component. Instead received: %s", type === null ? "null" : typeof type);
             }
           }
-          var elementType2 = {
+          var elementType = {
             $$typeof: REACT_MEMO_TYPE,
             type,
             compare: compare === void 0 ? null : compare
           };
           {
             var ownName;
-            Object.defineProperty(elementType2, "displayName", {
+            Object.defineProperty(elementType, "displayName", {
               enumerable: false,
               configurable: true,
               get: function() {
@@ -1023,7 +1023,7 @@ var require_react_development = __commonJS({
               }
             });
           }
-          return elementType2;
+          return elementType;
         }
         function resolveDispatcher() {
           var dispatcher = ReactCurrentDispatcher.current;
@@ -12804,12 +12804,12 @@ var require_react_dom_development = __commonJS({
             }
           }
           function updateElement(returnFiber, current2, element, lanes) {
-            var elementType2 = element.type;
-            if (elementType2 === REACT_FRAGMENT_TYPE) {
+            var elementType = element.type;
+            if (elementType === REACT_FRAGMENT_TYPE) {
               return updateFragment2(returnFiber, current2, element.props.children, lanes, element.key);
             }
             if (current2 !== null) {
-              if (current2.elementType === elementType2 || isCompatibleFamilyForHotReloading(current2, element) || typeof elementType2 === "object" && elementType2 !== null && elementType2.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType2) === current2.type) {
+              if (current2.elementType === elementType || isCompatibleFamilyForHotReloading(current2, element) || typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === current2.type) {
                 var existing = useFiber(current2, element.props);
                 existing.ref = coerceRef(returnFiber, current2, element);
                 existing.return = returnFiber;
@@ -13237,8 +13237,8 @@ var require_react_dom_development = __commonJS({
             var child = currentFirstChild;
             while (child !== null) {
               if (child.key === key) {
-                var elementType2 = element.type;
-                if (elementType2 === REACT_FRAGMENT_TYPE) {
+                var elementType = element.type;
+                if (elementType === REACT_FRAGMENT_TYPE) {
                   if (child.tag === Fragment3) {
                     deleteRemainingChildren(returnFiber, child.sibling);
                     var existing = useFiber(child, element.props.children);
@@ -13250,7 +13250,7 @@ var require_react_dom_development = __commonJS({
                     return existing;
                   }
                 } else {
-                  if (child.elementType === elementType2 || isCompatibleFamilyForHotReloading(child, element) || typeof elementType2 === "object" && elementType2 !== null && elementType2.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType2) === child.type) {
+                  if (child.elementType === elementType || isCompatibleFamilyForHotReloading(child, element) || typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === child.type) {
                     deleteRemainingChildren(returnFiber, child.sibling);
                     var _existing = useFiber(child, element.props);
                     _existing.ref = coerceRef(returnFiber, child, element);
@@ -16248,10 +16248,10 @@ var require_react_dom_development = __commonJS({
           }
           return null;
         }
-        function mountLazyComponent(_current, workInProgress2, elementType2, renderLanes2) {
+        function mountLazyComponent(_current, workInProgress2, elementType, renderLanes2) {
           resetSuspendedCurrentOnMountInLegacyMode(_current, workInProgress2);
           var props = workInProgress2.pendingProps;
-          var lazyComponent = elementType2;
+          var lazyComponent = elementType;
           var payload = lazyComponent._payload;
           var init = lazyComponent._init;
           var Component = init(payload);
@@ -17314,8 +17314,8 @@ var require_react_dom_development = __commonJS({
               return mountIndeterminateComponent(current2, workInProgress2, workInProgress2.type, renderLanes2);
             }
             case LazyComponent: {
-              var elementType2 = workInProgress2.elementType;
-              return mountLazyComponent(current2, workInProgress2, elementType2, renderLanes2);
+              var elementType = workInProgress2.elementType;
+              return mountLazyComponent(current2, workInProgress2, elementType, renderLanes2);
             }
             case FunctionComponent: {
               var Component = workInProgress2.type;
@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23712-el7hoxYG7e4b/react-form5/lib/Group/Group.module.css.js
-var digest = "8836e5b056112d314746a6192a9d6fe9b8baffd97aa30d8dd286ae93c19f2ff3";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/Group/Group.module.css.js
+var digest = "fa3ec91bd70cf06ecce0255d29db8c44e1838ab9381caaba53e541b4f6d5e03c";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24618,12 +24618,12 @@ Group.defaultProps = {
   as: "div"
 };
 Group.propTypes = {
-  as: import_prop_types.elementType
+  as: import_prop_types.default.elementType
 };
 var Group_default = Group;
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23712-el7hoxYG7e4b/react-form5/lib/Button/Button.module.css.js
-var digest2 = "1954d9c69cf0d2cf057147a563326519bb360557c24e39a687e319b8c5e6a7bb";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/Button/Button.module.css.js
+var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
 var css2 = `._Button_qagzi_1 {
 	border: none;
 	cursor: pointer;
@@ -26145,8 +26145,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23712-el7hoxYG7e4b/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "d6de89bec6d003ab54fe6bb0a94106984d8a9f7c44dad558ebf1eee5a6fe1dd2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "3e10fd1138380deee34d857465519a01420123c81296f0a36507bb69f28c157b";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26304,8 +26304,8 @@ var isEmpty_default = isEmpty;
 var import_prop_types3 = __toESM(require_prop_types(), 1);
 var import_react2 = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23712-el7hoxYG7e4b/react-form5/lib/Input/Input.module.css.js
-var digest4 = "c9bb48ae54a1ac06ff7e0b5fd4d0c86c73f73ba7867356ab3d44b7fc6841a8da";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/Input/Input.module.css.js
+var digest4 = "bd55bdf4887b2bfe1f014ed112a0a4949de514cbe080c0a550b9c0dc6adead7a";
 var css4 = `._InputField_uatjn_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26561,7 +26561,7 @@ function Input({
       name: name2,
       value: options?.[value2] || value2
     }, e);
-    if (e.target.checkValidity())
+    if (isInvalid && e.target.checkValidity())
       setError("");
   };
   others.onFocus = (e) => {
@@ -26823,8 +26823,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23712-el7hoxYG7e4b/react-form5/lib/Form/Form.module.css.js
-var digest5 = "23dc4f1f2793ea020cde3d18352e6a688a116ff613f55939bf72c1fbbd104e5e";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/Form/Form.module.css.js
+var digest5 = "62d4a4647c123ec56e3a9b4f797ca8d3816d624734f8276c238cb7ff63ff16bc";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26896,7 +26896,7 @@ Form.propTypes = {
   onSubmit: import_prop_types4.default.func.isRequired
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23712-el7hoxYG7e4b/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
