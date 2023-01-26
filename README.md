@@ -183,7 +183,9 @@ const SFC = (props) => (
 
 This component facilitates validation and provides a data model object for uncontrolled fields. Fields wrapped in a name `fieldset` result in a nested object.
 
-It also provides a `delta` of data changes, useful for `PATCH`ing existing field(s) changed by the user: the delta object contains only properties differing from their initial value. Ex an existing user changes their forename: `delta = { forename: 'Jakob' }`
+It also provides a `delta` of data changes, useful for `PATCH`ing existing field(s) changed by the user: the delta object contains only properties differing from their initial value. Ex an existing user changes their forename: `delta = { forename: 'Jakob' }`.
+
+`<Form>` accepts a number of event handlers (the usual `onChange`, `onSubmit`, etc), as well as `onDirty` and `onPristine`, which are called when the form's `pristine` state changes; each is called only once per change (eg when the form becomes dirty and when it becomes `pristine` again after submit). These can be leveraged to, for instance, prevent submitting a pristine form (as you can partially see in the demo: the submit button is disabled, but the form itself doesn't consume `isDirty` so data objects can still be observed).
 
 #### `<Button>`
 
