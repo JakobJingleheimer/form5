@@ -16,6 +16,8 @@ import styles from './Form.module.css';
 export function Form({
 	children,
 	className,
+	onDirty,
+	onPristine,
 	onSubmit: pOnSubmit,
 	...props
 }) {
@@ -25,7 +27,7 @@ export function Form({
 		pristine,
 		touched,
 		...is
-	} = useInteractiveStates();
+	} = useInteractiveStates({ onDirty, onPristine });
 
 	return (
 		<form
