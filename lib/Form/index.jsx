@@ -22,7 +22,7 @@ export function Form({
 	...props
 }) {
 	const formElm = useRef();
-	const initValues = useRef({ __proto__: null }); // `useRef` to avoid needless re-renders
+	const initValues = useRef(); // `useRef` to avoid needless re-renders
 	const {
 		pristine,
 		touched,
@@ -46,7 +46,7 @@ export function Form({
 				is.onSubmit(e);
 			}}
 			ref={(el) => {
-				setup(el, initValues)
+				setup(el, initValues);
 				formElm.current = el;
 			}}
 			pristine={pristine}
@@ -89,11 +89,11 @@ export function onSubmit(event, initValues, cb) {
 
 // Exported for testing
 export function setup(formElement, initValues) {
-	if (!formElement) return;
+	if (!formElement || initValues.current) return;
 
 	initValues.current = _reduce(
 		Array.from(formElement.elements),
 		composeData,
-		initValues.current,
+		{ __proto__: null },
 	);
 };
