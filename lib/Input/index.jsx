@@ -4,6 +4,8 @@ import _map from 'lodash-es/map.js';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
+import { useInteractiveStates } from '../useInteractiveStates.js';
+
 import styles from './Input.module.css';
 
 
@@ -26,8 +28,11 @@ export default function Input({
 	...others
 }) {
 	const [error, setError] = useState('');
-	const [pristine, setPristine] = useState(true);
-	const [touched, setTouched] = useState(false);
+	const {
+		pristine,
+		touched,
+		...is
+	} = useInteractiveStates();
 	const isInvalid = !!error;
 
 	if (options) others.list = `${name}_options`;
@@ -35,7 +40,7 @@ export default function Input({
 	others.onBlur = (e) => {
 		if (readOnly) return;
 
-		setTouched(true);
+		is.onBlur(e);
 
 		onBlur(e);
 
@@ -45,8 +50,7 @@ export default function Input({
 	others.onChange = (e) => {
 		if (readOnly) return;
 
-		setPristine(false);
-		setTouched(true);
+		is.onChange(e);
 
 		let {
 			checked,
@@ -87,8 +91,8 @@ export default function Input({
 			)}
 			invalid={isInvalid ? '' : null}
 			{...sharedConstraints}
-			pristine={pristine ? '' : null}
-			touched={touched ? '' : null}
+			pristine={pristine}
+			touched={touched}
 		>
 			<div className={styles.InnerWrapper}>
 				<Field
@@ -98,7 +102,7 @@ export default function Input({
 					onInvalid={(e) => {
 						e.nativeEvent.stopImmediatePropagation();
 						setError(e.target.validationMessage);
-						setTouched(true);
+						is.onInvalid(e);
 					}}
 					{...sharedConstraints}
 					type={type}
