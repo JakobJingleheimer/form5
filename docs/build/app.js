@@ -264,14 +264,14 @@ var require_react_development = __commonJS({
         function ComponentDummy() {
         }
         ComponentDummy.prototype = Component.prototype;
-        function PureComponent3(props, context, updater) {
+        function PureComponent2(props, context, updater) {
           this.props = props;
           this.context = context;
           this.refs = emptyObject;
           this.updater = updater || ReactNoopUpdateQueue;
         }
-        var pureComponentPrototype = PureComponent3.prototype = new ComponentDummy();
-        pureComponentPrototype.constructor = PureComponent3;
+        var pureComponentPrototype = PureComponent2.prototype = new ComponentDummy();
+        pureComponentPrototype.constructor = PureComponent2;
         assign(pureComponentPrototype, Component.prototype);
         pureComponentPrototype.isPureReactComponent = true;
         function createRef() {
@@ -996,7 +996,7 @@ var require_react_development = __commonJS({
           }
           return false;
         }
-        function memo(type, compare) {
+        function memo2(type, compare) {
           {
             if (!isValidElementType(type)) {
               error("memo: The first argument must be a component. Instead received: %s", type === null ? "null" : typeof type);
@@ -1048,7 +1048,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context);
         }
-        function useState3(initialState) {
+        function useState4(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
@@ -1056,7 +1056,7 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useReducer(reducer, initialArg, init);
         }
-        function useRef(initialValue) {
+        function useRef2(initialValue) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
@@ -1821,7 +1821,7 @@ var require_react_development = __commonJS({
         exports2.Component = Component;
         exports2.Fragment = REACT_FRAGMENT_TYPE;
         exports2.Profiler = REACT_PROFILER_TYPE;
-        exports2.PureComponent = PureComponent3;
+        exports2.PureComponent = PureComponent2;
         exports2.StrictMode = REACT_STRICT_MODE_TYPE;
         exports2.Suspense = REACT_SUSPENSE_TYPE;
         exports2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
@@ -1833,7 +1833,7 @@ var require_react_development = __commonJS({
         exports2.forwardRef = forwardRef;
         exports2.isValidElement = isValidElement;
         exports2.lazy = lazy;
-        exports2.memo = memo;
+        exports2.memo = memo2;
         exports2.startTransition = startTransition;
         exports2.unstable_act = act;
         exports2.useCallback = useCallback;
@@ -1847,8 +1847,8 @@ var require_react_development = __commonJS({
         exports2.useLayoutEffect = useLayoutEffect;
         exports2.useMemo = useMemo;
         exports2.useReducer = useReducer;
-        exports2.useRef = useRef;
-        exports2.useState = useState3;
+        exports2.useRef = useRef2;
+        exports2.useState = useState4;
         exports2.useSyncExternalStore = useSyncExternalStore;
         exports2.useTransition = useTransition;
         exports2.version = ReactVersion;
@@ -24576,7 +24576,7 @@ var require_jsx_runtime = __commonJS({
 
 // docs/app.jsx
 var import_classnames6 = __toESM(require_classnames(), 1);
-var import_react4 = __toESM(require_react(), 1);
+var import_react5 = __toESM(require_react(), 1);
 var import_client = __toESM(require_client(), 1);
 
 // lib/Button/index.jsx
@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/Group/Group.module.css.js
-var digest = "fa3ec91bd70cf06ecce0255d29db8c44e1838ab9381caaba53e541b4f6d5e03c";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-35117-Cm6d3ad8QzGW/react-form5/lib/Group/Group.module.css.js
+var digest = "94708d75a39f8eed80100483f45f221041cc48f70dd006da553489992390aa49";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,7 +24622,7 @@ Group.propTypes = {
 };
 var Group_default = Group;
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-35117-Cm6d3ad8QzGW/react-form5/lib/Button/Button.module.css.js
 var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
 var css2 = `._Button_qagzi_1 {
 	border: none;
@@ -26145,8 +26145,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "3e10fd1138380deee34d857465519a01420123c81296f0a36507bb69f28c157b";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-35117-Cm6d3ad8QzGW/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "d9a30ff6c2cb62459d25707631d70c8a6ce929865e7347eccda9958f239114ba";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26302,10 +26302,58 @@ var isEmpty_default = isEmpty;
 
 // lib/Input/index.jsx
 var import_prop_types3 = __toESM(require_prop_types(), 1);
-var import_react2 = __toESM(require_react(), 1);
+var import_react3 = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/Input/Input.module.css.js
-var digest4 = "bd55bdf4887b2bfe1f014ed112a0a4949de514cbe080c0a550b9c0dc6adead7a";
+// lib/useInteractiveStates.js
+var import_react2 = __toESM(require_react(), 1);
+function useInteractiveStates({
+  onDirty = () => {
+  },
+  onPristine = () => {
+  }
+} = {}) {
+  const [pristine, setPristine] = (0, import_react2.useState)("");
+  const [touched, setTouched] = (0, import_react2.useState)(null);
+  const onBlur = (e) => {
+    if (touched !== "") {
+      setTouched("");
+    }
+  };
+  const onChange = (e) => {
+    if (touched !== "") {
+      setTouched("");
+    }
+    if (pristine !== null) {
+      setPristine(null);
+      onDirty(e);
+    }
+  };
+  const onInvalid = (e) => {
+    if (touched !== "") {
+      setTouched("");
+    }
+  };
+  const onSubmit2 = (e) => {
+    if (touched !== null) {
+      setTouched(null);
+    }
+    if (pristine !== "") {
+      setPristine("");
+      onPristine(e);
+    }
+  };
+  return {
+    onBlur,
+    onChange,
+    onInvalid,
+    onSubmit: onSubmit2,
+    pristine,
+    touched
+  };
+}
+
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-35117-Cm6d3ad8QzGW/react-form5/lib/Input/Input.module.css.js
+var digest4 = "24c2b9d83cdc0c02b638e8229cb313d7dc788101634c2e3ac25bd778da67bd77";
 var css4 = `._InputField_uatjn_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26530,16 +26578,19 @@ function Input({
   value,
   ...others
 }) {
-  const [error, setError] = (0, import_react2.useState)("");
-  const [pristine, setPristine] = (0, import_react2.useState)(true);
-  const [touched, setTouched] = (0, import_react2.useState)(false);
+  const [error, setError] = (0, import_react3.useState)("");
+  const {
+    pristine,
+    touched,
+    ...is
+  } = useInteractiveStates();
   const isInvalid = !!error;
   if (options)
     others.list = `${name}_options`;
   others.onBlur = (e) => {
     if (readOnly)
       return;
-    setTouched(true);
+    is.onBlur(e);
     onBlur(e);
     if (e.target.checkValidity())
       setError("");
@@ -26547,8 +26598,7 @@ function Input({
   others.onChange = (e) => {
     if (readOnly)
       return;
-    setPristine(false);
-    setTouched(true);
+    is.onChange(e);
     let {
       checked,
       name: name2,
@@ -26583,8 +26633,8 @@ function Input({
     ),
     invalid: isInvalid ? "" : null,
     ...sharedConstraints,
-    pristine: pristine ? "" : null,
-    touched: touched ? "" : null,
+    pristine,
+    touched,
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
         className: Input_module_css_default.InnerWrapper,
@@ -26596,7 +26646,7 @@ function Input({
             onInvalid: (e) => {
               e.nativeEvent.stopImmediatePropagation();
               setError(e.target.validationMessage);
-              setTouched(true);
+              is.onInvalid(e);
             },
             ...sharedConstraints,
             type,
@@ -26697,7 +26747,7 @@ var reduce_default = reduce;
 
 // lib/Form/index.jsx
 var import_classnames5 = __toESM(require_classnames(), 1);
-var import_react3 = __toESM(require_react(), 1);
+var import_react4 = __toESM(require_react(), 1);
 var import_prop_types4 = __toESM(require_prop_types(), 1);
 
 // lib/composeData.js
@@ -26823,8 +26873,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/lib/Form/Form.module.css.js
-var digest5 = "62d4a4647c123ec56e3a9b4f797ca8d3816d624734f8276c238cb7ff63ff16bc";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-35117-Cm6d3ad8QzGW/react-form5/lib/Form/Form.module.css.js
+var digest5 = "1699639d46dd636210fe51f734c18aeb50620d810a094f3eb271ad30906bbe61";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26843,60 +26893,75 @@ var Form_module_css_default = { "Form": "_Form_13cn9_1" };
 
 // lib/Form/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
-var Form = class extends import_react3.PureComponent {
-  initValues = { __proto__: null };
-  setRef = (el) => {
-    if (!el)
-      return;
-    this.initValues = reduce_default(
-      Array.from(el.elements),
-      composeData,
-      this.initValues
-    );
-  };
-  onSubmit = (event, initValues, cb) => {
-    event.preventDefault();
-    if (!event.target.reportValidity())
-      return;
-    event.stopPropagation();
-    const values = reduce_default(
-      Array.from(event.target.elements),
-      composeData,
-      { __proto__: null }
-    );
-    const delta = deepDiff(initValues, values);
-    this.initValues = values;
-    return cb(delta, values, event);
-  };
-  render() {
-    const {
-      onSubmit,
-      initValues,
-      props: {
-        children,
-        className,
-        onSubmit: pOnSubmit,
-        ...props
-      },
-      setRef
-    } = this;
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("form", {
-      ...props,
-      className: (0, import_classnames5.default)(Form_module_css_default.Form, className),
-      noValidate: true,
-      onSubmit: (e) => onSubmit(e, initValues, pOnSubmit),
-      ref: setRef,
-      children
-    });
-  }
-};
-__publicField(Form, "FIELD_TAGS", FIELD_TAGS);
+function Form({
+  children,
+  className,
+  onDirty,
+  onPristine,
+  onSubmit: pOnSubmit,
+  ...props
+}) {
+  const formElm = (0, import_react4.useRef)();
+  const initValues = (0, import_react4.useRef)({ __proto__: null });
+  const {
+    pristine,
+    touched,
+    ...is
+  } = useInteractiveStates({ onDirty, onPristine });
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("form", {
+    ...props,
+    className: (0, import_classnames5.default)(Form_module_css_default.Form, className),
+    noValidate: true,
+    onBlur: (e) => {
+      if (e.target.form === formElm.current) {
+        is.onBlur(e);
+      }
+    },
+    onChange: is.onChange,
+    onSubmit: (e) => {
+      onSubmit(e, initValues, pOnSubmit);
+      is.onSubmit(e);
+    },
+    ref: (el) => {
+      setup(el, initValues);
+      formElm.current = el;
+    },
+    pristine,
+    touched,
+    children
+  });
+}
+Form.FIELD_TAGS = FIELD_TAGS;
 Form.displayName = "Form5Form";
 Form.propTypes = {
   onSubmit: import_prop_types4.default.func.isRequired
 };
+var Form_default = (0, import_react4.memo)(Form);
+function onSubmit(event, initValues, cb) {
+  event.preventDefault();
+  if (!event.target.reportValidity())
+    return;
+  event.stopPropagation();
+  const values = reduce_default(
+    Array.from(event.target.elements),
+    composeData,
+    { __proto__: null }
+  );
+  const delta = deepDiff(initValues.current, values);
+  initValues.current = values;
+  return cb(delta, values, event);
+}
+function setup(formElement, initValues) {
+  if (!formElement)
+    return;
+  initValues.current = reduce_default(
+    Array.from(formElement.elements),
+    composeData,
+    initValues.current
+  );
+}
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-77118-b44j56qSrTfc/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-35117-Cm6d3ad8QzGW/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
@@ -26949,7 +27014,8 @@ Object.defineProperty(File.prototype, "toJSON", {
   }
 });
 function TestForm() {
-  const [{ delta, values }, setData] = (0, import_react4.useState)({ delta: null, values: null });
+  const [{ delta, values }, setData] = (0, import_react5.useState)({ delta: null, values: null });
+  const [isDirty, setDirty] = (0, import_react5.useState)(false);
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
@@ -26982,12 +27048,15 @@ function TestForm() {
           })
         ]
       }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Form, {
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Form_default, {
         className: Demo_module_css_default.Column,
         name: "test",
+        onDirty: () => setDirty(true),
         onSubmit: (d, v) => setData({ delta: d, values: v }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
+            disabled: !isDirty,
+            title: !isDirty ? "No changes to submit" : null,
             type: "submit",
             children: "Submit"
           }),

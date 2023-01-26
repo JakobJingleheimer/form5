@@ -19,6 +19,7 @@ Object.defineProperty(File.prototype, "toJSON", {
 
 function TestForm() {
 	const [{ delta, values}, setData] = useState({ delta: null, values: null});
+	const [isDirty, setDirty] = useState(false);
 
 	return (
 		<>
@@ -39,9 +40,14 @@ function TestForm() {
 			<Form
 				className={styles.Column}
 				name="test"
+				onDirty={() => setDirty(true)}
 				onSubmit={(d, v) => setData({ delta: d, values: v })}
 			>
-				<Button type="submit">Submit</Button>
+				<Button
+					disabled={!isDirty}
+					title={!isDirty ? 'No changes to submit' : null }
+					type="submit"
+				>Submit</Button>
 
 				<Input
 					defaultValue="Jacob"
