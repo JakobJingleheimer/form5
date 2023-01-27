@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19239-IoOe3n8dgEDM/react-form5/lib/Group/Group.module.css.js
-var digest = "f4cb9c919628c91c4c8b51e05610041f4a04cb606fcf1c6a14869b56e501685d";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/Group/Group.module.css.js
+var digest = "de96d9333d9e1936e85c6fb10db613560c30e1e9832f9beeff69eae640146436";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,7 +24622,7 @@ Group.propTypes = {
 };
 var Group_default = Group;
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19239-IoOe3n8dgEDM/react-form5/lib/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/Button/Button.module.css.js
 var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
 var css2 = `._Button_qagzi_1 {
 	border: none;
@@ -26145,8 +26145,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19239-IoOe3n8dgEDM/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "0fad3526aea4b68a3b6fafa7cef625698b45448c50c4ce4207f75d4f3dd61cb3";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "3e10fd1138380deee34d857465519a01420123c81296f0a36507bb69f28c157b";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26352,8 +26352,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19239-IoOe3n8dgEDM/react-form5/lib/Input/Input.module.css.js
-var digest4 = "24c2b9d83cdc0c02b638e8229cb313d7dc788101634c2e3ac25bd778da67bd77";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/Input/Input.module.css.js
+var digest4 = "641410d9a65059ff0da0c50c72695cf72f973d71962b0f615a6fcb5eec7f2d19";
 var css4 = `._InputField_uatjn_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26570,7 +26570,6 @@ function Input({
   id = name,
   onBlur,
   onChange,
-  onFocus,
   options,
   readOnly,
   required,
@@ -26609,15 +26608,10 @@ function Input({
       value2 = checked;
     onChange({
       name: name2,
-      value: options?.[value2] || value2
+      value: options?.[value2] ?? value2
     }, e);
     if (isInvalid && e.target.checkValidity())
       setError("");
-  };
-  others.onFocus = (e) => {
-    if (dtTypes.has(type))
-      e.target.showPicker();
-    onFocus(e);
   };
   const sharedConstraints = {
     readOnly,
@@ -26693,8 +26687,6 @@ Input.defaultProps = {
   },
   onChange() {
   },
-  onFocus() {
-  },
   type: "text"
 };
 Input.propTypes = {
@@ -26705,16 +26697,9 @@ Input.propTypes = {
   name: import_prop_types3.default.string.isRequired,
   onBlur: import_prop_types3.default.func,
   onChange: import_prop_types3.default.func,
-  onFocus: import_prop_types3.default.func,
   options: import_prop_types3.default.object,
   variant: import_prop_types3.default.oneOf(Object.values(Input.VARIANTS))
 };
-var dtTypes = /* @__PURE__ */ new Set([
-  "date",
-  "datetime",
-  "datetime-local",
-  "time"
-]);
 
 // node_modules/lodash-es/_arrayReduce.js
 function arrayReduce(array, iteratee, accumulator, initAccum) {
@@ -26873,8 +26858,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19239-IoOe3n8dgEDM/react-form5/lib/Form/Form.module.css.js
-var digest5 = "d7cd320b64802c4aaf8398d75e09321a81626af3f19c5bd6d093aad64e44a18b";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/Form/Form.module.css.js
+var digest5 = "19706f530b8decf5ec57477d6e2806c3540d034124d7db4516674cc13d01e806";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26961,7 +26946,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19239-IoOe3n8dgEDM/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
