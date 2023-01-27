@@ -19,7 +19,6 @@ export default function Input({
 	id = name, // must come after `name`
 	onBlur,
 	onChange,
-	onFocus,
 	options,
 	readOnly,
 	required,
@@ -67,13 +66,7 @@ export default function Input({
 		}, e);
 
 		if (isInvalid && e.target.checkValidity()) setError('');
-	}
-
-	others.onFocus = (e) => {
-		if (dtTypes.has(type)) e.target.showPicker();
-
-		onFocus(e);
-	}
+	};
 
 	const sharedConstraints = {
 		readOnly,
@@ -145,7 +138,6 @@ Input.defaultProps = {
 	as: 'input',
 	onBlur() {},
 	onChange() {},
-	onFocus() {},
 	type: 'text',
 };
 Input.propTypes = {
@@ -156,7 +148,6 @@ Input.propTypes = {
 	name: PropTypes.string.isRequired,
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
-	onFocus: PropTypes.func,
 	options: PropTypes.object,
 	variant: PropTypes.oneOf(Object.values(Input.VARIANTS)),
 };
