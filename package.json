@@ -44,8 +44,8 @@
   "peerDependencies": {
     "classnames": "*",
     "prop-types": "*",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react": "17 - 18",
+    "react-dom": "17 - 18"
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
