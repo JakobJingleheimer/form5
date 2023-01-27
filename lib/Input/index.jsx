@@ -62,7 +62,7 @@ export default function Input({
 
 		onChange({
 			name,
-			value: options?.[value] || value,
+			value: options?.[value] ?? value,
 		}, e);
 
 		if (isInvalid && e.target.checkValidity()) setError('');
