@@ -29,6 +29,9 @@ export function Form({
 		...is
 	} = useInteractiveStates({ onDirty, onPristine });
 
+	// form needs an `id` for buttons that live outside it in the DOM: `<button form={form.id}>`
+	props.id ||= props.name;
+
 	return (
 		<form
 			{...props}

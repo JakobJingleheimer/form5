@@ -14,9 +14,9 @@ export default function Input({
 	as: Field,
 	className,
 	fluid,
+	id,
 	label,
 	name,
-	id = name, // must come after `name`
 	onBlur,
 	onChange,
 	options,
@@ -33,6 +33,8 @@ export default function Input({
 		...is
 	} = useInteractiveStates();
 	const isInvalid = !!error;
+
+	id ||= name;
 
 	if (options) others.list = `${name}_options`;
 
