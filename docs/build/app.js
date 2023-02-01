@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/Group/Group.module.css.js
-var digest = "fa3ec91bd70cf06ecce0255d29db8c44e1838ab9381caaba53e541b4f6d5e03c";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/Group/Group.module.css.js
+var digest = "d55ce483e782a565712664b8855afc7cc25ce64aa02ab811e1f47a0d9536ce71";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,8 +24622,8 @@ Group.propTypes = {
 };
 var Group_default = Group;
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/Button/Button.module.css.js
-var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/Button/Button.module.css.js
+var digest2 = "bd17e759eab4f034301bb6c809928f2d3ac0fe97de55b1d18f471d32002580fb";
 var css2 = `._Button_qagzi_1 {
 	border: none;
 	cursor: pointer;
@@ -26145,8 +26145,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "3e10fd1138380deee34d857465519a01420123c81296f0a36507bb69f28c157b";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "462f8c9b8c312a80da367cb54d006515afcc9f6e6976afc60125062e5efea0f1";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26352,8 +26352,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/Input/Input.module.css.js
-var digest4 = "bd55bdf4887b2bfe1f014ed112a0a4949de514cbe080c0a550b9c0dc6adead7a";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/Input/Input.module.css.js
+var digest4 = "86f66f31924bb908b898b3da8e8095cb43180060c6ba5b8d3e62239d89774792";
 var css4 = `._InputField_uatjn_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26751,6 +26751,7 @@ function composeData(values, {
   disabled,
   elements,
   files,
+  id,
   name,
   tagName,
   type,
@@ -26779,7 +26780,7 @@ function composeData(values, {
     }
     return values;
   }
-  name ||= attrs.id;
+  name ||= id;
   if (!name) {
     return values;
   }
@@ -26860,8 +26861,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/Form/Form.module.css.js
-var digest5 = "62d4a4647c123ec56e3a9b4f797ca8d3816d624734f8276c238cb7ff63ff16bc";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/Form/Form.module.css.js
+var digest5 = "5c5f7ecee67b22784f514ea2be7d52dec31f7bb5e38693da43d24798ba2d9ef2";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26949,7 +26950,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
