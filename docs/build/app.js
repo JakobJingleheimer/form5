@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/Group/Group.module.css.js
-var digest = "de96d9333d9e1936e85c6fb10db613560c30e1e9832f9beeff69eae640146436";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/Group/Group.module.css.js
+var digest = "fa3ec91bd70cf06ecce0255d29db8c44e1838ab9381caaba53e541b4f6d5e03c";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,7 +24622,7 @@ Group.propTypes = {
 };
 var Group_default = Group;
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/Button/Button.module.css.js
 var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
 var css2 = `._Button_qagzi_1 {
 	border: none;
@@ -26145,7 +26145,7 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/FileInput/FileInput.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/FileInput/FileInput.module.css.js
 var digest3 = "3e10fd1138380deee34d857465519a01420123c81296f0a36507bb69f28c157b";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
@@ -26352,8 +26352,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/Input/Input.module.css.js
-var digest4 = "641410d9a65059ff0da0c50c72695cf72f973d71962b0f615a6fcb5eec7f2d19";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/Input/Input.module.css.js
+var digest4 = "bd55bdf4887b2bfe1f014ed112a0a4949de514cbe080c0a550b9c0dc6adead7a";
 var css4 = `._InputField_uatjn_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26565,9 +26565,9 @@ function Input({
   as: Field,
   className,
   fluid,
+  id,
   label,
   name,
-  id = name,
   onBlur,
   onChange,
   options,
@@ -26584,6 +26584,7 @@ function Input({
     ...is
   } = useInteractiveStates();
   const isInvalid = !!error;
+  id ||= name;
   if (options)
     others.list = `${name}_options`;
   others.onBlur = (e) => {
@@ -26778,6 +26779,7 @@ function composeData(values, {
     }
     return values;
   }
+  name ||= attrs.id;
   if (!name) {
     return values;
   }
@@ -26858,8 +26860,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/lib/Form/Form.module.css.js
-var digest5 = "19706f530b8decf5ec57477d6e2806c3540d034124d7db4516674cc13d01e806";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/lib/Form/Form.module.css.js
+var digest5 = "62d4a4647c123ec56e3a9b4f797ca8d3816d624734f8276c238cb7ff63ff16bc";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26893,6 +26895,7 @@ function Form({
     touched,
     ...is
   } = useInteractiveStates({ onDirty, onPristine });
+  props.id ||= props.name;
   return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("form", {
     ...props,
     className: (0, import_classnames5.default)(Form_module_css_default.Form, className),
@@ -26946,7 +26949,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-27078-39vdgeDow02D/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14009-Ala09pdqsOGo/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
