@@ -1,4 +1,5 @@
 .Button {
+	font: unset;
 	border: none;
 	cursor: pointer;
 	padding: var(--default-padding);
@@ -6,48 +7,48 @@
 
 .fluid { width: 100% }
 
-button[variant="cta"] {
+.Button[variant="cta"] {
 	color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	box-shadow: var(--default-boxshadow);
 	fill: var(--colour-background);
 	text-transform: capitalize;
 }
-button[variant="cta"][appearance="affirming"] {
+.Button[variant="cta"][appearance="affirming"] {
 	background-color: var(--colour-success);
 }
-button[variant="cta"][appearance="basic"] {
+.Button[variant="cta"][appearance="basic"] {
 	background-color: var(--colour-light);
 	border-color: var(--colour-medium);
 	color: var(--colour-text-deemphasised);
 	fill: var(--colour-text-deemphasised);
 }
-button[variant="cta"][appearance="danger"] {
+.Button[variant="cta"][appearance="danger"] {
 	background-color: var(--colour-danger);
 }
-button[variant="cta"][appearance="primary"] {
+.Button[variant="cta"][appearance="primary"] {
 	background-color: var(--colour-primary);
 }
-button[variant="cta"][appearance="warning"] {
+.Button[variant="cta"][appearance="warning"] {
 	background-color: var(--colour-warning);
 }
-button[variant="cta"] > i[role="img"] {
+.Button[variant="cta"] > i[role="img"] {
 	font-size: 2em;
 }
 
-button[variant="glyph"] {
+.Button[variant="glyph"] {
 	background-color: unset;
 }
-button[variant="glyph"][appearance="danger"] {
+.Button[variant="glyph"][appearance="danger"] {
 	fill: var(--colour-danger);
 }
-button[variant="glyph"][appearance="primary"] {
+.Button[variant="glyph"][appearance="primary"] {
 	fill: var(--colour-primary);
 }
-button[variant="glyph"][appearance="affirming"] {
+.Button[variant="glyph"][appearance="affirming"] {
 	fill: var(--colour-success);
 }
-button[variant="glyph"][appearance="warning"] {
+.Button[variant="glyph"][appearance="warning"] {
 	fill: var(--colour-warning);
 }
 
