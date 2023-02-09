@@ -15,6 +15,7 @@ export default function Group({
 		<Tag
 			{...others}
 			className={classnames(styles.Group, className)}
+			role="group"
 		/>
 	);
 }
