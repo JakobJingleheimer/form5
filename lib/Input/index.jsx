@@ -57,6 +57,7 @@ export default function Input({
 
 		let {
 			checked,
+			id,
 			name,
 			type,
 			value,
@@ -65,6 +66,7 @@ export default function Input({
 		if (type === 'checkbox') value = checked;
 
 		onChange({
+			id,
 			name,
 			value: options?.[value] ?? value,
 		}, e);
