@@ -133,10 +133,11 @@ describe('<Input>', () => {
 
 		it('should trigger a provided onChange handler', () => {
 			let onChangeCalledWith;
+			const id = 'bar';
 			const name = 'foo';
 			const { getByLabelText } = render(
 				<Input
-					id="bar"
+					id={id}
 					label={labelText}
 					name={name}
 					onChange={(...args) => onChangeCalledWith = args}
@@ -149,7 +150,7 @@ describe('<Input>', () => {
 			fireEvent.change(input, { target: { value } });
 
 			expect(onChangeCalledWith.length).to.equal(2);
-			expect(onChangeCalledWith[0]).to.eql({ name, value });
+			expect(onChangeCalledWith[0]).to.eql({ name, id, value });
 			expect(onChangeCalledWith[1].type).to.equal('change');
 			expect(onChangeCalledWith[1].target).to.equal(input);
 		});

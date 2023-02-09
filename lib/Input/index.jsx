@@ -9,20 +9,22 @@ import { useInteractiveStates } from '../useInteractiveStates.js';
 import styles from './Input.module.css';
 
 
+export { styles as inputClasses };
+
 export default function Input({
-	arrangement,
-	as: Field,
+	arrangement = Input.ARRANGEMENTS.INLINE,
+	as: Field = 'input',
 	className,
 	fluid,
 	id,
 	label,
 	name,
-	onBlur,
-	onChange,
+	onBlur = () => {},
+	onChange = () => {},
 	options,
 	readOnly,
 	required,
-	type,
+	type = 'text',
 	value,
 	...others
 }) {
@@ -55,6 +57,7 @@ export default function Input({
 
 		let {
 			checked,
+			id,
 			name,
 			type,
 			value,
@@ -63,6 +66,7 @@ export default function Input({
 		if (type === 'checkbox') value = checked;
 
 		onChange({
+			id,
 			name,
 			value: options?.[value] ?? value,
 		}, e);
@@ -134,13 +138,6 @@ Input.ARRANGEMENTS = {
 };
 Input.VARIANTS = {
 	TOGGLE: 'toggle',
-};
-Input.defaultProps = {
-	arrangement: Input.ARRANGEMENTS.INLINE,
-	as: 'input',
-	onBlur() {},
-	onChange() {},
-	type: 'text',
 };
 Input.propTypes = {
 	arrangement: PropTypes.oneOf(Object.values(Input.ARRANGEMENTS)),
