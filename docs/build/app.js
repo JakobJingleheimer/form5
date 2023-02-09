@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/Group/Group.module.css.js
-var digest = "4ffb58d9e5e2db32376c1d5feaa924d1b80cd8105e71835b36dbb3f3e9a76252";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/Group/Group.module.css.js
+var digest = "f8953e488e89cc70b59ac19e4e2a2f61ceec366cbe9b4952638b40d445f116c2";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,69 +24622,70 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/Button/Button.module.css.js
-var digest2 = "2ee2d0cf5b7878a88daa97cf5ae79a6fe444ff718a11467284976554d83ed943";
-var css2 = `._Button_qagzi_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/Button/Button.module.css.js
+var digest2 = "cf3482d802529c60178b931455cfec39e0fc4efe0d87d5c3eaae77f91ea6d26e";
+var css2 = `._Button_iyuoe_1 {
+	font: unset;
 	border: none;
 	cursor: pointer;
 	padding: var(--default-padding);
 }
 
-._fluid_qagzi_7 { width: 100% }
+._fluid_iyuoe_8 { width: 100% }
 
-button[variant="cta"] {
+._Button_iyuoe_1[variant="cta"] {
 	color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	box-shadow: var(--default-boxshadow);
 	fill: var(--colour-background);
 	text-transform: capitalize;
 }
-button[variant="cta"][appearance="affirming"] {
+._Button_iyuoe_1[variant="cta"][appearance="affirming"] {
 	background-color: var(--colour-success);
 }
-button[variant="cta"][appearance="basic"] {
+._Button_iyuoe_1[variant="cta"][appearance="basic"] {
 	background-color: var(--colour-light);
 	border-color: var(--colour-medium);
 	color: var(--colour-text-deemphasised);
 	fill: var(--colour-text-deemphasised);
 }
-button[variant="cta"][appearance="danger"] {
+._Button_iyuoe_1[variant="cta"][appearance="danger"] {
 	background-color: var(--colour-danger);
 }
-button[variant="cta"][appearance="primary"] {
+._Button_iyuoe_1[variant="cta"][appearance="primary"] {
 	background-color: var(--colour-primary);
 }
-button[variant="cta"][appearance="warning"] {
+._Button_iyuoe_1[variant="cta"][appearance="warning"] {
 	background-color: var(--colour-warning);
 }
-button[variant="cta"] > i[role="img"] {
+._Button_iyuoe_1[variant="cta"] > i[role="img"] {
 	font-size: 2em;
 }
 
-button[variant="glyph"] {
+._Button_iyuoe_1[variant="glyph"] {
 	background-color: unset;
 }
-button[variant="glyph"][appearance="danger"] {
+._Button_iyuoe_1[variant="glyph"][appearance="danger"] {
 	fill: var(--colour-danger);
 }
-button[variant="glyph"][appearance="primary"] {
+._Button_iyuoe_1[variant="glyph"][appearance="primary"] {
 	fill: var(--colour-primary);
 }
-button[variant="glyph"][appearance="affirming"] {
+._Button_iyuoe_1[variant="glyph"][appearance="affirming"] {
 	fill: var(--colour-success);
 }
-button[variant="glyph"][appearance="warning"] {
+._Button_iyuoe_1[variant="glyph"][appearance="warning"] {
 	fill: var(--colour-warning);
 }
 
-._ButtonGroup_qagzi_54 > ._Button_qagzi_1 {
+._ButtonGroup_iyuoe_55 > ._Button_iyuoe_1 {
 	flex: 1;
 }
-._ButtonGroup_qagzi_54 > ._Button_qagzi_1:not(:last-child) {
+._ButtonGroup_iyuoe_55 > ._Button_iyuoe_1:not(:last-child) {
 	border-top-right-radius: unset;
 	border-bottom-right-radius: unset;
 }
-._ButtonGroup_qagzi_54 > ._Button_qagzi_1:not(:first-child) {
+._ButtonGroup_iyuoe_55 > ._Button_iyuoe_1:not(:first-child) {
 	border-top-left-radius: unset;
 	border-bottom-left-radius: unset;
 }
@@ -24697,7 +24698,7 @@ button[variant="glyph"][appearance="warning"] {
     document.head.appendChild(el);
   }
 })();
-var Button_module_css_default = { "Button": "_Button_qagzi_1", "fluid": "_fluid_qagzi_7", "ButtonGroup": "_ButtonGroup_qagzi_54" };
+var Button_module_css_default = { "Button": "_Button_iyuoe_1", "fluid": "_fluid_iyuoe_8", "ButtonGroup": "_ButtonGroup_iyuoe_55" };
 
 // lib/Button/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26146,8 +26147,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "30e3a925496f5cb776295b47bde6872fbfaf81f9944683b85d1ced60cf21d976";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "d6de89bec6d003ab54fe6bb0a94106984d8a9f7c44dad558ebf1eee5a6fe1dd2";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26353,8 +26354,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/Input/Input.module.css.js
-var digest4 = "f7142215d2d0af9a1ea2342fb3da40904a39bb36543eb022849843e964897f0e";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/Input/Input.module.css.js
+var digest4 = "c9bb48ae54a1ac06ff7e0b5fd4d0c86c73f73ba7867356ab3d44b7fc6841a8da";
 var css4 = `._InputField_uatjn_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26857,8 +26858,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/Form/Form.module.css.js
-var digest5 = "f4a8ca06b5f3a9279cd103ccc6b8266640465980aac3bd009940802d11c64150";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/Form/Form.module.css.js
+var digest5 = "a8b2eaa03d826bd24e3bc0d832df6577adce7e67f58d1017f68558f641239c3e";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26946,7 +26947,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
