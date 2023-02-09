@@ -4,23 +4,22 @@ import PropTypes from 'prop-types';
 import styles from './Group.module.css';
 
 
-const Group = ({
-	as: Tag,
 export { styles as grouptClasses };
 
+export default function Group({
+	as: Tag = 'div',
 	className,
 	...others
-}) => (
-	<Tag
-		className={classnames(styles.Group, className)}
-		{...others}
-	/>
-);
-Group.defaultProps = {
-	as: 'div',
-};
+}) {
+	return (
+		<Tag
+			{...others}
+			className={classnames(styles.Group, className)}
+		/>
+	);
+}
+
+Group.displayname = 'Form5Group';
 Group.propTypes = {
 	as: PropTypes.elementType,
 };
-
-export default Group;

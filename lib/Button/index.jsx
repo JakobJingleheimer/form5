@@ -6,31 +6,33 @@ import Group from '../Group/index.jsx';
 import styles from './Button.module.css';
 
 
-const Button = ({
 export { styles as buttonClasses };
 
+export default function Button({
 	children: label,
 	className,
 	fluid,
 	icon: Icon,
 	...others
-}) => (
-	<button
-		{...others}
-		className={classnames(
-			styles.Button,
-			className,
-			{
-				[styles.fluid]: fluid,
-			},
-		)}
-	>
-		{!!Icon
-			? Icon
-			: label
-		}
-	</button>
-);
+}) {
+	return (
+		<button
+			{...others}
+			className={classnames(
+				styles.Button,
+				className,
+				{
+					[styles.fluid]: fluid,
+				},
+			)}
+		>
+			{!!Icon
+				? Icon
+				: label
+			}
+		</button>
+	);
+}
 
 Button.displayName = 'Form5Button';
 
@@ -65,5 +67,3 @@ Button.propTypes = {
 Button.Group = ({ className, ...props }) => (
 	<Group className={classnames(className, styles.ButtonGroup)} {...props} />
 );
-
-export default Button;
