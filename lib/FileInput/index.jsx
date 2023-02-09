@@ -7,6 +7,8 @@ import Button from '../Button/index.jsx';
 import styles from './FileInput.module.css';
 
 
+export { styles as fileInputClasses };
+
 export default class FileInput extends PureComponent {
 	static defaultProps = {
 		icon: (<span>📂</span>),

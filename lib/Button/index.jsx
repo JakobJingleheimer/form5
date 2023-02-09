@@ -7,6 +7,8 @@ import styles from './Button.module.css';
 
 
 const Button = ({
+export { styles as buttonClasses };
+
 	children: label,
 	className,
 	fluid,

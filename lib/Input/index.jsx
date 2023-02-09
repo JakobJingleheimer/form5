@@ -9,6 +9,8 @@ import { useInteractiveStates } from '../useInteractiveStates.js';
 import styles from './Input.module.css';
 
 
+export { styles as inputClasses };
+
 export default function Input({
 	arrangement,
 	as: Field,

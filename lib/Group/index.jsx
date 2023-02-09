@@ -6,6 +6,8 @@ import styles from './Group.module.css';
 
 const Group = ({
 	as: Tag,
+export { styles as grouptClasses };
+
 	className,
 	...others
 }) => (

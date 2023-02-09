@@ -13,6 +13,8 @@ import { useInteractiveStates } from '../useInteractiveStates.js';
 import styles from './Form.module.css';
 
 
+export { styles as formClasses };
+
 export function Form({
 	children,
 	className,
