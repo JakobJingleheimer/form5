@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/Group/Group.module.css.js
-var digest = "d55ce483e782a565712664b8855afc7cc25ce64aa02ab811e1f47a0d9536ce71";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/Group/Group.module.css.js
+var digest = "4ffb58d9e5e2db32376c1d5feaa924d1b80cd8105e71835b36dbb3f3e9a76252";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24606,24 +24606,24 @@ var Group_module_css_default = { "Group": "_Group_4f7x4_1" };
 
 // lib/Group/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
-var Group = ({
-  as: Tag,
+function Group({
+  as: Tag = "div",
   className,
   ...others
-}) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
-  className: (0, import_classnames.default)(Group_module_css_default.Group, className),
-  ...others
-});
-Group.defaultProps = {
-  as: "div"
-};
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
+    ...others,
+    className: (0, import_classnames.default)(Group_module_css_default.Group, className),
+    role: "group"
+  });
+}
+Group.displayname = "Form5Group";
 Group.propTypes = {
   as: import_prop_types.default.elementType
 };
-var Group_default = Group;
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/Button/Button.module.css.js
-var digest2 = "bd17e759eab4f034301bb6c809928f2d3ac0fe97de55b1d18f471d32002580fb";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/Button/Button.module.css.js
+var digest2 = "2ee2d0cf5b7878a88daa97cf5ae79a6fe444ff718a11467284976554d83ed943";
 var css2 = `._Button_qagzi_1 {
 	border: none;
 	cursor: pointer;
@@ -24701,23 +24701,25 @@ var Button_module_css_default = { "Button": "_Button_qagzi_1", "fluid": "_fluid_
 
 // lib/Button/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
-var Button = ({
+function Button({
   children: label,
   className,
   fluid,
   icon: Icon,
   ...others
-}) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-  ...others,
-  className: (0, import_classnames2.default)(
-    Button_module_css_default.Button,
-    className,
-    {
-      [Button_module_css_default.fluid]: fluid
-    }
-  ),
-  children: !!Icon ? Icon : label
-});
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+    ...others,
+    className: (0, import_classnames2.default)(
+      Button_module_css_default.Button,
+      className,
+      {
+        [Button_module_css_default.fluid]: fluid
+      }
+    ),
+    children: !!Icon ? Icon : label
+  });
+}
 Button.displayName = "Form5Button";
 Button.APPEARANCES = {
   AFFIRMING: "affirming",
@@ -24746,11 +24748,10 @@ Button.propTypes = {
   type: import_prop_types2.default.oneOf(Object.values(Button.TYPES)),
   variant: import_prop_types2.default.oneOf(Object.values(Button.VARIANTS))
 };
-Button.Group = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Group_default, {
+Button.Group = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Group, {
   className: (0, import_classnames2.default)(className, Button_module_css_default.ButtonGroup),
   ...props
 });
-var Button_default = Button;
 
 // lib/FileInput/index.jsx
 var import_classnames3 = __toESM(require_classnames(), 1);
@@ -26145,8 +26146,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "462f8c9b8c312a80da367cb54d006515afcc9f6e6976afc60125062e5efea0f1";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "30e3a925496f5cb776295b47bde6872fbfaf81f9944683b85d1ced60cf21d976";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26237,8 +26238,8 @@ var FileInput = class extends import_react.PureComponent {
           className: (0, import_classnames3.default)(FileInput_module_css_default.FileInput, className),
           htmlFor: name,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
-              appearance: Button_default.APPEARANCES.BASIC,
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+              appearance: Button.APPEARANCES.BASIC,
               className: FileInput_module_css_default.FileInputButton,
               icon,
               children: label
@@ -26352,8 +26353,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/Input/Input.module.css.js
-var digest4 = "86f66f31924bb908b898b3da8e8095cb43180060c6ba5b8d3e62239d89774792";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/Input/Input.module.css.js
+var digest4 = "f7142215d2d0af9a1ea2342fb3da40904a39bb36543eb022849843e964897f0e";
 var css4 = `._InputField_uatjn_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26561,19 +26562,21 @@ var Input_module_css_default = { "InputField": "_InputField_uatjn_1", "FluidInpu
 // lib/Input/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 function Input({
-  arrangement,
-  as: Field,
+  arrangement = Input.ARRANGEMENTS.INLINE,
+  as: Field = "input",
   className,
   fluid,
   id,
   label,
   name,
-  onBlur,
-  onChange,
+  onBlur = () => {
+  },
+  onChange = () => {
+  },
   options,
   readOnly,
   required,
-  type,
+  type = "text",
   value,
   ...others
 }) {
@@ -26601,6 +26604,7 @@ function Input({
     is.onChange(e);
     let {
       checked,
+      id: id2,
       name: name2,
       type: type2,
       value: value2
@@ -26608,6 +26612,7 @@ function Input({
     if (type2 === "checkbox")
       value2 = checked;
     onChange({
+      id: id2,
       name: name2,
       value: options?.[value2] ?? value2
     }, e);
@@ -26680,15 +26685,6 @@ Input.ARRANGEMENTS = {
 };
 Input.VARIANTS = {
   TOGGLE: "toggle"
-};
-Input.defaultProps = {
-  arrangement: Input.ARRANGEMENTS.INLINE,
-  as: "input",
-  onBlur() {
-  },
-  onChange() {
-  },
-  type: "text"
 };
 Input.propTypes = {
   arrangement: import_prop_types3.default.oneOf(Object.values(Input.ARRANGEMENTS)),
@@ -26861,8 +26857,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/lib/Form/Form.module.css.js
-var digest5 = "5c5f7ecee67b22784f514ea2be7d52dec31f7bb5e38693da43d24798ba2d9ef2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/lib/Form/Form.module.css.js
+var digest5 = "f4a8ca06b5f3a9279cd103ccc6b8266640465980aac3bd009940802d11c64150";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26950,7 +26946,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-11713-1NqWULI98pHd/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12848-Xyl49HAGwnWU/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
@@ -27043,7 +27039,7 @@ function TestForm() {
         onDirty: () => setDirty(true),
         onSubmit: (d, v) => setData({ delta: d, values: v }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
             disabled: !isDirty,
             title: !isDirty ? "No changes to submit" : null,
             type: "submit",
@@ -27130,18 +27126,18 @@ function TestForm() {
             label: "profile photo",
             name: "profilePhoto"
           }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button_default.Group, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button.Group, {
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
-                appearance: Button_default.APPEARANCES.WARNING,
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+                appearance: Button.APPEARANCES.WARNING,
                 children: "Group"
               }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
-                appearance: Button_default.APPEARANCES.BASIC,
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+                appearance: Button.APPEARANCES.BASIC,
                 children: "of"
               }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button_default, {
-                appearance: Button_default.APPEARANCES.AFFIRMING,
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+                appearance: Button.APPEARANCES.AFFIRMING,
                 children: "Buttons"
               })
             ]
