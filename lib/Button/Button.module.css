@@ -1,4 +1,5 @@
 .Button {
+	font: unset;
 	border: none;
 	cursor: pointer;
 	padding: var(--default-padding);
