@@ -63,6 +63,14 @@ function TestForm() {
 					name="surname"
 					type="text"
 				/>
+
+				<Input
+					as="textarea"
+					fluid
+					label="bio"
+					name="bio"
+				/>
+
 				<Input
 					fluid
 					label="age"

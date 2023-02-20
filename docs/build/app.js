@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/Group/Group.module.css.js
-var digest = "f8953e488e89cc70b59ac19e4e2a2f61ceec366cbe9b4952638b40d445f116c2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20615-dljG4734zE3l/react-form5/lib/Group/Group.module.css.js
+var digest = "1dc377bc7bb3fdc38f98fcc827441ec3ee2643c18db1c835cb5a88ccd2be7bc6";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,8 +24622,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/Button/Button.module.css.js
-var digest2 = "cf3482d802529c60178b931455cfec39e0fc4efe0d87d5c3eaae77f91ea6d26e";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20615-dljG4734zE3l/react-form5/lib/Button/Button.module.css.js
+var digest2 = "3f6ddc7d767b3514f63d30af3823c1cf4b5be93b7c7807f9f822d2f39f948178";
 var css2 = `._Button_iyuoe_1 {
 	font: unset;
 	border: none;
@@ -26147,8 +26147,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "d6de89bec6d003ab54fe6bb0a94106984d8a9f7c44dad558ebf1eee5a6fe1dd2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20615-dljG4734zE3l/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "cd854113e604d14445e29a6c0cf25e6dab4c7d643a05558ad21758768f523582";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26354,100 +26354,109 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/Input/Input.module.css.js
-var digest4 = "c9bb48ae54a1ac06ff7e0b5fd4d0c86c73f73ba7867356ab3d44b7fc6841a8da";
-var css4 = `._InputField_uatjn_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20615-dljG4734zE3l/react-form5/lib/Input/Input.module.css.js
+var digest4 = "1dc940a59fcc01a566bfc539e2ff03072f2a13e842dcf949867966df9bdbd247";
+var css4 = `._InputField_168ym_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_uatjn_1[arrangement="inline"] {
-	align-items: center;
+._InputField_168ym_1[arrangement="inline"] {
+	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_uatjn_1[arrangement="inline"],
-._InputField_uatjn_1[arrangement="stacked"] {
+._InputField_168ym_1[arrangement="inline"],
+._InputField_168ym_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_uatjn_1[arrangement="stacked"] {
+._InputField_168ym_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_uatjn_1[arrangement="stacked"],
-._InputField_uatjn_1[arrangement="stand-alone"] {
+._InputField_168ym_1[arrangement="stacked"],
+._InputField_168ym_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_uatjn_1[arrangement="stand-alone"] {
+._InputField_168ym_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._FluidInputField_uatjn_23 {
+._FluidInputField_168ym_23 {
 	grid-template-columns: 100%;
 }
 
-._InnerWrapper_uatjn_27 {
+._InnerWrapper_168ym_27 {
 	display: flex;
 	flex: 1;
 	position: relative;
 }
 
-._Input_uatjn_1 {
+._Input_168ym_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_uatjn_1:focus {
+._Input_168ym_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_uatjn_1:disabled {
+._Input_168ym_1:disabled {
 	cursor: default;
 }
-._Input_uatjn_1:disabled,
-._Input_uatjn_1[readonly] {
+._Input_168ym_1:disabled,
+._Input_168ym_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._InputField_uatjn_1[readonly] ._Input_uatjn_1,
-._InputField_uatjn_1[readonly] ._Label_uatjn_51 {
+._InputField_168ym_1[readonly] ._Input_168ym_1,
+._InputField_168ym_1[readonly] ._Label_168ym_51 {
 	cursor: not-allowed;
 }
 
-._Input_uatjn_1:not([type="checkbox"]):not([type="radio"]) {
+._Input_168ym_1:not([type="checkbox"]):not([type="radio"]) {
 	width: 100%;
 }
 
-._Input_uatjn_1[type="date"],
-._Input_uatjn_1[type="datetime"],
-._Input_uatjn_1[type="datetime-local"],
-._Input_uatjn_1[type="time"] {
+._Input_168ym_1[type="checkbox"],
+._Input_168ym_1[type="radio"] {
+	margin: unset;
+}
+
+._Input_168ym_1[type="date"],
+._Input_168ym_1[type="datetime"],
+._Input_168ym_1[type="datetime-local"],
+._Input_168ym_1[type="time"] {
 	font: inherit;
 }
 
-._Input_uatjn_1[type="number"] {
+._Input_168ym_1[type="number"] {
 	text-align: right;
 }
 
-._Label_uatjn_51 {
+textarea._Input_168ym_1 {
+	line-height: inherit;
+}
+
+._Label_168ym_51 {
 	order: -1;
 	text-transform: capitalize;
 }
 
-._InputField_uatjn_1[required] ._Label_uatjn_51::after {
+._InputField_168ym_1[required] ._Label_168ym_51::after {
 	content: '*';
 	margin-left: 0.1em;
 }
-._InputField_uatjn_1[touched][invalid] ._Input_uatjn_1:focus {
+._InputField_168ym_1[touched][invalid] ._Input_168ym_1:focus {
 	outline-color: var(--colour-danger);
 }
-._InputField_uatjn_1[touched][invalid] ._Input_uatjn_1,
-._Error_uatjn_83 {
+._InputField_168ym_1[touched][invalid] ._Input_168ym_1,
+._Error_168ym_92 {
 	border-color: var(--colour-danger);
 }
-._InputField_uatjn_1[touched][invalid],
-._InputField_uatjn_1[touched][invalid],
-._Error_uatjn_83 {
+._InputField_168ym_1[touched][invalid],
+._InputField_168ym_1[touched][invalid],
+._Error_168ym_92 {
 	color: var(--colour-danger);
 }
 
-._Error_uatjn_83 {
+._Error_168ym_92 {
 	background-color: var(--colour-background);
 	border: 1px solid;
 	border-radius: var(--default-border-radius);
@@ -26456,7 +26465,7 @@ var css4 = `._InputField_uatjn_1 {
 	position: absolute;
 	z-index: 1;
 }
-._Error_uatjn_83::after {
+._Error_168ym_92::after {
 	background-color: inherit;
 	border: inherit;
 	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
@@ -26470,13 +26479,13 @@ var css4 = `._InputField_uatjn_1 {
 
 @media only screen and (max-width: 736px) {
 	/* On mobile, position errors below field */
-	._Error_uatjn_83 {
+	._Error_168ym_92 {
 		bottom: 0;
 		left: 0;
 		margin: 0 auto;
 		translate: 0 calc(100% + 1em);
 	}
-	._Error_uatjn_83::after {
+	._Error_168ym_92::after {
 		left: 50%;
 		rotate: -45deg;
 		top: 0;
@@ -26485,26 +26494,26 @@ var css4 = `._InputField_uatjn_1 {
 
 @media only screen and (min-width: 737px) {
 	/* Above mobile, position errors right of field */
-	._InputField_uatjn_1[arrangement="inline"] ._Error_uatjn_83,
-	._InputField_uatjn_1[arrangement="stand-alone"] ._Error_uatjn_83 {
+	._InputField_168ym_1[arrangement="inline"] ._Error_168ym_92,
+	._InputField_168ym_1[arrangement="stand-alone"] ._Error_168ym_92 {
 		margin-left: auto;
 		margin-right: 0;
 		top: 50%;
 		translate: calc(100% + 1em) -50%;
 	}
-	._InputField_uatjn_1[arrangement="inline"] ._Error_uatjn_83::after,
-	._InputField_uatjn_1[arrangement="stand-alone"] ._Error_uatjn_83::after {
+	._InputField_168ym_1[arrangement="inline"] ._Error_168ym_92::after,
+	._InputField_168ym_1[arrangement="stand-alone"] ._Error_168ym_92::after {
 		left: 0;
 		rotate: 225deg;
 		top: 50%;
 	}
 
-	._InputField_uatjn_1[arrangement="stacked"] ._Error_uatjn_83 {
+	._InputField_168ym_1[arrangement="stacked"] ._Error_168ym_92 {
 		margin: auto;
 		top: 100%;
 		translate: 0 1em;
 	}
-	._InputField_uatjn_1[arrangement="stacked"] ._Error_uatjn_83::after {
+	._InputField_168ym_1[arrangement="stacked"] ._Error_168ym_92::after {
 		left: 50%;
 		rotate: 315deg;
 		top: 0;
@@ -26558,13 +26567,13 @@ input[variant="toggle"][appearane="success"]:checked::after {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_uatjn_1", "FluidInputField": "_FluidInputField_uatjn_23", "InnerWrapper": "_InnerWrapper_uatjn_27", "Input": "_Input_uatjn_1", "Label": "_Label_uatjn_51", "Error": "_Error_uatjn_83" };
+var Input_module_css_default = { "InputField": "_InputField_168ym_1", "FluidInputField": "_FluidInputField_168ym_23", "InnerWrapper": "_InnerWrapper_168ym_27", "Input": "_Input_168ym_1", "Label": "_Label_168ym_51", "Error": "_Error_168ym_92" };
 
 // lib/Input/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 function Input({
   arrangement = Input.ARRANGEMENTS.INLINE,
-  as: Field = "input",
+  as: Tag = "input",
   className,
   fluid,
   id,
@@ -26591,6 +26600,10 @@ function Input({
   id ||= name;
   if (options)
     others.list = `${name}_options`;
+  if (Tag === "textarea") {
+    others.rows = 3;
+    type = null;
+  }
   others.onBlur = (e) => {
     if (readOnly)
       return;
@@ -26640,7 +26653,7 @@ function Input({
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
         className: Input_module_css_default.InnerWrapper,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Field, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
             className: Input_module_css_default.Input,
             name,
             id,
@@ -26858,8 +26871,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/lib/Form/Form.module.css.js
-var digest5 = "a8b2eaa03d826bd24e3bc0d832df6577adce7e67f58d1017f68558f641239c3e";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20615-dljG4734zE3l/react-form5/lib/Form/Form.module.css.js
+var digest5 = "f4a8ca06b5f3a9279cd103ccc6b8266640465980aac3bd009940802d11c64150";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26947,7 +26960,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-23602-HIKjeiiT1rsj/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20615-dljG4734zE3l/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
@@ -27059,6 +27072,12 @@ function TestForm() {
             label: "surname",
             name: "surname",
             type: "text"
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+            as: "textarea",
+            fluid: true,
+            label: "bio",
+            name: "bio"
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             fluid: true,
