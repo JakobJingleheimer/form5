@@ -2,7 +2,7 @@
 	gap: calc(var(--grid-gutter) / 2);
 }
 .InputField[arrangement="inline"] {
-	align-items: center;
+	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
 .InputField[arrangement="inline"],
