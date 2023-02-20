@@ -2,7 +2,7 @@
 	gap: calc(var(--grid-gutter) / 2);
 }
 .InputField[arrangement="inline"] {
-	align-items: center;
+	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
 .InputField[arrangement="inline"],
@@ -56,6 +56,11 @@
 	width: 100%;
 }
 
+.Input[type="checkbox"],
+.Input[type="radio"] {
+	margin: unset;
+}
+
 .Input[type="date"],
 .Input[type="datetime"],
 .Input[type="datetime-local"],
@@ -65,6 +70,10 @@
 
 .Input[type="number"] {
 	text-align: right;
+}
+
+textarea.Input {
+	line-height: inherit;
 }
 
 .Label {
