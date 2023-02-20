@@ -72,6 +72,10 @@
 	text-align: right;
 }
 
+textarea.Input {
+	line-height: inherit;
+}
+
 .Label {
 	order: -1;
 	text-transform: capitalize;
