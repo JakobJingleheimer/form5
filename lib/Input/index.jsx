@@ -13,7 +13,7 @@ export { styles as inputClasses };
 
 export default function Input({
 	arrangement = Input.ARRANGEMENTS.INLINE,
-	as: Field = 'input',
+	as: Tag = 'input',
 	className,
 	fluid,
 	id,
@@ -39,6 +39,9 @@ export default function Input({
 	id ||= name;
 
 	if (options) others.list = `${name}_options`;
+	if (Tag === 'textarea') {
+		type = null;
+	}
 
 	others.onBlur = (e) => {
 		if (readOnly) return;
@@ -94,7 +97,7 @@ export default function Input({
 			touched={touched}
 		>
 			<div className={styles.InnerWrapper}>
-				<Field
+				<Tag
 					className={styles.Input}
 					name={name}
 					id={id}
