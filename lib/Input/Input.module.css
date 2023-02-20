@@ -56,6 +56,11 @@
 	width: 100%;
 }
 
+.Input[type="checkbox"],
+.Input[type="radio"] {
+	margin: unset;
+}
+
 .Input[type="date"],
 .Input[type="datetime"],
 .Input[type="datetime-local"],
