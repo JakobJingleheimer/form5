@@ -40,6 +40,7 @@ export default function Input({
 
 	if (options) others.list = `${name}_options`;
 	if (Tag === 'textarea') {
+		others.rows = 3;
 		type = null;
 	}
 
