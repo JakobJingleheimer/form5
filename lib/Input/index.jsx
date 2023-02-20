@@ -99,7 +99,7 @@ export default function Input({
 		>
 			<div className={styles.InnerWrapper}>
 				<Tag
-					className={styles.Input}
+					className={classnames(styles.Input, className)}
 					name={name}
 					id={id}
 					onInvalid={(e) => {
