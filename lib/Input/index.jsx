@@ -90,7 +90,7 @@ export default function Input({
 			className={classnames(
 				styles.InputField,
 				{
-					[styles.FluidInputField]: fluid,
+					[styles.Fluid]: fluid,
 				},
 			)}
 			invalid={isInvalid ? '' : null}

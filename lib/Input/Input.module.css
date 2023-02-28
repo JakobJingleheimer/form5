@@ -20,7 +20,8 @@
 	display: inline-flex;
 }
 
-.FluidInputField {
+.Fluid {
+	flex: 1;
 	grid-template-columns: 100%;
 }
 
