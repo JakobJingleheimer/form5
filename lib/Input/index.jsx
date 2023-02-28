@@ -25,7 +25,6 @@ export default function Input({
 	readOnly,
 	required,
 	type = 'text',
-	value,
 	...others
 }) {
 	const [error, setError] = useState('');
@@ -83,6 +82,8 @@ export default function Input({
 		required,
 	};
 
+	const isSwitch = switchTypes.has(type);
+
 	return (
 		<div
 			arrangement={arrangement}
@@ -95,6 +96,7 @@ export default function Input({
 			invalid={isInvalid ? '' : null}
 			{...sharedConstraints}
 			pristine={pristine}
+			switch={isSwitch ? '' : null}
 			touched={touched}
 		>
 			<div className={styles.InnerWrapper}>
@@ -109,7 +111,6 @@ export default function Input({
 					}}
 					{...sharedConstraints}
 					type={type}
-					value={value}
 					{...others}
 				/>
 				{isInvalid && (
@@ -160,4 +161,9 @@ const dtTypes = new Set([
 	'datetime',
 	'datetime-local',
 	'time',
+]);
+
+const switchTypes = new Set([
+	'checkbox',
+	'radio',
 ]);

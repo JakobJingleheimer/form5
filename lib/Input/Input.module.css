@@ -77,8 +77,11 @@ textarea.Input {
 }
 
 .Label {
-	order: -1;
 	text-transform: capitalize;
+}
+
+.InputField:not([switch]) .Label {
+	order: -1;
 }
 
 .InputField[required] .Label::after {
@@ -98,13 +101,20 @@ textarea.Input {
 	color: var(--colour-danger);
 }
 
+.Input:focus + .Error,
+.Input:hover + .Error {
+	opacity: 1;
+}
+
 .Error {
 	background-color: var(--colour-background);
 	border: 1px solid;
 	border-radius: var(--default-border-radius);
 	display: inline-block;
+	opacity: 0;
 	padding: 0.5em;
 	position: absolute;
+	transition: opacity var(--default-transition);;
 	z-index: 1;
 }
 .Error::after {
@@ -184,9 +194,10 @@ input[variant="toggle"]::after {
 	content: '';
 	display: inline-block;
 	height: 100%;
-	transition:
-		background-color var(--default-transition),
-		translate var(--default-transition);
+	transition-property:
+		background-color,
+		translate;
+	transition-duration: var(--default-transition);
 	translate: calc(-50% + 1px);
 	width: 50%;
 }
