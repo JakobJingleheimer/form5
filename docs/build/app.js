@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-78661-QeyLoj7bBKmk/react-form5/lib/Group/Group.module.css.js
-var digest = "00b55400e7a9c08a183ca0b28be5e69c8bfa67cf40495350e405effb3233bf44";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-94105-okG64rFqfhd3/react-form5/lib/Group/Group.module.css.js
+var digest = "7fe96b66523be257176840a1de29a4be82472704ef8d4f089a29ea7d760e2dc9";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,7 +24622,7 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-78661-QeyLoj7bBKmk/react-form5/lib/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-94105-okG64rFqfhd3/react-form5/lib/Button/Button.module.css.js
 var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
 var css2 = `._Button_iyuoe_1 {
 	font: unset;
@@ -26147,8 +26147,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-78661-QeyLoj7bBKmk/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "c6044d974b2031bcec4c080535b5a0fe0d4ca494661a6782d4b3489a579cfe79";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-94105-okG64rFqfhd3/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "48a38f646c9e720333d8895a86bed7b6cd87d2da7c9561c2a902001de7f85310";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26354,117 +26354,118 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-78661-QeyLoj7bBKmk/react-form5/lib/Input/Input.module.css.js
-var digest4 = "7a6eeeb25d7f7f2d7bb2511e2ffacf9dae899a5fd100430f2a2c4d93f6b97380";
-var css4 = `._InputField_lwmxj_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-94105-okG64rFqfhd3/react-form5/lib/Input/Input.module.css.js
+var digest4 = "1bdb4182902e4fc3e9ac96c0cd8ac3da34b348dbc03ae3ffaade7b2ca5b5b181";
+var css4 = `._InputField_16fi6_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_lwmxj_1[arrangement="inline"] {
+._InputField_16fi6_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_lwmxj_1[arrangement="inline"],
-._InputField_lwmxj_1[arrangement="stacked"] {
+._InputField_16fi6_1[arrangement="inline"],
+._InputField_16fi6_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_lwmxj_1[arrangement="stacked"] {
+._InputField_16fi6_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_lwmxj_1[arrangement="stacked"],
-._InputField_lwmxj_1[arrangement="stand-alone"] {
+._InputField_16fi6_1[arrangement="stacked"],
+._InputField_16fi6_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_lwmxj_1[arrangement="stand-alone"] {
+._InputField_16fi6_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._FluidInputField_lwmxj_23 {
+._Fluid_16fi6_23 {
+	flex: 1;
 	grid-template-columns: 100%;
 }
 
-._InnerWrapper_lwmxj_27 {
+._InnerWrapper_16fi6_28 {
 	display: flex;
 	flex: 1;
 	position: relative;
 }
 
-._Input_lwmxj_1 {
+._Input_16fi6_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_lwmxj_1:focus {
+._Input_16fi6_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_lwmxj_1:disabled {
+._Input_16fi6_1:disabled {
 	cursor: default;
 }
-._Input_lwmxj_1:disabled,
-._Input_lwmxj_1[readonly] {
+._Input_16fi6_1:disabled,
+._Input_16fi6_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._InputField_lwmxj_1[readonly] ._Input_lwmxj_1,
-._InputField_lwmxj_1[readonly] ._Label_lwmxj_51 {
+._InputField_16fi6_1[readonly] ._Input_16fi6_1,
+._InputField_16fi6_1[readonly] ._Label_16fi6_52 {
 	cursor: not-allowed;
 }
 
-._Input_lwmxj_1:not([type="checkbox"]):not([type="radio"]) {
+._Input_16fi6_1:not([type="checkbox"]):not([type="radio"]) {
 	width: 100%;
 }
 
-._Input_lwmxj_1[type="checkbox"],
-._Input_lwmxj_1[type="radio"] {
+._Input_16fi6_1[type="checkbox"],
+._Input_16fi6_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_lwmxj_1[type="date"],
-._Input_lwmxj_1[type="datetime"],
-._Input_lwmxj_1[type="datetime-local"],
-._Input_lwmxj_1[type="time"] {
+._Input_16fi6_1[type="date"],
+._Input_16fi6_1[type="datetime"],
+._Input_16fi6_1[type="datetime-local"],
+._Input_16fi6_1[type="time"] {
 	font: inherit;
 }
 
-._Input_lwmxj_1[type="number"] {
+._Input_16fi6_1[type="number"] {
 	text-align: right;
 }
 
-textarea._Input_lwmxj_1 {
+textarea._Input_16fi6_1 {
 	line-height: inherit;
 }
 
-._Label_lwmxj_51 {
+._Label_16fi6_52 {
 	text-transform: capitalize;
 }
 
-._InputField_lwmxj_1:not([switch]) ._Label_lwmxj_51 {
+._InputField_16fi6_1:not([switch]) ._Label_16fi6_52 {
 	order: -1;
 }
 
-._InputField_lwmxj_1[required] ._Label_lwmxj_51::after {
+._InputField_16fi6_1[required] ._Label_16fi6_52::after {
 	content: '*';
 	margin-left: 0.1em;
 }
-._InputField_lwmxj_1[touched][invalid] ._Input_lwmxj_1:focus {
+._InputField_16fi6_1[touched][invalid] ._Input_16fi6_1:focus {
 	outline-color: var(--colour-danger);
 }
-._InputField_lwmxj_1[touched][invalid] ._Input_lwmxj_1,
-._Error_lwmxj_95 {
+._InputField_16fi6_1[touched][invalid] ._Input_16fi6_1,
+._Error_16fi6_96 {
 	border-color: var(--colour-danger);
 }
-._InputField_lwmxj_1[touched][invalid],
-._InputField_lwmxj_1[touched][invalid],
-._Error_lwmxj_95 {
+._InputField_16fi6_1[touched][invalid],
+._InputField_16fi6_1[touched][invalid],
+._Error_16fi6_96 {
 	color: var(--colour-danger);
 }
 
-._Input_lwmxj_1:focus + ._Error_lwmxj_95,
-._Input_lwmxj_1:hover + ._Error_lwmxj_95 {
+._Input_16fi6_1:focus + ._Error_16fi6_96,
+._Input_16fi6_1:hover + ._Error_16fi6_96 {
 	opacity: 1;
 }
 
-._Error_lwmxj_95 {
+._Error_16fi6_96 {
 	background-color: var(--colour-background);
 	border: 1px solid;
 	border-radius: var(--default-border-radius);
@@ -26475,7 +26476,7 @@ textarea._Input_lwmxj_1 {
 	transition: opacity var(--default-transition);;
 	z-index: 1;
 }
-._Error_lwmxj_95::after {
+._Error_16fi6_96::after {
 	background-color: inherit;
 	border: inherit;
 	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
@@ -26489,13 +26490,13 @@ textarea._Input_lwmxj_1 {
 
 @media only screen and (max-width: 736px) {
 	/* On mobile, position errors below field */
-	._Error_lwmxj_95 {
+	._Error_16fi6_96 {
 		bottom: 0;
 		left: 0;
 		margin: 0 auto;
 		translate: 0 calc(100% + 1em);
 	}
-	._Error_lwmxj_95::after {
+	._Error_16fi6_96::after {
 		left: 50%;
 		rotate: -45deg;
 		top: 0;
@@ -26504,26 +26505,26 @@ textarea._Input_lwmxj_1 {
 
 @media only screen and (min-width: 737px) {
 	/* Above mobile, position errors right of field */
-	._InputField_lwmxj_1[arrangement="inline"] ._Error_lwmxj_95,
-	._InputField_lwmxj_1[arrangement="stand-alone"] ._Error_lwmxj_95 {
+	._InputField_16fi6_1[arrangement="inline"] ._Error_16fi6_96,
+	._InputField_16fi6_1[arrangement="stand-alone"] ._Error_16fi6_96 {
 		margin-left: auto;
 		margin-right: 0;
 		top: 50%;
 		translate: calc(100% + 1em) -50%;
 	}
-	._InputField_lwmxj_1[arrangement="inline"] ._Error_lwmxj_95::after,
-	._InputField_lwmxj_1[arrangement="stand-alone"] ._Error_lwmxj_95::after {
+	._InputField_16fi6_1[arrangement="inline"] ._Error_16fi6_96::after,
+	._InputField_16fi6_1[arrangement="stand-alone"] ._Error_16fi6_96::after {
 		left: 0;
 		rotate: 225deg;
 		top: 50%;
 	}
 
-	._InputField_lwmxj_1[arrangement="stacked"] ._Error_lwmxj_95 {
+	._InputField_16fi6_1[arrangement="stacked"] ._Error_16fi6_96 {
 		margin: auto;
 		top: 100%;
 		translate: 0 1em;
 	}
-	._InputField_lwmxj_1[arrangement="stacked"] ._Error_lwmxj_95::after {
+	._InputField_16fi6_1[arrangement="stacked"] ._Error_16fi6_96::after {
 		left: 50%;
 		rotate: 315deg;
 		top: 0;
@@ -26578,7 +26579,7 @@ input[variant="toggle"][appearane="success"]:checked::after {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_lwmxj_1", "FluidInputField": "_FluidInputField_lwmxj_23", "InnerWrapper": "_InnerWrapper_lwmxj_27", "Input": "_Input_lwmxj_1", "Label": "_Label_lwmxj_51", "Error": "_Error_lwmxj_95" };
+var Input_module_css_default = { "InputField": "_InputField_16fi6_1", "Fluid": "_Fluid_16fi6_23", "InnerWrapper": "_InnerWrapper_16fi6_28", "Input": "_Input_16fi6_1", "Label": "_Label_16fi6_52", "Error": "_Error_16fi6_96" };
 
 // lib/Input/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26653,7 +26654,7 @@ function Input({
     className: (0, import_classnames4.default)(
       Input_module_css_default.InputField,
       {
-        [Input_module_css_default.FluidInputField]: fluid
+        [Input_module_css_default.Fluid]: fluid
       }
     ),
     invalid: isInvalid ? "" : null,
@@ -26886,7 +26887,7 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-78661-QeyLoj7bBKmk/react-form5/lib/Form/Form.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-94105-okG64rFqfhd3/react-form5/lib/Form/Form.module.css.js
 var digest5 = "dae0b6b4ca1f654c97e6d6b20f692633cac8384291ddf4b16632b9431fbf587d";
 var css5 = `._Form_13cn9_1,
 fieldset {
@@ -26975,7 +26976,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-78661-QeyLoj7bBKmk/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-94105-okG64rFqfhd3/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
