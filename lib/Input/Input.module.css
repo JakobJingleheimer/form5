@@ -105,6 +105,7 @@ textarea.Input {
 .Input:focus + .Error,
 .Input:hover + .Error {
 	opacity: 1;
+	pointer-events: all;
 }
 
 .Error {
@@ -114,6 +115,7 @@ textarea.Input {
 	display: inline-block;
 	opacity: 0;
 	padding: 0.5em;
+	pointer-events: none;
 	position: absolute;
 	transition: opacity var(--default-transition);;
 	z-index: 1;
