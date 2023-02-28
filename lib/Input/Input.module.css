@@ -77,8 +77,11 @@ textarea.Input {
 }
 
 .Label {
-	order: -1;
 	text-transform: capitalize;
+}
+
+.InputField:not([switch]) .Label {
+	order: -1;
 }
 
 .InputField[required] .Label::after {

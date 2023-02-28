@@ -83,6 +83,8 @@ export default function Input({
 		required,
 	};
 
+	const isSwitch = switchTypes.has(type);
+
 	return (
 		<div
 			arrangement={arrangement}
@@ -95,6 +97,7 @@ export default function Input({
 			invalid={isInvalid ? '' : null}
 			{...sharedConstraints}
 			pristine={pristine}
+			switch={isSwitch ? '' : null}
 			touched={touched}
 		>
 			<div className={styles.InnerWrapper}>
@@ -160,4 +163,9 @@ const dtTypes = new Set([
 	'datetime',
 	'datetime-local',
 	'time',
+]);
+
+const switchTypes = new Set([
+	'checkbox',
+	'radio',
 ]);
