@@ -25,7 +25,6 @@ export default function Input({
 	readOnly,
 	required,
 	type = 'text',
-	value,
 	...others
 }) {
 	const [error, setError] = useState('');
@@ -112,7 +111,6 @@ export default function Input({
 					}}
 					{...sharedConstraints}
 					type={type}
-					value={value}
 					{...others}
 				/>
 				{isInvalid && (
