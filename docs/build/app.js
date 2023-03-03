@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9311-FgUOuRG9LkWz/react-form5/lib/Group/Group.module.css.js
-var digest = "94708d75a39f8eed80100483f45f221041cc48f70dd006da553489992390aa49";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/Group/Group.module.css.js
+var digest = "00b55400e7a9c08a183ca0b28be5e69c8bfa67cf40495350e405effb3233bf44";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,7 +24622,7 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9311-FgUOuRG9LkWz/react-form5/lib/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/Button/Button.module.css.js
 var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
 var css2 = `._Button_iyuoe_1 {
 	font: unset;
@@ -26147,8 +26147,8 @@ var map_default = map;
 // lib/FileInput/index.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9311-FgUOuRG9LkWz/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "d9a30ff6c2cb62459d25707631d70c8a6ce929865e7347eccda9958f239114ba";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/FileInput/FileInput.module.css.js
+var digest3 = "c6044d974b2031bcec4c080535b5a0fe0d4ca494661a6782d4b3489a579cfe79";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26354,119 +26354,119 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9311-FgUOuRG9LkWz/react-form5/lib/Input/Input.module.css.js
-var digest4 = "24c2b9d83cdc0c02b638e8229cb313d7dc788101634c2e3ac25bd778da67bd77";
-var css4 = `._InputField_p8ufx_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/Input/Input.module.css.js
+var digest4 = "7a6eeeb25d7f7f2d7bb2511e2ffacf9dae899a5fd100430f2a2c4d93f6b97380";
+var css4 = `._InputField_uvkdw_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_p8ufx_1[arrangement="inline"] {
+._InputField_uvkdw_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_p8ufx_1[arrangement="inline"],
-._InputField_p8ufx_1[arrangement="stacked"] {
+._InputField_uvkdw_1[arrangement="inline"],
+._InputField_uvkdw_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_p8ufx_1[arrangement="stacked"] {
+._InputField_uvkdw_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_p8ufx_1[arrangement="stacked"],
-._InputField_p8ufx_1[arrangement="stand-alone"] {
+._InputField_uvkdw_1[arrangement="stacked"],
+._InputField_uvkdw_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_p8ufx_1[arrangement="stand-alone"] {
+._InputField_uvkdw_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._Fluid_p8ufx_23 {
+._Fluid_uvkdw_23 {
 	flex: 1;
 	grid-template-columns: 100%;
 }
 
-._InnerWrapper_p8ufx_28 {
+._InnerWrapper_uvkdw_28 {
 	display: flex;
 	flex: 1;
 	position: relative;
 }
 
-._Input_p8ufx_1 {
+._Input_uvkdw_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_p8ufx_1:focus {
+._Input_uvkdw_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_p8ufx_1:disabled {
+._Input_uvkdw_1:disabled {
 	cursor: default;
 }
-._Input_p8ufx_1:disabled,
-._Input_p8ufx_1[readonly] {
+._Input_uvkdw_1:disabled,
+._Input_uvkdw_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._InputField_p8ufx_1[readonly] ._Input_p8ufx_1,
-._InputField_p8ufx_1[readonly] ._Label_p8ufx_52 {
+._InputField_uvkdw_1[readonly] ._Input_uvkdw_1,
+._InputField_uvkdw_1[readonly] ._Label_uvkdw_52 {
 	cursor: not-allowed;
 }
 
-._Input_p8ufx_1:not([type="checkbox"]):not([type="radio"]) {
+._Input_uvkdw_1:not([type="checkbox"]):not([type="radio"]) {
 	width: 100%;
 }
 
-._Input_p8ufx_1[type="checkbox"],
-._Input_p8ufx_1[type="radio"] {
+._Input_uvkdw_1[type="checkbox"],
+._Input_uvkdw_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_p8ufx_1[type="date"],
-._Input_p8ufx_1[type="datetime"],
-._Input_p8ufx_1[type="datetime-local"],
-._Input_p8ufx_1[type="time"] {
+._Input_uvkdw_1[type="date"],
+._Input_uvkdw_1[type="datetime"],
+._Input_uvkdw_1[type="datetime-local"],
+._Input_uvkdw_1[type="time"] {
 	font: inherit;
 }
 
-._Input_p8ufx_1[type="number"] {
+._Input_uvkdw_1[type="number"] {
 	text-align: right;
 }
 
-textarea._Input_p8ufx_1 {
+textarea._Input_uvkdw_1 {
 	line-height: inherit;
 }
 
-._Label_p8ufx_52 {
+._Label_uvkdw_52 {
 	text-transform: capitalize;
 }
 
-._InputField_p8ufx_1:not([switch]) ._Label_p8ufx_52 {
+._InputField_uvkdw_1:not([switch]) ._Label_uvkdw_52 {
 	order: -1;
 }
 
-._InputField_p8ufx_1[required] ._Label_p8ufx_52::after {
+._InputField_uvkdw_1[required] ._Label_uvkdw_52::after {
 	content: '*';
 	margin-left: 0.1em;
 }
-._InputField_p8ufx_1[touched][invalid] ._Input_p8ufx_1:focus {
+._InputField_uvkdw_1[touched][invalid] ._Input_uvkdw_1:focus {
 	outline-color: var(--colour-danger);
 }
-._InputField_p8ufx_1[touched][invalid] ._Input_p8ufx_1,
-._Error_p8ufx_96 {
+._InputField_uvkdw_1[touched][invalid] ._Input_uvkdw_1,
+._Error_uvkdw_96 {
 	border-color: var(--colour-danger);
 }
-._InputField_p8ufx_1[touched][invalid],
-._InputField_p8ufx_1[touched][invalid],
-._Error_p8ufx_96 {
+._InputField_uvkdw_1[touched][invalid],
+._InputField_uvkdw_1[touched][invalid],
+._Error_uvkdw_96 {
 	color: var(--colour-danger);
 }
 
-._Input_p8ufx_1:focus + ._Error_p8ufx_96,
-._Input_p8ufx_1:hover + ._Error_p8ufx_96 {
+._Input_uvkdw_1:focus + ._Error_uvkdw_96,
+._Input_uvkdw_1:hover + ._Error_uvkdw_96 {
 	opacity: 1;
 	pointer-events: all;
 }
 
-._Error_p8ufx_96 {
+._Error_uvkdw_96 {
 	background-color: var(--colour-background);
 	border: 1px solid;
 	border-radius: var(--default-border-radius);
@@ -26478,7 +26478,7 @@ textarea._Input_p8ufx_1 {
 	transition: opacity var(--default-transition);;
 	z-index: 1;
 }
-._Error_p8ufx_96::after {
+._Error_uvkdw_96::after {
 	background-color: inherit;
 	border: inherit;
 	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
@@ -26492,13 +26492,13 @@ textarea._Input_p8ufx_1 {
 
 @media only screen and (max-width: 736px) {
 	/* On mobile, position errors below field */
-	._Error_p8ufx_96 {
+	._Error_uvkdw_96 {
 		bottom: 0;
 		left: 0;
 		margin: 0 auto;
 		translate: 0 calc(100% + 1em);
 	}
-	._Error_p8ufx_96::after {
+	._Error_uvkdw_96::after {
 		left: 50%;
 		rotate: -45deg;
 		top: 0;
@@ -26507,26 +26507,26 @@ textarea._Input_p8ufx_1 {
 
 @media only screen and (min-width: 737px) {
 	/* Above mobile, position errors right of field */
-	._InputField_p8ufx_1[arrangement="inline"] ._Error_p8ufx_96,
-	._InputField_p8ufx_1[arrangement="stand-alone"] ._Error_p8ufx_96 {
+	._InputField_uvkdw_1[arrangement="inline"] ._Error_uvkdw_96,
+	._InputField_uvkdw_1[arrangement="stand-alone"] ._Error_uvkdw_96 {
 		margin-left: auto;
 		margin-right: 0;
 		top: 50%;
 		translate: calc(100% + 1em) -50%;
 	}
-	._InputField_p8ufx_1[arrangement="inline"] ._Error_p8ufx_96::after,
-	._InputField_p8ufx_1[arrangement="stand-alone"] ._Error_p8ufx_96::after {
+	._InputField_uvkdw_1[arrangement="inline"] ._Error_uvkdw_96::after,
+	._InputField_uvkdw_1[arrangement="stand-alone"] ._Error_uvkdw_96::after {
 		left: 0;
 		rotate: 225deg;
 		top: 50%;
 	}
 
-	._InputField_p8ufx_1[arrangement="stacked"] ._Error_p8ufx_96 {
+	._InputField_uvkdw_1[arrangement="stacked"] ._Error_uvkdw_96 {
 		margin: auto;
 		top: 100%;
 		translate: 0 1em;
 	}
-	._InputField_p8ufx_1[arrangement="stacked"] ._Error_p8ufx_96::after {
+	._InputField_uvkdw_1[arrangement="stacked"] ._Error_uvkdw_96::after {
 		left: 50%;
 		rotate: 315deg;
 		top: 0;
@@ -26542,10 +26542,10 @@ input[variant="toggle"] {
 	border-radius: 1rem;
 	display: inline-flex;
 	flex-direction: row;
-	height: 1rem;
+	height: 1em;
 	justify-content: center;
 	padding: unset;
-	width: 2rem;
+	width: 2em;
 }
 
 input[variant="toggle"]::after {
@@ -26555,6 +26555,7 @@ input[variant="toggle"]::after {
 	content: '';
 	display: inline-block;
 	height: 100%;
+	scale: 1.3;
 	transition-property:
 		background-color,
 		translate;
@@ -26581,7 +26582,7 @@ input[variant="toggle"][appearane="success"]:checked::after {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_p8ufx_1", "Fluid": "_Fluid_p8ufx_23", "InnerWrapper": "_InnerWrapper_p8ufx_28", "Input": "_Input_p8ufx_1", "Label": "_Label_p8ufx_52", "Error": "_Error_p8ufx_96" };
+var Input_module_css_default = { "InputField": "_InputField_uvkdw_1", "Fluid": "_Fluid_uvkdw_23", "InnerWrapper": "_InnerWrapper_uvkdw_28", "Input": "_Input_uvkdw_1", "Label": "_Label_uvkdw_52", "Error": "_Error_uvkdw_96" };
 
 // lib/Input/index.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26889,8 +26890,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9311-FgUOuRG9LkWz/react-form5/lib/Form/Form.module.css.js
-var digest5 = "1699639d46dd636210fe51f734c18aeb50620d810a094f3eb271ad30906bbe61";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/Form/Form.module.css.js
+var digest5 = "dae0b6b4ca1f654c97e6d6b20f692633cac8384291ddf4b16632b9431fbf587d";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26978,7 +26979,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9311-FgUOuRG9LkWz/react-form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/docs/Demo.module.css.js
 var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
