@@ -2,10 +2,10 @@ import classnames from 'classnames';
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import Button from 'react-form5/Button';
-import FileInput from 'react-form5/FileInput';
-import Input from 'react-form5/Input';
-import Form from 'react-form5/Form';
+import Button from 'form5/react/Button';
+import FileInput from 'form5/react/FileInput';
+import Input from 'form5/react/Input';
+import Form from 'form5/react/Form';
 
 import '../node_modules/reset.css/reset.css';
 import styles from './Demo.module.css';

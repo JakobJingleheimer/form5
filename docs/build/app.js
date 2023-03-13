@@ -4,7 +4,7 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __defNormalProp = (obj, key, value2) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value: value2 }) : obj[key] = value2;
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
@@ -20,9 +20,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
+var __publicField = (obj, key, value2) => {
+  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value2);
+  return value2;
 };
 
 // node_modules/classnames/index.js
@@ -287,31 +287,31 @@ var require_react_development = __commonJS({
         function isArray2(a) {
           return isArrayImpl(a);
         }
-        function typeName(value) {
+        function typeName(value2) {
           {
             var hasToStringTag = typeof Symbol === "function" && Symbol.toStringTag;
-            var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
+            var type = hasToStringTag && value2[Symbol.toStringTag] || value2.constructor.name || "Object";
             return type;
           }
         }
-        function willCoercionThrow(value) {
+        function willCoercionThrow(value2) {
           {
             try {
-              testStringCoercion(value);
+              testStringCoercion(value2);
               return false;
             } catch (e) {
               return true;
             }
           }
         }
-        function testStringCoercion(value) {
-          return "" + value;
+        function testStringCoercion(value2) {
+          return "" + value2;
         }
-        function checkKeyStringCoercion(value) {
+        function checkKeyStringCoercion(value2) {
           {
-            if (willCoercionThrow(value)) {
-              error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
-              return testStringCoercion(value);
+            if (willCoercionThrow(value2)) {
+              error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value2));
+              return testStringCoercion(value2);
             }
           }
         }
@@ -1084,19 +1084,19 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useImperativeHandle(ref, create, deps);
         }
-        function useDebugValue(value, formatterFn) {
+        function useDebugValue(value2, formatterFn) {
           {
             var dispatcher = resolveDispatcher();
-            return dispatcher.useDebugValue(value, formatterFn);
+            return dispatcher.useDebugValue(value2, formatterFn);
           }
         }
         function useTransition() {
           var dispatcher = resolveDispatcher();
           return dispatcher.useTransition();
         }
-        function useDeferredValue(value) {
+        function useDeferredValue(value2) {
           var dispatcher = resolveDispatcher();
-          return dispatcher.useDeferredValue(value);
+          return dispatcher.useDeferredValue(value2);
         }
         function useId() {
           var dispatcher = resolveDispatcher();
@@ -2451,71 +2451,71 @@ var require_react_dom_development = __commonJS({
         }
         var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
         var hasOwnProperty11 = Object.prototype.hasOwnProperty;
-        function typeName(value) {
+        function typeName(value2) {
           {
             var hasToStringTag = typeof Symbol === "function" && Symbol.toStringTag;
-            var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
+            var type = hasToStringTag && value2[Symbol.toStringTag] || value2.constructor.name || "Object";
             return type;
           }
         }
-        function willCoercionThrow(value) {
+        function willCoercionThrow(value2) {
           {
             try {
-              testStringCoercion(value);
+              testStringCoercion(value2);
               return false;
             } catch (e) {
               return true;
             }
           }
         }
-        function testStringCoercion(value) {
-          return "" + value;
+        function testStringCoercion(value2) {
+          return "" + value2;
         }
-        function checkAttributeStringCoercion(value, attributeName) {
+        function checkAttributeStringCoercion(value2, attributeName) {
           {
-            if (willCoercionThrow(value)) {
-              error("The provided `%s` attribute is an unsupported type %s. This value must be coerced to a string before before using it here.", attributeName, typeName(value));
-              return testStringCoercion(value);
+            if (willCoercionThrow(value2)) {
+              error("The provided `%s` attribute is an unsupported type %s. This value must be coerced to a string before before using it here.", attributeName, typeName(value2));
+              return testStringCoercion(value2);
             }
           }
         }
-        function checkKeyStringCoercion(value) {
+        function checkKeyStringCoercion(value2) {
           {
-            if (willCoercionThrow(value)) {
-              error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
-              return testStringCoercion(value);
+            if (willCoercionThrow(value2)) {
+              error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value2));
+              return testStringCoercion(value2);
             }
           }
         }
-        function checkPropStringCoercion(value, propName) {
+        function checkPropStringCoercion(value2, propName) {
           {
-            if (willCoercionThrow(value)) {
-              error("The provided `%s` prop is an unsupported type %s. This value must be coerced to a string before before using it here.", propName, typeName(value));
-              return testStringCoercion(value);
+            if (willCoercionThrow(value2)) {
+              error("The provided `%s` prop is an unsupported type %s. This value must be coerced to a string before before using it here.", propName, typeName(value2));
+              return testStringCoercion(value2);
             }
           }
         }
-        function checkCSSPropertyStringCoercion(value, propName) {
+        function checkCSSPropertyStringCoercion(value2, propName) {
           {
-            if (willCoercionThrow(value)) {
-              error("The provided `%s` CSS property is an unsupported type %s. This value must be coerced to a string before before using it here.", propName, typeName(value));
-              return testStringCoercion(value);
+            if (willCoercionThrow(value2)) {
+              error("The provided `%s` CSS property is an unsupported type %s. This value must be coerced to a string before before using it here.", propName, typeName(value2));
+              return testStringCoercion(value2);
             }
           }
         }
-        function checkHtmlStringCoercion(value) {
+        function checkHtmlStringCoercion(value2) {
           {
-            if (willCoercionThrow(value)) {
-              error("The provided HTML markup uses a value of unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
-              return testStringCoercion(value);
+            if (willCoercionThrow(value2)) {
+              error("The provided HTML markup uses a value of unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value2));
+              return testStringCoercion(value2);
             }
           }
         }
-        function checkFormFieldValueStringCoercion(value) {
+        function checkFormFieldValueStringCoercion(value2) {
           {
-            if (willCoercionThrow(value)) {
-              error("Form field values (value, checked, defaultValue, or defaultChecked props) must be strings, not %s. This value must be coerced to a string before before using it here.", typeName(value));
-              return testStringCoercion(value);
+            if (willCoercionThrow(value2)) {
+              error("Form field values (value, checked, defaultValue, or defaultChecked props) must be strings, not %s. This value must be coerced to a string before before using it here.", typeName(value2));
+              return testStringCoercion(value2);
             }
           }
         }
@@ -2560,11 +2560,11 @@ var require_react_dom_development = __commonJS({
           }
           return false;
         }
-        function shouldRemoveAttributeWithWarning(name, value, propertyInfo, isCustomComponentTag) {
+        function shouldRemoveAttributeWithWarning(name, value2, propertyInfo, isCustomComponentTag) {
           if (propertyInfo !== null && propertyInfo.type === RESERVED) {
             return false;
           }
-          switch (typeof value) {
+          switch (typeof value2) {
             case "function":
             case "symbol":
               return true;
@@ -2583,11 +2583,11 @@ var require_react_dom_development = __commonJS({
               return false;
           }
         }
-        function shouldRemoveAttribute(name, value, propertyInfo, isCustomComponentTag) {
-          if (value === null || typeof value === "undefined") {
+        function shouldRemoveAttribute(name, value2, propertyInfo, isCustomComponentTag) {
+          if (value2 === null || typeof value2 === "undefined") {
             return true;
           }
-          if (shouldRemoveAttributeWithWarning(name, value, propertyInfo, isCustomComponentTag)) {
+          if (shouldRemoveAttributeWithWarning(name, value2, propertyInfo, isCustomComponentTag)) {
             return true;
           }
           if (isCustomComponentTag) {
@@ -2596,13 +2596,13 @@ var require_react_dom_development = __commonJS({
           if (propertyInfo !== null) {
             switch (propertyInfo.type) {
               case BOOLEAN:
-                return !value;
+                return !value2;
               case OVERLOADED_BOOLEAN:
-                return value === false;
+                return value2 === false;
               case NUMERIC:
-                return isNaN(value);
+                return isNaN(value2);
               case POSITIVE_NUMERIC:
-                return isNaN(value) || value < 1;
+                return isNaN(value2) || value2 < 1;
             }
           }
           return false;
@@ -2951,17 +2951,17 @@ var require_react_dom_development = __commonJS({
               var stringValue = null;
               if (propertyInfo.type === OVERLOADED_BOOLEAN) {
                 if (node.hasAttribute(attributeName)) {
-                  var value = node.getAttribute(attributeName);
-                  if (value === "") {
+                  var value2 = node.getAttribute(attributeName);
+                  if (value2 === "") {
                     return true;
                   }
                   if (shouldRemoveAttribute(name, expected, propertyInfo, false)) {
-                    return value;
+                    return value2;
                   }
-                  if (value === "" + expected) {
+                  if (value2 === "" + expected) {
                     return expected;
                   }
-                  return value;
+                  return value2;
                 }
               } else if (node.hasAttribute(attributeName)) {
                 if (shouldRemoveAttribute(name, expected, propertyInfo, false)) {
@@ -2990,34 +2990,34 @@ var require_react_dom_development = __commonJS({
             if (!node.hasAttribute(name)) {
               return expected === void 0 ? void 0 : null;
             }
-            var value = node.getAttribute(name);
+            var value2 = node.getAttribute(name);
             {
               checkAttributeStringCoercion(expected, name);
             }
-            if (value === "" + expected) {
+            if (value2 === "" + expected) {
               return expected;
             }
-            return value;
+            return value2;
           }
         }
-        function setValueForProperty(node, name, value, isCustomComponentTag) {
+        function setValueForProperty(node, name, value2, isCustomComponentTag) {
           var propertyInfo = getPropertyInfo(name);
           if (shouldIgnoreAttribute(name, propertyInfo, isCustomComponentTag)) {
             return;
           }
-          if (shouldRemoveAttribute(name, value, propertyInfo, isCustomComponentTag)) {
-            value = null;
+          if (shouldRemoveAttribute(name, value2, propertyInfo, isCustomComponentTag)) {
+            value2 = null;
           }
           if (isCustomComponentTag || propertyInfo === null) {
             if (isAttributeNameSafe(name)) {
               var _attributeName = name;
-              if (value === null) {
+              if (value2 === null) {
                 node.removeAttribute(_attributeName);
               } else {
                 {
-                  checkAttributeStringCoercion(value, name);
+                  checkAttributeStringCoercion(value2, name);
                 }
-                node.setAttribute(_attributeName, "" + value);
+                node.setAttribute(_attributeName, "" + value2);
               }
             }
             return;
@@ -3025,28 +3025,28 @@ var require_react_dom_development = __commonJS({
           var mustUseProperty = propertyInfo.mustUseProperty;
           if (mustUseProperty) {
             var propertyName = propertyInfo.propertyName;
-            if (value === null) {
+            if (value2 === null) {
               var type = propertyInfo.type;
               node[propertyName] = type === BOOLEAN ? false : "";
             } else {
-              node[propertyName] = value;
+              node[propertyName] = value2;
             }
             return;
           }
           var attributeName = propertyInfo.attributeName, attributeNamespace = propertyInfo.attributeNamespace;
-          if (value === null) {
+          if (value2 === null) {
             node.removeAttribute(attributeName);
           } else {
             var _type = propertyInfo.type;
             var attributeValue;
-            if (_type === BOOLEAN || _type === OVERLOADED_BOOLEAN && value === true) {
+            if (_type === BOOLEAN || _type === OVERLOADED_BOOLEAN && value2 === true) {
               attributeValue = "";
             } else {
               {
                 {
-                  checkAttributeStringCoercion(value, attributeName);
+                  checkAttributeStringCoercion(value2, attributeName);
                 }
-                attributeValue = "" + value;
+                attributeValue = "" + value2;
               }
               if (propertyInfo.sanitizeURL) {
                 sanitizeURL(attributeValue.toString());
@@ -3564,21 +3564,21 @@ var require_react_dom_development = __commonJS({
             isRendering = rendering;
           }
         }
-        function toString2(value) {
-          return "" + value;
+        function toString2(value2) {
+          return "" + value2;
         }
-        function getToStringValue(value) {
-          switch (typeof value) {
+        function getToStringValue(value2) {
+          switch (typeof value2) {
             case "boolean":
             case "number":
             case "string":
             case "undefined":
-              return value;
+              return value2;
             case "object":
               {
-                checkFormFieldValueStringCoercion(value);
+                checkFormFieldValueStringCoercion(value2);
               }
-              return value;
+              return value2;
             default:
               return "";
           }
@@ -3614,16 +3614,16 @@ var require_react_dom_development = __commonJS({
           node._valueTracker = null;
         }
         function getValueFromNode(node) {
-          var value = "";
+          var value2 = "";
           if (!node) {
-            return value;
+            return value2;
           }
           if (isCheckable(node)) {
-            value = node.checked ? "true" : "false";
+            value2 = node.checked ? "true" : "false";
           } else {
-            value = node.value;
+            value2 = node.value;
           }
-          return value;
+          return value2;
         }
         function trackValueOnNode(node) {
           var valueField = isCheckable(node) ? "checked" : "value";
@@ -3641,12 +3641,12 @@ var require_react_dom_development = __commonJS({
             get: function() {
               return get3.call(this);
             },
-            set: function(value) {
+            set: function(value2) {
               {
-                checkFormFieldValueStringCoercion(value);
+                checkFormFieldValueStringCoercion(value2);
               }
-              currentValue = "" + value;
-              set2.call(this, value);
+              currentValue = "" + value2;
+              set2.call(this, value2);
             }
           });
           Object.defineProperty(node, valueField, {
@@ -3656,11 +3656,11 @@ var require_react_dom_development = __commonJS({
             getValue: function() {
               return currentValue;
             },
-            setValue: function(value) {
+            setValue: function(value2) {
               {
-                checkFormFieldValueStringCoercion(value);
+                checkFormFieldValueStringCoercion(value2);
               }
-              currentValue = "" + value;
+              currentValue = "" + value2;
             },
             stopTracking: function() {
               detachTracker(node);
@@ -3762,15 +3762,15 @@ var require_react_dom_development = __commonJS({
             }
           }
           updateChecked(element, props);
-          var value = getToStringValue(props.value);
+          var value2 = getToStringValue(props.value);
           var type = props.type;
-          if (value != null) {
+          if (value2 != null) {
             if (type === "number") {
-              if (value === 0 && node.value === "" || node.value != value) {
-                node.value = toString2(value);
+              if (value2 === 0 && node.value === "" || node.value != value2) {
+                node.value = toString2(value2);
               }
-            } else if (node.value !== toString2(value)) {
-              node.value = toString2(value);
+            } else if (node.value !== toString2(value2)) {
+              node.value = toString2(value2);
             }
           } else if (type === "submit" || type === "reset") {
             node.removeAttribute("value");
@@ -3778,7 +3778,7 @@ var require_react_dom_development = __commonJS({
           }
           {
             if (props.hasOwnProperty("value")) {
-              setDefaultValue(node, props.type, value);
+              setDefaultValue(node, props.type, value2);
             } else if (props.hasOwnProperty("defaultValue")) {
               setDefaultValue(node, props.type, getToStringValue(props.defaultValue));
             }
@@ -3851,12 +3851,12 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function setDefaultValue(node, type, value) {
+        function setDefaultValue(node, type, value2) {
           if (type !== "number" || getActiveElement(node.ownerDocument) !== node) {
-            if (value == null) {
+            if (value2 == null) {
               node.defaultValue = toString2(node._wrapperState.initialValue);
-            } else if (node.defaultValue !== toString2(value)) {
-              node.defaultValue = toString2(value);
+            } else if (node.defaultValue !== toString2(value2)) {
+              node.defaultValue = toString2(value2);
             }
           }
         }
@@ -3990,9 +3990,9 @@ var require_react_dom_development = __commonJS({
         function postMountWrapper$2(element, props) {
           var node = element;
           node.multiple = !!props.multiple;
-          var value = props.value;
-          if (value != null) {
-            updateOptions(node, !!props.multiple, value, false);
+          var value2 = props.value;
+          if (value2 != null) {
+            updateOptions(node, !!props.multiple, value2, false);
           } else if (props.defaultValue != null) {
             updateOptions(node, !!props.multiple, props.defaultValue, true);
           }
@@ -4001,9 +4001,9 @@ var require_react_dom_development = __commonJS({
           var node = element;
           var wasMultiple = node._wrapperState.wasMultiple;
           node._wrapperState.wasMultiple = !!props.multiple;
-          var value = props.value;
-          if (value != null) {
-            updateOptions(node, !!props.multiple, value, false);
+          var value2 = props.value;
+          if (value2 != null) {
+            updateOptions(node, !!props.multiple, value2, false);
           } else if (wasMultiple !== !!props.multiple) {
             if (props.defaultValue != null) {
               updateOptions(node, !!props.multiple, props.defaultValue, true);
@@ -4014,9 +4014,9 @@ var require_react_dom_development = __commonJS({
         }
         function restoreControlledState$1(element, props) {
           var node = element;
-          var value = props.value;
-          if (value != null) {
-            updateOptions(node, !!props.multiple, value, false);
+          var value2 = props.value;
+          if (value2 != null) {
+            updateOptions(node, !!props.multiple, value2, false);
           }
         }
         var didWarnValDefaultVal = false;
@@ -4072,10 +4072,10 @@ var require_react_dom_development = __commonJS({
         }
         function updateWrapper$1(element, props) {
           var node = element;
-          var value = getToStringValue(props.value);
+          var value2 = getToStringValue(props.value);
           var defaultValue = getToStringValue(props.defaultValue);
-          if (value != null) {
-            var newValue = toString2(value);
+          if (value2 != null) {
+            var newValue = toString2(value2);
             if (newValue !== node.value) {
               node.value = newValue;
             }
@@ -4268,18 +4268,18 @@ var require_react_dom_development = __commonJS({
             isUnitlessNumber[prefixKey(prefix2, prop)] = isUnitlessNumber[prop];
           });
         });
-        function dangerousStyleValue(name, value, isCustomProperty) {
-          var isEmpty2 = value == null || typeof value === "boolean" || value === "";
+        function dangerousStyleValue(name, value2, isCustomProperty) {
+          var isEmpty2 = value2 == null || typeof value2 === "boolean" || value2 === "";
           if (isEmpty2) {
             return "";
           }
-          if (!isCustomProperty && typeof value === "number" && value !== 0 && !(isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name])) {
-            return value + "px";
+          if (!isCustomProperty && typeof value2 === "number" && value2 !== 0 && !(isUnitlessNumber.hasOwnProperty(name) && isUnitlessNumber[name])) {
+            return value2 + "px";
           }
           {
-            checkCSSPropertyStringCoercion(value, name);
+            checkCSSPropertyStringCoercion(value2, name);
           }
-          return ("" + value).trim();
+          return ("" + value2).trim();
         }
         var uppercasePattern = /([A-Z])/g;
         var msPattern = /^ms-/;
@@ -4320,40 +4320,40 @@ var require_react_dom_development = __commonJS({
             warnedStyleNames[name] = true;
             error("Unsupported vendor-prefixed style property %s. Did you mean %s?", name, name.charAt(0).toUpperCase() + name.slice(1));
           };
-          var warnStyleValueWithSemicolon = function(name, value) {
-            if (warnedStyleValues.hasOwnProperty(value) && warnedStyleValues[value]) {
+          var warnStyleValueWithSemicolon = function(name, value2) {
+            if (warnedStyleValues.hasOwnProperty(value2) && warnedStyleValues[value2]) {
               return;
             }
-            warnedStyleValues[value] = true;
-            error(`Style property values shouldn't contain a semicolon. Try "%s: %s" instead.`, name, value.replace(badStyleValueWithSemicolonPattern, ""));
+            warnedStyleValues[value2] = true;
+            error(`Style property values shouldn't contain a semicolon. Try "%s: %s" instead.`, name, value2.replace(badStyleValueWithSemicolonPattern, ""));
           };
-          var warnStyleValueIsNaN = function(name, value) {
+          var warnStyleValueIsNaN = function(name, value2) {
             if (warnedForNaNValue) {
               return;
             }
             warnedForNaNValue = true;
             error("`NaN` is an invalid value for the `%s` css style property.", name);
           };
-          var warnStyleValueIsInfinity = function(name, value) {
+          var warnStyleValueIsInfinity = function(name, value2) {
             if (warnedForInfinityValue) {
               return;
             }
             warnedForInfinityValue = true;
             error("`Infinity` is an invalid value for the `%s` css style property.", name);
           };
-          warnValidStyle = function(name, value) {
+          warnValidStyle = function(name, value2) {
             if (name.indexOf("-") > -1) {
               warnHyphenatedStyleName(name);
             } else if (badVendoredStyleNamePattern.test(name)) {
               warnBadVendoredStyleName(name);
-            } else if (badStyleValueWithSemicolonPattern.test(value)) {
-              warnStyleValueWithSemicolon(name, value);
+            } else if (badStyleValueWithSemicolonPattern.test(value2)) {
+              warnStyleValueWithSemicolon(name, value2);
             }
-            if (typeof value === "number") {
-              if (isNaN(value)) {
-                warnStyleValueIsNaN(name, value);
-              } else if (!isFinite(value)) {
-                warnStyleValueIsInfinity(name, value);
+            if (typeof value2 === "number") {
+              if (isNaN(value2)) {
+                warnStyleValueIsNaN(name, value2);
+              } else if (!isFinite(value2)) {
+                warnStyleValueIsInfinity(name, value2);
               }
             }
           };
@@ -4401,8 +4401,8 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        function isValueEmpty(value) {
-          return value == null || typeof value === "boolean" || value === "";
+        function isValueEmpty(value2) {
+          return value2 == null || typeof value2 === "boolean" || value2 === "";
         }
         function expandShorthandMap(styles) {
           var expanded = {};
@@ -5126,7 +5126,7 @@ var require_react_dom_development = __commonJS({
           var INVALID_EVENT_NAME_REGEX = /^on[^A-Z]/;
           var rARIA$1 = new RegExp("^(aria)-[" + ATTRIBUTE_NAME_CHAR + "]*$");
           var rARIACamel$1 = new RegExp("^(aria)[A-Z][" + ATTRIBUTE_NAME_CHAR + "]*$");
-          validateProperty$1 = function(tagName, name, value, eventRegistry) {
+          validateProperty$1 = function(tagName, name, value2, eventRegistry) {
             if (hasOwnProperty11.call(warnedProperties$1, name) && warnedProperties$1[name]) {
               return true;
             }
@@ -5172,12 +5172,12 @@ var require_react_dom_development = __commonJS({
               warnedProperties$1[name] = true;
               return true;
             }
-            if (lowerCasedName === "is" && value !== null && value !== void 0 && typeof value !== "string") {
-              error("Received a `%s` for a string attribute `is`. If this is expected, cast the value to a string.", typeof value);
+            if (lowerCasedName === "is" && value2 !== null && value2 !== void 0 && typeof value2 !== "string") {
+              error("Received a `%s` for a string attribute `is`. If this is expected, cast the value to a string.", typeof value2);
               warnedProperties$1[name] = true;
               return true;
             }
-            if (typeof value === "number" && isNaN(value)) {
+            if (typeof value2 === "number" && isNaN(value2)) {
               error("Received NaN for the `%s` attribute. If this is expected, cast the value to a string.", name);
               warnedProperties$1[name] = true;
               return true;
@@ -5196,11 +5196,11 @@ var require_react_dom_development = __commonJS({
               warnedProperties$1[name] = true;
               return true;
             }
-            if (typeof value === "boolean" && shouldRemoveAttributeWithWarning(name, value, propertyInfo, false)) {
-              if (value) {
-                error('Received `%s` for a non-boolean attribute `%s`.\n\nIf you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}.', value, name, name, value, name);
+            if (typeof value2 === "boolean" && shouldRemoveAttributeWithWarning(name, value2, propertyInfo, false)) {
+              if (value2) {
+                error('Received `%s` for a non-boolean attribute `%s`.\n\nIf you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}.', value2, name, name, value2, name);
               } else {
-                error('Received `%s` for a non-boolean attribute `%s`.\n\nIf you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}.\n\nIf you used to conditionally omit it with %s={condition && value}, pass %s={condition ? value : undefined} instead.', value, name, name, value, name, name, name);
+                error('Received `%s` for a non-boolean attribute `%s`.\n\nIf you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}.\n\nIf you used to conditionally omit it with %s={condition && value}, pass %s={condition ? value : undefined} instead.', value2, name, name, value2, name, name, name);
               }
               warnedProperties$1[name] = true;
               return true;
@@ -5208,12 +5208,12 @@ var require_react_dom_development = __commonJS({
             if (isReserved) {
               return true;
             }
-            if (shouldRemoveAttributeWithWarning(name, value, propertyInfo, false)) {
+            if (shouldRemoveAttributeWithWarning(name, value2, propertyInfo, false)) {
               warnedProperties$1[name] = true;
               return false;
             }
-            if ((value === "false" || value === "true") && propertyInfo !== null && propertyInfo.type === BOOLEAN) {
-              error("Received the string `%s` for the boolean attribute `%s`. %s Did you mean %s={%s}?", value, name, value === "false" ? "The browser will interpret it as a truthy value." : 'Although this works, it will not work as expected if you pass the string "false".', name, value);
+            if ((value2 === "false" || value2 === "true") && propertyInfo !== null && propertyInfo.type === BOOLEAN) {
+              error("Received the string `%s` for the boolean attribute `%s`. %s Did you mean %s={%s}?", value2, name, value2 === "false" ? "The browser will interpret it as a truthy value." : 'Although this works, it will not work as expected if you pass the string "false".', name, value2);
               warnedProperties$1[name] = true;
               return true;
             }
@@ -5537,8 +5537,8 @@ var require_react_dom_development = __commonJS({
         function has(key) {
           return key._reactInternals !== void 0;
         }
-        function set(key, value) {
-          key._reactInternals = value;
+        function set(key, value2) {
+          key._reactInternals = value2;
         }
         var NoFlags = 0;
         var PerformedWork = 1;
@@ -10437,13 +10437,13 @@ var require_react_dom_development = __commonJS({
           }
           index--;
         }
-        function push(cursor, value, fiber) {
+        function push(cursor, value2, fiber) {
           index++;
           valueStack[index] = cursor.current;
           {
             fiberStack[index] = fiber;
           }
-          cursor.current = value;
+          cursor.current = value2;
         }
         var warnedAboutMissingGetChildContext;
         {
@@ -11193,8 +11193,8 @@ var require_react_dom_development = __commonJS({
           };
           var setToSortedString = function(set2) {
             var array = [];
-            set2.forEach(function(value) {
-              array.push(value);
+            set2.forEach(function(value2) {
+              array.push(value2);
             });
             return array.sort().join(", ");
           };
@@ -11545,13 +11545,13 @@ var require_react_dom_development = __commonJS({
               error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo().");
             }
           }
-          var value = context._currentValue;
+          var value2 = context._currentValue;
           if (lastFullyObservedContext === context)
             ;
           else {
             var contextItem = {
               context,
-              memoizedValue: value,
+              memoizedValue: value2,
               next: null
             };
             if (lastContextDependency === null) {
@@ -11567,7 +11567,7 @@ var require_react_dom_development = __commonJS({
               lastContextDependency = lastContextDependency.next = contextItem;
             }
           }
-          return value;
+          return value2;
         }
         var concurrentQueues = null;
         function pushConcurrentUpdateQueue(queue) {
@@ -12680,15 +12680,15 @@ var require_react_dom_development = __commonJS({
               if (current2 !== null && current2.ref !== null && typeof current2.ref === "function" && current2.ref._stringRef === stringRef) {
                 return current2.ref;
               }
-              var ref = function(value) {
+              var ref = function(value2) {
                 var refs = resolvedInst.refs;
                 if (refs === emptyRefsObject) {
                   refs = resolvedInst.refs = {};
                 }
-                if (value === null) {
+                if (value2 === null) {
                   delete refs[stringRef];
                 } else {
-                  refs[stringRef] = value;
+                  refs[stringRef] = value2;
                 }
               };
               ref._stringRef = stringRef;
@@ -14235,7 +14235,7 @@ var require_react_dom_development = __commonJS({
           var effectDeps = deps !== null && deps !== void 0 ? deps.concat([ref]) : null;
           return updateEffectImpl(Update, Layout, imperativeHandleEffect.bind(null, create, ref), effectDeps);
         }
-        function mountDebugValue(value, formatterFn) {
+        function mountDebugValue(value2, formatterFn) {
         }
         var updateDebugValue = mountDebugValue;
         function mountCallback(callback, deps) {
@@ -14282,31 +14282,31 @@ var require_react_dom_development = __commonJS({
           hook.memoizedState = [nextValue, nextDeps];
           return nextValue;
         }
-        function mountDeferredValue(value) {
+        function mountDeferredValue(value2) {
           var hook = mountWorkInProgressHook();
-          hook.memoizedState = value;
-          return value;
+          hook.memoizedState = value2;
+          return value2;
         }
-        function updateDeferredValue(value) {
+        function updateDeferredValue(value2) {
           var hook = updateWorkInProgressHook();
           var resolvedCurrentHook = currentHook;
           var prevValue = resolvedCurrentHook.memoizedState;
-          return updateDeferredValueImpl(hook, prevValue, value);
+          return updateDeferredValueImpl(hook, prevValue, value2);
         }
-        function rerenderDeferredValue(value) {
+        function rerenderDeferredValue(value2) {
           var hook = updateWorkInProgressHook();
           if (currentHook === null) {
-            hook.memoizedState = value;
-            return value;
+            hook.memoizedState = value2;
+            return value2;
           } else {
             var prevValue = currentHook.memoizedState;
-            return updateDeferredValueImpl(hook, prevValue, value);
+            return updateDeferredValueImpl(hook, prevValue, value2);
           }
         }
-        function updateDeferredValueImpl(hook, prevValue, value) {
+        function updateDeferredValueImpl(hook, prevValue, value2) {
           var shouldDeferValue = !includesOnlyNonUrgentLanes(renderLanes);
           if (shouldDeferValue) {
-            if (!objectIs(value, prevValue)) {
+            if (!objectIs(value2, prevValue)) {
               var deferredLane = claimNextTransitionLane();
               currentlyRenderingFiber$1.lanes = mergeLanes(currentlyRenderingFiber$1.lanes, deferredLane);
               markSkippedUpdateLanes(deferredLane);
@@ -14318,8 +14318,8 @@ var require_react_dom_development = __commonJS({
               hook.baseState = false;
               markWorkInProgressReceivedUpdate();
             }
-            hook.memoizedState = value;
-            return value;
+            hook.memoizedState = value2;
+            return value2;
           }
         }
         function startTransition(setPending, callback, options2) {
@@ -14618,15 +14618,15 @@ var require_react_dom_development = __commonJS({
                 ReactCurrentDispatcher$1.current = prevDispatcher;
               }
             },
-            useDebugValue: function(value, formatterFn) {
+            useDebugValue: function(value2, formatterFn) {
               currentHookNameInDev = "useDebugValue";
               mountHookTypesDev();
               return mountDebugValue();
             },
-            useDeferredValue: function(value) {
+            useDeferredValue: function(value2) {
               currentHookNameInDev = "useDeferredValue";
               mountHookTypesDev();
-              return mountDeferredValue(value);
+              return mountDeferredValue(value2);
             },
             useTransition: function() {
               currentHookNameInDev = "useTransition";
@@ -14722,15 +14722,15 @@ var require_react_dom_development = __commonJS({
                 ReactCurrentDispatcher$1.current = prevDispatcher;
               }
             },
-            useDebugValue: function(value, formatterFn) {
+            useDebugValue: function(value2, formatterFn) {
               currentHookNameInDev = "useDebugValue";
               updateHookTypesDev();
               return mountDebugValue();
             },
-            useDeferredValue: function(value) {
+            useDeferredValue: function(value2) {
               currentHookNameInDev = "useDeferredValue";
               updateHookTypesDev();
-              return mountDeferredValue(value);
+              return mountDeferredValue(value2);
             },
             useTransition: function() {
               currentHookNameInDev = "useTransition";
@@ -14826,15 +14826,15 @@ var require_react_dom_development = __commonJS({
                 ReactCurrentDispatcher$1.current = prevDispatcher;
               }
             },
-            useDebugValue: function(value, formatterFn) {
+            useDebugValue: function(value2, formatterFn) {
               currentHookNameInDev = "useDebugValue";
               updateHookTypesDev();
               return updateDebugValue();
             },
-            useDeferredValue: function(value) {
+            useDeferredValue: function(value2) {
               currentHookNameInDev = "useDeferredValue";
               updateHookTypesDev();
-              return updateDeferredValue(value);
+              return updateDeferredValue(value2);
             },
             useTransition: function() {
               currentHookNameInDev = "useTransition";
@@ -14930,15 +14930,15 @@ var require_react_dom_development = __commonJS({
                 ReactCurrentDispatcher$1.current = prevDispatcher;
               }
             },
-            useDebugValue: function(value, formatterFn) {
+            useDebugValue: function(value2, formatterFn) {
               currentHookNameInDev = "useDebugValue";
               updateHookTypesDev();
               return updateDebugValue();
             },
-            useDeferredValue: function(value) {
+            useDeferredValue: function(value2) {
               currentHookNameInDev = "useDeferredValue";
               updateHookTypesDev();
-              return rerenderDeferredValue(value);
+              return rerenderDeferredValue(value2);
             },
             useTransition: function() {
               currentHookNameInDev = "useTransition";
@@ -15045,17 +15045,17 @@ var require_react_dom_development = __commonJS({
                 ReactCurrentDispatcher$1.current = prevDispatcher;
               }
             },
-            useDebugValue: function(value, formatterFn) {
+            useDebugValue: function(value2, formatterFn) {
               currentHookNameInDev = "useDebugValue";
               warnInvalidHookAccess();
               mountHookTypesDev();
               return mountDebugValue();
             },
-            useDeferredValue: function(value) {
+            useDeferredValue: function(value2) {
               currentHookNameInDev = "useDeferredValue";
               warnInvalidHookAccess();
               mountHookTypesDev();
-              return mountDeferredValue(value);
+              return mountDeferredValue(value2);
             },
             useTransition: function() {
               currentHookNameInDev = "useTransition";
@@ -15166,17 +15166,17 @@ var require_react_dom_development = __commonJS({
                 ReactCurrentDispatcher$1.current = prevDispatcher;
               }
             },
-            useDebugValue: function(value, formatterFn) {
+            useDebugValue: function(value2, formatterFn) {
               currentHookNameInDev = "useDebugValue";
               warnInvalidHookAccess();
               updateHookTypesDev();
               return updateDebugValue();
             },
-            useDeferredValue: function(value) {
+            useDeferredValue: function(value2) {
               currentHookNameInDev = "useDeferredValue";
               warnInvalidHookAccess();
               updateHookTypesDev();
-              return updateDeferredValue(value);
+              return updateDeferredValue(value2);
             },
             useTransition: function() {
               currentHookNameInDev = "useTransition";
@@ -15287,17 +15287,17 @@ var require_react_dom_development = __commonJS({
                 ReactCurrentDispatcher$1.current = prevDispatcher;
               }
             },
-            useDebugValue: function(value, formatterFn) {
+            useDebugValue: function(value2, formatterFn) {
               currentHookNameInDev = "useDebugValue";
               warnInvalidHookAccess();
               updateHookTypesDev();
               return updateDebugValue();
             },
-            useDeferredValue: function(value) {
+            useDeferredValue: function(value2) {
               currentHookNameInDev = "useDeferredValue";
               warnInvalidHookAccess();
               updateHookTypesDev();
-              return rerenderDeferredValue(value);
+              return rerenderDeferredValue(value2);
             },
             useTransition: function() {
               currentHookNameInDev = "useTransition";
@@ -15435,17 +15435,17 @@ var require_react_dom_development = __commonJS({
             child = child.sibling;
           }
         }
-        function createCapturedValueAtFiber(value, source) {
+        function createCapturedValueAtFiber(value2, source) {
           return {
-            value,
+            value: value2,
             source,
             stack: getStackByFiberInDevAndProd(source),
             digest: null
           };
         }
-        function createCapturedValue(value, digest7, stack) {
+        function createCapturedValue(value2, digest7, stack) {
           return {
-            value,
+            value: value2,
             source: null,
             stack: stack != null ? stack : null,
             digest: digest7 != null ? digest7 : null
@@ -15632,15 +15632,15 @@ var require_react_dom_development = __commonJS({
           suspenseBoundary.lanes = rootRenderLanes;
           return suspenseBoundary;
         }
-        function throwException(root3, returnFiber, sourceFiber, value, rootRenderLanes) {
+        function throwException(root3, returnFiber, sourceFiber, value2, rootRenderLanes) {
           sourceFiber.flags |= Incomplete;
           {
             if (isDevToolsPresent) {
               restorePendingUpdaters(root3, rootRenderLanes);
             }
           }
-          if (value !== null && typeof value === "object" && typeof value.then === "function") {
-            var wakeable = value;
+          if (value2 !== null && typeof value2 === "object" && typeof value2.then === "function") {
+            var wakeable = value2;
             resetSuspendedComponent(sourceFiber);
             {
               if (getIsHydrating() && sourceFiber.mode & ConcurrentMode) {
@@ -15663,7 +15663,7 @@ var require_react_dom_development = __commonJS({
                 return;
               }
               var uncaughtSuspenseError = new Error("A component suspended while responding to synchronous input. This will cause the UI to be replaced with a loading indicator. To fix, updates that suspend should be wrapped with startTransition.");
-              value = uncaughtSuspenseError;
+              value2 = uncaughtSuspenseError;
             }
           } else {
             if (getIsHydrating() && sourceFiber.mode & ConcurrentMode) {
@@ -15674,18 +15674,18 @@ var require_react_dom_development = __commonJS({
                   _suspenseBoundary.flags |= ForceClientRender;
                 }
                 markSuspenseBoundaryShouldCapture(_suspenseBoundary, returnFiber, sourceFiber, root3, rootRenderLanes);
-                queueHydrationError(createCapturedValueAtFiber(value, sourceFiber));
+                queueHydrationError(createCapturedValueAtFiber(value2, sourceFiber));
                 return;
               }
             }
           }
-          value = createCapturedValueAtFiber(value, sourceFiber);
-          renderDidError(value);
+          value2 = createCapturedValueAtFiber(value2, sourceFiber);
+          renderDidError(value2);
           var workInProgress2 = returnFiber;
           do {
             switch (workInProgress2.tag) {
               case HostRoot: {
-                var _errorInfo = value;
+                var _errorInfo = value2;
                 workInProgress2.flags |= ShouldCapture;
                 var lane = pickArbitraryLane(rootRenderLanes);
                 workInProgress2.lanes = mergeLanes(workInProgress2.lanes, lane);
@@ -15694,7 +15694,7 @@ var require_react_dom_development = __commonJS({
                 return;
               }
               case ClassComponent:
-                var errorInfo = value;
+                var errorInfo = value2;
                 var ctor = workInProgress2.type;
                 var instance = workInProgress2.stateNode;
                 if ((workInProgress2.flags & DidCapture) === NoFlags && (typeof ctor.getDerivedStateFromError === "function" || instance !== null && typeof instance.componentDidCatch === "function" && !isAlreadyFailedLegacyErrorBoundary(instance))) {
@@ -16338,7 +16338,7 @@ var require_react_dom_development = __commonJS({
             context = getMaskedContext(workInProgress2, unmaskedContext);
           }
           prepareToReadContext(workInProgress2, renderLanes2);
-          var value;
+          var value2;
           var hasId;
           {
             markComponentRenderStarted(workInProgress2);
@@ -16356,7 +16356,7 @@ var require_react_dom_development = __commonJS({
             }
             setIsRendering(true);
             ReactCurrentOwner$1.current = workInProgress2;
-            value = renderWithHooks(null, workInProgress2, Component, props, context, renderLanes2);
+            value2 = renderWithHooks(null, workInProgress2, Component, props, context, renderLanes2);
             hasId = checkDidRenderIdHook();
             setIsRendering(false);
           }
@@ -16365,7 +16365,7 @@ var require_react_dom_development = __commonJS({
           }
           workInProgress2.flags |= PerformedWork;
           {
-            if (typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0) {
+            if (typeof value2 === "object" && value2 !== null && typeof value2.render === "function" && value2.$$typeof === void 0) {
               var _componentName = getComponentNameFromType(Component) || "Unknown";
               if (!didWarnAboutModulePatternComponent[_componentName]) {
                 error("The <%s /> component appears to be a function component that returns a class instance. Change %s to a class that extends React.Component instead. If you can't use a class try assigning the prototype on the function as a workaround. `%s.prototype = React.Component.prototype`. Don't use an arrow function since it cannot be called with `new` by React.", _componentName, _componentName, _componentName);
@@ -16373,7 +16373,7 @@ var require_react_dom_development = __commonJS({
               }
             }
           }
-          if (typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0) {
+          if (typeof value2 === "object" && value2 !== null && typeof value2.render === "function" && value2.$$typeof === void 0) {
             {
               var _componentName2 = getComponentNameFromType(Component) || "Unknown";
               if (!didWarnAboutModulePatternComponent[_componentName2]) {
@@ -16391,9 +16391,9 @@ var require_react_dom_development = __commonJS({
             } else {
               hasContext = false;
             }
-            workInProgress2.memoizedState = value.state !== null && value.state !== void 0 ? value.state : null;
+            workInProgress2.memoizedState = value2.state !== null && value2.state !== void 0 ? value2.state : null;
             initializeUpdateQueue(workInProgress2);
-            adoptClassInstance(workInProgress2, value);
+            adoptClassInstance(workInProgress2, value2);
             mountClassInstance(workInProgress2, Component, props, renderLanes2);
             return finishClassComponent(null, workInProgress2, Component, true, hasContext, renderLanes2);
           } else {
@@ -16402,7 +16402,7 @@ var require_react_dom_development = __commonJS({
               if (workInProgress2.mode & StrictLegacyMode) {
                 setIsStrictModeForDevtools(true);
                 try {
-                  value = renderWithHooks(null, workInProgress2, Component, props, context, renderLanes2);
+                  value2 = renderWithHooks(null, workInProgress2, Component, props, context, renderLanes2);
                   hasId = checkDidRenderIdHook();
                 } finally {
                   setIsStrictModeForDevtools(false);
@@ -16412,7 +16412,7 @@ var require_react_dom_development = __commonJS({
             if (getIsHydrating() && hasId) {
               pushMaterializedTreeId(workInProgress2);
             }
-            reconcileChildren(null, workInProgress2, value, renderLanes2);
+            reconcileChildren(null, workInProgress2, value2, renderLanes2);
             {
               validateFunctionComponentInDev(workInProgress2, Component);
             }
@@ -22292,17 +22292,17 @@ var require_react_dom_development = __commonJS({
             }
             return copyWithRenameImpl(obj, oldPath, newPath, 0);
           };
-          var copyWithSetImpl = function(obj, path, index2, value) {
+          var copyWithSetImpl = function(obj, path, index2, value2) {
             if (index2 >= path.length) {
-              return value;
+              return value2;
             }
             var key = path[index2];
             var updated = isArray2(obj) ? obj.slice() : assign({}, obj);
-            updated[key] = copyWithSetImpl(obj[key], path, index2 + 1, value);
+            updated[key] = copyWithSetImpl(obj[key], path, index2 + 1, value2);
             return updated;
           };
-          var copyWithSet = function(obj, path, value) {
-            return copyWithSetImpl(obj, path, 0, value);
+          var copyWithSet = function(obj, path, value2) {
+            return copyWithSetImpl(obj, path, 0, value2);
           };
           var findHook = function(fiber, id) {
             var currentHook2 = fiber.memoizedState;
@@ -22312,10 +22312,10 @@ var require_react_dom_development = __commonJS({
             }
             return currentHook2;
           };
-          overrideHookState = function(fiber, id, path, value) {
+          overrideHookState = function(fiber, id, path, value2) {
             var hook = findHook(fiber, id);
             if (hook !== null) {
-              var newState = copyWithSet(hook.memoizedState, path, value);
+              var newState = copyWithSet(hook.memoizedState, path, value2);
               hook.memoizedState = newState;
               hook.baseState = newState;
               fiber.memoizedProps = assign({}, fiber.memoizedProps);
@@ -22351,8 +22351,8 @@ var require_react_dom_development = __commonJS({
               }
             }
           };
-          overrideProps = function(fiber, path, value) {
-            fiber.pendingProps = copyWithSet(fiber.memoizedProps, path, value);
+          overrideProps = function(fiber, path, value2) {
+            fiber.pendingProps = copyWithSet(fiber.memoizedProps, path, value2);
             if (fiber.alternate) {
               fiber.alternate.pendingProps = fiber.pendingProps;
             }
@@ -23453,12 +23453,12 @@ var require_factoryWithTypeCheckers = __commonJS({
               return null;
             }
           }
-          var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
-            var type = getPreciseType(value);
+          var valuesString = JSON.stringify(expectedValues, function replacer(key, value2) {
+            var type = getPreciseType(value2);
             if (type === "symbol") {
-              return String(value);
+              return String(value2);
             }
-            return value;
+            return value2;
           });
           return new PropTypeError("Invalid " + location + " `" + propFullName + "` of value `" + String(propValue) + "` " + ("supplied to `" + componentName + "`, expected one of " + valuesString + "."));
         }
@@ -23650,8 +23650,8 @@ var require_factoryWithTypeCheckers = __commonJS({
         }
         return propType;
       }
-      function getPostfixForTypeWarning(value) {
-        var type = getPreciseType(value);
+      function getPostfixForTypeWarning(value2) {
+        var type = getPreciseType(value2);
         switch (type) {
           case "array":
           case "object":
@@ -24143,31 +24143,31 @@ var require_react_jsx_runtime_development = __commonJS({
         function isArray2(a) {
           return isArrayImpl(a);
         }
-        function typeName(value) {
+        function typeName(value2) {
           {
             var hasToStringTag = typeof Symbol === "function" && Symbol.toStringTag;
-            var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
+            var type = hasToStringTag && value2[Symbol.toStringTag] || value2.constructor.name || "Object";
             return type;
           }
         }
-        function willCoercionThrow(value) {
+        function willCoercionThrow(value2) {
           {
             try {
-              testStringCoercion(value);
+              testStringCoercion(value2);
               return false;
             } catch (e) {
               return true;
             }
           }
         }
-        function testStringCoercion(value) {
-          return "" + value;
+        function testStringCoercion(value2) {
+          return "" + value2;
         }
-        function checkKeyStringCoercion(value) {
+        function checkKeyStringCoercion(value2) {
           {
-            if (willCoercionThrow(value)) {
-              error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
-              return testStringCoercion(value);
+            if (willCoercionThrow(value2)) {
+              error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value2));
+              return testStringCoercion(value2);
             }
           }
         }
@@ -24579,16 +24579,16 @@ var import_classnames6 = __toESM(require_classnames(), 1);
 var import_react5 = __toESM(require_react(), 1);
 var import_client = __toESM(require_client(), 1);
 
-// lib/Button/index.jsx
+// lib/react/Button/Button.jsx
 var import_classnames2 = __toESM(require_classnames(), 1);
 var import_prop_types2 = __toESM(require_prop_types(), 1);
 
-// lib/Group/index.jsx
+// lib/react/Group/Group.jsx
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/Group/Group.module.css.js
-var digest = "00b55400e7a9c08a183ca0b28be5e69c8bfa67cf40495350e405effb3233bf44";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-67697-ZUIybUVLJFrX/form5/lib/react/Group/Group.module.css.js
+var digest = "b53416dd6ad1a262c6efb90d96c25ca1ecadca7397c424d9500d204bea46988e";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24604,7 +24604,7 @@ var css = `._Group_4f7x4_1 {
 })();
 var Group_module_css_default = { "Group": "_Group_4f7x4_1" };
 
-// lib/Group/index.jsx
+// lib/react/Group/Group.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 function Group({
   as: Tag = "div",
@@ -24622,8 +24622,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/Button/Button.module.css.js
-var digest2 = "9543150b4f8e9b3f9f156fb35f6954b5d8b6abfd5399d48c5b3ed6a8a32cfb2b";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-67697-ZUIybUVLJFrX/form5/lib/react/Button/Button.module.css.js
+var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
 var css2 = `._Button_iyuoe_1 {
 	font: unset;
 	border: none;
@@ -24700,7 +24700,7 @@ var css2 = `._Button_iyuoe_1 {
 })();
 var Button_module_css_default = { "Button": "_Button_iyuoe_1", "fluid": "_fluid_iyuoe_8", "ButtonGroup": "_ButtonGroup_iyuoe_55" };
 
-// lib/Button/index.jsx
+// lib/react/Button/Button.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 function Button({
   children: label,
@@ -24754,7 +24754,7 @@ Button.Group = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runti
   ...props
 });
 
-// lib/FileInput/index.jsx
+// lib/react/FileInput/FileInput.jsx
 var import_classnames3 = __toESM(require_classnames(), 1);
 
 // node_modules/lodash-es/_arrayMap.js
@@ -24775,8 +24775,8 @@ function listCacheClear() {
 var listCacheClear_default = listCacheClear;
 
 // node_modules/lodash-es/eq.js
-function eq(value, other) {
-  return value === other || value !== value && other !== other;
+function eq(value2, other) {
+  return value2 === other || value2 !== value2 && other !== other;
 }
 var eq_default = eq;
 
@@ -24825,13 +24825,13 @@ function listCacheHas(key) {
 var listCacheHas_default = listCacheHas;
 
 // node_modules/lodash-es/_listCacheSet.js
-function listCacheSet(key, value) {
+function listCacheSet(key, value2) {
   var data = this.__data__, index = assocIndexOf_default(data, key);
   if (index < 0) {
     ++this.size;
-    data.push([key, value]);
+    data.push([key, value2]);
   } else {
-    data[index][1] = value;
+    data[index][1] = value2;
   }
   return this;
 }
@@ -24898,19 +24898,19 @@ var objectProto = Object.prototype;
 var hasOwnProperty = objectProto.hasOwnProperty;
 var nativeObjectToString = objectProto.toString;
 var symToStringTag = Symbol_default ? Symbol_default.toStringTag : void 0;
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag), tag = value[symToStringTag];
+function getRawTag(value2) {
+  var isOwn = hasOwnProperty.call(value2, symToStringTag), tag = value2[symToStringTag];
   try {
-    value[symToStringTag] = void 0;
+    value2[symToStringTag] = void 0;
     var unmasked = true;
   } catch (e) {
   }
-  var result = nativeObjectToString.call(value);
+  var result = nativeObjectToString.call(value2);
   if (unmasked) {
     if (isOwn) {
-      value[symToStringTag] = tag;
+      value2[symToStringTag] = tag;
     } else {
-      delete value[symToStringTag];
+      delete value2[symToStringTag];
     }
   }
   return result;
@@ -24920,8 +24920,8 @@ var getRawTag_default = getRawTag;
 // node_modules/lodash-es/_objectToString.js
 var objectProto2 = Object.prototype;
 var nativeObjectToString2 = objectProto2.toString;
-function objectToString(value) {
-  return nativeObjectToString2.call(value);
+function objectToString(value2) {
+  return nativeObjectToString2.call(value2);
 }
 var objectToString_default = objectToString;
 
@@ -24929,18 +24929,18 @@ var objectToString_default = objectToString;
 var nullTag = "[object Null]";
 var undefinedTag = "[object Undefined]";
 var symToStringTag2 = Symbol_default ? Symbol_default.toStringTag : void 0;
-function baseGetTag(value) {
-  if (value == null) {
-    return value === void 0 ? undefinedTag : nullTag;
+function baseGetTag(value2) {
+  if (value2 == null) {
+    return value2 === void 0 ? undefinedTag : nullTag;
   }
-  return symToStringTag2 && symToStringTag2 in Object(value) ? getRawTag_default(value) : objectToString_default(value);
+  return symToStringTag2 && symToStringTag2 in Object(value2) ? getRawTag_default(value2) : objectToString_default(value2);
 }
 var baseGetTag_default = baseGetTag;
 
 // node_modules/lodash-es/isObject.js
-function isObject(value) {
-  var type = typeof value;
-  return value != null && (type == "object" || type == "function");
+function isObject(value2) {
+  var type = typeof value2;
+  return value2 != null && (type == "object" || type == "function");
 }
 var isObject_default = isObject;
 
@@ -24949,11 +24949,11 @@ var asyncTag = "[object AsyncFunction]";
 var funcTag = "[object Function]";
 var genTag = "[object GeneratorFunction]";
 var proxyTag = "[object Proxy]";
-function isFunction(value) {
-  if (!isObject_default(value)) {
+function isFunction(value2) {
+  if (!isObject_default(value2)) {
     return false;
   }
-  var tag = baseGetTag_default(value);
+  var tag = baseGetTag_default(value2);
   return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
 }
 var isFunction_default = isFunction;
@@ -25000,12 +25000,12 @@ var hasOwnProperty2 = objectProto3.hasOwnProperty;
 var reIsNative = RegExp(
   "^" + funcToString2.call(hasOwnProperty2).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
 );
-function baseIsNative(value) {
-  if (!isObject_default(value) || isMasked_default(value)) {
+function baseIsNative(value2) {
+  if (!isObject_default(value2) || isMasked_default(value2)) {
     return false;
   }
-  var pattern = isFunction_default(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource_default(value));
+  var pattern = isFunction_default(value2) ? reIsNative : reIsHostCtor;
+  return pattern.test(toSource_default(value2));
 }
 var baseIsNative_default = baseIsNative;
 
@@ -25017,8 +25017,8 @@ var getValue_default = getValue;
 
 // node_modules/lodash-es/_getNative.js
 function getNative(object, key) {
-  var value = getValue_default(object, key);
-  return baseIsNative_default(value) ? value : void 0;
+  var value2 = getValue_default(object, key);
+  return baseIsNative_default(value2) ? value2 : void 0;
 }
 var getNative_default = getNative;
 
@@ -25070,10 +25070,10 @@ var hashHas_default = hashHas;
 
 // node_modules/lodash-es/_hashSet.js
 var HASH_UNDEFINED2 = "__lodash_hash_undefined__";
-function hashSet(key, value) {
+function hashSet(key, value2) {
   var data = this.__data__;
   this.size += this.has(key) ? 0 : 1;
-  data[key] = nativeCreate_default && value === void 0 ? HASH_UNDEFINED2 : value;
+  data[key] = nativeCreate_default && value2 === void 0 ? HASH_UNDEFINED2 : value2;
   return this;
 }
 var hashSet_default = hashSet;
@@ -25106,9 +25106,9 @@ function mapCacheClear() {
 var mapCacheClear_default = mapCacheClear;
 
 // node_modules/lodash-es/_isKeyable.js
-function isKeyable(value) {
-  var type = typeof value;
-  return type == "string" || type == "number" || type == "symbol" || type == "boolean" ? value !== "__proto__" : value === null;
+function isKeyable(value2) {
+  var type = typeof value2;
+  return type == "string" || type == "number" || type == "symbol" || type == "boolean" ? value2 !== "__proto__" : value2 === null;
 }
 var isKeyable_default = isKeyable;
 
@@ -25140,9 +25140,9 @@ function mapCacheHas(key) {
 var mapCacheHas_default = mapCacheHas;
 
 // node_modules/lodash-es/_mapCacheSet.js
-function mapCacheSet(key, value) {
+function mapCacheSet(key, value2) {
   var data = getMapData_default(this, key), size = data.size;
-  data.set(key, value);
+  data.set(key, value2);
   this.size += data.size == size ? 0 : 1;
   return this;
 }
@@ -25166,18 +25166,18 @@ var MapCache_default = MapCache;
 
 // node_modules/lodash-es/_stackSet.js
 var LARGE_ARRAY_SIZE = 200;
-function stackSet(key, value) {
+function stackSet(key, value2) {
   var data = this.__data__;
   if (data instanceof ListCache_default) {
     var pairs = data.__data__;
     if (!Map_default || pairs.length < LARGE_ARRAY_SIZE - 1) {
-      pairs.push([key, value]);
+      pairs.push([key, value2]);
       this.size = ++data.size;
       return this;
     }
     data = this.__data__ = new MapCache_default(pairs);
   }
-  data.set(key, value);
+  data.set(key, value2);
   this.size = data.size;
   return this;
 }
@@ -25197,15 +25197,15 @@ var Stack_default = Stack;
 
 // node_modules/lodash-es/_setCacheAdd.js
 var HASH_UNDEFINED3 = "__lodash_hash_undefined__";
-function setCacheAdd(value) {
-  this.__data__.set(value, HASH_UNDEFINED3);
+function setCacheAdd(value2) {
+  this.__data__.set(value2, HASH_UNDEFINED3);
   return this;
 }
 var setCacheAdd_default = setCacheAdd;
 
 // node_modules/lodash-es/_setCacheHas.js
-function setCacheHas(value) {
-  return this.__data__.has(value);
+function setCacheHas(value2) {
+  return this.__data__.has(value2);
 }
 var setCacheHas_default = setCacheHas;
 
@@ -25294,8 +25294,8 @@ var Uint8Array_default = Uint8Array2;
 // node_modules/lodash-es/_mapToArray.js
 function mapToArray(map2) {
   var index = -1, result = Array(map2.size);
-  map2.forEach(function(value, key) {
-    result[++index] = [key, value];
+  map2.forEach(function(value2, key) {
+    result[++index] = [key, value2];
   });
   return result;
 }
@@ -25304,8 +25304,8 @@ var mapToArray_default = mapToArray;
 // node_modules/lodash-es/_setToArray.js
 function setToArray(set) {
   var index = -1, result = Array(set.size);
-  set.forEach(function(value) {
-    result[++index] = value;
+  set.forEach(function(value2) {
+    result[++index] = value2;
   });
   return result;
 }
@@ -25400,9 +25400,9 @@ var baseGetAllKeys_default = baseGetAllKeys;
 function arrayFilter(array, predicate) {
   var index = -1, length = array == null ? 0 : array.length, resIndex = 0, result = [];
   while (++index < length) {
-    var value = array[index];
-    if (predicate(value, index, array)) {
-      result[resIndex++] = value;
+    var value2 = array[index];
+    if (predicate(value2, index, array)) {
+      result[resIndex++] = value2;
     }
   }
   return result;
@@ -25441,15 +25441,15 @@ function baseTimes(n, iteratee) {
 var baseTimes_default = baseTimes;
 
 // node_modules/lodash-es/isObjectLike.js
-function isObjectLike(value) {
-  return value != null && typeof value == "object";
+function isObjectLike(value2) {
+  return value2 != null && typeof value2 == "object";
 }
 var isObjectLike_default = isObjectLike;
 
 // node_modules/lodash-es/_baseIsArguments.js
 var argsTag = "[object Arguments]";
-function baseIsArguments(value) {
-  return isObjectLike_default(value) && baseGetTag_default(value) == argsTag;
+function baseIsArguments(value2) {
+  return isObjectLike_default(value2) && baseGetTag_default(value2) == argsTag;
 }
 var baseIsArguments_default = baseIsArguments;
 
@@ -25459,8 +25459,8 @@ var hasOwnProperty5 = objectProto7.hasOwnProperty;
 var propertyIsEnumerable2 = objectProto7.propertyIsEnumerable;
 var isArguments = baseIsArguments_default(function() {
   return arguments;
-}()) ? baseIsArguments_default : function(value) {
-  return isObjectLike_default(value) && hasOwnProperty5.call(value, "callee") && !propertyIsEnumerable2.call(value, "callee");
+}()) ? baseIsArguments_default : function(value2) {
+  return isObjectLike_default(value2) && hasOwnProperty5.call(value2, "callee") && !propertyIsEnumerable2.call(value2, "callee");
 };
 var isArguments_default = isArguments;
 
@@ -25482,17 +25482,17 @@ var isBuffer_default = isBuffer;
 // node_modules/lodash-es/_isIndex.js
 var MAX_SAFE_INTEGER = 9007199254740991;
 var reIsUint = /^(?:0|[1-9]\d*)$/;
-function isIndex(value, length) {
-  var type = typeof value;
+function isIndex(value2, length) {
+  var type = typeof value2;
   length = length == null ? MAX_SAFE_INTEGER : length;
-  return !!length && (type == "number" || type != "symbol" && reIsUint.test(value)) && (value > -1 && value % 1 == 0 && value < length);
+  return !!length && (type == "number" || type != "symbol" && reIsUint.test(value2)) && (value2 > -1 && value2 % 1 == 0 && value2 < length);
 }
 var isIndex_default = isIndex;
 
 // node_modules/lodash-es/isLength.js
 var MAX_SAFE_INTEGER2 = 9007199254740991;
-function isLength(value) {
-  return typeof value == "number" && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER2;
+function isLength(value2) {
+  return typeof value2 == "number" && value2 > -1 && value2 % 1 == 0 && value2 <= MAX_SAFE_INTEGER2;
 }
 var isLength_default = isLength;
 
@@ -25524,15 +25524,15 @@ var uint32Tag = "[object Uint32Array]";
 var typedArrayTags = {};
 typedArrayTags[float32Tag] = typedArrayTags[float64Tag] = typedArrayTags[int8Tag] = typedArrayTags[int16Tag] = typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] = typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] = typedArrayTags[uint32Tag] = true;
 typedArrayTags[argsTag2] = typedArrayTags[arrayTag] = typedArrayTags[arrayBufferTag2] = typedArrayTags[boolTag2] = typedArrayTags[dataViewTag2] = typedArrayTags[dateTag2] = typedArrayTags[errorTag2] = typedArrayTags[funcTag2] = typedArrayTags[mapTag2] = typedArrayTags[numberTag2] = typedArrayTags[objectTag] = typedArrayTags[regexpTag2] = typedArrayTags[setTag2] = typedArrayTags[stringTag2] = typedArrayTags[weakMapTag] = false;
-function baseIsTypedArray(value) {
-  return isObjectLike_default(value) && isLength_default(value.length) && !!typedArrayTags[baseGetTag_default(value)];
+function baseIsTypedArray(value2) {
+  return isObjectLike_default(value2) && isLength_default(value2.length) && !!typedArrayTags[baseGetTag_default(value2)];
 }
 var baseIsTypedArray_default = baseIsTypedArray;
 
 // node_modules/lodash-es/_baseUnary.js
 function baseUnary(func) {
-  return function(value) {
-    return func(value);
+  return function(value2) {
+    return func(value2);
   };
 }
 var baseUnary_default = baseUnary;
@@ -25562,10 +25562,10 @@ var isTypedArray_default = isTypedArray;
 // node_modules/lodash-es/_arrayLikeKeys.js
 var objectProto8 = Object.prototype;
 var hasOwnProperty6 = objectProto8.hasOwnProperty;
-function arrayLikeKeys(value, inherited) {
-  var isArr = isArray_default(value), isArg = !isArr && isArguments_default(value), isBuff = !isArr && !isArg && isBuffer_default(value), isType = !isArr && !isArg && !isBuff && isTypedArray_default(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes_default(value.length, String) : [], length = result.length;
-  for (var key in value) {
-    if ((inherited || hasOwnProperty6.call(value, key)) && !(skipIndexes && (key == "length" || isBuff && (key == "offset" || key == "parent") || isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || isIndex_default(key, length)))) {
+function arrayLikeKeys(value2, inherited) {
+  var isArr = isArray_default(value2), isArg = !isArr && isArguments_default(value2), isBuff = !isArr && !isArg && isBuffer_default(value2), isType = !isArr && !isArg && !isBuff && isTypedArray_default(value2), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes_default(value2.length, String) : [], length = result.length;
+  for (var key in value2) {
+    if ((inherited || hasOwnProperty6.call(value2, key)) && !(skipIndexes && (key == "length" || isBuff && (key == "offset" || key == "parent") || isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || isIndex_default(key, length)))) {
       result.push(key);
     }
   }
@@ -25575,9 +25575,9 @@ var arrayLikeKeys_default = arrayLikeKeys;
 
 // node_modules/lodash-es/_isPrototype.js
 var objectProto9 = Object.prototype;
-function isPrototype(value) {
-  var Ctor = value && value.constructor, proto = typeof Ctor == "function" && Ctor.prototype || objectProto9;
-  return value === proto;
+function isPrototype(value2) {
+  var Ctor = value2 && value2.constructor, proto = typeof Ctor == "function" && Ctor.prototype || objectProto9;
+  return value2 === proto;
 }
 var isPrototype_default = isPrototype;
 
@@ -25611,8 +25611,8 @@ function baseKeys(object) {
 var baseKeys_default = baseKeys;
 
 // node_modules/lodash-es/isArrayLike.js
-function isArrayLike(value) {
-  return value != null && isLength_default(value.length) && !isFunction_default(value);
+function isArrayLike(value2) {
+  return value2 != null && isLength_default(value2.length) && !isFunction_default(value2);
 }
 var isArrayLike_default = isArrayLike;
 
@@ -25707,8 +25707,8 @@ var setCtorString = toSource_default(Set_default);
 var weakMapCtorString = toSource_default(WeakMap_default);
 var getTag = baseGetTag_default;
 if (DataView_default && getTag(new DataView_default(new ArrayBuffer(1))) != dataViewTag3 || Map_default && getTag(new Map_default()) != mapTag3 || Promise_default && getTag(Promise_default.resolve()) != promiseTag || Set_default && getTag(new Set_default()) != setTag3 || WeakMap_default && getTag(new WeakMap_default()) != weakMapTag2) {
-  getTag = function(value) {
-    var result = baseGetTag_default(value), Ctor = result == objectTag2 ? value.constructor : void 0, ctorString = Ctor ? toSource_default(Ctor) : "";
+  getTag = function(value2) {
+    var result = baseGetTag_default(value2), Ctor = result == objectTag2 ? value2.constructor : void 0, ctorString = Ctor ? toSource_default(Ctor) : "";
     if (ctorString) {
       switch (ctorString) {
         case dataViewCtorString:
@@ -25768,14 +25768,14 @@ function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {
 var baseIsEqualDeep_default = baseIsEqualDeep;
 
 // node_modules/lodash-es/_baseIsEqual.js
-function baseIsEqual(value, other, bitmask, customizer, stack) {
-  if (value === other) {
+function baseIsEqual(value2, other, bitmask, customizer, stack) {
+  if (value2 === other) {
     return true;
   }
-  if (value == null || other == null || !isObjectLike_default(value) && !isObjectLike_default(other)) {
-    return value !== value && other !== other;
+  if (value2 == null || other == null || !isObjectLike_default(value2) && !isObjectLike_default(other)) {
+    return value2 !== value2 && other !== other;
   }
-  return baseIsEqualDeep_default(value, other, bitmask, customizer, baseIsEqual, stack);
+  return baseIsEqualDeep_default(value2, other, bitmask, customizer, baseIsEqual, stack);
 }
 var baseIsEqual_default = baseIsEqual;
 
@@ -25816,8 +25816,8 @@ function baseIsMatch(object, source, matchData, customizer) {
 var baseIsMatch_default = baseIsMatch;
 
 // node_modules/lodash-es/_isStrictComparable.js
-function isStrictComparable(value) {
-  return value === value && !isObject_default(value);
+function isStrictComparable(value2) {
+  return value2 === value2 && !isObject_default(value2);
 }
 var isStrictComparable_default = isStrictComparable;
 
@@ -25825,8 +25825,8 @@ var isStrictComparable_default = isStrictComparable;
 function getMatchData(object) {
   var result = keys_default(object), length = result.length;
   while (length--) {
-    var key = result[length], value = object[key];
-    result[length] = [key, value, isStrictComparable_default(value)];
+    var key = result[length], value2 = object[key];
+    result[length] = [key, value2, isStrictComparable_default(value2)];
   }
   return result;
 }
@@ -25857,23 +25857,23 @@ var baseMatches_default = baseMatches;
 
 // node_modules/lodash-es/isSymbol.js
 var symbolTag2 = "[object Symbol]";
-function isSymbol(value) {
-  return typeof value == "symbol" || isObjectLike_default(value) && baseGetTag_default(value) == symbolTag2;
+function isSymbol(value2) {
+  return typeof value2 == "symbol" || isObjectLike_default(value2) && baseGetTag_default(value2) == symbolTag2;
 }
 var isSymbol_default = isSymbol;
 
 // node_modules/lodash-es/_isKey.js
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/;
 var reIsPlainProp = /^\w*$/;
-function isKey(value, object) {
-  if (isArray_default(value)) {
+function isKey(value2, object) {
+  if (isArray_default(value2)) {
     return false;
   }
-  var type = typeof value;
-  if (type == "number" || type == "symbol" || type == "boolean" || value == null || isSymbol_default(value)) {
+  var type = typeof value2;
+  if (type == "number" || type == "symbol" || type == "boolean" || value2 == null || isSymbol_default(value2)) {
     return true;
   }
-  return reIsPlainProp.test(value) || !reIsDeepProp.test(value) || object != null && value in Object(object);
+  return reIsPlainProp.test(value2) || !reIsDeepProp.test(value2) || object != null && value2 in Object(object);
 }
 var isKey_default = isKey;
 
@@ -25931,44 +25931,44 @@ var stringToPath_default = stringToPath;
 var INFINITY = 1 / 0;
 var symbolProto2 = Symbol_default ? Symbol_default.prototype : void 0;
 var symbolToString = symbolProto2 ? symbolProto2.toString : void 0;
-function baseToString(value) {
-  if (typeof value == "string") {
-    return value;
+function baseToString(value2) {
+  if (typeof value2 == "string") {
+    return value2;
   }
-  if (isArray_default(value)) {
-    return arrayMap_default(value, baseToString) + "";
+  if (isArray_default(value2)) {
+    return arrayMap_default(value2, baseToString) + "";
   }
-  if (isSymbol_default(value)) {
-    return symbolToString ? symbolToString.call(value) : "";
+  if (isSymbol_default(value2)) {
+    return symbolToString ? symbolToString.call(value2) : "";
   }
-  var result = value + "";
-  return result == "0" && 1 / value == -INFINITY ? "-0" : result;
+  var result = value2 + "";
+  return result == "0" && 1 / value2 == -INFINITY ? "-0" : result;
 }
 var baseToString_default = baseToString;
 
 // node_modules/lodash-es/toString.js
-function toString(value) {
-  return value == null ? "" : baseToString_default(value);
+function toString(value2) {
+  return value2 == null ? "" : baseToString_default(value2);
 }
 var toString_default = toString;
 
 // node_modules/lodash-es/_castPath.js
-function castPath(value, object) {
-  if (isArray_default(value)) {
-    return value;
+function castPath(value2, object) {
+  if (isArray_default(value2)) {
+    return value2;
   }
-  return isKey_default(value, object) ? [value] : stringToPath_default(toString_default(value));
+  return isKey_default(value2, object) ? [value2] : stringToPath_default(toString_default(value2));
 }
 var castPath_default = castPath;
 
 // node_modules/lodash-es/_toKey.js
 var INFINITY2 = 1 / 0;
-function toKey(value) {
-  if (typeof value == "string" || isSymbol_default(value)) {
-    return value;
+function toKey(value2) {
+  if (typeof value2 == "string" || isSymbol_default(value2)) {
+    return value2;
   }
-  var result = value + "";
-  return result == "0" && 1 / value == -INFINITY2 ? "-0" : result;
+  var result = value2 + "";
+  return result == "0" && 1 / value2 == -INFINITY2 ? "-0" : result;
 }
 var toKey_default = toKey;
 
@@ -26036,8 +26036,8 @@ function baseMatchesProperty(path, srcValue) {
 var baseMatchesProperty_default = baseMatchesProperty;
 
 // node_modules/lodash-es/identity.js
-function identity(value) {
-  return value;
+function identity(value2) {
+  return value2;
 }
 var identity_default = identity;
 
@@ -26064,17 +26064,17 @@ function property(path) {
 var property_default = property;
 
 // node_modules/lodash-es/_baseIteratee.js
-function baseIteratee(value) {
-  if (typeof value == "function") {
-    return value;
+function baseIteratee(value2) {
+  if (typeof value2 == "function") {
+    return value2;
   }
-  if (value == null) {
+  if (value2 == null) {
     return identity_default;
   }
-  if (typeof value == "object") {
-    return isArray_default(value) ? baseMatchesProperty_default(value[0], value[1]) : baseMatches_default(value);
+  if (typeof value2 == "object") {
+    return isArray_default(value2) ? baseMatchesProperty_default(value2[0], value2[1]) : baseMatches_default(value2);
   }
-  return property_default(value);
+  return property_default(value2);
 }
 var baseIteratee_default = baseIteratee;
 
@@ -26130,8 +26130,8 @@ var baseEach_default = baseEach;
 // node_modules/lodash-es/_baseMap.js
 function baseMap(collection, iteratee) {
   var index = -1, result = isArrayLike_default(collection) ? Array(collection.length) : [];
-  baseEach_default(collection, function(value, key, collection2) {
-    result[++index] = iteratee(value, key, collection2);
+  baseEach_default(collection, function(value2, key, collection2) {
+    result[++index] = iteratee(value2, key, collection2);
   });
   return result;
 }
@@ -26144,11 +26144,11 @@ function map(collection, iteratee) {
 }
 var map_default = map;
 
-// lib/FileInput/index.jsx
+// lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/FileInput/FileInput.module.css.js
-var digest3 = "c6044d974b2031bcec4c080535b5a0fe0d4ca494661a6782d4b3489a579cfe79";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-67697-ZUIybUVLJFrX/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "ae17312f74b63756039b5f7f16b3341878b723f2905889b4f41945e92c966fa9";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26173,7 +26173,7 @@ var css3 = `._FileInput_rg1n0_1 {
 })();
 var FileInput_module_css_default = { "FileInput": "_FileInput_rg1n0_1", "FileInputControl": "_FileInputControl_rg1n0_5", "FileInputButton": "_FileInputButton_rg1n0_9" };
 
-// lib/FileInput/index.jsx
+// lib/react/FileInput/FileInput.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 var FileInput = class extends import_react.PureComponent {
   state = {
@@ -26271,7 +26271,7 @@ __publicField(FileInput, "defaultProps", {
 });
 FileInput.displayName = "Form5FileInput";
 
-// lib/Input/index.jsx
+// lib/react/Input/Input.jsx
 var import_classnames4 = __toESM(require_classnames(), 1);
 
 // node_modules/lodash-es/isEmpty.js
@@ -26279,22 +26279,22 @@ var mapTag4 = "[object Map]";
 var setTag4 = "[object Set]";
 var objectProto13 = Object.prototype;
 var hasOwnProperty10 = objectProto13.hasOwnProperty;
-function isEmpty(value) {
-  if (value == null) {
+function isEmpty(value2) {
+  if (value2 == null) {
     return true;
   }
-  if (isArrayLike_default(value) && (isArray_default(value) || typeof value == "string" || typeof value.splice == "function" || isBuffer_default(value) || isTypedArray_default(value) || isArguments_default(value))) {
-    return !value.length;
+  if (isArrayLike_default(value2) && (isArray_default(value2) || typeof value2 == "string" || typeof value2.splice == "function" || isBuffer_default(value2) || isTypedArray_default(value2) || isArguments_default(value2))) {
+    return !value2.length;
   }
-  var tag = getTag_default(value);
+  var tag = getTag_default(value2);
   if (tag == mapTag4 || tag == setTag4) {
-    return !value.size;
+    return !value2.size;
   }
-  if (isPrototype_default(value)) {
-    return !baseKeys_default(value).length;
+  if (isPrototype_default(value2)) {
+    return !baseKeys_default(value2).length;
   }
-  for (var key in value) {
-    if (hasOwnProperty10.call(value, key)) {
+  for (var key in value2) {
+    if (hasOwnProperty10.call(value2, key)) {
       return false;
     }
   }
@@ -26302,11 +26302,11 @@ function isEmpty(value) {
 }
 var isEmpty_default = isEmpty;
 
-// lib/Input/index.jsx
+// lib/react/Input/Input.jsx
 var import_prop_types3 = __toESM(require_prop_types(), 1);
 var import_react3 = __toESM(require_react(), 1);
 
-// lib/useInteractiveStates.js
+// lib/react/useInteractiveStates.js
 var import_react2 = __toESM(require_react(), 1);
 function useInteractiveStates({
   onDirty = () => {
@@ -26354,8 +26354,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/Input/Input.module.css.js
-var digest4 = "7a6eeeb25d7f7f2d7bb2511e2ffacf9dae899a5fd100430f2a2c4d93f6b97380";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-67697-ZUIybUVLJFrX/form5/lib/react/Input/Input.module.css.js
+var digest4 = "e6bf9223d71d9d3e1a480c68ea71f6df20f005b44dcf6ae0adff62b9e1b7c61a";
 var css4 = `._InputField_uvkdw_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26584,7 +26584,7 @@ input[variant="toggle"][appearane="success"]:checked::after {
 })();
 var Input_module_css_default = { "InputField": "_InputField_uvkdw_1", "Fluid": "_Fluid_uvkdw_23", "InnerWrapper": "_InnerWrapper_uvkdw_28", "Input": "_Input_uvkdw_1", "Label": "_Label_uvkdw_52", "Error": "_Error_uvkdw_96" };
 
-// lib/Input/index.jsx
+// lib/react/Input/Input.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 function Input({
   arrangement = Input.ARRANGEMENTS.INLINE,
@@ -26635,14 +26635,14 @@ function Input({
       id: id2,
       name: name2,
       type: type2,
-      value
+      value: value2
     } = e.target;
     if (type2 === "checkbox")
-      value = checked;
+      value2 = checked;
     onChange({
       id: id2,
       name: name2,
-      value: options?.[value] ?? value
+      value: options?.[value2] ?? value2
     }, e);
     if (isInvalid && e.target.checkValidity())
       setError("");
@@ -26652,6 +26652,8 @@ function Input({
     required
   };
   const isSwitch = switchTypes.has(type);
+  if (others.value === null)
+    value = "";
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
     arrangement,
     className: (0, import_classnames4.default)(
@@ -26746,8 +26748,8 @@ var arrayReduce_default = arrayReduce;
 
 // node_modules/lodash-es/_baseReduce.js
 function baseReduce(collection, iteratee, accumulator, initAccum, eachFunc) {
-  eachFunc(collection, function(value, index, collection2) {
-    accumulator = initAccum ? (initAccum = false, value) : iteratee(accumulator, value, index, collection2);
+  eachFunc(collection, function(value2, index, collection2) {
+    accumulator = initAccum ? (initAccum = false, value2) : iteratee(accumulator, value2, index, collection2);
   });
   return accumulator;
 }
@@ -26760,7 +26762,7 @@ function reduce(collection, iteratee, accumulator) {
 }
 var reduce_default = reduce;
 
-// lib/Form/index.jsx
+// lib/react/Form/Form.jsx
 var import_classnames5 = __toESM(require_classnames(), 1);
 var import_react4 = __toESM(require_react(), 1);
 var import_prop_types4 = __toESM(require_prop_types(), 1);
@@ -26782,9 +26784,10 @@ function composeData(values, {
   files,
   id,
   name,
+  readonly,
   tagName,
   type,
-  value,
+  value: value2,
   ...attrs
 }, i, form) {
   const tag = FIELD_TAGS[tagName];
@@ -26793,7 +26796,7 @@ function composeData(values, {
   if (tag === "fieldset") {
     if (disabled)
       for (const nestedField of elements)
-        nestedField.disabled = disabled;
+        nestedField.readonly = disabled;
     if (name) {
       const nestedFieldCount = elements.length;
       form.splice(
@@ -26801,11 +26804,12 @@ function composeData(values, {
         nestedFieldCount,
         ...Array(nestedFieldCount).fill({ tagName: "NESTED_FIELD" })
       );
-      values[name] = reduce_default(
-        Array.from(elements),
-        composeData,
-        { __proto__: null }
-      );
+      if (!disabled)
+        values[name] = reduce_default(
+          Array.from(elements),
+          composeData,
+          { __proto__: null }
+        );
     }
     return values;
   }
@@ -26813,12 +26817,15 @@ function composeData(values, {
   if (!name) {
     return values;
   }
+  if (readonly) {
+    return values;
+  }
   if (disabled) {
     values[name] = null;
     return values;
   }
   if (tag === "select" && attrs.multiple) {
-    values[name] = attrs.selectedOptions.map(({ value: value2 }) => value2);
+    values[name] = attrs.selectedOptions.map(({ value: value3 }) => value3);
     return values;
   }
   const val = getFieldVal({
@@ -26826,7 +26833,7 @@ function composeData(values, {
     files,
     dataTransfer,
     type,
-    value
+    value: value2
   });
   const strippedName = name.replace(listNameRgx, "");
   if (isArray_default(values[strippedName]))
@@ -26842,7 +26849,7 @@ function getFieldVal({
   files,
   dataTransfer,
   type,
-  value
+  value: value2
 }) {
   switch (type) {
     case "checkbox":
@@ -26850,11 +26857,11 @@ function getFieldVal({
     case "file":
       return files || dataTransfer;
     case "number":
-      return value.length ? +value : null;
+      return value2.length ? +value2 : null;
     case "radio":
-      return checked ? value : null;
+      return checked ? value2 : null;
     default:
-      return value || null;
+      return value2 || null;
   }
 }
 
@@ -26890,8 +26897,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/lib/Form/Form.module.css.js
-var digest5 = "dae0b6b4ca1f654c97e6d6b20f692633cac8384291ddf4b16632b9431fbf587d";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-67697-ZUIybUVLJFrX/form5/lib/react/Form/Form.module.css.js
+var digest5 = "f07024ff4f4669b3749a6389c28e0169403c38229e41768a10e45c9fe1b21044";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26908,7 +26915,7 @@ fieldset {
 })();
 var Form_module_css_default = { "Form": "_Form_13cn9_1" };
 
-// lib/Form/index.jsx
+// lib/react/Form/Form.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 function Form({
   children,
@@ -26952,6 +26959,8 @@ function Form({
 Form.FIELD_TAGS = FIELD_TAGS;
 Form.displayName = "Form5Form";
 Form.propTypes = {
+  onDirty: import_prop_types4.default.func,
+  onPristine: import_prop_types4.default.func,
   onSubmit: import_prop_types4.default.func.isRequired
 };
 var Form_default = (0, import_react4.memo)(Form);
@@ -26979,8 +26988,8 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-9265-cP93huEAzyBl/react-form5/docs/Demo.module.css.js
-var digest6 = "2835ccf56e7d39929a022a1f21b76e6b2ee060aacb8dcf2b19661dbd50b0d0de";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-67697-ZUIybUVLJFrX/form5/docs/Demo.module.css.js
+var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
 }
