@@ -37,6 +37,25 @@ describe('<Input>', () => {
 		expect(input.value).to.equal(value);
 	});
 
+	it('should avoid obnoxious react noise about uncontrolled to controlled fields', () => {
+		const globalConsoleErr = console.error;
+		const calls = new Array();
+		global.console.error = function MOCK_consoleError(...args) { calls.push(args) }
+
+		render(
+			<Input
+				id="bar"
+				label={labelText}
+				name="foo"
+				value={null}
+			/>
+		);
+
+		expect(calls.length).to.equal(0);
+
+		global.console.error = globalConsoleErr;
+	});
+
 	describe('displaying errors', () => {
 		let getByLabelText;
 		let queryByTestId;
