@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 
 import composeData, {
 	FIELD_TAGS,
-} from '../composeData.js';
-import deepDiff from '../deepDiff.js';
+} from '../../composeData.js';
+import deepDiff from '../../deepDiff.js';
 import { useInteractiveStates } from '../useInteractiveStates.js';
 
 import styles from './Form.module.css';

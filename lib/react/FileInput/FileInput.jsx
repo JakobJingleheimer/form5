@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import _map from 'lodash-es/map.js';
 import { PureComponent } from 'react';
 
-import Button from '../Button/index.jsx';
+import Button from '../Button/Button.jsx';
 
 import styles from './FileInput.module.css';
 

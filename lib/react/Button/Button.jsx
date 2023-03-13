@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import Group from '../Group/index.jsx';
+import Group from '../Group/Group.jsx';
 
 import styles from './Button.module.css';
 
