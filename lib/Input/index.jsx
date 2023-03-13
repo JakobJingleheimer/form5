@@ -84,6 +84,8 @@ export default function Input({
 
 	const isSwitch = switchTypes.has(type);
 
+	if (others.value === null) value = ''; // React has a tantrum when `value` is `null`
+
 	return (
 		<div
 			arrangement={arrangement}
