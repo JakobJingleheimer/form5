@@ -66,6 +66,8 @@ Form.FIELD_TAGS = FIELD_TAGS;
 
 Form.displayName = 'Form5Form';
 Form.propTypes = {
+	onDirty: PropTypes.func,
+	onPristine: PropTypes.func,
 	onSubmit: PropTypes.func.isRequired,
 };
 
