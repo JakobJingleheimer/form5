@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import Input from './index.jsx';
+import Input from './Input.jsx';
 
 
 describe('<Input>', () => {

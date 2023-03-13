@@ -9,15 +9,15 @@ This package distributes JSX so you can decide how it gets compiled.
 
 ## Demo
 
-[https://JakobJingleheimer.github.io/react-form5](https://jakobjingleheimer.github.io/react-form5)
+[https://JakobJingleheimer.github.io/form5](https://jakobjingleheimer.github.io/form5)
 
 ## Key features
 
 Use what you want. No component requires any other component (ex `<Form>` works just fine with plain `<input>`, `<select>`, etc). You can also use the utilities that underpin `<Form>` without the react component itself (you're free to re-invent the wheel), just import them and go:
 
 ```js
-import composeData from 'react-form5/composeData';
-import deepDiff from 'react-form5/deepDiff';
+import composeData from 'form5/composeData';
+import deepDiff from 'form5/deepDiff';
 ```
 
 ### Just the tip
@@ -74,11 +74,12 @@ If a field is supplied validation props (`minLength`, `required`, etc), the comp
 Any props not specific to this package are passed to the relative element.
 
 ```jsx
-import Form, {
+import {
   Button,
   FileInput,
+  Form,
   Input,
-} from 'react-form5';
+} from 'form5/react';
 
 import AddressService from '../AddressService.js';
 import ClientsService from '../ClientsService.js';

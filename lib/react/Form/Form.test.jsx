@@ -1,7 +1,7 @@
-import { fireEvent, render, prettyDOM } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import Input from '../Input/index.jsx';
-import Form from './index.jsx';
+import Input from '../Input/Input.jsx';
+import Form from './Form.jsx';
 
 
 describe('<Form>', () => {

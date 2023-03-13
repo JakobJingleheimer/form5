@@ -1,17 +1,17 @@
 {
-  "name": "react-form5",
-  "version": "1.4.3",
+  "name": "form5",
+  "version": "2.0.0",
   "description": "A set of mostly unopinionated react components leveraging native APIs; supports controlled and uncontrolled state.",
   "type": "module",
   "directories": {
     "lib": "lib"
   },
   "exports": {
-    ".": "./lib/barrel.js",
-    "./Button": "./lib/Button/index.jsx",
-    "./FileInput": "./lib/FileInput/index.jsx",
-    "./Input": "./lib/Input/index.jsx",
-    "./Form": "./lib/Form/index.jsx",
+    "./react": "./lib/react/barrel.js",
+    "./react/Button": "./lib/react/Button/Button.jsx",
+    "./react/FileInput": "./lib/react/FileInput/FileInput.jsx",
+    "./react/Input": "./lib/react/Input/Input.jsx",
+    "./react/Form": "./lib/react/Form/Form.jsx",
     "./composeData": "./lib/composeData.js",
     "./deepDiff": "./lib/deepDiff.js",
     "./package.json": "./package.json"
