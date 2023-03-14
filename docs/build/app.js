@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/Group/Group.module.css.js
-var digest = "75b84be784221d66dd06acba5ecf3484de908411579ff37b78c1cece7430d103";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36232-WRiajl1uhP70/form5/lib/react/Group/Group.module.css.js
+var digest = "92ec7f6b2664de0f65fa1c34b47e8be4d93437a7fac74d562da5dff159ed5bcf";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,8 +24622,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/Button/Button.module.css.js
-var digest2 = "44a5e60da586672cc9039c5bad4deeee18085dddfcda682361d3390de7f4b70d";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36232-WRiajl1uhP70/form5/lib/react/Button/Button.module.css.js
+var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
 var css2 = `._Button_iyuoe_1 {
 	font: unset;
 	border: none;
@@ -26147,8 +26147,8 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "69e4862470617802bf6e04f3d7c965857999b20fdc30ec54a7f024924028e319";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36232-WRiajl1uhP70/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "6f78220d70cc366790b5a736c571ed191928222270c58eccf59e5c662d097c8f";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26354,8 +26354,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/Input/Input.module.css.js
-var digest4 = "3515a9842cfdf6a3b0df447af2b3b3d824b6741183622770dfdf1d5f91159e0e";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36232-WRiajl1uhP70/form5/lib/react/Input/Input.module.css.js
+var digest4 = "ad74ef7390d6cc230fa3bb0721e0d5114b64dd3bcec40d7d5f58a3bad6bf0735";
 var css4 = `._InputField_uvkdw_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26776,56 +26776,56 @@ var FIELD_TAGS = {
 };
 var listNameRgx = /\[\d*\]$/;
 var isListName = (name) => listNameRgx.test(name);
-function composeData(values, {
-  checked,
-  dataTransfer,
-  disabled,
-  elements,
-  files,
-  id,
-  name,
-  readonly,
-  tagName,
-  type,
-  value,
-  ...attrs
-}, i, form) {
+function composeData(values, element, i, form) {
+  let {
+    checked,
+    dataTransfer,
+    disabled,
+    elements,
+    files,
+    id,
+    multiple,
+    name,
+    selectedOptions,
+    tagName,
+    type,
+    value
+  } = element;
   const tag = FIELD_TAGS[tagName];
   if (!tag)
     return values;
+  if (!element.hasAttribute)
+    throw new Error(`${JSON.stringify(element)} is missing 'hasAttribute'`);
+  const readOnly = element.hasAttribute("readonly");
   if (tag === "fieldset") {
-    if (disabled || readonly) {
-      const prop = readonly ? "readonly" : "disabled";
+    if (disabled && !readOnly)
       for (const nestedField of elements)
-        nestedField[prop] = disabled;
-    }
-    if (disabled || readonly || name) {
+        nestedField.disabled = disabled;
+    if (name) {
       const nestedFieldCount = elements.length;
       form.splice(
         i + 1,
         nestedFieldCount,
         ...Array(nestedFieldCount).fill({ tagName: "NESTED_FIELD" })
       );
-    }
-    if (!disabled && !readonly && name) {
-      values[name] = reduce_default(
-        Array.from(elements),
-        composeData,
-        { __proto__: null }
-      );
+      if (!disabled)
+        values[name] = reduce_default(
+          Array.from(elements),
+          composeData,
+          { __proto__: null }
+        );
     }
     return values;
   }
   name ||= id;
-  if (!name) {
+  if (!name)
     return values;
-  }
   if (disabled) {
     values[name] = null;
     return values;
   }
-  if (tag === "select" && attrs.multiple) {
-    values[name] = attrs.selectedOptions.map(({ value: value2 }) => value2);
+  if (tag === "select" && multiple) {
+    values[name] = selectedOptions.map(({ value: value2 }) => value2);
     return values;
   }
   const val = getFieldVal({
@@ -26857,11 +26857,11 @@ function getFieldVal({
     case "file":
       return files || dataTransfer;
     case "number":
-      return value.length ? +value : null;
+      return value.length ? +value : void 0;
     case "radio":
-      return checked ? value : null;
+      return checked ? value : void 0;
     default:
-      return value || null;
+      return value || void 0;
   }
 }
 
@@ -26872,6 +26872,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
       return;
     if (typeof newVals !== "undefined")
       return newVals;
+    if (typeof oldVals === "undefined")
+      return;
     return null;
   }
   const oldKeys = keys_default(oldVals).sort();
@@ -26897,8 +26899,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/Form/Form.module.css.js
-var digest5 = "49e1c9cc2745b7a8fb3531fedaa56789a80b5cd4432ca9e30e6a4946e7498f38";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36232-WRiajl1uhP70/form5/lib/react/Form/Form.module.css.js
+var digest5 = "31652bf8e3bf2177ebcb50a9db6960a5c9eb6619d98dc4d202009d9db5b5aa0c";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26988,7 +26990,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36232-WRiajl1uhP70/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
