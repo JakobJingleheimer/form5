@@ -67,6 +67,28 @@ Labels of fields set to required are automatically styled with an "*" in an acce
 
 Implementer's css modules are consumed via css modules (passed as normal via `className`).
 
+### Utility consumption
+
+#### `composeData()`
+
+Produce a key-value map of field `name`s (or `id`s) to their `value` (or equivalent, like an `<input checked>`).
+
+```js
+function onSubmit(event) {
+  const formControlsList = Array.from(event.target.elements);
+  const data = {};
+  formControlsList.reduce(composeData, data);
+}
+```
+
+This utility has a couple noteworthy extras related to `<fieldset>`:
+
+* Named `<fieldset>`s to create nested key-value maps (see `<fieldset>` below); anonymous `<fieldset>`s are themselves ignored in output (but their descendants are present, as normal).
+* Disabled `<fieldset>`s void their descendant's values (they're set to `null` in the output)¹
+* Readonly `<fieldset>`s ignore their descendant's values (they're excluded in the output)¹
+
+¹ A named `<fieldset>` with no items is excluded from `composeData()`'s output (there is no empty object).
+
 ### Component consumption
 
 If a field is supplied validation props (`minLength`, `required`, etc), the component will automatically trigger its fields ("form controls") to self-validate and display relevant errors upon submit. Each field supports supplying custom validation messages via the Constraints Validation API—when no custom message(s) are supplied, browser defaults (which are pretty good and support i18n for free) are used. A Form submitted with invalid fields will abort the submission (the supplied `onSubmit` callback will not be called).
@@ -188,6 +210,46 @@ It also provides a `delta` of data changes, useful for `PATCH`ing existing field
 
 `<Form>` accepts a number of event handlers (the usual `onChange`, `onSubmit`, etc), as well as `onDirty` and `onPristine`, which are called when the form's `pristine` state changes; each is called only once per change (eg when the form becomes dirty and when it becomes `pristine` again after submit). These can be leveraged to, for instance, prevent submitting a pristine form (as you can partially see in the demo: the submit button is disabled, but the form itself doesn't consume `isDirty` so data objects can still be observed).
 
+#### `<fieldset>`
+
+Form5 itself has no component for `<fieldset>`, but it does have special support for the native `<fieldset>` when composing data. Natively, `readonly` has no effect on a `<fieldset>` (or its descendants), to the upset of many. In form5, setting `<fieldset readonly>` will result in `composeData()` ignoring its descedants in output. However, in order to get native html to behave like the descendant fields are `readonly`, you must also set `disabled` on the fielset: `<fieldset disabled readonly>`. `composeData()` ordinarily outputs descendants' value as `null` when `<fieldset disabled>`, but when it is _also_ `readonly`, it instead ignores them.
+
+In order to create nested data, a named fieldset can be used:
+
+```html
+<fieldset name="something">
+  <input name="a" />
+  <input name="b" />
+
+  <fieldset name="else">
+    <input name="c" />
+    <input name="d" />
+  </fieldset>
+
+  <fieldset><!-- anonymous -->
+    <input name="e" />
+    <input name="f" />
+  </fieldset>
+</fieldset>
+```
+
+Results in the output:
+
+```js
+{
+  something: {
+    a: '…',
+    b: '…',
+    else: {
+      c: '…',
+      d: '…',
+    }
+    e: '…',
+    f: '…',
+  }
+}
+```
+
 #### `<Button>`
 
 The most important difference here is the `type` prop defaults to `button` instead of `submit` because forgetting to override "submit" has confusing, adverse behaviour.
@@ -206,14 +268,13 @@ A file picker for uploading from disk. The main difference between this componen
 
 #### `<Input>`
 
-This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`)
-that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange`
-listeners to track `pristine` and `touched` (to avoid erroneously invalidating the field); its
-internal handlers are first called and then handlers passed via props.
+This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`) that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange` listeners to track `pristine` and `touched` (to avoid erroneously invalidating the field); its internal handlers are first called and then handlers passed via props.
 
 To create a list of values within a single property, append `[]` to the `name` attribute, like `<Input name="foo[]" />`; to avoid conflicting with the likes of react, a number may optionally be included within the brackets, like `<Input name="foo[0]" />`, but the number (index) itself will be ignored (sequence in data objects is determined by the input's place in the DOM).
 
-`<input>` also offers a small easter-egg: a toggle, which is effectively a checkbox with fancy styling.
+When you have existing data with which to pre-populate form fields that users will subsequently change, you can still have an uncontrolled component (meaning you don't need to manage `onChange` etc) by using React's `defaultChecked={valueFromDb}` or `defaultValue={valueFromDb}` (also works with native `<input>`).
+
+`<Input>` also offers a small easter-egg: a toggle, which is effectively a checkbox with fancy styling.
 
 prop | purpose | default
 :--- | :--- | :---
