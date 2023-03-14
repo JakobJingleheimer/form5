@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-82477-atFJvCRwdScN/form5/lib/react/Group/Group.module.css.js
-var digest = "c7e2a0bdc0321d973cdc3e06ef2ade886c53a6130cfd0db910475021a8adcecf";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/Group/Group.module.css.js
+var digest = "75b84be784221d66dd06acba5ecf3484de908411579ff37b78c1cece7430d103";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,8 +24622,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-82477-atFJvCRwdScN/form5/lib/react/Button/Button.module.css.js
-var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/Button/Button.module.css.js
+var digest2 = "44a5e60da586672cc9039c5bad4deeee18085dddfcda682361d3390de7f4b70d";
 var css2 = `._Button_iyuoe_1 {
 	font: unset;
 	border: none;
@@ -26147,8 +26147,8 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-82477-atFJvCRwdScN/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "d195be21654bbadbdbb112ec53bb16d8970eac951b5e661e7a8832c62d8461bd";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "69e4862470617802bf6e04f3d7c965857999b20fdc30ec54a7f024924028e319";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26354,8 +26354,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-82477-atFJvCRwdScN/form5/lib/react/Input/Input.module.css.js
-var digest4 = "6fef74bdb10ac26935c501e5bcb8354c72fb62cef4529f62eee85517d3186cb4";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/Input/Input.module.css.js
+var digest4 = "3515a9842cfdf6a3b0df447af2b3b3d824b6741183622770dfdf1d5f91159e0e";
 var css4 = `._InputField_uvkdw_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -26794,30 +26794,30 @@ function composeData(values, {
   if (!tag)
     return values;
   if (tag === "fieldset") {
-    if (disabled)
+    if (disabled || readonly) {
+      const prop = readonly ? "readonly" : "disabled";
       for (const nestedField of elements)
-        nestedField.readonly = disabled;
-    if (name) {
+        nestedField[prop] = disabled;
+    }
+    if (disabled || readonly || name) {
       const nestedFieldCount = elements.length;
       form.splice(
         i + 1,
         nestedFieldCount,
         ...Array(nestedFieldCount).fill({ tagName: "NESTED_FIELD" })
       );
-      if (!disabled)
-        values[name] = reduce_default(
-          Array.from(elements),
-          composeData,
-          { __proto__: null }
-        );
+    }
+    if (!disabled && !readonly && name) {
+      values[name] = reduce_default(
+        Array.from(elements),
+        composeData,
+        { __proto__: null }
+      );
     }
     return values;
   }
   name ||= id;
   if (!name) {
-    return values;
-  }
-  if (readonly) {
     return values;
   }
   if (disabled) {
@@ -26897,8 +26897,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-82477-atFJvCRwdScN/form5/lib/react/Form/Form.module.css.js
-var digest5 = "f9ea5593f222520d6f4cf6f121106c9bed5539fa5ed81b975708ff4a5a33cb0c";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/lib/react/Form/Form.module.css.js
+var digest5 = "49e1c9cc2745b7a8fb3531fedaa56789a80b5cd4432ca9e30e6a4946e7498f38";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -26988,7 +26988,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-82477-atFJvCRwdScN/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-16242-rO874J10geKM/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
