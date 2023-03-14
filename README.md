@@ -84,10 +84,30 @@ function onSubmit(event) {
 This utility has a couple noteworthy extras related to `<fieldset>`:
 
 * Named `<fieldset>`s to create nested key-value maps (see `<fieldset>` below); anonymous `<fieldset>`s are themselves ignored in output (but their descendants are present, as normal).
-* Disabled `<fieldset>`s void their descendant's values (they're set to `null` in the output)¹
-* Readonly `<fieldset>`s ignore their descendant's values (they're excluded in the output)¹
+* Disabled `<fieldset>`s output their descendant's value as `null`, _unless_ the `<fieldset>` is also `readonly`¹.
 
-¹ A named `<fieldset>` with no items is excluded from `composeData()`'s output (there is no empty object).
+¹ A named `<fieldset>` with no items is excluded from `composeData()`'s output (there is no empty
+object).
+
+#### `deepDiff()`
+
+Produce a delta of A & B, maintaining the shape of the inputs. In form5, this is used in
+combination with `composeData()`: On mount, `<Form>` runs `composeData()` on all its fields to
+create the initial state ("A"), and then on submit, runs `composeData()` again to get its fields
+current values ("B"), feeding A & B into deepDiff (`deepDiff(A, B)`), and finally resets A to B (for
+a potential subsequent submission).
+
+```js
+const initial = {
+  country: 'Canada',
+  forename: 'Jakob',
+};
+const current = {
+  country: 'Holland',
+  forename: 'Jakob',
+};
+deepDiff(initial, current); // { country: 'Holland' }
+```
 
 ### Component consumption
 
