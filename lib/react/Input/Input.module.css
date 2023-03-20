@@ -77,10 +77,6 @@ textarea.Input {
 	line-height: inherit;
 }
 
-.Label {
-	text-transform: capitalize;
-}
-
 .InputField:not([switch]) .Label {
 	order: -1;
 }
