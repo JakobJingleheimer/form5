@@ -232,7 +232,13 @@ It also provides a `delta` of data changes, useful for `PATCH`ing existing field
 
 #### `<fieldset>`
 
-Form5 itself has no component for `<fieldset>`, but it does have special support for the native `<fieldset>` when composing data. Natively, `readonly` has no effect on a `<fieldset>` (or its descendants), to the upset of many. In form5, setting `<fieldset readonly>` will result in `composeData()` ignoring its descedants in output. However, in order to get native html to behave like the descendant fields are `readonly`, you must also set `disabled` on the fielset: `<fieldset disabled readonly>`. `composeData()` ordinarily outputs descendants' value as `null` when `<fieldset disabled>`, but when it is _also_ `readonly`, it instead ignores them.
+Form5 itself has no component for `<fieldset>`, but it does have special support for the native
+`<fieldset>` when composing data. Natively, `readonly` has no effect on a `<fieldset>` (or its
+descendants), to the surprise and upset of many. In form5, setting `<fieldset readonly>` will result in
+`composeData()` ignoring its descedants in output (as if the descendants themselves were `readonly`). However, in order to get native html to behave
+like the descendant fields are `readonly`, you must also set `disabled` on the fielset: `<fieldset
+disabled readonly>`. `composeData()` ordinarily outputs descendants' value as `null` when `<fieldset
+disabled>`, but when it is _also_ `readonly`, it instead ignores them.
 
 In order to create nested data, a named fieldset can be used:
 
@@ -253,7 +259,7 @@ In order to create nested data, a named fieldset can be used:
 </fieldset>
 ```
 
-Results in the output:
+Results in `composeData()` outputting:
 
 ```js
 {
