@@ -24587,7 +24587,7 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-37297-gCvTyLsDf6ym/form5/lib/react/Group/Group.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/Group/Group.module.css.js
 var digest = "cabc55246a6d0073a6cacd960c765433e4c7274b9b30935c4b73c495208553a3";
 var css = `._Group_4f7x4_1 {
     display: flex;
@@ -24622,7 +24622,7 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-37297-gCvTyLsDf6ym/form5/lib/react/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/Button/Button.module.css.js
 var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
 var css2 = `._Button_iyuoe_1 {
 	font: unset;
@@ -26147,7 +26147,7 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-37297-gCvTyLsDf6ym/form5/lib/react/FileInput/FileInput.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/FileInput/FileInput.module.css.js
 var digest3 = "6f78220d70cc366790b5a736c571ed191928222270c58eccf59e5c662d097c8f";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
@@ -26354,7 +26354,7 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-37297-gCvTyLsDf6ym/form5/lib/react/Input/Input.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/Input/Input.module.css.js
 var digest4 = "1a9690702035939387eb6aa2874287c88834a26ee6a438b12d7539d816cc3c9b";
 var css4 = `._InputField_l4aso_1 {
 	gap: calc(var(--grid-gutter) / 2);
@@ -26789,15 +26789,23 @@ function composeData(values, element, i, form) {
   const tag = FIELD_TAGS[tagName];
   if (!tag)
     return values;
+  const readOnly = element.hasAttribute("readonly");
   if (tag === "fieldset")
     return handleFieldset(
       values,
-      Object.assign({ readOnly: element.hasAttribute("readonly") }, element),
+      {
+        disabled,
+        elements: element.elements,
+        name,
+        readOnly
+      },
       i,
       form
     );
   name ||= id;
   if (!name)
+    return values;
+  if (readOnly)
     return values;
   if (values[name] === null)
     return values;
@@ -26907,7 +26915,7 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-37297-gCvTyLsDf6ym/form5/lib/react/Form/Form.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/Form/Form.module.css.js
 var digest5 = "62bea37c8fcee3b441b6faa23f457b14a7ca7b49b60956748cb4c430a962b32a";
 var css5 = `._Form_13cn9_1,
 fieldset {
@@ -26998,7 +27006,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-37297-gCvTyLsDf6ym/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
