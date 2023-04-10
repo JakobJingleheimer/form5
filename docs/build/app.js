@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/Group/Group.module.css.js
-var digest = "cabc55246a6d0073a6cacd960c765433e4c7274b9b30935c4b73c495208553a3";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/Group/Group.module.css.js
+var digest = "222755440b20ab3b86640f48394098919c3671ecdc5950c7183fafa2e5d596b9";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,8 +24622,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/Button/Button.module.css.js
-var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/Button/Button.module.css.js
+var digest2 = "f66e85b77457ec753c074b3edce1d715ca0f52ea4d7cc42ccca415907f082d65";
 var css2 = `._Button_iyuoe_1 {
 	font: unset;
 	border: none;
@@ -26147,8 +26147,8 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "6f78220d70cc366790b5a736c571ed191928222270c58eccf59e5c662d097c8f";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "d27731876f3cca402b10094ee6cb220a0b53cde17ec3706871f2638569db9a7a";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26354,115 +26354,123 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/Input/Input.module.css.js
-var digest4 = "1a9690702035939387eb6aa2874287c88834a26ee6a438b12d7539d816cc3c9b";
-var css4 = `._InputField_l4aso_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/Input/Input.module.css.js
+var digest4 = "b25341cbb5063b978a2e148d544a4a3372c6e71b454a9d146435bada0c8535b9";
+var css4 = `._InputField_eb0cg_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_l4aso_1[arrangement="inline"] {
+._InputField_eb0cg_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_l4aso_1[arrangement="inline"],
-._InputField_l4aso_1[arrangement="stacked"] {
+._InputField_eb0cg_1[arrangement="inline"],
+._InputField_eb0cg_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_l4aso_1[arrangement="stacked"] {
+._InputField_eb0cg_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_l4aso_1[arrangement="stacked"],
-._InputField_l4aso_1[arrangement="stand-alone"] {
+._InputField_eb0cg_1[arrangement="stacked"],
+._InputField_eb0cg_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_l4aso_1[arrangement="stand-alone"] {
+._InputField_eb0cg_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._Fluid_l4aso_23 {
+._Fluid_eb0cg_23 {
 	flex: 1;
 	grid-template-columns: 100%;
 }
 
-._InnerWrapper_l4aso_28 {
+._InnerWrapper_eb0cg_28 {
 	display: flex;
 	flex: 1;
 	position: relative;
 }
 
-._Input_l4aso_1 {
+._Input_eb0cg_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_l4aso_1:focus {
+._Input_eb0cg_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_l4aso_1:disabled {
+._Input_eb0cg_1:disabled {
 	cursor: default;
 }
-._Input_l4aso_1:disabled,
-._Input_l4aso_1[readonly] {
+._Input_eb0cg_1:disabled,
+._Input_eb0cg_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._InputField_l4aso_1[readonly] ._Input_l4aso_1,
-._InputField_l4aso_1[readonly] ._Label_l4aso_52 {
+._InputField_eb0cg_1[readonly] ._Input_eb0cg_1,
+._InputField_eb0cg_1[readonly] ._Label_eb0cg_52 {
 	cursor: not-allowed;
 }
 
-._Input_l4aso_1:not([type="checkbox"]):not([type="radio"]) {
+._Input_eb0cg_1:not([type="checkbox"]):not([type="radio"]) {
 	width: 100%;
 }
 
-._Input_l4aso_1[type="checkbox"],
-._Input_l4aso_1[type="radio"] {
+._Input_eb0cg_1[type="checkbox"],
+._Input_eb0cg_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_l4aso_1[type="date"],
-._Input_l4aso_1[type="datetime"],
-._Input_l4aso_1[type="datetime-local"],
-._Input_l4aso_1[type="time"] {
+._Input_eb0cg_1[type="date"],
+._Input_eb0cg_1[type="datetime"],
+._Input_eb0cg_1[type="datetime-local"],
+._Input_eb0cg_1[type="time"] {
 	font: inherit;
 }
 
-._Input_l4aso_1[type="number"] {
+._Input_eb0cg_1[type="number"] {
 	text-align: right;
 }
 
-textarea._Input_l4aso_1 {
+textarea._Input_eb0cg_1 {
 	line-height: inherit;
 }
 
-._InputField_l4aso_1:not([switch]) ._Label_l4aso_52 {
+._InputField_eb0cg_1:not([switch]) ._Label_eb0cg_52 {
 	order: -1;
 }
 
-._InputField_l4aso_1[required] ._Label_l4aso_52::after {
+._InputField_eb0cg_1[required] ._Label_eb0cg_52::after {
 	content: '*';
 	margin-left: 0.1em;
 }
-._InputField_l4aso_1[touched][invalid] ._Input_l4aso_1:focus {
+._InputField_eb0cg_1[touched][invalid] ._Input_eb0cg_1:focus {
 	outline-color: var(--colour-danger);
 }
-._InputField_l4aso_1[touched][invalid] ._Input_l4aso_1,
-._Error_l4aso_92 {
+._InputField_eb0cg_1[touched][invalid] ._Input_eb0cg_1,
+._Error_eb0cg_92 {
 	border-color: var(--colour-danger);
 }
-._InputField_l4aso_1[touched][invalid],
-._InputField_l4aso_1[touched][invalid],
-._Error_l4aso_92 {
+._InputField_eb0cg_1[touched][invalid],
+._InputField_eb0cg_1[touched][invalid],
+._Error_eb0cg_92 {
 	color: var(--colour-danger);
 }
 
-._Input_l4aso_1:focus + ._Error_l4aso_92,
-._Input_l4aso_1:hover + ._Error_l4aso_92 {
+._Input_eb0cg_1:focus + ._Error_eb0cg_92,
+._Input_eb0cg_1:hover + ._Error_eb0cg_92 {
 	opacity: 1;
 	pointer-events: all;
 }
 
-._Error_l4aso_92 {
+select._Input_eb0cg_1 {
+	appearance: none;
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
+	background-position: right 0.5em center;
+	background-repeat: no-repeat;
+	background-size: 0.65em auto;
+}
+
+._Error_eb0cg_92 {
 	background-color: var(--colour-background);
 	border: 1px solid;
 	border-radius: var(--default-border-radius);
@@ -26474,7 +26482,7 @@ textarea._Input_l4aso_1 {
 	transition: opacity var(--default-transition);;
 	z-index: 1;
 }
-._Error_l4aso_92::after {
+._Error_eb0cg_92::after {
 	background-color: inherit;
 	border: inherit;
 	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
@@ -26488,13 +26496,13 @@ textarea._Input_l4aso_1 {
 
 @media only screen and (max-width: 736px) {
 	/* On mobile, position errors below field */
-	._Error_l4aso_92 {
+	._Error_eb0cg_92 {
 		bottom: 0;
 		left: 0;
 		margin: 0 auto;
 		translate: 0 calc(100% + 1em);
 	}
-	._Error_l4aso_92::after {
+	._Error_eb0cg_92::after {
 		left: 50%;
 		rotate: -45deg;
 		top: 0;
@@ -26503,26 +26511,26 @@ textarea._Input_l4aso_1 {
 
 @media only screen and (min-width: 737px) {
 	/* Above mobile, position errors right of field */
-	._InputField_l4aso_1[arrangement="inline"] ._Error_l4aso_92,
-	._InputField_l4aso_1[arrangement="stand-alone"] ._Error_l4aso_92 {
+	._InputField_eb0cg_1[arrangement="inline"] ._Error_eb0cg_92,
+	._InputField_eb0cg_1[arrangement="stand-alone"] ._Error_eb0cg_92 {
 		margin-left: auto;
 		margin-right: 0;
 		top: 50%;
 		translate: calc(100% + 1em) -50%;
 	}
-	._InputField_l4aso_1[arrangement="inline"] ._Error_l4aso_92::after,
-	._InputField_l4aso_1[arrangement="stand-alone"] ._Error_l4aso_92::after {
+	._InputField_eb0cg_1[arrangement="inline"] ._Error_eb0cg_92::after,
+	._InputField_eb0cg_1[arrangement="stand-alone"] ._Error_eb0cg_92::after {
 		left: 0;
 		rotate: 225deg;
 		top: 50%;
 	}
 
-	._InputField_l4aso_1[arrangement="stacked"] ._Error_l4aso_92 {
+	._InputField_eb0cg_1[arrangement="stacked"] ._Error_eb0cg_92 {
 		margin: auto;
 		top: 100%;
 		translate: 0 1em;
 	}
-	._InputField_l4aso_1[arrangement="stacked"] ._Error_l4aso_92::after {
+	._InputField_eb0cg_1[arrangement="stacked"] ._Error_eb0cg_92::after {
 		left: 50%;
 		rotate: 315deg;
 		top: 0;
@@ -26578,7 +26586,7 @@ input[variant="toggle"][appearane="success"]:checked::after {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_l4aso_1", "Fluid": "_Fluid_l4aso_23", "InnerWrapper": "_InnerWrapper_l4aso_28", "Input": "_Input_l4aso_1", "Label": "_Label_l4aso_52", "Error": "_Error_l4aso_92" };
+var Input_module_css_default = { "InputField": "_InputField_eb0cg_1", "Fluid": "_Fluid_eb0cg_23", "InnerWrapper": "_InnerWrapper_eb0cg_28", "Input": "_Input_eb0cg_1", "Label": "_Label_eb0cg_52", "Error": "_Error_eb0cg_92" };
 
 // lib/react/Input/Input.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26915,8 +26923,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/lib/react/Form/Form.module.css.js
-var digest5 = "62bea37c8fcee3b441b6faa23f457b14a7ca7b49b60956748cb4c430a962b32a";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/Form/Form.module.css.js
+var digest5 = "6bc409f04e23d4fc5f87b2f5540ef4636d6386038b7ef79811b5601c5cfd0b1a";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -27006,7 +27014,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12766-0zgzwd467gFz/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
@@ -27165,6 +27173,41 @@ function TestForm() {
                 name: "preferedContact",
                 type: "radio",
                 value: "phone"
+              })
+            ]
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Input, {
+            as: "select",
+            label: "current continent",
+            name: "continent",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                value: "AF",
+                children: "Africa"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                value: "AN",
+                children: "Antarctica"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                value: "AS",
+                children: "Asia"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                value: "EU",
+                children: "Europe"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                value: "NA",
+                children: "North America"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                value: "OC",
+                children: "Oceania"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                value: "SA",
+                children: "South America"
               })
             ]
           }),

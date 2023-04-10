@@ -115,6 +115,20 @@ function TestForm() {
 				</fieldset>
 
 				<Input
+					as="select"
+					label="current continent"
+					name="continent"
+				>
+					<option value="AF">Africa</option>
+					<option value="AN">Antarctica</option>
+					<option value="AS">Asia</option>
+					<option value="EU">Europe</option>
+					<option value="NA">North America</option>
+					<option value="OC">Oceania</option>
+					<option value="SA">South America</option>
+				</Input>
+
+				<Input
 					label="favourite date"
 					name="favouriteDate"
 					type="date"
