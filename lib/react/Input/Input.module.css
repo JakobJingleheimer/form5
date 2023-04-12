@@ -85,6 +85,7 @@ select.Input {
 	background-position: right 0.5em center;
 	background-repeat: no-repeat;
 	background-size: 0.65em auto;
+	padding-right: calc(1em + var(--default-padding)); /* 1em for the icon */
 }
 
 textarea.Input {
