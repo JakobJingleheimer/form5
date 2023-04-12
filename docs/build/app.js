@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/Group/Group.module.css.js
-var digest = "4c841a481c41c3b1226b739a5b7bf285de9d9b323efef73fcbe90a2e630ebb33";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/Group/Group.module.css.js
+var digest = "05a169a357328f86788945d7bb4f6bfe0b6b4b8e9a98a8b6fe311b94097a5941";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,8 +24622,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/Button/Button.module.css.js
-var digest2 = "0f187ff6dde58dc12835c2649c42e3b95bfa0067d833cc1ce9f3e134a2396974";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/Button/Button.module.css.js
+var digest2 = "395afa9449b6eddd9494fcd43f84407f2a1c9e50ade71b364ec1d1d7d603d2a0";
 var css2 = `._Button_tvspn_1 {
 	font: unset;
 	border: none;
@@ -26148,7 +26148,7 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/FileInput/FileInput.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/FileInput/FileInput.module.css.js
 var digest3 = "0bfa65d8aee6252050df31a1a598d2fb307e21d14e49c9a7bf71ed972417d2c6";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
@@ -26355,120 +26355,121 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/Input/Input.module.css.js
-var digest4 = "0e11e5f20c4fb9bb4b434331046a90b0e3e0b677a0025e10abc6f624b6200125";
-var css4 = `._InputField_1bqzq_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/Input/Input.module.css.js
+var digest4 = "c8d3fe8c63a505c03b3d72988b935435a6e5540fbcec7f65134e8b53dc70bb97";
+var css4 = `._InputField_1cpy3_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_1bqzq_1[arrangement="inline"] {
+._InputField_1cpy3_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_1bqzq_1[arrangement="inline"],
-._InputField_1bqzq_1[arrangement="stacked"] {
+._InputField_1cpy3_1[arrangement="inline"],
+._InputField_1cpy3_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_1bqzq_1[arrangement="stacked"] {
+._InputField_1cpy3_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_1bqzq_1[arrangement="stacked"],
-._InputField_1bqzq_1[arrangement="stand-alone"] {
+._InputField_1cpy3_1[arrangement="stacked"],
+._InputField_1cpy3_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_1bqzq_1[arrangement="stand-alone"] {
+._InputField_1cpy3_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._InputField_1bqzq_1[variant="cta"] {
+._InputField_1cpy3_1[variant="cta"] {
 	box-shadow: unset;
 	display: flex;
 	flex-direction: column;
 	padding: unset;
 }
 
-._Fluid_1bqzq_30 {
+._Fluid_1cpy3_30 {
 	flex: 1;
 	grid-template-columns: 100%;
 }
 
-._Input_1bqzq_1 {
+._Input_1cpy3_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_1bqzq_1[variant="cta"]:focus + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41,
-._Input_1bqzq_1:focus {
+._Input_1cpy3_1[variant="cta"]:focus + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41,
+._Input_1cpy3_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_1bqzq_1:disabled {
+._Input_1cpy3_1:disabled {
 	cursor: default;
 }
-._Input_1bqzq_1:disabled,
-._Input_1bqzq_1[readonly] {
+._Input_1cpy3_1:disabled,
+._Input_1cpy3_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._Input_1bqzq_1[readonly],
-._Input_1bqzq_1[readonly] + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
+._Input_1cpy3_1[readonly],
+._Input_1cpy3_1[readonly] + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
 	cursor: not-allowed;
 }
-._Input_1bqzq_1:not([variant="cta"]):required + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41::after {
+._Input_1cpy3_1:not([variant="cta"]):required + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41::after {
 	content: '*';
 	margin-left: 0.1em;
 }
 
-._Input_1bqzq_1:not([type="checkbox"], [type="radio"]) {
+._Input_1cpy3_1:not([type="checkbox"], [type="radio"]) {
 	width: 100%;
 }
 
-._Input_1bqzq_1[type="checkbox"],
-._Input_1bqzq_1[type="radio"] {
+._Input_1cpy3_1[type="checkbox"],
+._Input_1cpy3_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_1bqzq_1[type="date"],
-._Input_1bqzq_1[type="datetime"],
-._Input_1bqzq_1[type="datetime-local"],
-._Input_1bqzq_1[type="time"] {
+._Input_1cpy3_1[type="date"],
+._Input_1cpy3_1[type="datetime"],
+._Input_1cpy3_1[type="datetime-local"],
+._Input_1cpy3_1[type="time"] {
 	font: inherit;
 }
 
-._Input_1bqzq_1[type="number"] {
+._Input_1cpy3_1[type="number"] {
 	text-align: right;
 }
 
-select._Input_1bqzq_1 {
+select._Input_1cpy3_1 {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
 	background-position: right 0.5em center;
 	background-repeat: no-repeat;
 	background-size: 0.65em auto;
+	padding-right: calc(1em + var(--default-padding)); /* 1em for the icon */
 }
 
-textarea._Input_1bqzq_1 {
+textarea._Input_1cpy3_1 {
 	line-height: inherit;
 }
 
-._InputField_1bqzq_1:not([switch]) ._InnerWrapper_1bqzq_41 {
+._InputField_1cpy3_1:not([switch]) ._InnerWrapper_1cpy3_41 {
 	order: -1;
 }
 
-._InputField_1bqzq_1[touched] ._Input_1bqzq_1[variant="cta"]:invalid:focus + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
+._InputField_1cpy3_1[touched] ._Input_1cpy3_1[variant="cta"]:invalid:focus + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
 	outline: 2px solid;
 }
 
-._InputField_1bqzq_1[touched] ._Input_1bqzq_1[variant="cta"]:invalid:focus + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41,
-._InputField_1bqzq_1[touched] ._Input_1bqzq_1:invalid:focus {
+._InputField_1cpy3_1[touched] ._Input_1cpy3_1[variant="cta"]:invalid:focus + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41,
+._InputField_1cpy3_1[touched] ._Input_1cpy3_1:invalid:focus {
 	outline-color: var(--colour-danger);
 }
 
-._InputField_1bqzq_1[touched] ._Input_1bqzq_1:invalid,
-._InputField_1bqzq_1[touched] ._Input_1bqzq_1[variant="cta"]:invalid + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41,
-._Error_1bqzq_109 {
+._InputField_1cpy3_1[touched] ._Input_1cpy3_1:invalid,
+._InputField_1cpy3_1[touched] ._Input_1cpy3_1[variant="cta"]:invalid + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41,
+._Error_1cpy3_110 {
 	border-color: var(--colour-danger);
 }
-._InputField_1bqzq_1[touched] ._Input_1bqzq_1:invalid + ._InnerWrapper_1bqzq_41 {
+._InputField_1cpy3_1[touched] ._Input_1cpy3_1:invalid + ._InnerWrapper_1cpy3_41 {
 	color: var(--colour-danger);
 }
 
@@ -26476,14 +26477,14 @@ textarea._Input_1bqzq_1 {
  * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
  * and the like are not an option.
  */
-._Input_1bqzq_1[variant="cta"] {
+._Input_1cpy3_1[variant="cta"] {
 	height: 0;
 	position: absolute;
 	width: 0;
 	z-index: -1;
 }
 
-._Input_1bqzq_1[variant="cta"] + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
+._Input_1cpy3_1[variant="cta"] + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
 	background-color: var(--colour-light);
 	border: 1px solid var(--colour-medium);
 	border-radius: inherit;
@@ -26491,18 +26492,18 @@ textarea._Input_1bqzq_1 {
 	fill: var(--colour-text-deemphasised);
 }
 
-._Input_1bqzq_1[variant="cta"]:checked + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
+._Input_1cpy3_1[variant="cta"]:checked + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
 	background-color: var(--colour-primary);
 	color: var(--colour-background);
 	fill: var(--colour-background);
 }
 
-._Input_1bqzq_1[variant="cta"] + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
+._Input_1cpy3_1[variant="cta"] + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
 	display: block;
 	padding: var(--default-padding);
 }
 
-._Input_1bqzq_1[variant="toggle"] {
+._Input_1cpy3_1[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -26516,7 +26517,7 @@ textarea._Input_1bqzq_1 {
 	width: 2em;
 }
 
-._Input_1bqzq_1[variant="toggle"]::after {
+._Input_1cpy3_1[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -26532,31 +26533,31 @@ textarea._Input_1bqzq_1 {
 	width: 50%;
 }
 
-._Input_1bqzq_1[variant="toggle"]:checked::after {
+._Input_1cpy3_1[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
 
-._Input_1bqzq_1[variant="toggle"][appearane="danger"]:checked::after {
+._Input_1cpy3_1[variant="toggle"][appearane="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
 
-._Input_1bqzq_1[variant="toggle"][appearane="success"]:checked::after {
+._Input_1cpy3_1[variant="toggle"][appearane="success"]:checked::after {
 	background-color: var(--colour-success);
 }
 
-._InnerWrapper_1bqzq_41 {
+._InnerWrapper_1cpy3_41 {
 	border-radius: inherit;
 	position: relative;
 }
 
-._Input_1bqzq_1:focus + ._InnerWrapper_1bqzq_41 > ._Error_1bqzq_109,
-._InputField_1bqzq_1:hover ._Error_1bqzq_109 {
+._Input_1cpy3_1:focus + ._InnerWrapper_1cpy3_41 > ._Error_1cpy3_110,
+._InputField_1cpy3_1:hover ._Error_1cpy3_110 {
 	opacity: 1;
 	pointer-events: all;
 }
 
-._Error_1bqzq_109 {
+._Error_1cpy3_110 {
 	background-color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	border: 1px solid;
@@ -26576,7 +26577,7 @@ textarea._Input_1bqzq_1 {
 	width: max-content;
 	z-index: 1;
 }
-._Error_1bqzq_109::after {
+._Error_1cpy3_110::after {
 	background-color: inherit;
 	border: inherit;
 	bottom: calc(-0.5em - 2px);
@@ -26599,7 +26600,7 @@ textarea._Input_1bqzq_1 {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_1bqzq_1", "Fluid": "_Fluid_1bqzq_30", "Input": "_Input_1bqzq_1", "InnerWrapper": "_InnerWrapper_1bqzq_41", "Label": "_Label_1bqzq_41", "Error": "_Error_1bqzq_109" };
+var Input_module_css_default = { "InputField": "_InputField_1cpy3_1", "Fluid": "_Fluid_1cpy3_30", "Input": "_Input_1cpy3_1", "InnerWrapper": "_InnerWrapper_1cpy3_41", "Label": "_Label_1cpy3_41", "Error": "_Error_1cpy3_110" };
 
 // lib/react/Input/Input.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26946,7 +26947,7 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/Form/Form.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/Form/Form.module.css.js
 var digest5 = "b114f534c786d8227a92c4affa9703b039c0ed4f4a3f010c00ba00f5a205c5fb";
 var css5 = `._Form_13cn9_1,
 fieldset {
@@ -27037,7 +27038,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
