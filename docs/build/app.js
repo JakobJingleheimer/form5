@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/Group/Group.module.css.js
-var digest = "222755440b20ab3b86640f48394098919c3671ecdc5950c7183fafa2e5d596b9";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/Group/Group.module.css.js
+var digest = "4c841a481c41c3b1226b739a5b7bf285de9d9b323efef73fcbe90a2e630ebb33";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,70 +24622,71 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/Button/Button.module.css.js
-var digest2 = "f66e85b77457ec753c074b3edce1d715ca0f52ea4d7cc42ccca415907f082d65";
-var css2 = `._Button_iyuoe_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/Button/Button.module.css.js
+var digest2 = "0f187ff6dde58dc12835c2649c42e3b95bfa0067d833cc1ce9f3e134a2396974";
+var css2 = `._Button_tvspn_1 {
 	font: unset;
 	border: none;
 	cursor: pointer;
 	padding: var(--default-padding);
+	text-align: center;
 }
 
-._fluid_iyuoe_8 { width: 100% }
+._fluid_tvspn_9 { width: 100% }
 
-._Button_iyuoe_1[variant="cta"] {
+._Button_tvspn_1[variant="cta"] {
 	color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	box-shadow: var(--default-boxshadow);
 	fill: var(--colour-background);
 	text-transform: capitalize;
 }
-._Button_iyuoe_1[variant="cta"][appearance="affirming"] {
+._Button_tvspn_1[variant="cta"][appearance="affirming"] {
 	background-color: var(--colour-success);
 }
-._Button_iyuoe_1[variant="cta"][appearance="basic"] {
+._Button_tvspn_1[variant="cta"][appearance="basic"] {
 	background-color: var(--colour-light);
 	border-color: var(--colour-medium);
 	color: var(--colour-text-deemphasised);
 	fill: var(--colour-text-deemphasised);
 }
-._Button_iyuoe_1[variant="cta"][appearance="danger"] {
+._Button_tvspn_1[variant="cta"][appearance="danger"] {
 	background-color: var(--colour-danger);
 }
-._Button_iyuoe_1[variant="cta"][appearance="primary"] {
+._Button_tvspn_1[variant="cta"][appearance="primary"] {
 	background-color: var(--colour-primary);
 }
-._Button_iyuoe_1[variant="cta"][appearance="warning"] {
+._Button_tvspn_1[variant="cta"][appearance="warning"] {
 	background-color: var(--colour-warning);
 }
-._Button_iyuoe_1[variant="cta"] > i[role="img"] {
+._Button_tvspn_1[variant="cta"] > i[role="img"] {
 	font-size: 2em;
 }
 
-._Button_iyuoe_1[variant="glyph"] {
+._Button_tvspn_1[variant="glyph"] {
 	background-color: unset;
 }
-._Button_iyuoe_1[variant="glyph"][appearance="danger"] {
+._Button_tvspn_1[variant="glyph"][appearance="danger"] {
 	fill: var(--colour-danger);
 }
-._Button_iyuoe_1[variant="glyph"][appearance="primary"] {
+._Button_tvspn_1[variant="glyph"][appearance="primary"] {
 	fill: var(--colour-primary);
 }
-._Button_iyuoe_1[variant="glyph"][appearance="affirming"] {
+._Button_tvspn_1[variant="glyph"][appearance="affirming"] {
 	fill: var(--colour-success);
 }
-._Button_iyuoe_1[variant="glyph"][appearance="warning"] {
+._Button_tvspn_1[variant="glyph"][appearance="warning"] {
 	fill: var(--colour-warning);
 }
 
-._ButtonGroup_iyuoe_55 > ._Button_iyuoe_1 {
+._ButtonGroup_tvspn_56 > ._Button_tvspn_1 {
 	flex: 1;
 }
-._ButtonGroup_iyuoe_55 > ._Button_iyuoe_1:not(:last-child) {
+._ButtonGroup_tvspn_56 > ._Button_tvspn_1:not(:last-child) {
 	border-top-right-radius: unset;
 	border-bottom-right-radius: unset;
 }
-._ButtonGroup_iyuoe_55 > ._Button_iyuoe_1:not(:first-child) {
+._ButtonGroup_tvspn_56 > ._Button_tvspn_1:not(:first-child) {
 	border-top-left-radius: unset;
 	border-bottom-left-radius: unset;
 }
@@ -24698,7 +24699,7 @@ var css2 = `._Button_iyuoe_1 {
     document.head.appendChild(el);
   }
 })();
-var Button_module_css_default = { "Button": "_Button_iyuoe_1", "fluid": "_fluid_iyuoe_8", "ButtonGroup": "_ButtonGroup_iyuoe_55" };
+var Button_module_css_default = { "Button": "_Button_tvspn_1", "fluid": "_fluid_tvspn_9", "ButtonGroup": "_ButtonGroup_tvspn_56" };
 
 // lib/react/Button/Button.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26147,8 +26148,8 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "d27731876f3cca402b10094ee6cb220a0b53cde17ec3706871f2638569db9a7a";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "0bfa65d8aee6252050df31a1a598d2fb307e21d14e49c9a7bf71ed972417d2c6";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26354,115 +26355,90 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/Input/Input.module.css.js
-var digest4 = "b25341cbb5063b978a2e148d544a4a3372c6e71b454a9d146435bada0c8535b9";
-var css4 = `._InputField_eb0cg_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/Input/Input.module.css.js
+var digest4 = "0e11e5f20c4fb9bb4b434331046a90b0e3e0b677a0025e10abc6f624b6200125";
+var css4 = `._InputField_1bqzq_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_eb0cg_1[arrangement="inline"] {
+._InputField_1bqzq_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_eb0cg_1[arrangement="inline"],
-._InputField_eb0cg_1[arrangement="stacked"] {
+._InputField_1bqzq_1[arrangement="inline"],
+._InputField_1bqzq_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_eb0cg_1[arrangement="stacked"] {
+._InputField_1bqzq_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_eb0cg_1[arrangement="stacked"],
-._InputField_eb0cg_1[arrangement="stand-alone"] {
+._InputField_1bqzq_1[arrangement="stacked"],
+._InputField_1bqzq_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_eb0cg_1[arrangement="stand-alone"] {
+._InputField_1bqzq_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._Fluid_eb0cg_23 {
+._InputField_1bqzq_1[variant="cta"] {
+	box-shadow: unset;
+	display: flex;
+	flex-direction: column;
+	padding: unset;
+}
+
+._Fluid_1bqzq_30 {
 	flex: 1;
 	grid-template-columns: 100%;
 }
 
-._InnerWrapper_eb0cg_28 {
-	display: flex;
-	flex: 1;
-	position: relative;
-}
-
-._Input_eb0cg_1 {
+._Input_1bqzq_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_eb0cg_1:focus {
+._Input_1bqzq_1[variant="cta"]:focus + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41,
+._Input_1bqzq_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_eb0cg_1:disabled {
+._Input_1bqzq_1:disabled {
 	cursor: default;
 }
-._Input_eb0cg_1:disabled,
-._Input_eb0cg_1[readonly] {
+._Input_1bqzq_1:disabled,
+._Input_1bqzq_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._InputField_eb0cg_1[readonly] ._Input_eb0cg_1,
-._InputField_eb0cg_1[readonly] ._Label_eb0cg_52 {
+._Input_1bqzq_1[readonly],
+._Input_1bqzq_1[readonly] + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
 	cursor: not-allowed;
 }
-
-._Input_eb0cg_1:not([type="checkbox"]):not([type="radio"]) {
-	width: 100%;
-}
-
-._Input_eb0cg_1[type="checkbox"],
-._Input_eb0cg_1[type="radio"] {
-	margin: unset;
-}
-
-._Input_eb0cg_1[type="date"],
-._Input_eb0cg_1[type="datetime"],
-._Input_eb0cg_1[type="datetime-local"],
-._Input_eb0cg_1[type="time"] {
-	font: inherit;
-}
-
-._Input_eb0cg_1[type="number"] {
-	text-align: right;
-}
-
-textarea._Input_eb0cg_1 {
-	line-height: inherit;
-}
-
-._InputField_eb0cg_1:not([switch]) ._Label_eb0cg_52 {
-	order: -1;
-}
-
-._InputField_eb0cg_1[required] ._Label_eb0cg_52::after {
+._Input_1bqzq_1:not([variant="cta"]):required + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41::after {
 	content: '*';
 	margin-left: 0.1em;
 }
-._InputField_eb0cg_1[touched][invalid] ._Input_eb0cg_1:focus {
-	outline-color: var(--colour-danger);
-}
-._InputField_eb0cg_1[touched][invalid] ._Input_eb0cg_1,
-._Error_eb0cg_92 {
-	border-color: var(--colour-danger);
-}
-._InputField_eb0cg_1[touched][invalid],
-._InputField_eb0cg_1[touched][invalid],
-._Error_eb0cg_92 {
-	color: var(--colour-danger);
+
+._Input_1bqzq_1:not([type="checkbox"], [type="radio"]) {
+	width: 100%;
 }
 
-._Input_eb0cg_1:focus + ._Error_eb0cg_92,
-._Input_eb0cg_1:hover + ._Error_eb0cg_92 {
-	opacity: 1;
-	pointer-events: all;
+._Input_1bqzq_1[type="checkbox"],
+._Input_1bqzq_1[type="radio"] {
+	margin: unset;
 }
 
-select._Input_eb0cg_1 {
+._Input_1bqzq_1[type="date"],
+._Input_1bqzq_1[type="datetime"],
+._Input_1bqzq_1[type="datetime-local"],
+._Input_1bqzq_1[type="time"] {
+	font: inherit;
+}
+
+._Input_1bqzq_1[type="number"] {
+	text-align: right;
+}
+
+select._Input_1bqzq_1 {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
 	background-position: right 0.5em center;
@@ -26470,75 +26446,63 @@ select._Input_eb0cg_1 {
 	background-size: 0.65em auto;
 }
 
-._Error_eb0cg_92 {
-	background-color: var(--colour-background);
-	border: 1px solid;
-	border-radius: var(--default-border-radius);
-	display: inline-block;
-	opacity: 0;
-	padding: 0.5em;
-	pointer-events: none;
-	position: absolute;
-	transition: opacity var(--default-transition);;
-	z-index: 1;
+textarea._Input_1bqzq_1 {
+	line-height: inherit;
 }
-._Error_eb0cg_92::after {
-	background-color: inherit;
-	border: inherit;
-	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
-	content: '';
+
+._InputField_1bqzq_1:not([switch]) ._InnerWrapper_1bqzq_41 {
+	order: -1;
+}
+
+._InputField_1bqzq_1[touched] ._Input_1bqzq_1[variant="cta"]:invalid:focus + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
+	outline: 2px solid;
+}
+
+._InputField_1bqzq_1[touched] ._Input_1bqzq_1[variant="cta"]:invalid:focus + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41,
+._InputField_1bqzq_1[touched] ._Input_1bqzq_1:invalid:focus {
+	outline-color: var(--colour-danger);
+}
+
+._InputField_1bqzq_1[touched] ._Input_1bqzq_1:invalid,
+._InputField_1bqzq_1[touched] ._Input_1bqzq_1[variant="cta"]:invalid + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41,
+._Error_1bqzq_109 {
+	border-color: var(--colour-danger);
+}
+._InputField_1bqzq_1[touched] ._Input_1bqzq_1:invalid + ._InnerWrapper_1bqzq_41 {
+	color: var(--colour-danger);
+}
+
+/*
+ * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
+ * and the like are not an option.
+ */
+._Input_1bqzq_1[variant="cta"] {
+	height: 0;
+	position: absolute;
+	width: 0;
+	z-index: -1;
+}
+
+._Input_1bqzq_1[variant="cta"] + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
+	background-color: var(--colour-light);
+	border: 1px solid var(--colour-medium);
+	border-radius: inherit;
+	color: var(--colour-text-deemphasised);
+	fill: var(--colour-text-deemphasised);
+}
+
+._Input_1bqzq_1[variant="cta"]:checked + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
+	background-color: var(--colour-primary);
+	color: var(--colour-background);
+	fill: var(--colour-background);
+}
+
+._Input_1bqzq_1[variant="cta"] + ._InnerWrapper_1bqzq_41 > ._Label_1bqzq_41 {
 	display: block;
-	height: 0.5em;
-	position: absolute;
-	translate: -50% -50%;
-	width: 0.5em;
+	padding: var(--default-padding);
 }
 
-@media only screen and (max-width: 736px) {
-	/* On mobile, position errors below field */
-	._Error_eb0cg_92 {
-		bottom: 0;
-		left: 0;
-		margin: 0 auto;
-		translate: 0 calc(100% + 1em);
-	}
-	._Error_eb0cg_92::after {
-		left: 50%;
-		rotate: -45deg;
-		top: 0;
-	}
-}
-
-@media only screen and (min-width: 737px) {
-	/* Above mobile, position errors right of field */
-	._InputField_eb0cg_1[arrangement="inline"] ._Error_eb0cg_92,
-	._InputField_eb0cg_1[arrangement="stand-alone"] ._Error_eb0cg_92 {
-		margin-left: auto;
-		margin-right: 0;
-		top: 50%;
-		translate: calc(100% + 1em) -50%;
-	}
-	._InputField_eb0cg_1[arrangement="inline"] ._Error_eb0cg_92::after,
-	._InputField_eb0cg_1[arrangement="stand-alone"] ._Error_eb0cg_92::after {
-		left: 0;
-		rotate: 225deg;
-		top: 50%;
-	}
-
-	._InputField_eb0cg_1[arrangement="stacked"] ._Error_eb0cg_92 {
-		margin: auto;
-		top: 100%;
-		translate: 0 1em;
-	}
-	._InputField_eb0cg_1[arrangement="stacked"] ._Error_eb0cg_92::after {
-		left: 50%;
-		rotate: 315deg;
-		top: 0;
-		translate: -50% -50%;
-	}
-}
-
-input[variant="toggle"] {
+._Input_1bqzq_1[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -26552,7 +26516,7 @@ input[variant="toggle"] {
 	width: 2em;
 }
 
-input[variant="toggle"]::after {
+._Input_1bqzq_1[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -26567,15 +26531,64 @@ input[variant="toggle"]::after {
 	translate: calc(-50% + 1px);
 	width: 50%;
 }
-input[variant="toggle"]:checked::after {
+
+._Input_1bqzq_1[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
-input[variant="toggle"][appearane="danger"]:checked::after {
+
+._Input_1bqzq_1[variant="toggle"][appearane="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
-input[variant="toggle"][appearane="success"]:checked::after {
+
+._Input_1bqzq_1[variant="toggle"][appearane="success"]:checked::after {
 	background-color: var(--colour-success);
+}
+
+._InnerWrapper_1bqzq_41 {
+	border-radius: inherit;
+	position: relative;
+}
+
+._Input_1bqzq_1:focus + ._InnerWrapper_1bqzq_41 > ._Error_1bqzq_109,
+._InputField_1bqzq_1:hover ._Error_1bqzq_109 {
+	opacity: 1;
+	pointer-events: all;
+}
+
+._Error_1bqzq_109 {
+	background-color: var(--colour-background);
+	border-radius: var(--default-border-radius);
+	border: 1px solid;
+	box-shadow: var(--default-boxshadow);
+	color: inherit;
+	display: inline-block;
+	left: calc(-0.5em - 1px);
+	margin-left: 0;
+	margin-right: 0;
+	opacity: 0;
+	padding: 0.5em;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	transition: opacity var(--default-transition);
+	translate: 0 calc(-100% - 1em);
+	width: max-content;
+	z-index: 1;
+}
+._Error_1bqzq_109::after {
+	background-color: inherit;
+	border: inherit;
+	bottom: calc(-0.5em - 2px);
+	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
+	content: '';
+	display: block;
+	height: 0.5em;
+	left: calc(0.8em + 1px);
+	position: absolute;
+	rotate: 135deg;
+	translate: -50% -50%;
+	width: 0.5em;
 }
 `;
 (function() {
@@ -26586,7 +26599,7 @@ input[variant="toggle"][appearane="success"]:checked::after {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_eb0cg_1", "Fluid": "_Fluid_eb0cg_23", "InnerWrapper": "_InnerWrapper_eb0cg_28", "Input": "_Input_eb0cg_1", "Label": "_Label_eb0cg_52", "Error": "_Error_eb0cg_92" };
+var Input_module_css_default = { "InputField": "_InputField_1bqzq_1", "Fluid": "_Fluid_1bqzq_30", "Input": "_Input_1bqzq_1", "InnerWrapper": "_InnerWrapper_1bqzq_41", "Label": "_Label_1bqzq_41", "Error": "_Error_1bqzq_109" };
 
 // lib/react/Input/Input.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26606,6 +26619,7 @@ function Input({
   readOnly,
   required,
   type = "text",
+  variant,
   ...others
 }) {
   const [error, setError] = (0, import_react3.useState)("");
@@ -26651,11 +26665,10 @@ function Input({
     if (isInvalid && e.target.checkValidity())
       setError("");
   };
-  const sharedConstraints = {
-    readOnly,
-    required
-  };
+  const isCTA = variant === Input.VARIANTS.CTA;
   const isSwitch = switchTypes.has(type);
+  if (isCTA)
+    arrangement = null;
   if (others.value === null)
     others.value = "";
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -26663,30 +26676,44 @@ function Input({
     className: (0, import_classnames4.default)(
       Input_module_css_default.InputField,
       {
-        [Input_module_css_default.Fluid]: fluid
+        [Input_module_css_default.Fluid]: fluid,
+        [Button_module_css_default.Button]: isCTA
       }
     ),
-    invalid: isInvalid ? "" : null,
-    ...sharedConstraints,
     pristine,
     switch: isSwitch ? "" : null,
     touched,
+    ...isCTA && {
+      variant: "cta"
+    },
     children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
+        className: (0, import_classnames4.default)(Input_module_css_default.Input, className),
+        name,
+        id,
+        onInvalid: (e) => {
+          e.nativeEvent.stopImmediatePropagation();
+          setError(e.target.validationMessage);
+          is.onInvalid(e);
+        },
+        readOnly,
+        required,
+        type,
+        variant,
+        ...others
+      }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
         className: Input_module_css_default.InnerWrapper,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
-            className: (0, import_classnames4.default)(Input_module_css_default.Input, className),
-            name,
-            id,
-            onInvalid: (e) => {
-              e.nativeEvent.stopImmediatePropagation();
-              setError(e.target.validationMessage);
-              is.onInvalid(e);
+          !!label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
+            className: (0, import_classnames4.default)(Input_module_css_default.Label, {
+              [Button_module_css_default.Button]: isCTA
+            }),
+            htmlFor: id,
+            ...isCTA && {
+              variant: "cta"
             },
-            ...sharedConstraints,
-            type,
-            ...others
+            children: label
           }),
           isInvalid && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dialog", {
             className: Input_module_css_default.Error,
@@ -26695,11 +26722,6 @@ function Input({
             children: error
           })
         ]
-      }),
-      !!label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-        className: Input_module_css_default.Label,
-        htmlFor: id,
-        children: label
       }),
       !isEmpty_default(options) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
         "data-testid": others.list,
@@ -26719,6 +26741,7 @@ Input.ARRANGEMENTS = {
   STAND_ALONE: "stand-alone"
 };
 Input.VARIANTS = {
+  CTA: "cta",
   TOGGLE: "toggle"
 };
 Input.propTypes = {
@@ -26923,8 +26946,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/lib/react/Form/Form.module.css.js
-var digest5 = "6bc409f04e23d4fc5f87b2f5540ef4636d6386038b7ef79811b5601c5cfd0b1a";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/lib/react/Form/Form.module.css.js
+var digest5 = "b114f534c786d8227a92c4affa9703b039c0ed4f4a3f010c00ba00f5a205c5fb";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -27014,7 +27037,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36367-lpNtbSKpFcpd/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-39728-h950yJM8i6Iz/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
@@ -27116,26 +27139,26 @@ function TestForm() {
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             defaultValue: "Jacob",
             fluid: true,
-            label: "forename",
+            label: "Forename",
             name: "forename",
             type: "text"
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             defaultValue: "Jingleheimer",
             fluid: true,
-            label: "surname",
+            label: "Surname",
             name: "surname",
             type: "text"
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             as: "textarea",
             fluid: true,
-            label: "bio",
+            label: "Bio",
             name: "bio"
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             fluid: true,
-            label: "age",
+            label: "Age",
             name: "age",
             type: "number"
           }),
@@ -27144,7 +27167,7 @@ function TestForm() {
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 fluid: true,
-                label: "email",
+                label: "Email",
                 name: "email",
                 placeholder: "john.doe@example.com",
                 required: true,
@@ -27152,7 +27175,7 @@ function TestForm() {
               }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 fluid: true,
-                label: "phone",
+                label: "Phone",
                 name: "phoneNumber",
                 onKeyPress: ({ target }) => {
                   target.value = target.value.replace(/\D/, "");
@@ -27162,14 +27185,14 @@ function TestForm() {
               }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 id: "preferEmail",
-                label: "prefer email",
+                label: "Prefer email",
                 name: "preferedContact",
                 type: "radio",
                 value: "email"
               }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 id: "preferPhone",
-                label: "prefer phone",
+                label: "Prefer phone",
                 name: "preferedContact",
                 type: "radio",
                 value: "phone"
@@ -27178,7 +27201,7 @@ function TestForm() {
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Input, {
             as: "select",
-            label: "current continent",
+            label: "Current continent",
             name: "continent",
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
@@ -27211,20 +27234,57 @@ function TestForm() {
               })
             ]
           }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+                className: "required",
+                children: "Favourite colour"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button.Group, {
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                    id: "favouriteBlue",
+                    label: "blue",
+                    name: "favouriteColour",
+                    required: true,
+                    type: "radio",
+                    value: "blue",
+                    variant: Input.VARIANTS.CTA
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                    id: "favouriteGreen",
+                    label: "green",
+                    name: "favouriteColour",
+                    type: "radio",
+                    value: "green",
+                    variant: Input.VARIANTS.CTA
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                    id: "favouriteRed",
+                    label: "red",
+                    name: "favouriteColour",
+                    type: "radio",
+                    value: "red",
+                    variant: Input.VARIANTS.CTA
+                  })
+                ]
+              })
+            ]
+          }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            label: "favourite date",
+            label: "Favourite date",
             name: "favouriteDate",
             type: "date"
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            label: "togglable",
+            label: "Togglable",
             name: "togglable",
             type: "checkbox",
             variant: Input.VARIANTS.TOGGLE
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
             checked: true,
-            label: "read-only",
+            label: "Read-only",
             name: "readonly",
             readOnly: true,
             type: "checkbox",
@@ -27232,7 +27292,7 @@ function TestForm() {
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileInput, {
             icon: "\u{1F4C2}",
-            label: "profile photo",
+            label: "Profile photo",
             name: "profilePhoto"
           }),
           /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button.Group, {

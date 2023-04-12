@@ -52,14 +52,14 @@ function TestForm() {
 				<Input
 					defaultValue="Jacob"
 					fluid
-					label="forename"
+					label="Forename"
 					name="forename"
 					type="text"
 				/>
 				<Input
 					defaultValue="Jingleheimer"
 					fluid
-					label="surname"
+					label="Surname"
 					name="surname"
 					type="text"
 				/>
@@ -67,13 +67,13 @@ function TestForm() {
 				<Input
 					as="textarea"
 					fluid
-					label="bio"
+					label="Bio"
 					name="bio"
 				/>
 
 				<Input
 					fluid
-					label="age"
+					label="Age"
 					name="age"
 					type="number"
 				/>
@@ -83,7 +83,7 @@ function TestForm() {
 				>
 					<Input
 						fluid
-						label="email"
+						label="Email"
 						name="email"
 						placeholder="john.doe@example.com"
 						required
@@ -91,7 +91,7 @@ function TestForm() {
 					/>
 					<Input
 						fluid
-						label="phone"
+						label="Phone"
 						name="phoneNumber"
 						onKeyPress={({ target }) => { target.value = target.value.replace(/\D/, '') }}
 						placeholder="555-5555-555"
@@ -100,14 +100,14 @@ function TestForm() {
 
 					<Input
 						id="preferEmail"
-						label="prefer email"
+						label="Prefer email"
 						name="preferedContact"
 						type="radio"
 						value="email"
 					/>
 					<Input
 						id="preferPhone"
-						label="prefer phone"
+						label="Prefer phone"
 						name="preferedContact"
 						type="radio"
 						value="phone"
@@ -116,7 +116,7 @@ function TestForm() {
 
 				<Input
 					as="select"
-					label="current continent"
+					label="Current continent"
 					name="continent"
 				>
 					<option value="AF">Africa</option>
@@ -128,14 +128,48 @@ function TestForm() {
 					<option value="SA">South America</option>
 				</Input>
 
+				<fieldset>
+					<legend className="required">Favourite colour</legend>
+
+					<Button.Group>
+						<Input
+							id="favouriteBlue"
+							label="blue"
+							name="favouriteColour"
+							required
+							type="radio"
+							value="blue"
+							variant={Input.VARIANTS.CTA}
+						/>
+
+						<Input
+							id="favouriteGreen"
+							label="green"
+							name="favouriteColour"
+							type="radio"
+							value="green"
+							variant={Input.VARIANTS.CTA}
+						/>
+
+						<Input
+							id="favouriteRed"
+							label="red"
+							name="favouriteColour"
+							type="radio"
+							value="red"
+							variant={Input.VARIANTS.CTA}
+						/>
+					</Button.Group>
+				</fieldset>
+
 				<Input
-					label="favourite date"
+					label="Favourite date"
 					name="favouriteDate"
 					type="date"
 				/>
 
 				<Input
-					label="togglable"
+					label="Togglable"
 					name="togglable"
 					type="checkbox"
 					variant={Input.VARIANTS.TOGGLE}
@@ -143,7 +177,7 @@ function TestForm() {
 
 				<Input
 					checked
-					label="read-only"
+					label="Read-only"
 					name="readonly"
 					readOnly
 					type="checkbox"
@@ -152,7 +186,7 @@ function TestForm() {
 
 				<FileInput
 					icon="📂"
-					label="profile photo"
+					label="Profile photo"
 					name="profilePhoto"
 				/>
 
