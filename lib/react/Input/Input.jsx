@@ -6,6 +6,8 @@ import { useState } from 'react';
 
 import { useInteractiveStates } from '../useInteractiveStates.js';
 
+import buttonStyles from '../Button/Button.module.css';
+
 import styles from './Input.module.css';
 
 
@@ -25,6 +27,7 @@ export default function Input({
 	readOnly,
 	required,
 	type = 'text',
+	variant,
 	...others
 }) {
 	const [error, setError] = useState('');
@@ -77,12 +80,10 @@ export default function Input({
 		if (isInvalid && e.target.checkValidity()) setError('');
 	};
 
-	const sharedConstraints = {
-		readOnly,
-		required,
-	};
-
+	const isCTA = variant === Input.VARIANTS.CTA;
 	const isSwitch = switchTypes.has(type);
+
+	if (isCTA) arrangement = null;
 
 	if (others.value === null) others.value = ''; // React has a tantrum when `value` is `null`
 
@@ -93,40 +94,58 @@ export default function Input({
 				styles.InputField,
 				{
 					[styles.Fluid]: fluid,
+					[buttonStyles.Button]: isCTA,
 				},
 			)}
-			invalid={isInvalid ? '' : null}
-			{...sharedConstraints}
 			pristine={pristine}
 			switch={isSwitch ? '' : null}
 			touched={touched}
+			{...isCTA && {
+				variant: 'cta',
+			}}
 		>
+			<Tag
+				className={classnames(styles.Input, className)}
+				name={name}
+				id={id}
+				onInvalid={(e) => {
+					e.nativeEvent.stopImmediatePropagation();
+					setError(e.target.validationMessage);
+					is.onInvalid(e);
+				}}
+				readOnly={readOnly}
+				required={required}
+				type={type}
+				variant={variant}
+				{...others}
+			/>
+
 			<div className={styles.InnerWrapper}>
-				<Tag
-					className={classnames(styles.Input, className)}
-					name={name}
-					id={id}
-					onInvalid={(e) => {
-						e.nativeEvent.stopImmediatePropagation();
-						setError(e.target.validationMessage);
-						is.onInvalid(e);
-					}}
-					{...sharedConstraints}
-					type={type}
-					{...others}
-				/>
+				{!!label && (
+					<label
+						className={classnames(styles.Label, {
+							[buttonStyles.Button]: isCTA,
+						})}
+						htmlFor={id}
+						{...isCTA && {
+							variant: 'cta',
+						}}
+					>
+						{label}
+					</label>
+				)}
+
 				{isInvalid && (
 					<dialog
 						className={styles.Error}
 						data-testid="input-error"
 						open
-					>{error}</dialog>
+					>
+						{error}
+					</dialog>
 				)}
 			</div>
-			{!!label && (<label
-				className={styles.Label}
-				htmlFor={id}
-			>{label}</label>)}
+
 			{!_isEmpty(options) && (
 				<datalist data-testid={others.list} id={others.list}>{_map(options, (label, key) => (
 					<option key={key} value={key}>{label}</option>
@@ -144,6 +163,7 @@ Input.ARRANGEMENTS = {
 	STAND_ALONE: 'stand-alone',
 };
 Input.VARIANTS = {
+	CTA: 'cta',
 	TOGGLE: 'toggle',
 };
 Input.propTypes = {

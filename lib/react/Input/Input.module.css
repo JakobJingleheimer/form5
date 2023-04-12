@@ -20,15 +20,16 @@
 	display: inline-flex;
 }
 
+.InputField[variant="cta"] {
+	box-shadow: unset;
+	display: flex;
+	flex-direction: column;
+	padding: unset;
+}
+
 .Fluid {
 	flex: 1;
 	grid-template-columns: 100%;
-}
-
-.InnerWrapper {
-	display: flex;
-	flex: 1;
-	position: relative;
 }
 
 .Input {
@@ -37,6 +38,7 @@
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
+.Input[variant="cta"]:focus + .InnerWrapper > .Label,
 .Input:focus {
 	outline-color: var(--colour-primary);
 }
@@ -48,12 +50,16 @@
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-.InputField[readonly] .Input,
-.InputField[readonly] .Label {
+.Input[readonly],
+.Input[readonly] + .InnerWrapper > .Label {
 	cursor: not-allowed;
 }
+.Input:not([variant="cta"]):required + .InnerWrapper > .Label::after {
+	content: '*';
+	margin-left: 0.1em;
+}
 
-.Input:not([type="checkbox"]):not([type="radio"]) {
+.Input:not([type="checkbox"], [type="radio"]) {
 	width: 100%;
 }
 
@@ -73,37 +79,6 @@
 	text-align: right;
 }
 
-textarea.Input {
-	line-height: inherit;
-}
-
-.InputField:not([switch]) .Label {
-	order: -1;
-}
-
-.InputField[required] .Label::after {
-	content: '*';
-	margin-left: 0.1em;
-}
-.InputField[touched][invalid] .Input:focus {
-	outline-color: var(--colour-danger);
-}
-.InputField[touched][invalid] .Input,
-.Error {
-	border-color: var(--colour-danger);
-}
-.InputField[touched][invalid],
-.InputField[touched][invalid],
-.Error {
-	color: var(--colour-danger);
-}
-
-.Input:focus + .Error,
-.Input:hover + .Error {
-	opacity: 1;
-	pointer-events: all;
-}
-
 select.Input {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
@@ -112,75 +87,63 @@ select.Input {
 	background-size: 0.65em auto;
 }
 
+textarea.Input {
+	line-height: inherit;
+}
+
+.InputField:not([switch]) .InnerWrapper {
+	order: -1;
+}
+
+.InputField[touched] .Input[variant="cta"]:invalid:focus + .InnerWrapper > .Label {
+	outline: 2px solid;
+}
+
+.InputField[touched] .Input[variant="cta"]:invalid:focus + .InnerWrapper > .Label,
+.InputField[touched] .Input:invalid:focus {
+	outline-color: var(--colour-danger);
+}
+
+.InputField[touched] .Input:invalid,
+.InputField[touched] .Input[variant="cta"]:invalid + .InnerWrapper > .Label,
 .Error {
-	background-color: var(--colour-background);
-	border: 1px solid;
-	border-radius: var(--default-border-radius);
-	display: inline-block;
-	opacity: 0;
-	padding: 0.5em;
-	pointer-events: none;
-	position: absolute;
-	transition: opacity var(--default-transition);;
-	z-index: 1;
+	border-color: var(--colour-danger);
 }
-.Error::after {
-	background-color: inherit;
-	border: inherit;
-	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
-	content: '';
+.InputField[touched] .Input:invalid + .InnerWrapper {
+	color: var(--colour-danger);
+}
+
+/*
+ * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
+ * and the like are not an option.
+ */
+.Input[variant="cta"] {
+	height: 0;
+	position: absolute;
+	width: 0;
+	z-index: -1;
+}
+
+.Input[variant="cta"] + .InnerWrapper > .Label {
+	background-color: var(--colour-light);
+	border: 1px solid var(--colour-medium);
+	border-radius: inherit;
+	color: var(--colour-text-deemphasised);
+	fill: var(--colour-text-deemphasised);
+}
+
+.Input[variant="cta"]:checked + .InnerWrapper > .Label {
+	background-color: var(--colour-primary);
+	color: var(--colour-background);
+	fill: var(--colour-background);
+}
+
+.Input[variant="cta"] + .InnerWrapper > .Label {
 	display: block;
-	height: 0.5em;
-	position: absolute;
-	translate: -50% -50%;
-	width: 0.5em;
+	padding: var(--default-padding);
 }
 
-@media only screen and (max-width: 736px) {
-	/* On mobile, position errors below field */
-	.Error {
-		bottom: 0;
-		left: 0;
-		margin: 0 auto;
-		translate: 0 calc(100% + 1em);
-	}
-	.Error::after {
-		left: 50%;
-		rotate: -45deg;
-		top: 0;
-	}
-}
-
-@media only screen and (min-width: 737px) {
-	/* Above mobile, position errors right of field */
-	.InputField[arrangement="inline"] .Error,
-	.InputField[arrangement="stand-alone"] .Error {
-		margin-left: auto;
-		margin-right: 0;
-		top: 50%;
-		translate: calc(100% + 1em) -50%;
-	}
-	.InputField[arrangement="inline"] .Error::after,
-	.InputField[arrangement="stand-alone"] .Error::after {
-		left: 0;
-		rotate: 225deg;
-		top: 50%;
-	}
-
-	.InputField[arrangement="stacked"] .Error {
-		margin: auto;
-		top: 100%;
-		translate: 0 1em;
-	}
-	.InputField[arrangement="stacked"] .Error::after {
-		left: 50%;
-		rotate: 315deg;
-		top: 0;
-		translate: -50% -50%;
-	}
-}
-
-input[variant="toggle"] {
+.Input[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -194,7 +157,7 @@ input[variant="toggle"] {
 	width: 2em;
 }
 
-input[variant="toggle"]::after {
+.Input[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -209,13 +172,62 @@ input[variant="toggle"]::after {
 	translate: calc(-50% + 1px);
 	width: 50%;
 }
-input[variant="toggle"]:checked::after {
+
+.Input[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
-input[variant="toggle"][appearane="danger"]:checked::after {
+
+.Input[variant="toggle"][appearane="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
-input[variant="toggle"][appearane="success"]:checked::after {
+
+.Input[variant="toggle"][appearane="success"]:checked::after {
 	background-color: var(--colour-success);
+}
+
+.InnerWrapper {
+	border-radius: inherit;
+	position: relative;
+}
+
+.Input:focus + .InnerWrapper > .Error,
+.InputField:hover .Error {
+	opacity: 1;
+	pointer-events: all;
+}
+
+.Error {
+	background-color: var(--colour-background);
+	border-radius: var(--default-border-radius);
+	border: 1px solid;
+	box-shadow: var(--default-boxshadow);
+	color: inherit;
+	display: inline-block;
+	left: calc(-0.5em - 1px);
+	margin-left: 0;
+	margin-right: 0;
+	opacity: 0;
+	padding: 0.5em;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	transition: opacity var(--default-transition);
+	translate: 0 calc(-100% - 1em);
+	width: max-content;
+	z-index: 1;
+}
+.Error::after {
+	background-color: inherit;
+	border: inherit;
+	bottom: calc(-0.5em - 2px);
+	clip-path: polygon(0 0, 45% 55%, 100% 100%, 100% 0%);
+	content: '';
+	display: block;
+	height: 0.5em;
+	left: calc(0.8em + 1px);
+	position: absolute;
+	rotate: 135deg;
+	translate: -50% -50%;
+	width: 0.5em;
 }
