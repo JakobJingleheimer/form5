@@ -3,6 +3,7 @@
 	border: none;
 	cursor: pointer;
 	padding: var(--default-padding);
+	text-align: center;
 }
 
 .fluid { width: 100% }
