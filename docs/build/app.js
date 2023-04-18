@@ -24587,7 +24587,7 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/Group/Group.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/Group/Group.module.css.js
 var digest = "05a169a357328f86788945d7bb4f6bfe0b6b4b8e9a98a8b6fe311b94097a5941";
 var css = `._Group_4f7x4_1 {
     display: flex;
@@ -24622,9 +24622,9 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/Button/Button.module.css.js
 var digest2 = "395afa9449b6eddd9494fcd43f84407f2a1c9e50ade71b364ec1d1d7d603d2a0";
-var css2 = `._Button_tvspn_1 {
+var css2 = `._Button_154t5_1 {
 	font: unset;
 	border: none;
 	cursor: pointer;
@@ -24632,61 +24632,65 @@ var css2 = `._Button_tvspn_1 {
 	text-align: center;
 }
 
-._fluid_tvspn_9 { width: 100% }
+._fluid_154t5_9 { width: 100% }
 
-._Button_tvspn_1[variant="cta"] {
+._Button_154t5_1[variant="cta"] {
 	color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	box-shadow: var(--default-boxshadow);
 	fill: var(--colour-background);
 	text-transform: capitalize;
 }
-._Button_tvspn_1[variant="cta"][appearance="affirming"] {
+._Button_154t5_1[variant="cta"][appearance="affirming"] {
 	background-color: var(--colour-success);
 }
-._Button_tvspn_1[variant="cta"][appearance="basic"] {
+._Button_154t5_1[variant="cta"][appearance="basic"] {
 	background-color: var(--colour-light);
 	border-color: var(--colour-medium);
 	color: var(--colour-text-deemphasised);
 	fill: var(--colour-text-deemphasised);
 }
-._Button_tvspn_1[variant="cta"][appearance="danger"] {
+._Button_154t5_1[variant="cta"][appearance="danger"] {
 	background-color: var(--colour-danger);
 }
-._Button_tvspn_1[variant="cta"][appearance="primary"] {
+._Button_154t5_1[variant="cta"][appearance="primary"] {
 	background-color: var(--colour-primary);
 }
-._Button_tvspn_1[variant="cta"][appearance="warning"] {
+._Button_154t5_1[variant="cta"][appearance="warning"] {
 	background-color: var(--colour-warning);
 }
-._Button_tvspn_1[variant="cta"] > i[role="img"] {
+._Button_154t5_1[variant="cta"] > i[role="img"] {
 	font-size: 2em;
 }
 
-._Button_tvspn_1[variant="glyph"] {
+._Button_154t5_1[variant="glyph"] {
 	background-color: unset;
 }
-._Button_tvspn_1[variant="glyph"][appearance="danger"] {
+._Button_154t5_1[variant="glyph"][appearance="danger"] {
+	color: var(--colour-danger);
 	fill: var(--colour-danger);
 }
-._Button_tvspn_1[variant="glyph"][appearance="primary"] {
+._Button_154t5_1[variant="glyph"][appearance="primary"] {
+	color: var(--colour-primary);
 	fill: var(--colour-primary);
 }
-._Button_tvspn_1[variant="glyph"][appearance="affirming"] {
+._Button_154t5_1[variant="glyph"][appearance="affirming"] {
+	color: var(--colour-success);
 	fill: var(--colour-success);
 }
-._Button_tvspn_1[variant="glyph"][appearance="warning"] {
+._Button_154t5_1[variant="glyph"][appearance="warning"] {
+	color: var(--colour-warning);
 	fill: var(--colour-warning);
 }
 
-._ButtonGroup_tvspn_56 > ._Button_tvspn_1 {
+._ButtonGroup_154t5_60 > ._Button_154t5_1 {
 	flex: 1;
 }
-._ButtonGroup_tvspn_56 > ._Button_tvspn_1:not(:last-child) {
+._ButtonGroup_154t5_60 > ._Button_154t5_1:not(:last-child) {
 	border-top-right-radius: unset;
 	border-bottom-right-radius: unset;
 }
-._ButtonGroup_tvspn_56 > ._Button_tvspn_1:not(:first-child) {
+._ButtonGroup_154t5_60 > ._Button_154t5_1:not(:first-child) {
 	border-top-left-radius: unset;
 	border-bottom-left-radius: unset;
 }
@@ -24699,7 +24703,7 @@ var css2 = `._Button_tvspn_1 {
     document.head.appendChild(el);
   }
 })();
-var Button_module_css_default = { "Button": "_Button_tvspn_1", "fluid": "_fluid_tvspn_9", "ButtonGroup": "_ButtonGroup_tvspn_56" };
+var Button_module_css_default = { "Button": "_Button_154t5_1", "fluid": "_fluid_154t5_9", "ButtonGroup": "_ButtonGroup_154t5_60" };
 
 // lib/react/Button/Button.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26148,7 +26152,7 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/FileInput/FileInput.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/FileInput/FileInput.module.css.js
 var digest3 = "0bfa65d8aee6252050df31a1a598d2fb307e21d14e49c9a7bf71ed972417d2c6";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
@@ -26355,90 +26359,90 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/Input/Input.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/Input/Input.module.css.js
 var digest4 = "c8d3fe8c63a505c03b3d72988b935435a6e5540fbcec7f65134e8b53dc70bb97";
-var css4 = `._InputField_1cpy3_1 {
+var css4 = `._InputField_qqk73_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_1cpy3_1[arrangement="inline"] {
+._InputField_qqk73_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_1cpy3_1[arrangement="inline"],
-._InputField_1cpy3_1[arrangement="stacked"] {
+._InputField_qqk73_1[arrangement="inline"],
+._InputField_qqk73_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_1cpy3_1[arrangement="stacked"] {
+._InputField_qqk73_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_1cpy3_1[arrangement="stacked"],
-._InputField_1cpy3_1[arrangement="stand-alone"] {
+._InputField_qqk73_1[arrangement="stacked"],
+._InputField_qqk73_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_1cpy3_1[arrangement="stand-alone"] {
+._InputField_qqk73_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._InputField_1cpy3_1[variant="cta"] {
+._InputField_qqk73_1[variant="cta"] {
 	box-shadow: unset;
 	display: flex;
 	flex-direction: column;
 	padding: unset;
 }
 
-._Fluid_1cpy3_30 {
+._Fluid_qqk73_30 {
 	flex: 1;
 	grid-template-columns: 100%;
 }
 
-._Input_1cpy3_1 {
+._Input_qqk73_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_1cpy3_1[variant="cta"]:focus + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41,
-._Input_1cpy3_1:focus {
+._Input_qqk73_1[variant="cta"]:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
+._Input_qqk73_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_1cpy3_1:disabled {
+._Input_qqk73_1:disabled {
 	cursor: default;
 }
-._Input_1cpy3_1:disabled,
-._Input_1cpy3_1[readonly] {
+._Input_qqk73_1:disabled,
+._Input_qqk73_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._Input_1cpy3_1[readonly],
-._Input_1cpy3_1[readonly] + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
+._Input_qqk73_1[readonly],
+._Input_qqk73_1[readonly] + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
 	cursor: not-allowed;
 }
-._Input_1cpy3_1:not([variant="cta"]):required + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41::after {
+._Input_qqk73_1:not([variant="cta"]):required + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41::after {
 	content: '*';
 	margin-left: 0.1em;
 }
 
-._Input_1cpy3_1:not([type="checkbox"], [type="radio"]) {
+._Input_qqk73_1:not([type="checkbox"], [type="radio"]) {
 	width: 100%;
 }
 
-._Input_1cpy3_1[type="checkbox"],
-._Input_1cpy3_1[type="radio"] {
+._Input_qqk73_1[type="checkbox"],
+._Input_qqk73_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_1cpy3_1[type="date"],
-._Input_1cpy3_1[type="datetime"],
-._Input_1cpy3_1[type="datetime-local"],
-._Input_1cpy3_1[type="time"] {
+._Input_qqk73_1[type="date"],
+._Input_qqk73_1[type="datetime"],
+._Input_qqk73_1[type="datetime-local"],
+._Input_qqk73_1[type="time"] {
 	font: inherit;
 }
 
-._Input_1cpy3_1[type="number"] {
+._Input_qqk73_1[type="number"] {
 	text-align: right;
 }
 
-select._Input_1cpy3_1 {
+select._Input_qqk73_1 {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
 	background-position: right 0.5em center;
@@ -26447,29 +26451,32 @@ select._Input_1cpy3_1 {
 	padding-right: calc(1em + var(--default-padding)); /* 1em for the icon */
 }
 
-textarea._Input_1cpy3_1 {
+textarea._Input_qqk73_1 {
 	line-height: inherit;
 }
 
-._InputField_1cpy3_1:not([switch]) ._InnerWrapper_1cpy3_41 {
+._InputField_qqk73_1:not([switch]) ._InnerWrapper_qqk73_41 {
 	order: -1;
 }
 
-._InputField_1cpy3_1[touched] ._Input_1cpy3_1[variant="cta"]:invalid:focus + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
+._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="cta"]:invalid:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
+._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="glyph"]:invalid:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
 	outline: 2px solid;
 }
 
-._InputField_1cpy3_1[touched] ._Input_1cpy3_1[variant="cta"]:invalid:focus + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41,
-._InputField_1cpy3_1[touched] ._Input_1cpy3_1:invalid:focus {
+._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="cta"]:invalid:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
+._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="glyph"]:invalid:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
+._InputField_qqk73_1[touched] ._Input_qqk73_1:invalid:focus {
 	outline-color: var(--colour-danger);
 }
 
-._InputField_1cpy3_1[touched] ._Input_1cpy3_1:invalid,
-._InputField_1cpy3_1[touched] ._Input_1cpy3_1[variant="cta"]:invalid + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41,
-._Error_1cpy3_110 {
+._InputField_qqk73_1[touched] ._Input_qqk73_1:invalid,
+._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="cta"]:invalid + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
+._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="glyph"]:invalid + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
+._Error_qqk73_113 {
 	border-color: var(--colour-danger);
 }
-._InputField_1cpy3_1[touched] ._Input_1cpy3_1:invalid + ._InnerWrapper_1cpy3_41 {
+._InputField_qqk73_1[touched] ._Input_qqk73_1:invalid + ._InnerWrapper_qqk73_41 {
 	color: var(--colour-danger);
 }
 
@@ -26477,14 +26484,15 @@ textarea._Input_1cpy3_1 {
  * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
  * and the like are not an option.
  */
-._Input_1cpy3_1[variant="cta"] {
+._Input_qqk73_1[variant="cta"],
+._Input_qqk73_1[variant="glyph"] {
 	height: 0;
 	position: absolute;
 	width: 0;
 	z-index: -1;
 }
 
-._Input_1cpy3_1[variant="cta"] + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
+._Input_qqk73_1[variant="cta"] + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
 	background-color: var(--colour-light);
 	border: 1px solid var(--colour-medium);
 	border-radius: inherit;
@@ -26492,18 +26500,39 @@ textarea._Input_1cpy3_1 {
 	fill: var(--colour-text-deemphasised);
 }
 
-._Input_1cpy3_1[variant="cta"]:checked + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
+._Input_qqk73_1[variant="cta"]:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
 	background-color: var(--colour-primary);
 	color: var(--colour-background);
 	fill: var(--colour-background);
 }
 
-._Input_1cpy3_1[variant="cta"] + ._InnerWrapper_1cpy3_41 > ._Label_1cpy3_41 {
+._Input_qqk73_1[variant="cta"] + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
 	display: block;
 	padding: var(--default-padding);
 }
 
-._Input_1cpy3_1[variant="toggle"] {
+._Input_qqk73_1:not(:checked) + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance] {
+	color: unset;
+	fill: unset;
+}
+._Input_qqk73_1:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance="danger"] {
+	color: var(--colour-danger);
+	fill: var(--colour-danger);
+}
+._Input_qqk73_1:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance="primary"] {
+	color: var(--colour-primary);
+	fill: var(--colour-primary);
+}
+._Input_qqk73_1:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance="affirming"] {
+	color: var(--colour-success);
+	fill: var(--colour-success);
+}
+._Input_qqk73_1:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance="warning"] {
+	color: var(--colour-warning);
+	fill: var(--colour-warning);
+}
+
+._Input_qqk73_1[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -26517,7 +26546,7 @@ textarea._Input_1cpy3_1 {
 	width: 2em;
 }
 
-._Input_1cpy3_1[variant="toggle"]::after {
+._Input_qqk73_1[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -26533,31 +26562,31 @@ textarea._Input_1cpy3_1 {
 	width: 50%;
 }
 
-._Input_1cpy3_1[variant="toggle"]:checked::after {
+._Input_qqk73_1[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
 
-._Input_1cpy3_1[variant="toggle"][appearane="danger"]:checked::after {
+._Input_qqk73_1[variant="toggle"][appearane="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
 
-._Input_1cpy3_1[variant="toggle"][appearane="success"]:checked::after {
+._Input_qqk73_1[variant="toggle"][appearane="success"]:checked::after {
 	background-color: var(--colour-success);
 }
 
-._InnerWrapper_1cpy3_41 {
+._InnerWrapper_qqk73_41 {
 	border-radius: inherit;
 	position: relative;
 }
 
-._Input_1cpy3_1:focus + ._InnerWrapper_1cpy3_41 > ._Error_1cpy3_110,
-._InputField_1cpy3_1:hover ._Error_1cpy3_110 {
+._Input_qqk73_1:focus + ._InnerWrapper_qqk73_41 > ._Error_qqk73_113,
+._InputField_qqk73_1:hover ._Error_qqk73_113 {
 	opacity: 1;
 	pointer-events: all;
 }
 
-._Error_1cpy3_110 {
+._Error_qqk73_113 {
 	background-color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	border: 1px solid;
@@ -26577,7 +26606,7 @@ textarea._Input_1cpy3_1 {
 	width: max-content;
 	z-index: 1;
 }
-._Error_1cpy3_110::after {
+._Error_qqk73_113::after {
 	background-color: inherit;
 	border: inherit;
 	bottom: calc(-0.5em - 2px);
@@ -26600,11 +26629,12 @@ textarea._Input_1cpy3_1 {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_1cpy3_1", "Fluid": "_Fluid_1cpy3_30", "Input": "_Input_1cpy3_1", "InnerWrapper": "_InnerWrapper_1cpy3_41", "Label": "_Label_1cpy3_41", "Error": "_Error_1cpy3_110" };
+var Input_module_css_default = { "InputField": "_InputField_qqk73_1", "Fluid": "_Fluid_qqk73_30", "Input": "_Input_qqk73_1", "InnerWrapper": "_InnerWrapper_qqk73_41", "Label": "_Label_qqk73_41", "Error": "_Error_qqk73_113" };
 
 // lib/react/Input/Input.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
 function Input({
+  appearance = Button.APPEARANCES.PRIMARY,
   arrangement = Input.ARRANGEMENTS.INLINE,
   as: Tag = "input",
   className,
@@ -26666,9 +26696,9 @@ function Input({
     if (isInvalid && e.target.checkValidity())
       setError("");
   };
-  const isCTA = variant === Input.VARIANTS.CTA;
+  const isButton = buttonVariants.has(variant);
   const isSwitch = switchTypes.has(type);
-  if (isCTA)
+  if (isButton)
     arrangement = null;
   if (others.value === null)
     others.value = "";
@@ -26678,14 +26708,14 @@ function Input({
       Input_module_css_default.InputField,
       {
         [Input_module_css_default.Fluid]: fluid,
-        [Button_module_css_default.Button]: isCTA
+        [Button_module_css_default.Button]: isButton
       }
     ),
     pristine,
     switch: isSwitch ? "" : null,
     touched,
-    ...isCTA && {
-      variant: "cta"
+    ...isButton && {
+      variant
     },
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
@@ -26708,11 +26738,12 @@ function Input({
         children: [
           !!label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
             className: (0, import_classnames4.default)(Input_module_css_default.Label, {
-              [Button_module_css_default.Button]: isCTA
+              [Button_module_css_default.Button]: isButton
             }),
             htmlFor: id,
-            ...isCTA && {
-              variant: "cta"
+            ...isButton && {
+              appearance,
+              variant
             },
             children: label
           }),
@@ -26742,20 +26773,25 @@ Input.ARRANGEMENTS = {
   STAND_ALONE: "stand-alone"
 };
 Input.VARIANTS = {
-  CTA: "cta",
+  CTA: Button.VARIANTS.CTA,
+  GLYPH: Button.VARIANTS.GLYPH,
   TOGGLE: "toggle"
 };
 Input.propTypes = {
   arrangement: import_prop_types3.default.oneOf(Object.values(Input.ARRANGEMENTS)),
   as: import_prop_types3.default.elementType,
   fluid: import_prop_types3.default.bool,
-  label: import_prop_types3.default.string,
+  label: import_prop_types3.default.node,
   name: import_prop_types3.default.string.isRequired,
   onBlur: import_prop_types3.default.func,
   onChange: import_prop_types3.default.func,
   options: import_prop_types3.default.object,
   variant: import_prop_types3.default.oneOf(Object.values(Input.VARIANTS))
 };
+var buttonVariants = /* @__PURE__ */ new Set([
+  Input.VARIANTS.CTA,
+  Input.VARIANTS.GLYPH
+]);
 var switchTypes = /* @__PURE__ */ new Set([
   "checkbox",
   "radio"
@@ -26857,11 +26893,14 @@ function composeData(values, element, i, form) {
     value
   });
   const strippedName = name.replace(listNameRgx, "");
-  if (isArray_default(values[strippedName]))
-    values[strippedName].push(val);
-  else if (isListName(name))
-    values[strippedName] = [val];
-  else
+  if (isArray_default(values[strippedName])) {
+    if (val != null)
+      values[strippedName].push(val);
+  } else if (isListName(name)) {
+    values[strippedName] = [];
+    if (val != null)
+      values[strippedName][0] = val;
+  } else
     values[name] ??= val;
   return values;
 }
@@ -26903,6 +26942,8 @@ function getFieldVal({
 }) {
   switch (type) {
     case "checkbox":
+      if (value)
+        return checked ? value : void 0;
       return checked;
     case "file":
       return files || dataTransfer;
@@ -26947,7 +26988,7 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/lib/react/Form/Form.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/Form/Form.module.css.js
 var digest5 = "b114f534c786d8227a92c4affa9703b039c0ed4f4a3f010c00ba00f5a205c5fb";
 var css5 = `._Form_13cn9_1,
 fieldset {
@@ -27038,7 +27079,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-48730-U75oQbYDY5Um/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
