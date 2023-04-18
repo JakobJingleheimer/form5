@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import { useInteractiveStates } from '../useInteractiveStates.js';
 
+import Button from '../Button/Button.jsx';
 import buttonStyles from '../Button/Button.module.css';
 
 import styles from './Input.module.css';
@@ -14,6 +15,7 @@ import styles from './Input.module.css';
 export { styles as inputClasses };
 
 export default function Input({
+	appearance = Button.APPEARANCES.PRIMARY,
 	arrangement = Input.ARRANGEMENTS.INLINE,
 	as: Tag = 'input',
 	className,
@@ -80,10 +82,10 @@ export default function Input({
 		if (isInvalid && e.target.checkValidity()) setError('');
 	};
 
-	const isCTA = variant === Input.VARIANTS.CTA;
+	const isButton = buttonVariants.has(variant);
 	const isSwitch = switchTypes.has(type);
 
-	if (isCTA) arrangement = null;
+	if (isButton) arrangement = null;
 
 	if (others.value === null) others.value = ''; // React has a tantrum when `value` is `null`
 
@@ -94,14 +96,14 @@ export default function Input({
 				styles.InputField,
 				{
 					[styles.Fluid]: fluid,
-					[buttonStyles.Button]: isCTA,
+					[buttonStyles.Button]: isButton,
 				},
 			)}
 			pristine={pristine}
 			switch={isSwitch ? '' : null}
 			touched={touched}
-			{...isCTA && {
-				variant: 'cta',
+			{...isButton && {
+				variant,
 			}}
 		>
 			<Tag
@@ -124,11 +126,12 @@ export default function Input({
 				{!!label && (
 					<label
 						className={classnames(styles.Label, {
-							[buttonStyles.Button]: isCTA,
+							[buttonStyles.Button]: isButton,
 						})}
 						htmlFor={id}
-						{...isCTA && {
-							variant: 'cta',
+						{...isButton && {
+							appearance,
+							variant,
 						}}
 					>
 						{label}
@@ -163,14 +166,15 @@ Input.ARRANGEMENTS = {
 	STAND_ALONE: 'stand-alone',
 };
 Input.VARIANTS = {
-	CTA: 'cta',
+	CTA: Button.VARIANTS.CTA,
+	GLYPH: Button.VARIANTS.GLYPH,
 	TOGGLE: 'toggle',
 };
 Input.propTypes = {
 	arrangement: PropTypes.oneOf(Object.values(Input.ARRANGEMENTS)),
 	as: PropTypes.elementType,
 	fluid: PropTypes.bool,
-	label: PropTypes.string,
+	label: PropTypes.node,
 	name: PropTypes.string.isRequired,
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
@@ -183,6 +187,11 @@ const dtTypes = new Set([
 	'datetime',
 	'datetime-local',
 	'time',
+]);
+
+const buttonVariants = new Set([
+	Input.VARIANTS.CTA,
+	Input.VARIANTS.GLYPH,
 ]);
 
 const switchTypes = new Set([

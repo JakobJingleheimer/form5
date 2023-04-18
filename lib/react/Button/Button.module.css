@@ -41,15 +41,19 @@
 	background-color: unset;
 }
 .Button[variant="glyph"][appearance="danger"] {
+	color: var(--colour-danger);
 	fill: var(--colour-danger);
 }
 .Button[variant="glyph"][appearance="primary"] {
+	color: var(--colour-primary);
 	fill: var(--colour-primary);
 }
 .Button[variant="glyph"][appearance="affirming"] {
+	color: var(--colour-success);
 	fill: var(--colour-success);
 }
 .Button[variant="glyph"][appearance="warning"] {
+	color: var(--colour-warning);
 	fill: var(--colour-warning);
 }
 
