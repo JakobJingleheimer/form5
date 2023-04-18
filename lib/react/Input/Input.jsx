@@ -170,7 +170,7 @@ Input.propTypes = {
 	arrangement: PropTypes.oneOf(Object.values(Input.ARRANGEMENTS)),
 	as: PropTypes.elementType,
 	fluid: PropTypes.bool,
-	label: PropTypes.string,
+	label: PropTypes.node,
 	name: PropTypes.string.isRequired,
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
