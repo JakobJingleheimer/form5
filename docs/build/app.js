@@ -24587,8 +24587,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/Group/Group.module.css.js
-var digest = "05a169a357328f86788945d7bb4f6bfe0b6b4b8e9a98a8b6fe311b94097a5941";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/Group/Group.module.css.js
+var digest = "00de830701909b32fecc40eb0fb3173a4a7dbfe09570587f1b796fe5a732bcb0";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,8 +24622,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/Button/Button.module.css.js
-var digest2 = "395afa9449b6eddd9494fcd43f84407f2a1c9e50ade71b364ec1d1d7d603d2a0";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/Button/Button.module.css.js
+var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
 var css2 = `._Button_154t5_1 {
 	font: unset;
 	border: none;
@@ -26152,8 +26152,8 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "0bfa65d8aee6252050df31a1a598d2fb307e21d14e49c9a7bf71ed972417d2c6";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "6f78220d70cc366790b5a736c571ed191928222270c58eccf59e5c662d097c8f";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26359,90 +26359,92 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/Input/Input.module.css.js
-var digest4 = "c8d3fe8c63a505c03b3d72988b935435a6e5540fbcec7f65134e8b53dc70bb97";
-var css4 = `._InputField_qqk73_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/Input/Input.module.css.js
+var digest4 = "df100b74adb42e5e73de342264cd35fc2e84fe9997cd09e79274e0179edd819b";
+var css4 = `._InputField_m87ne_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_qqk73_1[arrangement="inline"] {
+._InputField_m87ne_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_qqk73_1[arrangement="inline"],
-._InputField_qqk73_1[arrangement="stacked"] {
+._InputField_m87ne_1[arrangement="inline"],
+._InputField_m87ne_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_qqk73_1[arrangement="stacked"] {
+._InputField_m87ne_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_qqk73_1[arrangement="stacked"],
-._InputField_qqk73_1[arrangement="stand-alone"] {
+._InputField_m87ne_1[arrangement="stacked"],
+._InputField_m87ne_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-._InputField_qqk73_1[arrangement="stand-alone"] {
-	display: inline-flex;
-}
 
-._InputField_qqk73_1[variant="cta"] {
+._InputField_m87ne_1[variant="cta"],
+._InputField_m87ne_1[variant="glyph"] {
 	box-shadow: unset;
 	display: flex;
-	flex-direction: column;
 	padding: unset;
 }
 
-._Fluid_qqk73_30 {
+/* After InputField[variant] to override display:flex */
+._InputField_m87ne_1[arrangement="stand-alone"] {
+	display: inline-flex;
+}
+
+._Fluid_m87ne_32 {
 	flex: 1;
 	grid-template-columns: 100%;
 }
 
-._Input_qqk73_1 {
+._Input_m87ne_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_qqk73_1[variant="cta"]:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
-._Input_qqk73_1:focus {
+._Input_m87ne_1[variant="cta"]:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
+._Input_m87ne_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_qqk73_1:disabled {
+._Input_m87ne_1:disabled {
 	cursor: default;
 }
-._Input_qqk73_1:disabled,
-._Input_qqk73_1[readonly] {
+._Input_m87ne_1:disabled,
+._Input_m87ne_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._Input_qqk73_1[readonly],
-._Input_qqk73_1[readonly] + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
+._Input_m87ne_1[readonly],
+._Input_m87ne_1[readonly] + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
 	cursor: not-allowed;
 }
-._Input_qqk73_1:not([variant="cta"]):required + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41::after {
+._Input_m87ne_1:not([variant="cta"]):required + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43::after {
 	content: '*';
 	margin-left: 0.1em;
 }
 
-._Input_qqk73_1:not([type="checkbox"], [type="radio"]) {
+._Input_m87ne_1:not([type="checkbox"], [type="radio"]) {
 	width: 100%;
 }
 
-._Input_qqk73_1[type="checkbox"],
-._Input_qqk73_1[type="radio"] {
+._Input_m87ne_1[type="checkbox"],
+._Input_m87ne_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_qqk73_1[type="date"],
-._Input_qqk73_1[type="datetime"],
-._Input_qqk73_1[type="datetime-local"],
-._Input_qqk73_1[type="time"] {
+._Input_m87ne_1[type="date"],
+._Input_m87ne_1[type="datetime"],
+._Input_m87ne_1[type="datetime-local"],
+._Input_m87ne_1[type="time"] {
 	font: inherit;
 }
 
-._Input_qqk73_1[type="number"] {
+._Input_m87ne_1[type="number"] {
 	text-align: right;
 }
 
-select._Input_qqk73_1 {
+select._Input_m87ne_1 {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
 	background-position: right 0.5em center;
@@ -26451,32 +26453,32 @@ select._Input_qqk73_1 {
 	padding-right: calc(1em + var(--default-padding)); /* 1em for the icon */
 }
 
-textarea._Input_qqk73_1 {
+textarea._Input_m87ne_1 {
 	line-height: inherit;
 }
 
-._InputField_qqk73_1:not([switch]) ._InnerWrapper_qqk73_41 {
+._InputField_m87ne_1:not([switch]) ._InnerWrapper_m87ne_43 {
 	order: -1;
 }
 
-._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="cta"]:invalid:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
-._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="glyph"]:invalid:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
+._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="cta"]:invalid:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
+._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="glyph"]:invalid:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
 	outline: 2px solid;
 }
 
-._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="cta"]:invalid:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
-._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="glyph"]:invalid:focus + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
-._InputField_qqk73_1[touched] ._Input_qqk73_1:invalid:focus {
+._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="cta"]:invalid:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
+._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="glyph"]:invalid:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
+._InputField_m87ne_1[touched] ._Input_m87ne_1:invalid:focus {
 	outline-color: var(--colour-danger);
 }
 
-._InputField_qqk73_1[touched] ._Input_qqk73_1:invalid,
-._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="cta"]:invalid + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
-._InputField_qqk73_1[touched] ._Input_qqk73_1[variant="glyph"]:invalid + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41,
-._Error_qqk73_113 {
+._InputField_m87ne_1[touched] ._Input_m87ne_1:invalid,
+._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="cta"]:invalid + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
+._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="glyph"]:invalid + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
+._Error_m87ne_115 {
 	border-color: var(--colour-danger);
 }
-._InputField_qqk73_1[touched] ._Input_qqk73_1:invalid + ._InnerWrapper_qqk73_41 {
+._InputField_m87ne_1[touched] ._Input_m87ne_1:invalid + ._InnerWrapper_m87ne_43 {
 	color: var(--colour-danger);
 }
 
@@ -26484,15 +26486,15 @@ textarea._Input_qqk73_1 {
  * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
  * and the like are not an option.
  */
-._Input_qqk73_1[variant="cta"],
-._Input_qqk73_1[variant="glyph"] {
+._Input_m87ne_1[variant="cta"],
+._Input_m87ne_1[variant="glyph"] {
 	height: 0;
 	position: absolute;
 	width: 0;
 	z-index: -1;
 }
 
-._Input_qqk73_1[variant="cta"] + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
+._Input_m87ne_1[variant="cta"] + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
 	background-color: var(--colour-light);
 	border: 1px solid var(--colour-medium);
 	border-radius: inherit;
@@ -26500,39 +26502,40 @@ textarea._Input_qqk73_1 {
 	fill: var(--colour-text-deemphasised);
 }
 
-._Input_qqk73_1[variant="cta"]:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
+._Input_m87ne_1[variant="cta"]:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
 	background-color: var(--colour-primary);
 	color: var(--colour-background);
 	fill: var(--colour-background);
 }
 
-._Input_qqk73_1[variant="cta"] + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41 {
+._Input_m87ne_1[variant="cta"] + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
+._Input_m87ne_1[variant="glyph"] + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
 	display: block;
 	padding: var(--default-padding);
 }
 
-._Input_qqk73_1:not(:checked) + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance] {
+._Input_m87ne_1:not(:checked) + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance] {
 	color: unset;
 	fill: unset;
 }
-._Input_qqk73_1:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance="danger"] {
+._Input_m87ne_1:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance="danger"] {
 	color: var(--colour-danger);
 	fill: var(--colour-danger);
 }
-._Input_qqk73_1:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance="primary"] {
+._Input_m87ne_1:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance="primary"] {
 	color: var(--colour-primary);
 	fill: var(--colour-primary);
 }
-._Input_qqk73_1:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance="affirming"] {
+._Input_m87ne_1:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance="affirming"] {
 	color: var(--colour-success);
 	fill: var(--colour-success);
 }
-._Input_qqk73_1:checked + ._InnerWrapper_qqk73_41 > ._Label_qqk73_41[variant="glyph"][appearance="warning"] {
+._Input_m87ne_1:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance="warning"] {
 	color: var(--colour-warning);
 	fill: var(--colour-warning);
 }
 
-._Input_qqk73_1[variant="toggle"] {
+._Input_m87ne_1[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -26546,7 +26549,7 @@ textarea._Input_qqk73_1 {
 	width: 2em;
 }
 
-._Input_qqk73_1[variant="toggle"]::after {
+._Input_m87ne_1[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -26562,31 +26565,32 @@ textarea._Input_qqk73_1 {
 	width: 50%;
 }
 
-._Input_qqk73_1[variant="toggle"]:checked::after {
+._Input_m87ne_1[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
 
-._Input_qqk73_1[variant="toggle"][appearane="danger"]:checked::after {
+._Input_m87ne_1[variant="toggle"][appearane="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
 
-._Input_qqk73_1[variant="toggle"][appearane="success"]:checked::after {
+._Input_m87ne_1[variant="toggle"][appearane="success"]:checked::after {
 	background-color: var(--colour-success);
 }
 
-._InnerWrapper_qqk73_41 {
+._InnerWrapper_m87ne_43 {
 	border-radius: inherit;
+	flex: 1;
 	position: relative;
 }
 
-._Input_qqk73_1:focus + ._InnerWrapper_qqk73_41 > ._Error_qqk73_113,
-._InputField_qqk73_1:hover ._Error_qqk73_113 {
+._Input_m87ne_1:focus + ._InnerWrapper_m87ne_43 > ._Error_m87ne_115,
+._InputField_m87ne_1:hover ._Error_m87ne_115 {
 	opacity: 1;
 	pointer-events: all;
 }
 
-._Error_qqk73_113 {
+._Error_m87ne_115 {
 	background-color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	border: 1px solid;
@@ -26606,7 +26610,7 @@ textarea._Input_qqk73_1 {
 	width: max-content;
 	z-index: 1;
 }
-._Error_qqk73_113::after {
+._Error_m87ne_115::after {
 	background-color: inherit;
 	border: inherit;
 	bottom: calc(-0.5em - 2px);
@@ -26629,7 +26633,7 @@ textarea._Input_qqk73_1 {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_qqk73_1", "Fluid": "_Fluid_qqk73_30", "Input": "_Input_qqk73_1", "InnerWrapper": "_InnerWrapper_qqk73_41", "Label": "_Label_qqk73_41", "Error": "_Error_qqk73_113" };
+var Input_module_css_default = { "InputField": "_InputField_m87ne_1", "Fluid": "_Fluid_m87ne_32", "Input": "_Input_m87ne_1", "InnerWrapper": "_InnerWrapper_m87ne_43", "Label": "_Label_m87ne_43", "Error": "_Error_m87ne_115" };
 
 // lib/react/Input/Input.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26698,8 +26702,6 @@ function Input({
   };
   const isButton = buttonVariants.has(variant);
   const isSwitch = switchTypes.has(type);
-  if (isButton)
-    arrangement = null;
   if (others.value === null)
     others.value = "";
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -26988,8 +26990,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/lib/react/Form/Form.module.css.js
-var digest5 = "b114f534c786d8227a92c4affa9703b039c0ed4f4a3f010c00ba00f5a205c5fb";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/Form/Form.module.css.js
+var digest5 = "31652bf8e3bf2177ebcb50a9db6960a5c9eb6619d98dc4d202009d9db5b5aa0c";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -27079,7 +27081,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-19389-qaMSioQpwxbN/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_xjact_1 {
 	flex: 1;
