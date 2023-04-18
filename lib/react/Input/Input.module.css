@@ -96,17 +96,20 @@ textarea.Input {
 	order: -1;
 }
 
-.InputField[touched] .Input[variant="cta"]:invalid:focus + .InnerWrapper > .Label {
+.InputField[touched] .Input[variant="cta"]:invalid:focus + .InnerWrapper > .Label,
+.InputField[touched] .Input[variant="glyph"]:invalid:focus + .InnerWrapper > .Label {
 	outline: 2px solid;
 }
 
 .InputField[touched] .Input[variant="cta"]:invalid:focus + .InnerWrapper > .Label,
+.InputField[touched] .Input[variant="glyph"]:invalid:focus + .InnerWrapper > .Label,
 .InputField[touched] .Input:invalid:focus {
 	outline-color: var(--colour-danger);
 }
 
 .InputField[touched] .Input:invalid,
 .InputField[touched] .Input[variant="cta"]:invalid + .InnerWrapper > .Label,
+.InputField[touched] .Input[variant="glyph"]:invalid + .InnerWrapper > .Label,
 .Error {
 	border-color: var(--colour-danger);
 }
@@ -118,7 +121,8 @@ textarea.Input {
  * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
  * and the like are not an option.
  */
-.Input[variant="cta"] {
+.Input[variant="cta"],
+.Input[variant="glyph"] {
 	height: 0;
 	position: absolute;
 	width: 0;
@@ -142,6 +146,27 @@ textarea.Input {
 .Input[variant="cta"] + .InnerWrapper > .Label {
 	display: block;
 	padding: var(--default-padding);
+}
+
+.Input:not(:checked) + .InnerWrapper > .Label[variant="glyph"][appearance] {
+	color: unset;
+	fill: unset;
+}
+.Input:checked + .InnerWrapper > .Label[variant="glyph"][appearance="danger"] {
+	color: var(--colour-danger);
+	fill: var(--colour-danger);
+}
+.Input:checked + .InnerWrapper > .Label[variant="glyph"][appearance="primary"] {
+	color: var(--colour-primary);
+	fill: var(--colour-primary);
+}
+.Input:checked + .InnerWrapper > .Label[variant="glyph"][appearance="affirming"] {
+	color: var(--colour-success);
+	fill: var(--colour-success);
+}
+.Input:checked + .InnerWrapper > .Label[variant="glyph"][appearance="warning"] {
+	color: var(--colour-warning);
+	fill: var(--colour-warning);
 }
 
 .Input[variant="toggle"] {
