@@ -85,8 +85,6 @@ export default function Input({
 	const isButton = buttonVariants.has(variant);
 	const isSwitch = switchTypes.has(type);
 
-	if (isButton) arrangement = null;
-
 	if (others.value === null) others.value = ''; // React has a tantrum when `value` is `null`
 
 	return (

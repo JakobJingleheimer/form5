@@ -16,15 +16,17 @@
 .InputField[arrangement="stand-alone"] {
 	align-items: baseline;
 }
-.InputField[arrangement="stand-alone"] {
-	display: inline-flex;
-}
 
-.InputField[variant="cta"] {
+.InputField[variant="cta"],
+.InputField[variant="glyph"] {
 	box-shadow: unset;
 	display: flex;
-	flex-direction: column;
 	padding: unset;
+}
+
+/* After InputField[variant] to override display:flex */
+.InputField[arrangement="stand-alone"] {
+	display: inline-flex;
 }
 
 .Fluid {
@@ -143,7 +145,8 @@ textarea.Input {
 	fill: var(--colour-background);
 }
 
-.Input[variant="cta"] + .InnerWrapper > .Label {
+.Input[variant="cta"] + .InnerWrapper > .Label,
+.Input[variant="glyph"] + .InnerWrapper > .Label {
 	display: block;
 	padding: var(--default-padding);
 }
@@ -214,6 +217,7 @@ textarea.Input {
 
 .InnerWrapper {
 	border-radius: inherit;
+	flex: 1;
 	position: relative;
 }
 
