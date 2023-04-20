@@ -1,11 +1,8 @@
 .Column {
+	display: flex;
+	flex-direction: column;
 	flex: 1;
-}
-
-@media only screen and (min-width: 737px) {
-	.Output {
-		order: 1;
-	}
+	gap: 1rem;
 }
 
 .Output {

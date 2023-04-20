@@ -25,50 +25,6 @@ var __publicField = (obj, key, value) => {
   return value;
 };
 
-// node_modules/classnames/index.js
-var require_classnames = __commonJS({
-  "node_modules/classnames/index.js"(exports2, module2) {
-    (function() {
-      "use strict";
-      var hasOwn = {}.hasOwnProperty;
-      function classNames2() {
-        var classes = [];
-        for (var i = 0; i < arguments.length; i++) {
-          var arg = arguments[i];
-          if (!arg)
-            continue;
-          var argType = typeof arg;
-          if (argType === "string" || argType === "number") {
-            classes.push(arg);
-          } else if (Array.isArray(arg) && arg.length) {
-            var inner = classNames2.apply(null, arg);
-            if (inner) {
-              classes.push(inner);
-            }
-          } else if (argType === "object") {
-            for (var key in arg) {
-              if (hasOwn.call(arg, key) && arg[key]) {
-                classes.push(key);
-              }
-            }
-          }
-        }
-        return classes.join(" ");
-      }
-      if (typeof module2 !== "undefined" && module2.exports) {
-        classNames2.default = classNames2;
-        module2.exports = classNames2;
-      } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
-        define("classnames", [], function() {
-          return classNames2;
-        });
-      } else {
-        window.classNames = classNames2;
-      }
-    })();
-  }
-});
-
 // node_modules/react/cjs/react.development.js
 var require_react_development = __commonJS({
   "node_modules/react/cjs/react.development.js"(exports2, module2) {
@@ -2395,7 +2351,7 @@ var require_react_dom_development = __commonJS({
         var HostPortal = 4;
         var HostComponent = 5;
         var HostText = 6;
-        var Fragment3 = 7;
+        var Fragment4 = 7;
         var Mode = 8;
         var ContextConsumer = 9;
         var ContextProvider = 10;
@@ -3472,7 +3428,7 @@ var require_react_dom_development = __commonJS({
               return "DehydratedFragment";
             case ForwardRef:
               return getWrappedName$1(type, type.render, "ForwardRef");
-            case Fragment3:
+            case Fragment4:
               return "Fragment";
             case HostComponent:
               return type;
@@ -12837,7 +12793,7 @@ var require_react_dom_development = __commonJS({
             }
           }
           function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-            if (current2 === null || current2.tag !== Fragment3) {
+            if (current2 === null || current2.tag !== Fragment4) {
               var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
               created.return = returnFiber;
               return created;
@@ -13239,7 +13195,7 @@ var require_react_dom_development = __commonJS({
               if (child.key === key) {
                 var elementType = element.type;
                 if (elementType === REACT_FRAGMENT_TYPE) {
-                  if (child.tag === Fragment3) {
+                  if (child.tag === Fragment4) {
                     deleteRemainingChildren(returnFiber, child.sibling);
                     var existing = useFiber(child, element.props.children);
                     existing.return = returnFiber;
@@ -17345,7 +17301,7 @@ var require_react_dom_development = __commonJS({
               var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
               return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
             }
-            case Fragment3:
+            case Fragment4:
               return updateFragment(current2, workInProgress2, renderLanes2);
             case Mode:
               return updateMode(current2, workInProgress2, renderLanes2);
@@ -17617,7 +17573,7 @@ var require_react_dom_development = __commonJS({
             case SimpleMemoComponent:
             case FunctionComponent:
             case ForwardRef:
-            case Fragment3:
+            case Fragment4:
             case Mode:
             case Profiler:
             case ContextConsumer:
@@ -21831,7 +21787,7 @@ var require_react_dom_development = __commonJS({
           return fiber;
         }
         function createFiberFromFragment(elements, mode, lanes, key) {
-          var fiber = createFiber(Fragment3, elements, key, mode);
+          var fiber = createFiber(Fragment4, elements, key, mode);
           fiber.lanes = lanes;
           return fiber;
         }
@@ -22944,6 +22900,50 @@ var require_client = __commonJS({
   }
 });
 
+// node_modules/classnames/index.js
+var require_classnames = __commonJS({
+  "node_modules/classnames/index.js"(exports2, module2) {
+    (function() {
+      "use strict";
+      var hasOwn = {}.hasOwnProperty;
+      function classNames2() {
+        var classes = [];
+        for (var i = 0; i < arguments.length; i++) {
+          var arg = arguments[i];
+          if (!arg)
+            continue;
+          var argType = typeof arg;
+          if (argType === "string" || argType === "number") {
+            classes.push(arg);
+          } else if (Array.isArray(arg) && arg.length) {
+            var inner = classNames2.apply(null, arg);
+            if (inner) {
+              classes.push(inner);
+            }
+          } else if (argType === "object") {
+            for (var key in arg) {
+              if (hasOwn.call(arg, key) && arg[key]) {
+                classes.push(key);
+              }
+            }
+          }
+        }
+        return classes.join(" ");
+      }
+      if (typeof module2 !== "undefined" && module2.exports) {
+        classNames2.default = classNames2;
+        module2.exports = classNames2;
+      } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
+        define("classnames", [], function() {
+          return classNames2;
+        });
+      } else {
+        window.classNames = classNames2;
+      }
+    })();
+  }
+});
+
 // node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js
 var require_react_is_development = __commonJS({
   "node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js"(exports2) {
@@ -23012,7 +23012,7 @@ var require_react_is_development = __commonJS({
         var ContextProvider = REACT_PROVIDER_TYPE;
         var Element = REACT_ELEMENT_TYPE;
         var ForwardRef = REACT_FORWARD_REF_TYPE;
-        var Fragment3 = REACT_FRAGMENT_TYPE;
+        var Fragment4 = REACT_FRAGMENT_TYPE;
         var Lazy = REACT_LAZY_TYPE;
         var Memo = REACT_MEMO_TYPE;
         var Portal = REACT_PORTAL_TYPE;
@@ -23071,7 +23071,7 @@ var require_react_is_development = __commonJS({
         exports2.ContextProvider = ContextProvider;
         exports2.Element = Element;
         exports2.ForwardRef = ForwardRef;
-        exports2.Fragment = Fragment3;
+        exports2.Fragment = Fragment4;
         exports2.Lazy = Lazy;
         exports2.Memo = Memo;
         exports2.Portal = Portal;
@@ -24575,7 +24575,6 @@ var require_jsx_runtime = __commonJS({
 });
 
 // docs/app.jsx
-var import_classnames6 = __toESM(require_classnames(), 1);
 var import_react5 = __toESM(require_react(), 1);
 var import_client = __toESM(require_client(), 1);
 
@@ -24587,8 +24586,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/Group/Group.module.css.js
-var digest = "00de830701909b32fecc40eb0fb3173a4a7dbfe09570587f1b796fe5a732bcb0";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/Group/Group.module.css.js
+var digest = "2a93049f7435e0dcb8a822b5bdbf03796363ea75101981626cba9f05288a6e14";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24622,8 +24621,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/Button/Button.module.css.js
-var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/Button/Button.module.css.js
+var digest2 = "e29d98082817da2c3c71a6b2a779d0e15eb1607a26068e99cbd87e7b1f861eef";
 var css2 = `._Button_154t5_1 {
 	font: unset;
 	border: none;
@@ -24736,6 +24735,7 @@ Button.APPEARANCES = {
 };
 Button.TYPES = {
   BUTTON: "button",
+  RESET: "reset",
   SUBMIT: "submit"
 };
 Button.VARIANTS = {
@@ -26152,8 +26152,8 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "6f78220d70cc366790b5a736c571ed191928222270c58eccf59e5c662d097c8f";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "0bfa65d8aee6252050df31a1a598d2fb307e21d14e49c9a7bf71ed972417d2c6";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
 }
@@ -26359,92 +26359,121 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/Input/Input.module.css.js
-var digest4 = "df100b74adb42e5e73de342264cd35fc2e84fe9997cd09e79274e0179edd819b";
-var css4 = `._InputField_m87ne_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/Input/Input.module.css.js
+var digest4 = "9c165fcfacaf6a84816ddfd563c179995a31cdcfb4978afb2faf31e3182da36a";
+var css4 = `._InputField_1qybs_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_m87ne_1[arrangement="inline"] {
+._InputField_1qybs_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_m87ne_1[arrangement="inline"],
-._InputField_m87ne_1[arrangement="stacked"] {
+._InputField_1qybs_1[arrangement="inline"],
+._InputField_1qybs_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_m87ne_1[arrangement="stacked"] {
+._InputField_1qybs_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_m87ne_1[arrangement="stacked"],
-._InputField_m87ne_1[arrangement="stand-alone"] {
+._InputField_1qybs_1[arrangement="compact"],
+._InputField_1qybs_1[arrangement="stacked"],
+._InputField_1qybs_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
 
-._InputField_m87ne_1[variant="cta"],
-._InputField_m87ne_1[variant="glyph"] {
+._InputField_1qybs_1[arrangement="compact"] {
+	gap: unset;
+	position: relative;
+}
+
+._InputField_1qybs_1[variant="cta"],
+._InputField_1qybs_1[variant="glyph"] {
 	box-shadow: unset;
 	display: flex;
 	padding: unset;
 }
 
 /* After InputField[variant] to override display:flex */
-._InputField_m87ne_1[arrangement="stand-alone"] {
+._InputField_1qybs_1[arrangement="compact"],
+._InputField_1qybs_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._Fluid_m87ne_32 {
+._Fluid_1qybs_39 {
 	flex: 1;
 	grid-template-columns: 100%;
 }
 
-._Input_m87ne_1 {
+._Input_1qybs_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_m87ne_1[variant="cta"]:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
-._Input_m87ne_1:focus {
+._Input_1qybs_1[variant="cta"]:focus + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50,
+._Input_1qybs_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_m87ne_1:disabled {
+._Input_1qybs_1:disabled {
 	cursor: default;
 }
-._Input_m87ne_1:disabled,
-._Input_m87ne_1[readonly] {
+._Input_1qybs_1:disabled,
+._Input_1qybs_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._Input_m87ne_1[readonly],
-._Input_m87ne_1[readonly] + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
+._Input_1qybs_1[readonly],
+._Input_1qybs_1[readonly] + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50 {
 	cursor: not-allowed;
 }
-._Input_m87ne_1:not([variant="cta"]):required + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43::after {
+._Input_1qybs_1:not([variant="cta"]):required + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50::after {
 	content: '*';
 	margin-left: 0.1em;
 }
 
-._Input_m87ne_1:not([type="checkbox"], [type="radio"]) {
+._Input_1qybs_1:not([type="checkbox"], [type="radio"]) {
 	width: 100%;
 }
 
-._Input_m87ne_1[type="checkbox"],
-._Input_m87ne_1[type="radio"] {
+._Input_1qybs_1[type="checkbox"],
+._Input_1qybs_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_m87ne_1[type="date"],
-._Input_m87ne_1[type="datetime"],
-._Input_m87ne_1[type="datetime-local"],
-._Input_m87ne_1[type="time"] {
+._Input_1qybs_1[type="date"],
+._Input_1qybs_1[type="datetime"],
+._Input_1qybs_1[type="datetime-local"],
+._Input_1qybs_1[type="time"] {
 	font: inherit;
 }
 
-._Input_m87ne_1[type="number"] {
+._Input_1qybs_1[type="number"] {
 	text-align: right;
 }
 
-select._Input_m87ne_1 {
+._Input_1qybs_1[type="search"] {
+	padding:
+		var(--default-padding)
+		calc(var(--default-padding) + 1.5em);
+}
+
+._Input_1qybs_1[type="search"]::-webkit-search-cancel-button,
+._Input_1qybs_1[type="search"]::-webkit-search-decoration {
+  appearance: none;
+}
+
+._SearchSubmit_1qybs_102 {
+	left: 0;
+	order: -1;
+	position: absolute;
+}
+
+._SearchReset_1qybs_108 {
+	position: absolute;
+	right: 0;
+}
+
+select._Input_1qybs_1 {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
 	background-position: right 0.5em center;
@@ -26453,32 +26482,32 @@ select._Input_m87ne_1 {
 	padding-right: calc(1em + var(--default-padding)); /* 1em for the icon */
 }
 
-textarea._Input_m87ne_1 {
+textarea._Input_1qybs_1 {
 	line-height: inherit;
 }
 
-._InputField_m87ne_1:not([switch]) ._InnerWrapper_m87ne_43 {
+._InputField_1qybs_1:not([switch]) ._InnerWrapper_1qybs_50 {
 	order: -1;
 }
 
-._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="cta"]:invalid:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
-._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="glyph"]:invalid:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
+._InputField_1qybs_1[touched] ._Input_1qybs_1[variant="cta"]:invalid:focus + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50,
+._InputField_1qybs_1[touched] ._Input_1qybs_1[variant="glyph"]:invalid:focus + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50 {
 	outline: 2px solid;
 }
 
-._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="cta"]:invalid:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
-._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="glyph"]:invalid:focus + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
-._InputField_m87ne_1[touched] ._Input_m87ne_1:invalid:focus {
+._InputField_1qybs_1[touched] ._Input_1qybs_1[variant="cta"]:invalid:focus + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50,
+._InputField_1qybs_1[touched] ._Input_1qybs_1[variant="glyph"]:invalid:focus + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50,
+._InputField_1qybs_1[touched] ._Input_1qybs_1:invalid:focus {
 	outline-color: var(--colour-danger);
 }
 
-._InputField_m87ne_1[touched] ._Input_m87ne_1:invalid,
-._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="cta"]:invalid + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
-._InputField_m87ne_1[touched] ._Input_m87ne_1[variant="glyph"]:invalid + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
-._Error_m87ne_115 {
+._InputField_1qybs_1[touched] ._Input_1qybs_1:invalid,
+._InputField_1qybs_1[touched] ._Input_1qybs_1[variant="cta"]:invalid + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50,
+._InputField_1qybs_1[touched] ._Input_1qybs_1[variant="glyph"]:invalid + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50,
+._Error_1qybs_144 {
 	border-color: var(--colour-danger);
 }
-._InputField_m87ne_1[touched] ._Input_m87ne_1:invalid + ._InnerWrapper_m87ne_43 {
+._InputField_1qybs_1[touched] ._Input_1qybs_1:invalid + ._InnerWrapper_1qybs_50 {
 	color: var(--colour-danger);
 }
 
@@ -26486,15 +26515,15 @@ textarea._Input_m87ne_1 {
  * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
  * and the like are not an option.
  */
-._Input_m87ne_1[variant="cta"],
-._Input_m87ne_1[variant="glyph"] {
+._Input_1qybs_1[variant="cta"],
+._Input_1qybs_1[variant="glyph"] {
 	height: 0;
 	position: absolute;
 	width: 0;
 	z-index: -1;
 }
 
-._Input_m87ne_1[variant="cta"] + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
+._Input_1qybs_1[variant="cta"] + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50 {
 	background-color: var(--colour-light);
 	border: 1px solid var(--colour-medium);
 	border-radius: inherit;
@@ -26502,40 +26531,40 @@ textarea._Input_m87ne_1 {
 	fill: var(--colour-text-deemphasised);
 }
 
-._Input_m87ne_1[variant="cta"]:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
+._Input_1qybs_1[variant="cta"]:checked + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50 {
 	background-color: var(--colour-primary);
 	color: var(--colour-background);
 	fill: var(--colour-background);
 }
 
-._Input_m87ne_1[variant="cta"] + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43,
-._Input_m87ne_1[variant="glyph"] + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43 {
+._Input_1qybs_1[variant="cta"] + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50,
+._Input_1qybs_1[variant="glyph"] + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50 {
 	display: block;
 	padding: var(--default-padding);
 }
 
-._Input_m87ne_1:not(:checked) + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance] {
+._Input_1qybs_1:not(:checked) + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50[variant="glyph"][appearance] {
 	color: unset;
 	fill: unset;
 }
-._Input_m87ne_1:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance="danger"] {
+._Input_1qybs_1:checked + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50[variant="glyph"][appearance="danger"] {
 	color: var(--colour-danger);
 	fill: var(--colour-danger);
 }
-._Input_m87ne_1:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance="primary"] {
+._Input_1qybs_1:checked + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50[variant="glyph"][appearance="primary"] {
 	color: var(--colour-primary);
 	fill: var(--colour-primary);
 }
-._Input_m87ne_1:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance="affirming"] {
+._Input_1qybs_1:checked + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50[variant="glyph"][appearance="affirming"] {
 	color: var(--colour-success);
 	fill: var(--colour-success);
 }
-._Input_m87ne_1:checked + ._InnerWrapper_m87ne_43 > ._Label_m87ne_43[variant="glyph"][appearance="warning"] {
+._Input_1qybs_1:checked + ._InnerWrapper_1qybs_50 > ._Label_1qybs_50[variant="glyph"][appearance="warning"] {
 	color: var(--colour-warning);
 	fill: var(--colour-warning);
 }
 
-._Input_m87ne_1[variant="toggle"] {
+._Input_1qybs_1[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -26549,7 +26578,7 @@ textarea._Input_m87ne_1 {
 	width: 2em;
 }
 
-._Input_m87ne_1[variant="toggle"]::after {
+._Input_1qybs_1[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -26565,32 +26594,32 @@ textarea._Input_m87ne_1 {
 	width: 50%;
 }
 
-._Input_m87ne_1[variant="toggle"]:checked::after {
+._Input_1qybs_1[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
 
-._Input_m87ne_1[variant="toggle"][appearane="danger"]:checked::after {
+._Input_1qybs_1[variant="toggle"][appearane="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
 
-._Input_m87ne_1[variant="toggle"][appearane="success"]:checked::after {
+._Input_1qybs_1[variant="toggle"][appearane="success"]:checked::after {
 	background-color: var(--colour-success);
 }
 
-._InnerWrapper_m87ne_43 {
+._InnerWrapper_1qybs_50 {
 	border-radius: inherit;
 	flex: 1;
 	position: relative;
 }
 
-._Input_m87ne_1:focus + ._InnerWrapper_m87ne_43 > ._Error_m87ne_115,
-._InputField_m87ne_1:hover ._Error_m87ne_115 {
+._Input_1qybs_1:focus + ._InnerWrapper_1qybs_50 > ._Error_1qybs_144,
+._InputField_1qybs_1:hover ._Error_1qybs_144 {
 	opacity: 1;
 	pointer-events: all;
 }
 
-._Error_m87ne_115 {
+._Error_1qybs_144 {
 	background-color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	border: 1px solid;
@@ -26610,7 +26639,7 @@ textarea._Input_m87ne_1 {
 	width: max-content;
 	z-index: 1;
 }
-._Error_m87ne_115::after {
+._Error_1qybs_144::after {
 	background-color: inherit;
 	border: inherit;
 	bottom: calc(-0.5em - 2px);
@@ -26633,7 +26662,7 @@ textarea._Input_m87ne_1 {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_m87ne_1", "Fluid": "_Fluid_m87ne_32", "Input": "_Input_m87ne_1", "InnerWrapper": "_InnerWrapper_m87ne_43", "Label": "_Label_m87ne_43", "Error": "_Error_m87ne_115" };
+var Input_module_css_default = { "InputField": "_InputField_1qybs_1", "Fluid": "_Fluid_1qybs_39", "Input": "_Input_1qybs_1", "InnerWrapper": "_InnerWrapper_1qybs_50", "Label": "_Label_1qybs_50", "SearchSubmit": "_SearchSubmit_1qybs_102", "SearchReset": "_SearchReset_1qybs_108", "Error": "_Error_1qybs_144" };
 
 // lib/react/Input/Input.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -26702,6 +26731,9 @@ function Input({
   };
   const isButton = buttonVariants.has(variant);
   const isSwitch = switchTypes.has(type);
+  const isSearch = type === "search";
+  if (isSearch)
+    arrangement = Input.ARRANGEMENTS.COMPACT;
   if (others.value === null)
     others.value = "";
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -26735,7 +26767,45 @@ function Input({
         variant,
         ...others
       }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+      isSearch && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+            appearance: Button.APPEARANCES.BASIC,
+            className: Input_module_css_default.SearchSubmit,
+            disabled: others.disabled,
+            readOnly,
+            type: Button.TYPES.SUBMIT,
+            variant: Button.VARIANTS.GLYPH,
+            children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              fill: "currentColor",
+              viewBox: "0 0 16 16",
+              style: { height: "0.8em" },
+              children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+                d: "M6.663 0C2.991 0 0 2.991 0 6.663s2.991 6.663 6.663 6.663a6.628 6.628 0 0 0 4.213-1.508l3.978 3.979a.667.667 0 1 0 .943-.943l-3.978-3.978a6.628 6.628 0 0 0 1.507-4.213C13.326 2.991 10.336 0 6.663 0Zm0 1.333a5.32 5.32 0 0 1 5.33 5.33 5.32 5.32 0 0 1-5.33 5.33 5.32 5.32 0 0 1-5.33-5.33 5.32 5.32 0 0 1 5.33-5.33Z"
+              })
+            })
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+            appearance: Button.APPEARANCES.BASIC,
+            className: Input_module_css_default.SearchReset,
+            disabled: others.disabled,
+            readOnly,
+            type: Button.TYPES.RESET,
+            variant: Button.VARIANTS.GLYPH,
+            children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
+              xmlns: "http://www.w3.org/2000/svg",
+              fill: "currentColor",
+              viewBox: "0 0 16 16",
+              style: { height: "0.8em" },
+              children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+                d: "M13.162 2.326a.5.5 0 0 0-.349.154L8 7.293 3.187 2.48a.5.5 0 1 0-.707.707L7.293 8 2.48 12.813a.499.499 0 1 0 .707.707L8 8.707l4.813 4.813a.5.5 0 1 0 .707-.707L8.707 8l4.813-4.813a.5.5 0 0 0-.358-.86Z"
+              })
+            })
+          })
+        ]
+      }),
+      (!!label || isInvalid) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
         className: Input_module_css_default.InnerWrapper,
         children: [
           !!label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
@@ -26770,6 +26840,7 @@ function Input({
 }
 Input.displayName = "Form5Input";
 Input.ARRANGEMENTS = {
+  COMPACT: "compact",
   INLINE: "inline",
   STACKED: "stacked",
   STAND_ALONE: "stand-alone"
@@ -26990,8 +27061,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/lib/react/Form/Form.module.css.js
-var digest5 = "31652bf8e3bf2177ebcb50a9db6960a5c9eb6619d98dc4d202009d9db5b5aa0c";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/Form/Form.module.css.js
+var digest5 = "1c921013946372e6f5dca1b8bf15b12d336e7c300815cb4ece2912cf43e91903";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -27081,35 +27152,32 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-21204-rEYyJk3Qy1Iq/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
-var css6 = `._Column_xjact_1 {
+var css6 = `._Column_n1l6i_1 {
+	display: flex;
+	flex-direction: column;
 	flex: 1;
+	gap: 1rem;
 }
 
-@media only screen and (min-width: 737px) {
-	._Output_xjact_6 {
-		order: 1;
-	}
-}
-
-._Output_xjact_6 {
+._Output_n1l6i_8 {
 	font-family: monospace;
 }
 
-._DataHeading_xjact_15 {
+._DataHeading_n1l6i_12 {
 	background-color: var(--colour-medium);
 	border-radius: var(--default-border-radius) var(--default-border-radius) 0 0;
 	font-weight: bold;
 }
 
-._DataHeading_xjact_15,
-._Data_xjact_15 {
+._DataHeading_n1l6i_12,
+._Data_n1l6i_12 {
 	display: block;
 	padding: 1rem;
 }
 
-._Data_xjact_15 {
+._Data_n1l6i_12 {
 	background-color: var(--colour-light);
 	border-radius: 0 0 var(--default-border-radius) var(--default-border-radius);
 	line-height: 1.4;
@@ -27124,7 +27192,7 @@ var css6 = `._Column_xjact_1 {
     document.head.appendChild(el);
   }
 })();
-var Demo_module_css_default = { "Column": "_Column_xjact_1", "Output": "_Output_xjact_6", "DataHeading": "_DataHeading_xjact_15", "Data": "_Data_xjact_15" };
+var Demo_module_css_default = { "Column": "_Column_n1l6i_1", "Output": "_Output_n1l6i_8", "DataHeading": "_DataHeading_n1l6i_12", "Data": "_Data_n1l6i_12" };
 
 // docs/app.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -27135,13 +27203,46 @@ Object.defineProperty(File.prototype, "toJSON", {
 });
 function TestForm() {
   const [{ delta, values }, setData] = (0, import_react5.useState)({ delta: null, values: null });
+  const [{ query }, setSearch] = (0, import_react5.useState)({ query: "" });
   const [isDirty, setDirty] = (0, import_react5.useState)(false);
   return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-        className: (0, import_classnames6.default)(Demo_module_css_default.Column, Demo_module_css_default.Output),
+        className: Demo_module_css_default.Column,
         children: [
-          delta && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+            className: Demo_module_css_default.Output,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
+                className: Demo_module_css_default.DataHeading,
+                children: "Search"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("output", {
+                className: Demo_module_css_default.Data,
+                children: [
+                  "query: ",
+                  JSON.stringify(query, null, 2)
+                ]
+              })
+            ]
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Form_default, {
+            name: "search",
+            role: "search",
+            onReset: setSearch,
+            onSubmit: setSearch,
+            children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+              name: "query",
+              type: "search"
+            })
+          })
+        ]
+      }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+        className: Demo_module_css_default.Column,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+            className: Demo_module_css_default.Output,
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
                 className: Demo_module_css_default.DataHeading,
@@ -27150,12 +27251,7 @@ function TestForm() {
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("output", {
                 className: Demo_module_css_default.Data,
                 children: JSON.stringify(delta, null, 2)
-              })
-            ]
-          }),
-          delta && values && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-          values && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
-            children: [
+              }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
                 className: Demo_module_css_default.DataHeading,
                 children: "Current values"
@@ -27165,193 +27261,193 @@ function TestForm() {
                 children: JSON.stringify(values, null, 2)
               })
             ]
-          })
-        ]
-      }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Form_default, {
-        className: Demo_module_css_default.Column,
-        name: "test",
-        onDirty: () => setDirty(true),
-        onSubmit: (d, v) => setData({ delta: d, values: v }),
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-            disabled: !isDirty,
-            title: !isDirty ? "No changes to submit" : null,
-            type: "submit",
-            children: "Submit"
           }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            defaultValue: "Jacob",
-            fluid: true,
-            label: "Forename",
-            name: "forename",
-            type: "text"
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            defaultValue: "Jingleheimer",
-            fluid: true,
-            label: "Surname",
-            name: "surname",
-            type: "text"
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            as: "textarea",
-            fluid: true,
-            label: "Bio",
-            name: "bio"
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            fluid: true,
-            label: "Age",
-            name: "age",
-            type: "number"
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
-            name: "contact",
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Form_default, {
+            className: Demo_module_css_default.Column,
+            name: "test",
+            onDirty: () => setDirty(true),
+            onSubmit: (d, v) => setData({ delta: d, values: v }),
             children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+                disabled: !isDirty,
+                title: !isDirty ? "No changes to submit" : null,
+                type: "submit",
+                children: "Submit"
+              }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                defaultValue: "Jacob",
                 fluid: true,
-                label: "Email",
-                name: "email",
-                placeholder: "john.doe@example.com",
-                required: true,
-                type: "email"
+                label: "Forename",
+                name: "forename",
+                type: "text"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                defaultValue: "Jingleheimer",
+                fluid: true,
+                label: "Surname",
+                name: "surname",
+                type: "text"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                as: "textarea",
+                fluid: true,
+                label: "Bio",
+                name: "bio"
               }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
                 fluid: true,
-                label: "Phone",
-                name: "phoneNumber",
-                onKeyPress: ({ target }) => {
-                  target.value = target.value.replace(/\D/, "");
-                },
-                placeholder: "555-5555-555",
-                type: "tel"
+                label: "Age",
+                name: "age",
+                type: "number"
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+                name: "contact",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                    fluid: true,
+                    label: "Email",
+                    name: "email",
+                    placeholder: "john.doe@example.com",
+                    required: true,
+                    type: "email"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                    fluid: true,
+                    label: "Phone",
+                    name: "phoneNumber",
+                    onKeyPress: ({ target }) => {
+                      target.value = target.value.replace(/\D/, "");
+                    },
+                    placeholder: "555-5555-555",
+                    type: "tel"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                    id: "preferEmail",
+                    label: "Prefer email",
+                    name: "preferedContact",
+                    type: "radio",
+                    value: "email"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                    id: "preferPhone",
+                    label: "Prefer phone",
+                    name: "preferedContact",
+                    type: "radio",
+                    value: "phone"
+                  })
+                ]
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Input, {
+                as: "select",
+                label: "Current continent",
+                name: "continent",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                    value: "AF",
+                    children: "Africa"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                    value: "AN",
+                    children: "Antarctica"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                    value: "AS",
+                    children: "Asia"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                    value: "EU",
+                    children: "Europe"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                    value: "NA",
+                    children: "North America"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                    value: "OC",
+                    children: "Oceania"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
+                    value: "SA",
+                    children: "South America"
+                  })
+                ]
+              }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
+                    className: "required",
+                    children: "Favourite colour"
+                  }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button.Group, {
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                        id: "favouriteBlue",
+                        label: "blue",
+                        name: "favouriteColour",
+                        required: true,
+                        type: "radio",
+                        value: "blue",
+                        variant: Input.VARIANTS.CTA
+                      }),
+                      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                        id: "favouriteGreen",
+                        label: "green",
+                        name: "favouriteColour",
+                        type: "radio",
+                        value: "green",
+                        variant: Input.VARIANTS.CTA
+                      }),
+                      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                        id: "favouriteRed",
+                        label: "red",
+                        name: "favouriteColour",
+                        type: "radio",
+                        value: "red",
+                        variant: Input.VARIANTS.CTA
+                      })
+                    ]
+                  })
+                ]
               }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                id: "preferEmail",
-                label: "Prefer email",
-                name: "preferedContact",
-                type: "radio",
-                value: "email"
+                label: "Favourite date",
+                name: "favouriteDate",
+                type: "date"
               }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                id: "preferPhone",
-                label: "Prefer phone",
-                name: "preferedContact",
-                type: "radio",
-                value: "phone"
-              })
-            ]
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Input, {
-            as: "select",
-            label: "Current continent",
-            name: "continent",
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                value: "AF",
-                children: "Africa"
+                label: "Togglable",
+                name: "togglable",
+                type: "checkbox",
+                variant: Input.VARIANTS.TOGGLE
               }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                value: "AN",
-                children: "Antarctica"
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                checked: true,
+                label: "Read-only",
+                name: "readonly",
+                readOnly: true,
+                type: "checkbox",
+                variant: Input.VARIANTS.TOGGLE
               }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                value: "AS",
-                children: "Asia"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                value: "EU",
-                children: "Europe"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                value: "NA",
-                children: "North America"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                value: "OC",
-                children: "Oceania"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                value: "SA",
-                children: "South America"
-              })
-            ]
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
-                className: "required",
-                children: "Favourite colour"
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileInput, {
+                icon: "\u{1F4C2}",
+                label: "Profile photo",
+                name: "profilePhoto"
               }),
               /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button.Group, {
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                    id: "favouriteBlue",
-                    label: "blue",
-                    name: "favouriteColour",
-                    required: true,
-                    type: "radio",
-                    value: "blue",
-                    variant: Input.VARIANTS.CTA
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+                    appearance: Button.APPEARANCES.WARNING,
+                    children: "Group"
                   }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                    id: "favouriteGreen",
-                    label: "green",
-                    name: "favouriteColour",
-                    type: "radio",
-                    value: "green",
-                    variant: Input.VARIANTS.CTA
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+                    appearance: Button.APPEARANCES.BASIC,
+                    children: "of"
                   }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                    id: "favouriteRed",
-                    label: "red",
-                    name: "favouriteColour",
-                    type: "radio",
-                    value: "red",
-                    variant: Input.VARIANTS.CTA
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+                    appearance: Button.APPEARANCES.AFFIRMING,
+                    children: "Buttons"
                   })
                 ]
-              })
-            ]
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            label: "Favourite date",
-            name: "favouriteDate",
-            type: "date"
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            label: "Togglable",
-            name: "togglable",
-            type: "checkbox",
-            variant: Input.VARIANTS.TOGGLE
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-            checked: true,
-            label: "Read-only",
-            name: "readonly",
-            readOnly: true,
-            type: "checkbox",
-            variant: Input.VARIANTS.TOGGLE
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileInput, {
-            icon: "\u{1F4C2}",
-            label: "Profile photo",
-            name: "profilePhoto"
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button.Group, {
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-                appearance: Button.APPEARANCES.WARNING,
-                children: "Group"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-                appearance: Button.APPEARANCES.BASIC,
-                children: "of"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-                appearance: Button.APPEARANCES.AFFIRMING,
-                children: "Buttons"
               })
             ]
           })
