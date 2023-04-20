@@ -84,6 +84,9 @@ export default function Input({
 
 	const isButton = buttonVariants.has(variant);
 	const isSwitch = switchTypes.has(type);
+	const isSearch = type === "search";
+
+	if (isSearch) arrangement = Input.ARRANGEMENTS.COMPACT;
 
 	if (others.value === null) others.value = ''; // React has a tantrum when `value` is `null`
 
@@ -120,32 +123,60 @@ export default function Input({
 				{...others}
 			/>
 
-			<div className={styles.InnerWrapper}>
-				{!!label && (
-					<label
-						className={classnames(styles.Label, {
-							[buttonStyles.Button]: isButton,
-						})}
-						htmlFor={id}
-						{...isButton && {
-							appearance,
-							variant,
-						}}
+			{isSearch && (
+				<>
+					<Button
+						appearance={Button.APPEARANCES.BASIC}
+						className={styles.SearchSubmit}
+						disabled={others.disabled}
+						readOnly={readOnly}
+						type={Button.TYPES.SUBMIT}
+						variant={Button.VARIANTS.GLYPH}
 					>
-						{label}
-					</label>
-				)}
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" style={{ height: "0.8em" }}><path d="M6.663 0C2.991 0 0 2.991 0 6.663s2.991 6.663 6.663 6.663a6.628 6.628 0 0 0 4.213-1.508l3.978 3.979a.667.667 0 1 0 .943-.943l-3.978-3.978a6.628 6.628 0 0 0 1.507-4.213C13.326 2.991 10.336 0 6.663 0Zm0 1.333a5.32 5.32 0 0 1 5.33 5.33 5.32 5.32 0 0 1-5.33 5.33 5.32 5.32 0 0 1-5.33-5.33 5.32 5.32 0 0 1 5.33-5.33Z"/></svg>
+					</Button>
 
-				{isInvalid && (
-					<dialog
-						className={styles.Error}
-						data-testid="input-error"
-						open
+					<Button
+						appearance={Button.APPEARANCES.BASIC}
+						className={styles.SearchReset}
+						disabled={others.disabled}
+						readOnly={readOnly}
+						type={Button.TYPES.RESET}
+						variant={Button.VARIANTS.GLYPH}
 					>
-						{error}
-					</dialog>
-				)}
-			</div>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" style={{ height: "0.8em" }}><path d="M13.162 2.326a.5.5 0 0 0-.349.154L8 7.293 3.187 2.48a.5.5 0 1 0-.707.707L7.293 8 2.48 12.813a.499.499 0 1 0 .707.707L8 8.707l4.813 4.813a.5.5 0 1 0 .707-.707L8.707 8l4.813-4.813a.5.5 0 0 0-.358-.86Z"/></svg>
+					</Button>
+				</>
+			)}
+
+			{(!!label || isInvalid) && (
+				<div className={styles.InnerWrapper}>
+					{!!label && (
+						<label
+							className={classnames(styles.Label, {
+								[buttonStyles.Button]: isButton,
+							})}
+							htmlFor={id}
+							{...isButton && {
+								appearance,
+								variant,
+							}}
+						>
+							{label}
+						</label>
+					)}
+
+					{isInvalid && (
+						<dialog
+							className={styles.Error}
+							data-testid="input-error"
+							open
+						>
+							{error}
+						</dialog>
+					)}
+				</div>
+			)}
 
 			{!_isEmpty(options) && (
 				<datalist data-testid={others.list} id={others.list}>{_map(options, (label, key) => (
@@ -159,6 +190,7 @@ export default function Input({
 Input.displayName = 'Form5Input';
 
 Input.ARRANGEMENTS = {
+	COMPACT: 'compact',
 	INLINE: 'inline',
 	STACKED: 'stacked',
 	STAND_ALONE: 'stand-alone',
