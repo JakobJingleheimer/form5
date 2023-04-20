@@ -45,6 +45,7 @@ Button.APPEARANCES = {
 };
 Button.TYPES = {
 	BUTTON: 'button',
+	RESET: 'reset',
 	SUBMIT: 'submit',
 };
 Button.VARIANTS = {
