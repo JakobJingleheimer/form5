@@ -24586,8 +24586,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/Group/Group.module.css.js
-var digest = "2a93049f7435e0dcb8a822b5bdbf03796363ea75101981626cba9f05288a6e14";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12010-wVi2CRNp1Ztp/form5/lib/react/Group/Group.module.css.js
+var digest = "05a169a357328f86788945d7bb4f6bfe0b6b4b8e9a98a8b6fe311b94097a5941";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24621,8 +24621,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/Button/Button.module.css.js
-var digest2 = "e29d98082817da2c3c71a6b2a779d0e15eb1607a26068e99cbd87e7b1f861eef";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12010-wVi2CRNp1Ztp/form5/lib/react/Button/Button.module.css.js
+var digest2 = "0f187ff6dde58dc12835c2649c42e3b95bfa0067d833cc1ce9f3e134a2396974";
 var css2 = `._Button_154t5_1 {
 	font: unset;
 	border: none;
@@ -26152,7 +26152,7 @@ var map_default = map;
 // lib/react/FileInput/FileInput.jsx
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/FileInput/FileInput.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12010-wVi2CRNp1Ztp/form5/lib/react/FileInput/FileInput.module.css.js
 var digest3 = "0bfa65d8aee6252050df31a1a598d2fb307e21d14e49c9a7bf71ed972417d2c6";
 var css3 = `._FileInput_rg1n0_1 {
 	display: block;
@@ -26359,8 +26359,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/Input/Input.module.css.js
-var digest4 = "9c165fcfacaf6a84816ddfd563c179995a31cdcfb4978afb2faf31e3182da36a";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12010-wVi2CRNp1Ztp/form5/lib/react/Input/Input.module.css.js
+var digest4 = "c8d3fe8c63a505c03b3d72988b935435a6e5540fbcec7f65134e8b53dc70bb97";
 var css4 = `._InputField_1qybs_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -27015,7 +27015,7 @@ function getFieldVal({
 }) {
   switch (type) {
     case "checkbox":
-      if (value)
+      if (value && value !== "on")
         return checked ? value : void 0;
       return checked;
     case "file":
@@ -27061,8 +27061,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/lib/react/Form/Form.module.css.js
-var digest5 = "1c921013946372e6f5dca1b8bf15b12d336e7c300815cb4ece2912cf43e91903";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12010-wVi2CRNp1Ztp/form5/lib/react/Form/Form.module.css.js
+var digest5 = "b114f534c786d8227a92c4affa9703b039c0ed4f4a3f010c00ba00f5a205c5fb";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -27152,7 +27152,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-36767-9J7I40LIVdXr/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-12010-wVi2CRNp1Ztp/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_n1l6i_1 {
 	display: flex;
