@@ -236,11 +236,14 @@ textarea.Input {
 	translate: 50%;
 }
 
+.Input[variant="toggle"]:disabled::after {
+	filter: saturate(0.4);
+}
+
 .Input[variant="toggle"][appearance="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
 
-.Input[variant="toggle"][appearane="success"]:checked::after {
 .Input[variant="toggle"][appearance="success"]:checked::after {
 	background-color: var(--colour-success);
 }
