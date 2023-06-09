@@ -25,6 +25,7 @@
 
 .InputField[variant="cta"],
 .InputField[variant="glyph"] {
+	align-items: stretch;
 	box-shadow: unset;
 	display: flex;
 	padding: unset;
@@ -176,7 +177,10 @@ textarea.Input {
 
 .Input[variant="cta"] + .InnerWrapper > .Label,
 .Input[variant="glyph"] + .InnerWrapper > .Label {
-	display: block;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	justify-content: center;
 	padding: var(--default-padding);
 }
 
@@ -250,6 +254,7 @@ textarea.Input {
 
 .InnerWrapper {
 	border-radius: inherit;
+	display: flex;
 	flex: 1;
 	position: relative;
 }
