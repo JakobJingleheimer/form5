@@ -1,5 +1,31 @@
+.FileInputWrapper {
+	display: flex;
+	flex-flow: column wrap;
+	gap: calc(var(--grid-gutter) / 2);
+}
+
+.FileInputPreviews {
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.FileInputPreview {
+	align-content: center;
+	background-image: repeating-conic-gradient(
+		rgb(0 0 0 / 1%) 0% 25%,
+		rgb(100 100 100 / 10%) 0% 50%
+	);
+	background-position: 0 0;
+	background-size: 2em 2em;
+	border: 1px solid var(--border-colour-normal);
+	display: flex;
+	justify-content: center;
+	width: max-content;
+}
+
 .FileInput {
-	display: block;
+	cursor: pointer;
+	display: inline-block;
 }
 
 .FileInputControl {

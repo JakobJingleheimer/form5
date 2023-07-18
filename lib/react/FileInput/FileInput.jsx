@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import _map from 'lodash-es/map.js';
+import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
 import Button from '../Button/Button.jsx';
@@ -21,28 +22,31 @@ export default class FileInput extends PureComponent {
 		previews: new Array(0),
 	};
 
+	static getDerivedStateFromProps(props, state) {
+		if (
+			props.value
+			&& (
+				props.value instanceof File
+				|| typeof props.value === 'string'
+			)
+		) {
+			return { previews: [generatePreview(props.value)] };
+		}
+
+		return state;
+	}
+
 	handleChange = (e, cb) => {
 		const { files } = e.target;
 
 		if (!files?.length) return console.error('[File Preview] Files is empty');
 
 		this.setState({
-			previews: _map(files, this.handlePreviews),
+			previews: _map(files, generatePreview),
 		});
 
 		cb(e, files);
-	};
-
-	handlePreviews(file) {
-		const output = { __proto__: null };
-		output.file = file;
-
-		if (file.type.match('image.*')) {
-			output.preview = URL.createObjectURL(file);
-		}
-
-		return output;
-	};
+	}
 
 	componentWillUnmount() {
 		for (const { preview } of this.state.previews) {
@@ -61,55 +65,101 @@ export default class FileInput extends PureComponent {
 				multiple,
 				name,
 				onChange,
+				previewsClassName,
+				wrapperClassName,
 			},
 			state: {
 				previews,
 			},
 		} = this;
 
-		return (<>
-			{!!previews.length && (
-				<div className={styles.FileInputPreviews}>
-					{_map(previews, ({
-						file: { name },
-						preview
-					}) => {
-						if (preview) return (
-							<img
-								className={styles.FileInputPreview}
-								key={name}
-								src={preview}
-							/>
-						);
+		return (
+			<div className={classnames(styles.FileInputWrapper, wrapperClassName)}>
+				{!!previews.length && (
+					<div className={classnames(styles.FileInputPreviews, previewsClassName)}>
+						{_map(previews, ({
+							file,
+							preview,
+						}) => {
+							if (preview) return (
+								<figure className={styles.FileInputPreview} key={file.name}>
+									<object data={preview} type={file.type} />
+								</figure>
+							);
 
-						return (<p key={name}>{name}</p>);
-					})}
-				</div>
-			)}
+							if (file) return (<p key={file.name}>{file.name}</p>);
+						})}
+					</div>
+				)}
 
-			<label
-				className={classnames(styles.FileInput, className)}
-				htmlFor={name}
-			>
-				<Button
-					appearance={Button.APPEARANCES.BASIC}
-					className={styles.FileInputButton}
-					icon={icon}
+				<label
+					className={classnames(styles.FileInput, className)}
+					htmlFor={name}
 				>
-					{label}
-				</Button>
-				<input
-					accept={accept}
-					className={styles.FileInputControl}
-					id={name}
-					multiple={multiple}
-					name={name}
-					onChange={(e) => handleChange(e, onChange)}
-					type="file"
-				/>
-			</label>
-		</>);
+					<Button
+						appearance={Button.APPEARANCES.BASIC}
+						className={styles.FileInputButton}
+						icon={icon}
+					>
+						{label}
+					</Button>
+
+					<input
+						accept={accept}
+						className={styles.FileInputControl}
+						id={name}
+						multiple={multiple}
+						name={name}
+						onChange={(e) => handleChange(e, onChange)}
+						type="file"
+					/>
+				</label>
+			</div>
+		);
 	}
 }
-
 FileInput.displayName = 'Form5FileInput';
+FileInput.propTypes = {
+	accept: PropTypes.string,
+	className: PropTypes.string,
+	icon: PropTypes.node,
+	label: PropTypes.string,
+	multiple: PropTypes.bool,
+	name: PropTypes.string.isRequired,
+	onChange: PropTypes.func,
+	previewsClassName: PropTypes.string,
+	wrapperClassName: PropTypes.string,
+};
+
+/**
+ * @param {URL['href'] | File} input
+ */
+export function generatePreview(input) {
+	const output = {};
+	output.file = input;
+
+	// `File` doesn't exist in node, so its `createObjectURL` expects a `Blob`
+	// `File` inherits from `Blob`, so checking for `Blob` also catches `File`
+	if (input instanceof Blob) {
+		if (input.type.match('^(audio|application|image|video)\/.*')) {
+			output.preview = URL.createObjectURL(input);
+		}
+		return output;
+	}
+
+	try { // check if `file` is a URL
+		if (
+			typeof input !== 'string'
+			&& !(
+				input.startsWith('http')
+				|| input.startsWith('file')
+			)
+		) throw 'not a URL';
+		const name = (new URL(input)).pathname.split('/').pop();
+
+		output.file = { name };
+		output.preview = input;
+
+		return output;
+	} catch { }
+}
