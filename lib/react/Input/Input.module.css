@@ -69,13 +69,13 @@
 	margin-left: 0.1em;
 }
 
-.Input:not([type="checkbox"], [type="radio"]) {
-	width: 100%;
-}
-
 .Input[type="checkbox"],
 .Input[type="radio"] {
 	margin: unset;
+}
+
+.Input[type="color"] {
+	box-sizing: content-box;
 }
 
 .Input[type="date"],
