@@ -78,6 +78,10 @@
 	margin: unset;
 }
 
+.Input[type="color"] {
+	box-sizing: content-box;
+}
+
 .Input[type="date"],
 .Input[type="datetime"],
 .Input[type="datetime-local"],

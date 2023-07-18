@@ -226,5 +226,6 @@ const buttonVariants = new Set([
 
 const switchTypes = new Set([
 	'checkbox',
+	'color',
 	'radio',
 ]);
