@@ -38,8 +38,17 @@
 }
 
 .Fluid {
-	flex: 1;
 	grid-template-columns: 100%;
+}
+
+.Fluid,
+.Fluid .Input {
+	flex: 1;
+}
+
+
+.Fluid .InnerWrapper {
+	flex: none;
 }
 
 .Input {
