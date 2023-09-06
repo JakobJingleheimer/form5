@@ -24586,8 +24586,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-42353-HSFLEiV5O21J/form5/lib/react/Group/Group.module.css.js
-var digest = "67331207514c0b8246dbf9b670bd195c6f64367962bda0075d1dbfac2aa2feb0";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/Group/Group.module.css.js
+var digest = "0a52dd1e7f216e263e937977815494d70255ab3d323f4ab404c0be76ed912ca2";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24621,8 +24621,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-42353-HSFLEiV5O21J/form5/lib/react/Button/Button.module.css.js
-var digest2 = "4445bc5df6e07345656b3c4ad08f928c7784cee3a0921cf40b9d74722c3de9b8";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/Button/Button.module.css.js
+var digest2 = "ae7a5ffbb80e877f7ae01610297026d401d977261e37f8cf4ae4c39f1ad4a97e";
 var css2 = `._Button_154t5_1 {
 	font: unset;
 	border: none;
@@ -26153,8 +26153,8 @@ var map_default = map;
 var import_prop_types3 = __toESM(require_prop_types(), 1);
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-42353-HSFLEiV5O21J/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "4ab8a9bcb60fa283f0f3b53c359319ec1299507ce6605ee93d324d965970fa86";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "c35ffdd0861faa200d21d0679cbf065cb8cf9820f12d74f0ffb36cdb6e151a1c";
 var css3 = `._FileInputWrapper_1kmbs_1 {
 	display: flex;
 	flex-flow: column wrap;
@@ -26421,35 +26421,35 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-42353-HSFLEiV5O21J/form5/lib/react/Input/Input.module.css.js
-var digest4 = "40a6c30b1bb6ed848d2eb1a1019d23ce0e2cc30e26a4222bf9a9980010804a20";
-var css4 = `._InputField_eg9jt_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/Input/Input.module.css.js
+var digest4 = "02f9f09bcde9b7836e6cf62d31d422a15c35a10447ff5ba9816444f29456bd4a";
+var css4 = `._InputField_1sqqi_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_eg9jt_1[arrangement="inline"] {
+._InputField_1sqqi_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_eg9jt_1[arrangement="inline"],
-._InputField_eg9jt_1[arrangement="stacked"] {
+._InputField_1sqqi_1[arrangement="inline"],
+._InputField_1sqqi_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_eg9jt_1[arrangement="stacked"] {
+._InputField_1sqqi_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_eg9jt_1[arrangement="compact"],
-._InputField_eg9jt_1[arrangement="stacked"],
-._InputField_eg9jt_1[arrangement="stand-alone"] {
+._InputField_1sqqi_1[arrangement="compact"],
+._InputField_1sqqi_1[arrangement="stacked"],
+._InputField_1sqqi_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
 
-._InputField_eg9jt_1[arrangement="compact"] {
+._InputField_1sqqi_1[arrangement="compact"] {
 	gap: unset;
 	position: relative;
 }
 
-._InputField_eg9jt_1[variant="cta"],
-._InputField_eg9jt_1[variant="glyph"] {
+._InputField_1sqqi_1[variant="cta"],
+._InputField_1sqqi_1[variant="glyph"] {
 	align-items: stretch;
 	box-shadow: unset;
 	display: flex;
@@ -26457,86 +26457,95 @@ var css4 = `._InputField_eg9jt_1 {
 }
 
 /* After InputField[variant] to override display:flex */
-._InputField_eg9jt_1[arrangement="compact"],
-._InputField_eg9jt_1[arrangement="stand-alone"] {
+._InputField_1sqqi_1[arrangement="compact"],
+._InputField_1sqqi_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._Fluid_eg9jt_40 {
-	flex: 1;
+._Fluid_1sqqi_40 {
 	grid-template-columns: 100%;
 }
 
-._Input_eg9jt_1 {
+._Fluid_1sqqi_40,
+._Fluid_1sqqi_40 ._Input_1sqqi_1 {
+	flex: 1;
+}
+
+
+._Fluid_1sqqi_40 ._InnerWrapper_1sqqi_50 {
+	flex: none;
+}
+
+._Input_1sqqi_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_eg9jt_1[variant="cta"]:focus + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51,
-._Input_eg9jt_1:focus {
+._Input_1sqqi_1[variant="cta"]:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
+._Input_1sqqi_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_eg9jt_1:disabled {
+._Input_1sqqi_1:disabled {
 	cursor: default;
 }
-._Input_eg9jt_1:disabled,
-._Input_eg9jt_1[readonly] {
+._Input_1sqqi_1:disabled,
+._Input_1sqqi_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._Input_eg9jt_1[readonly],
-._Input_eg9jt_1[readonly] + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51 {
+._Input_1sqqi_1[readonly],
+._Input_1sqqi_1[readonly] + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
 	cursor: not-allowed;
 }
-._Input_eg9jt_1:not([variant="cta"]):required + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51::after {
+._Input_1sqqi_1:not([variant="cta"]):required + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60::after {
 	content: '*';
 	margin-left: 0.1em;
 }
 
-._Input_eg9jt_1[type="checkbox"],
-._Input_eg9jt_1[type="radio"] {
+._Input_1sqqi_1[type="checkbox"],
+._Input_1sqqi_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_eg9jt_1[type="color"] {
+._Input_1sqqi_1[type="color"] {
 	box-sizing: content-box;
 }
 
-._Input_eg9jt_1[type="date"],
-._Input_eg9jt_1[type="datetime"],
-._Input_eg9jt_1[type="datetime-local"],
-._Input_eg9jt_1[type="time"] {
+._Input_1sqqi_1[type="date"],
+._Input_1sqqi_1[type="datetime"],
+._Input_1sqqi_1[type="datetime-local"],
+._Input_1sqqi_1[type="time"] {
 	font: inherit;
 }
 
-._Input_eg9jt_1[type="number"] {
+._Input_1sqqi_1[type="number"] {
 	text-align: right;
 }
 
-._Input_eg9jt_1[type="search"] {
+._Input_1sqqi_1[type="search"] {
 	padding:
 		var(--default-padding)
 		calc(var(--default-padding) + 1.5em);
 }
 
-._Input_eg9jt_1[type="search"]::-webkit-search-cancel-button,
-._Input_eg9jt_1[type="search"]::-webkit-search-decoration {
+._Input_1sqqi_1[type="search"]::-webkit-search-cancel-button,
+._Input_1sqqi_1[type="search"]::-webkit-search-decoration {
   appearance: none;
 }
 
-._SearchSubmit_eg9jt_103 {
+._SearchSubmit_1sqqi_112 {
 	left: 0;
 	order: -1;
 	position: absolute;
 }
 
-._SearchReset_eg9jt_109 {
+._SearchReset_1sqqi_118 {
 	position: absolute;
 	right: 0;
 }
 
-select._Input_eg9jt_1 {
+select._Input_1sqqi_1 {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
 	background-position: right 0.5em center;
@@ -26545,32 +26554,32 @@ select._Input_eg9jt_1 {
 	padding-right: calc(1em + var(--default-padding)); /* 1em for the icon */
 }
 
-textarea._Input_eg9jt_1 {
+textarea._Input_1sqqi_1 {
 	line-height: inherit;
 }
 
-._InputField_eg9jt_1:not([switch]) ._InnerWrapper_eg9jt_51 {
+._InputField_1sqqi_1:not([switch]) ._InnerWrapper_1sqqi_50 {
 	order: -1;
 }
 
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1[variant="cta"]:invalid:focus + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51,
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1[variant="glyph"]:invalid:focus + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51 {
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="cta"]:invalid:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="glyph"]:invalid:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
 	outline: 2px solid;
 }
 
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1[variant="cta"]:invalid:focus + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51,
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1[variant="glyph"]:invalid:focus + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51,
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1:invalid:focus {
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="cta"]:invalid:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="glyph"]:invalid:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1:invalid:focus {
 	outline-color: var(--colour-danger);
 }
 
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1:invalid,
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1[variant="cta"]:invalid + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51,
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1[variant="glyph"]:invalid + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51,
-._Error_eg9jt_145 {
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1:invalid,
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="cta"]:invalid + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="glyph"]:invalid + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
+._Error_1sqqi_154 {
 	border-color: var(--colour-danger);
 }
-._InputField_eg9jt_1[touched] ._Input_eg9jt_1:invalid + ._InnerWrapper_eg9jt_51 {
+._InputField_1sqqi_1[touched] ._Input_1sqqi_1:invalid + ._InnerWrapper_1sqqi_50 {
 	color: var(--colour-danger);
 }
 
@@ -26578,15 +26587,15 @@ textarea._Input_eg9jt_1 {
  * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
  * and the like are not an option.
  */
-._Input_eg9jt_1[variant="cta"],
-._Input_eg9jt_1[variant="glyph"] {
+._Input_1sqqi_1[variant="cta"],
+._Input_1sqqi_1[variant="glyph"] {
 	height: 0;
 	position: absolute;
 	width: 0;
 	z-index: -1;
 }
 
-._Input_eg9jt_1[variant="cta"] + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51 {
+._Input_1sqqi_1[variant="cta"] + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
 	background-color: var(--colour-light);
 	border: 1px solid var(--colour-medium);
 	border-radius: inherit;
@@ -26594,14 +26603,14 @@ textarea._Input_eg9jt_1 {
 	fill: var(--colour-text-deemphasised);
 }
 
-._Input_eg9jt_1[variant="cta"]:checked + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51 {
+._Input_1sqqi_1[variant="cta"]:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
 	background-color: var(--colour-primary);
 	color: var(--colour-background);
 	fill: var(--colour-background);
 }
 
-._Input_eg9jt_1[variant="cta"] + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51,
-._Input_eg9jt_1[variant="glyph"] + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51 {
+._Input_1sqqi_1[variant="cta"] + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
+._Input_1sqqi_1[variant="glyph"] + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
@@ -26609,28 +26618,28 @@ textarea._Input_eg9jt_1 {
 	padding: var(--default-padding);
 }
 
-._Input_eg9jt_1:not(:checked) + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51[variant="glyph"][appearance] {
+._Input_1sqqi_1:not(:checked) + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance] {
 	color: unset;
 	fill: unset;
 }
-._Input_eg9jt_1:checked + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51[variant="glyph"][appearance="danger"] {
+._Input_1sqqi_1:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance="danger"] {
 	color: var(--colour-danger);
 	fill: var(--colour-danger);
 }
-._Input_eg9jt_1:checked + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51[variant="glyph"][appearance="primary"] {
+._Input_1sqqi_1:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance="primary"] {
 	color: var(--colour-primary);
 	fill: var(--colour-primary);
 }
-._Input_eg9jt_1:checked + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51[variant="glyph"][appearance="affirming"] {
+._Input_1sqqi_1:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance="affirming"] {
 	color: var(--colour-success);
 	fill: var(--colour-success);
 }
-._Input_eg9jt_1:checked + ._InnerWrapper_eg9jt_51 > ._Label_eg9jt_51[variant="glyph"][appearance="warning"] {
+._Input_1sqqi_1:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance="warning"] {
 	color: var(--colour-warning);
 	fill: var(--colour-warning);
 }
 
-._Input_eg9jt_1[variant="toggle"] {
+._Input_1sqqi_1[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -26644,7 +26653,7 @@ textarea._Input_eg9jt_1 {
 	width: 2em;
 }
 
-._Input_eg9jt_1[variant="toggle"]::after {
+._Input_1sqqi_1[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -26660,37 +26669,37 @@ textarea._Input_eg9jt_1 {
 	width: 50%;
 }
 
-._Input_eg9jt_1[variant="toggle"]:checked::after {
+._Input_1sqqi_1[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
 
-._Input_eg9jt_1[variant="toggle"]:disabled::after {
+._Input_1sqqi_1[variant="toggle"]:disabled::after {
 	filter: saturate(0.4);
 }
 
-._Input_eg9jt_1[variant="toggle"][appearance="danger"]:checked::after {
+._Input_1sqqi_1[variant="toggle"][appearance="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
 
-._Input_eg9jt_1[variant="toggle"][appearance="success"]:checked::after {
+._Input_1sqqi_1[variant="toggle"][appearance="success"]:checked::after {
 	background-color: var(--colour-success);
 }
 
-._InnerWrapper_eg9jt_51 {
+._InnerWrapper_1sqqi_50 {
 	border-radius: inherit;
 	display: flex;
 	flex: 1;
 	position: relative;
 }
 
-._Input_eg9jt_1:focus + ._InnerWrapper_eg9jt_51 > ._Error_eg9jt_145,
-._InputField_eg9jt_1:hover ._Error_eg9jt_145 {
+._Input_1sqqi_1:focus + ._InnerWrapper_1sqqi_50 > ._Error_1sqqi_154,
+._InputField_1sqqi_1:hover ._Error_1sqqi_154 {
 	opacity: 1;
 	pointer-events: all;
 }
 
-._Error_eg9jt_145 {
+._Error_1sqqi_154 {
 	background-color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	border: 1px solid;
@@ -26710,7 +26719,7 @@ textarea._Input_eg9jt_1 {
 	width: max-content;
 	z-index: 1;
 }
-._Error_eg9jt_145::after {
+._Error_1sqqi_154::after {
 	background-color: inherit;
 	border: inherit;
 	bottom: calc(-0.5em - 2px);
@@ -26733,7 +26742,7 @@ textarea._Input_eg9jt_1 {
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_eg9jt_1", "Fluid": "_Fluid_eg9jt_40", "Input": "_Input_eg9jt_1", "InnerWrapper": "_InnerWrapper_eg9jt_51", "Label": "_Label_eg9jt_51", "SearchSubmit": "_SearchSubmit_eg9jt_103", "SearchReset": "_SearchReset_eg9jt_109", "Error": "_Error_eg9jt_145" };
+var Input_module_css_default = { "InputField": "_InputField_1sqqi_1", "Fluid": "_Fluid_1sqqi_40", "Input": "_Input_1sqqi_1", "InnerWrapper": "_InnerWrapper_1sqqi_50", "Label": "_Label_1sqqi_60", "SearchSubmit": "_SearchSubmit_1sqqi_112", "SearchReset": "_SearchReset_1sqqi_118", "Error": "_Error_1sqqi_154" };
 
 // lib/react/Input/Input.jsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -27140,8 +27149,8 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   return delta;
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-42353-HSFLEiV5O21J/form5/lib/react/Form/Form.module.css.js
-var digest5 = "49e1c9cc2745b7a8fb3531fedaa56789a80b5cd4432ca9e30e6a4946e7498f38";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/Form/Form.module.css.js
+var digest5 = "440233f16204d9227fdf8b3c64484fdf20477fbebd0b11f53dd3357166ac63a1";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -27231,7 +27240,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-42353-HSFLEiV5O21J/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_n1l6i_1 {
 	display: flex;
