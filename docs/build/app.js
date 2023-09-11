@@ -24586,8 +24586,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/Group/Group.module.css.js
-var digest = "0a52dd1e7f216e263e937977815494d70255ab3d323f4ab404c0be76ed912ca2";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/Group/Group.module.css.js
+var digest = "00de830701909b32fecc40eb0fb3173a4a7dbfe09570587f1b796fe5a732bcb0";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -24621,8 +24621,8 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/Button/Button.module.css.js
-var digest2 = "ae7a5ffbb80e877f7ae01610297026d401d977261e37f8cf4ae4c39f1ad4a97e";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/Button/Button.module.css.js
+var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
 var css2 = `._Button_154t5_1 {
 	font: unset;
 	border: none;
@@ -26153,8 +26153,8 @@ var map_default = map;
 var import_prop_types3 = __toESM(require_prop_types(), 1);
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "c35ffdd0861faa200d21d0679cbf065cb8cf9820f12d74f0ffb36cdb6e151a1c";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "6f78220d70cc366790b5a736c571ed191928222270c58eccf59e5c662d097c8f";
 var css3 = `._FileInputWrapper_1kmbs_1 {
 	display: flex;
 	flex-flow: column wrap;
@@ -26421,8 +26421,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/Input/Input.module.css.js
-var digest4 = "02f9f09bcde9b7836e6cf62d31d422a15c35a10447ff5ba9816444f29456bd4a";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/Input/Input.module.css.js
+var digest4 = "df100b74adb42e5e73de342264cd35fc2e84fe9997cd09e79274e0179edd819b";
 var css4 = `._InputField_1sqqi_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -27132,8 +27132,10 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
     const newVal = newVals[newKey];
     const oK = oldKeys.indexOf(newKey);
     const oldVal = oldVals[newKey];
-    if (typeof oldVal === "undefined") {
-      delta[newKey] = newVal;
+    if (isEmptyValue(oldVal)) {
+      if (!isEmptyValue(newVal)) {
+        delta[newKey] = newVal;
+      }
     } else {
       const val = deepDiff(oldVal, newVal, delta[newKey]);
       if (typeof val !== "undefined" && !isObject_default(val) || isArray_default(val) || !isEmpty_default(val)) {
@@ -27148,9 +27150,12 @@ function deepDiff(oldVals, newVals, delta = { __proto__: null }) {
   }
   return delta;
 }
+function isEmptyValue(val) {
+  return typeof val === "undefined" || val === "";
+}
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/lib/react/Form/Form.module.css.js
-var digest5 = "440233f16204d9227fdf8b3c64484fdf20477fbebd0b11f53dd3357166ac63a1";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/Form/Form.module.css.js
+var digest5 = "31652bf8e3bf2177ebcb50a9db6960a5c9eb6619d98dc4d202009d9db5b5aa0c";
 var css5 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -27240,7 +27245,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-32984-CF0Cl15UVOhA/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/docs/Demo.module.css.js
 var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css6 = `._Column_n1l6i_1 {
 	display: flex;
