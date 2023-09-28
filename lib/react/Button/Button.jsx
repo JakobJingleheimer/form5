@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
 
 import Group from '../Group/Group.jsx';
@@ -18,7 +18,7 @@ export default function Button({
 	return (
 		<button
 			{...others}
-			className={classnames(
+			className={clsx(
 				styles.Button,
 				className,
 				{
@@ -66,5 +66,5 @@ Button.propTypes = {
 };
 
 Button.Group = ({ className, ...props }) => (
-	<Group className={classnames(className, styles.ButtonGroup)} {...props} />
+	<Group className={clsx(className, styles.ButtonGroup)} {...props} />
 );

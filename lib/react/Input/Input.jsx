@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import _isEmpty from 'lodash-es/isEmpty.js';
 import _map from 'lodash-es/map.js';
 import PropTypes from 'prop-types';
@@ -93,7 +93,7 @@ export default function Input({
 	return (
 		<div
 			arrangement={arrangement}
-			className={classnames(
+			className={clsx(
 				styles.InputField,
 				{
 					[styles.Fluid]: fluid,
@@ -108,7 +108,7 @@ export default function Input({
 			}}
 		>
 			<Tag
-				className={classnames(styles.Input, className)}
+				className={clsx(styles.Input, className)}
 				name={name}
 				id={id}
 				onInvalid={(e) => {
@@ -153,7 +153,7 @@ export default function Input({
 				<div className={styles.InnerWrapper}>
 					{!!label && (
 						<label
-							className={classnames(styles.Label, {
+							className={clsx(styles.Label, {
 								[buttonStyles.Button]: isButton,
 							})}
 							htmlFor={id}

@@ -1,6 +1,6 @@
 import _reduce from 'lodash-es/reduce.js';
 
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { memo, useRef } from 'react';
 import PropTypes from 'prop-types';
 
@@ -36,7 +36,7 @@ export function Form({
 	return (
 		<form
 			{...props}
-			className={classNames(styles.Form, className)}
+			className={clsx(styles.Form, className)}
 			noValidate
 			onBlur={(e) => {
 				if (e.target.form === formElm.current) {

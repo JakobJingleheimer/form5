@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
 
 import styles from './Group.module.css';
@@ -14,7 +14,7 @@ export default function Group({
 	return (
 		<Tag
 			{...others}
-			className={classnames(styles.Group, className)}
+			className={clsx(styles.Group, className)}
 			role="group"
 		/>
 	);

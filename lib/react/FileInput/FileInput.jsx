@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import _map from 'lodash-es/map.js';
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
@@ -74,9 +74,9 @@ export default class FileInput extends PureComponent {
 		} = this;
 
 		return (
-			<div className={classnames(styles.FileInputWrapper, wrapperClassName)}>
+			<div className={clsx(styles.FileInputWrapper, wrapperClassName)}>
 				{!!previews.length && (
-					<div className={classnames(styles.FileInputPreviews, previewsClassName)}>
+					<div className={clsx(styles.FileInputPreviews, previewsClassName)}>
 						{_map(previews, ({
 							file,
 							preview,
@@ -93,7 +93,7 @@ export default class FileInput extends PureComponent {
 				)}
 
 				<label
-					className={classnames(styles.FileInput, className)}
+					className={clsx(styles.FileInput, className)}
 					htmlFor={name}
 				>
 					<Button

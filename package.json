@@ -42,7 +42,7 @@
     "lodash-es": "^4.17.21"
   },
   "peerDependencies": {
-    "classnames": "*",
+    "clsx": "*",
     "prop-types": "*",
     "react": "17 - 18",
     "react-dom": "17 - 18"
@@ -51,7 +51,7 @@
     "@testing-library/react": "^14.0.0",
     "c8": "^7.14.0",
     "chai": "^4.3.7",
-    "classnames": "*",
+    "clsx": "*",
     "concurrently": "^8.1.0",
     "css-parse": "^2.0.0",
     "esbuild": "^0.17.19",
