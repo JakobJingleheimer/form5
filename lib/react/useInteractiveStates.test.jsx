@@ -61,21 +61,35 @@ describe('useInteractiveStates()', () => {
 		expect(field.hasAttribute('touched'), 'touched').to.be.true;
 	});
 
-	it('should reset "pristine" and "touched" when its form is submitted', () => {
-		const { container: { firstChild: field } } = render(
-			<TestComponent required name="foo" />
-		);
+	describe('onSubmit', () => {
+		it('should reset "pristine" & "touched" and call handlers', () => {
+			const calls = new Map();
+			function onDirty(...args) { calls.set('onDirty', args); }
+			function onPristine(...args) { calls.set('onPristine', args); }
 
-		fireEvent.invalid(field);
+			const { container: { firstChild: field } } = render(
+				<TestComponent
+					name="foo"
+					onDirty={onDirty}
+					onPristine={onPristine}
+				/>
+			);
 
-		fireEvent.change(field, { target: { value: 'bar' } });
+			fireEvent.change(field, { target: { value: 'bar' } });
 
-		expect(field.hasAttribute('pristine'), '(after change) pristine').to.be.false;
-		expect(field.hasAttribute('touched'), '(after change) touched').to.be.true;
+			expect(field.hasAttribute('pristine'), '(after change) pristine').to.be.false;
+			expect(field.hasAttribute('touched'), '(after change) touched').to.be.true;
+			expect(calls.size, 'callback count after change').to.equal(1);
+			expect(calls.get('onDirty'), 'onDirty called after change').to.deep.equal([true]);
 
-		fireEvent.submit(field);
+			calls.clear();
 
-		expect(field.hasAttribute('pristine'), '(after submit) pristine').to.be.true;
-		expect(field.hasAttribute('touched'), '(after submit) touched').to.be.false;
+			fireEvent.submit(field);
+
+			expect(field.hasAttribute('pristine'), 'pristine (after submit)').to.be.true;
+			expect(field.hasAttribute('touched'), 'touched (after submit)').to.be.false;
+			expect(calls.size, 'callback count (after submit)').to.equal(1);
+			expect(calls.get('onPristine'), 'onPristine called (after submit)').to.deep.equal([false]);
+		});
 	});
 })

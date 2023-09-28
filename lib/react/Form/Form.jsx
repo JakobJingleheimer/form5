@@ -20,7 +20,6 @@ export function Form({
 	className,
 	onDirty,
 	onPristine,
-	onSubmit: pOnSubmit,
 	...props
 }) {
 	const formElm = useRef();
@@ -45,8 +44,12 @@ export function Form({
 				}
 			}}
 			onChange={is.onChange}
+			onReset={(e) => {
+				props.onReset?.(e);
+				is.onSubmit(e);
+			}}
 			onSubmit={(e) => {
-				onSubmit(e, initValues, pOnSubmit);
+				onSubmit(e, initValues, props.onSubmit);
 				// After everything has succeeded
 				is.onSubmit(e);
 			}}
