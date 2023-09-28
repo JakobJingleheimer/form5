@@ -84,17 +84,17 @@ export function onSubmit(event, initValues, cb) {
 
 	event.stopPropagation();
 
-	const values = _reduce(
+	const all = _reduce(
 		Array.from(event.target.elements),
 		composeData,
 		{ __proto__: null },
 	);
 
-	const delta = deepDiff(initValues.current, values);
+	const delta = deepDiff(initValues.current, all);
 
-	initValues.current = values; // reset starting values for potential subsequent submit
+	initValues.current = all; // reset starting values for potential subsequent submit
 
-	return cb(delta, values, event);
+	return cb(delta, all, event);
 }
 
 // Exported for testing
