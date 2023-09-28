@@ -14,6 +14,27 @@ import styles from './Field.module.css';
 
 export { styles as inputClasses };
 
+/**
+ *
+ * @param {object} props
+ * @param {import('../Button/Button.jsx').APPEARANCE} props.appearance
+ * @param {ARRANGEMENT} props.arrangement
+ * @param {import('react').ElementType} props.as The element to render.
+ * @param {string} props.className
+ * @param {boolean} props.fluid Whether the field should fill its container.
+ * @param {HTMLElement['id']} props.id
+ * @param {HTMLLabelElement['textContent']} props.label
+ * @param {HTMLInputElement['name']} props.name
+ * @param {(event: import('react').FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>)} props.onBlur
+ * @param {(change: { id: string, name: string, value: boolean | number | string }, event: import('react').ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>)} props.onChange
+ * @param {Array<{[key: HTMLOptionElement['value']]: HTMLOptionElement['textContent'] }>} props.options
+ * @param {HTMLInputElement['readOnly']} props.readOnly
+ * @param {HTMLInputElement['required']} props.required
+ * @param {HTMLInputElement['type']} props.type
+ * @param {typeof Field.VARIANTS} props.variant
+ * @param {import('react').HTMLProps<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>} props.others
+ * @returns {HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement}
+ */
 export default function Field({
 	appearance = Button.APPEARANCES.PRIMARY,
 	arrangement = Field.ARRANGEMENTS.INLINE,
@@ -189,12 +210,18 @@ export default function Field({
 
 Field.displayName = 'Form5Field';
 
+/**
+ * @typedef {typeof Field.ARRANGEMENTS[keyof typeof Field.ARRANGEMENTS]} ARRANGEMENT
+ */
 Field.ARRANGEMENTS = {
 	COMPACT: 'compact',
 	INLINE: 'inline',
 	STACKED: 'stacked',
 	STAND_ALONE: 'stand-alone',
 };
+/**
+ * @typedef {typeof Field.VARIANTS[keyof typeof Field.VARIANTS]} VARIANT
+ */
 Field.VARIANTS = {
 	CTA: Button.VARIANTS.CTA,
 	GLYPH: Button.VARIANTS.GLYPH,

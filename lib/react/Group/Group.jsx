@@ -6,6 +6,13 @@ import styles from './Group.module.css';
 
 export { styles as grouptClasses };
 
+/**
+ * Visually group form elements (buttons) together.
+ * @param {object} props
+ * @param {import('react').ElementType} props.as The element to render.
+ * @param {string} props.className
+ * @returns {JSX.Element}
+ */
 export default function Group({
 	as: Tag = 'div',
 	className,

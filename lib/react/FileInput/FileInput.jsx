@@ -10,6 +10,20 @@ import styles from './FileInput.module.css';
 
 export { styles as fileInputClasses };
 
+/**
+ * @typedef {object} FileInputProps
+ * @property {HTMLInputElement['accept']} accept
+ * @property {string} className
+ * @property {ReactNode} icon
+ * @property {HTMLLabelElement['textContent']} label
+ * @property {HTMLInputElement['multiple']} multiple
+ * @property {HTMLInputElement['name']} name
+ * @property {(event: import('react').ChangeEvent<HTMLInputElement>, files: FileList)} onChange
+ * @property {string} previewsClassName
+ * @property {string} wrapperClassName
+ *
+ * @extends {PureComponent<FileInputProps>}
+ */
 export default class FileInput extends PureComponent {
 	static defaultProps = {
 		icon: (<span>📂</span>),

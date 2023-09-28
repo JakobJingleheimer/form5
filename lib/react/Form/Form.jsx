@@ -15,6 +15,28 @@ import styles from './Form.module.css';
 
 export { styles as formClasses };
 
+/**
+ * @typedef {import('../../composeData.js').ComposedData} ComposedData
+ */
+/**
+ * @typedef {import('react').FormEvent<HTMLFormElement>} SubmitEvent
+ */
+/**
+ * @typedef {import('react').FormEvent<HTMLFormElement>} ResetEvent
+ */
+/**
+ *
+ * @param {object} props
+ * @param {import('react').ReactNode} props.children
+ * @param {string} props.className
+ * @param {(isDirty: true) => void} props.onDirty
+ * @param {(isDirty: false) => void} props.onPristine
+ * @param {import('react').onReset} props.onReset
+ * @param {(delta: ComposedData, all: ComposedData, event: SubmitEvent) => void} props.onSubmit
+ * `delta` is the difference between the initial values and the current values. `all` is the same
+ * shape, but containing the full current values. `event` is the original submit event.
+ * @returns {HTMLFormElement}
+ */
 export function Form({
 	children,
 	className,
