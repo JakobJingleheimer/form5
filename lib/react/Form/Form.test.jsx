@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import Input from '../Input/Input.jsx';
+import Field from '../Field/Field.jsx';
 import Form from './Form.jsx';
 
 
@@ -26,7 +26,7 @@ describe('<Form>', () => {
 				getByLabelText,
 			} = render(
 				<Form name="foo" onSubmit={noop}>
-					<Input
+					<Field
 						id="bar"
 						label={labelText}
 						name="foo"
@@ -50,7 +50,7 @@ describe('<Form>', () => {
 				getByLabelText,
 			} = render(
 				<Form name="foo" onSubmit={noop}>
-					<Input
+					<Field
 						id="bar"
 						label={labelText}
 						name="foo"
@@ -79,7 +79,7 @@ describe('<Form>', () => {
 				onReset={() => { calls.add('reset') }}
 				onSubmit={() => { calls.add('submit') }}
 			>
-				<Input
+				<Field
 					id="bar"
 					label={labelText}
 					name="foo"
@@ -164,20 +164,20 @@ describe('<Form>', () => {
 			} = render(
 				<Form name="test" onSubmit={onSubmit}>
 					<fieldset name="names">
-						<Input
+						<Field
 							defaultValue={dV.names.forename}
 							label="forename"
 							name="forename"
 						/>
 
-						<Input
+						<Field
 							defaultValue={dV.names.surname}
 							label="surname"
 							name="surname"
 						/>
 					</fieldset>
 
-					<Input
+					<Field
 						defaultValue={dV.age}
 						label="age"
 						name="age"
@@ -186,19 +186,19 @@ describe('<Form>', () => {
 
 					<fieldset name="contactDetails">
 						<fieldset name="phones">
-							<Input
+							<Field
 								defaultValue={dV.contactDetails.phones.mobile}
 								label="mobile phone number"
 								name="mobile"
 							/>
-							<Input
+							<Field
 								defaultValue={dV.contactDetails.phones.home}
 								label="home phone number"
 								name="home"
 							/>
 						</fieldset>
 
-						<Input
+						<Field
 							defaultValue={dV.contactDetails.email}
 							label="email"
 							name="email"

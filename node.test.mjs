@@ -1,28 +1,42 @@
 import assert from 'node:assert';
+import { describe, it } from 'node:test';
 
-{
-	const lib = await import('form5/react');
 
-	assert.ok(lib.Button);
-	assert.ok(lib.FileInput);
-	assert.ok(lib.Form);
-	assert.ok(lib.Input);
-}
+describe('package exports', () => {
+	it('should contain all components', async () => {
+		const comps = await import('form5/react');
 
-{
-	const buttonImport = import('form5/react/Button')
-		.then((Button) => assert.ok(Button));
-	const fileInputImport = import('form5/react/FileInput')
-		.then((FileInput) => assert.ok(FileInput));
-	const formImport = import('form5/react/Form')
-		.then((Form) => assert.ok(Form));
-	const inputImport = import('form5/react/Input')
-		.then((Input) => assert.ok(Input));
+		assert.ok(comps.Button, 'Button');
+		assert.ok(comps.Field, 'Field');
+		assert.ok(comps.FileInput, 'FileInput');
+		assert.ok(comps.Form, 'Form');
+		assert.strictEqual(Object.keys(comps).length, 4, 'number of components');
+	});
 
-	assert.ok(await Promise.all([
-		buttonImport,
-		fileInputImport,
-		formImport,
-		inputImport,
-	]));
-}
+	it('should contain all utilities', async () => {
+		await import('form5/composeData')
+			.then(assert.ok);
+		await import('form5/deepDiff')
+			.then(assert.ok);
+	});
+});
+
+describe('importing exports', () => {
+	it('should import each component', async () => {
+		const imports = await Promise.all([
+			import('form5/composeData'),
+			import('form5/deepDiff'),
+			import('form5/react/Button'),
+			import('form5/react/Field'),
+			import('form5/react/FileInput'),
+		]);
+
+		for (const imp of imports) {
+			assert.strictEqual(typeof imp.default, 'function', 'default export');
+		}
+
+		// Form is memoized, so it's wrapped
+		await import('form5/react/Form')
+			.then((imp) => assert.strictEqual(typeof imp.default.type, 'function', 'default export'))
+	});
+});

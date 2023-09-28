@@ -177,14 +177,14 @@ const SFC = (props) => (
     name="signup"
     onSubmit={sendToCloud}
   >
-    <Input
+    <Field
       name="forename"
       minLength={2}
       placeholder="Jane"
       required
       type="text"
     />
-    <Input
+    <Field
       name="surname"
       minLength={2}
       placeholder="Smith"
@@ -192,24 +192,24 @@ const SFC = (props) => (
       type="text"
     />
     <fieldset name="contactDetails">
-      <Input
+      <Field
         name="email"
         onBlur={validateDomain}
         placeholder="jane@example.com"
         type="email"
       />
-      <Input
+      <Field
         as="textarea"
         name="mailingAddress"
         onChange={validateAddress}
       />
-      <Input
+      <Field
         name="tel"
         placeholder="5555555555"
         type="tel"
       />
     </fieldset>
-    <Input
+    <Field
       name="newsletterOptIn"
       type="checkbox"
       variant={Input.VARIANTS.TOGGLE}
@@ -290,17 +290,17 @@ variant | the kind of appearance the button takes on (classic CTA, icon, etc) | 
 
 #### `<FileInput>`
 
-A file picker for uploading from disk. The main difference between this component and this package's `<Input>` component is that it generates a preview for image-type files or lists filenames of selected files (when a preview cannot be generated).
+A file picker for uploading from disk. The main difference between this component and this package's `<Field>` component is that it generates a preview for image-type files or lists filenames of selected files (when a preview cannot be generated).
 
-#### `<Input>`
+#### `<Field>`
 
 This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`) that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange` listeners to track `pristine` and `touched` (to avoid erroneously invalidating the field); its internal handlers are first called and then handlers passed via props.
 
-To create a list of values within a single property, append `[]` to the `name` attribute, like `<Input name="foo[]" />`; to avoid conflicting with the likes of react, a number may optionally be included within the brackets, like `<Input name="foo[0]" />`, but the number (index) itself will be ignored (sequence in data objects is determined by the input's place in the DOM).
+To create a list of values within a single property, append `[]` to the `name` attribute, like `<Field name="foo[]" />`; to avoid conflicting with the likes of react, a number may optionally be included within the brackets, like `<Field name="foo[0]" />`, but the number (index) itself will be ignored (sequence in data objects is determined by the input's place in the DOM).
 
 When you have existing data with which to pre-populate form fields that users will subsequently change, you can still have an uncontrolled component (meaning you don't need to manage `onChange` etc) by using React's `defaultChecked={valueFromDb}` or `defaultValue={valueFromDb}` (also works with native `<input>`).
 
-`<Input>` also offers a small easter-egg: a toggle, which is effectively a checkbox with fancy styling.
+`<Field>` also offers a small easter-egg: a toggle, which is effectively a checkbox with fancy styling.
 
 prop | purpose | default
 :--- | :--- | :---

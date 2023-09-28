@@ -9,14 +9,14 @@ import { useInteractiveStates } from '../useInteractiveStates.js';
 import Button from '../Button/Button.jsx';
 import buttonStyles from '../Button/Button.module.css';
 
-import styles from './Input.module.css';
+import styles from './Field.module.css';
 
 
 export { styles as inputClasses };
 
-export default function Input({
+export default function Field({
 	appearance = Button.APPEARANCES.PRIMARY,
-	arrangement = Input.ARRANGEMENTS.INLINE,
+	arrangement = Field.ARRANGEMENTS.INLINE,
 	as: Tag = 'input',
 	className,
 	fluid,
@@ -86,7 +86,7 @@ export default function Input({
 	const isSwitch = switchTypes.has(type);
 	const isSearch = type === "search";
 
-	if (isSearch) arrangement = Input.ARRANGEMENTS.COMPACT;
+	if (isSearch) arrangement = Field.ARRANGEMENTS.COMPACT;
 
 	if (others.value === null) others.value = ''; // React has a tantrum when `value` is `null`
 
@@ -94,7 +94,7 @@ export default function Input({
 		<div
 			arrangement={arrangement}
 			className={clsx(
-				styles.InputField,
+				styles.FieldContainer,
 				{
 					[styles.Fluid]: fluid,
 					[buttonStyles.Button]: isButton,
@@ -108,7 +108,7 @@ export default function Input({
 			}}
 		>
 			<Tag
-				className={clsx(styles.Input, className)}
+				className={clsx(styles.Field, className)}
 				name={name}
 				id={id}
 				onInvalid={(e) => {
@@ -169,7 +169,7 @@ export default function Input({
 					{isInvalid && (
 						<dialog
 							className={styles.Error}
-							data-testid="input-error"
+							data-testid="field-error"
 							open
 						>
 							{error}
@@ -187,21 +187,21 @@ export default function Input({
 	);
 };
 
-Input.displayName = 'Form5Input';
+Field.displayName = 'Form5Field';
 
-Input.ARRANGEMENTS = {
+Field.ARRANGEMENTS = {
 	COMPACT: 'compact',
 	INLINE: 'inline',
 	STACKED: 'stacked',
 	STAND_ALONE: 'stand-alone',
 };
-Input.VARIANTS = {
+Field.VARIANTS = {
 	CTA: Button.VARIANTS.CTA,
 	GLYPH: Button.VARIANTS.GLYPH,
 	TOGGLE: 'toggle',
 };
-Input.propTypes = {
-	arrangement: PropTypes.oneOf(Object.values(Input.ARRANGEMENTS)),
+Field.propTypes = {
+	arrangement: PropTypes.oneOf(Object.values(Field.ARRANGEMENTS)),
 	as: PropTypes.elementType,
 	fluid: PropTypes.bool,
 	label: PropTypes.node,
@@ -209,7 +209,7 @@ Input.propTypes = {
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
 	options: PropTypes.object,
-	variant: PropTypes.oneOf(Object.values(Input.VARIANTS)),
+	variant: PropTypes.oneOf(Object.values(Field.VARIANTS)),
 };
 
 const dtTypes = new Set([
@@ -220,8 +220,8 @@ const dtTypes = new Set([
 ]);
 
 const buttonVariants = new Set([
-	Input.VARIANTS.CTA,
-	Input.VARIANTS.GLYPH,
+	Field.VARIANTS.CTA,
+	Field.VARIANTS.GLYPH,
 ]);
 
 const switchTypes = new Set([

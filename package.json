@@ -7,20 +7,20 @@
     "lib": "lib"
   },
   "exports": {
-    "./react": "./lib/react/barrel.js",
-    "./react/Button": "./lib/react/Button/Button.jsx",
-    "./react/FileInput": "./lib/react/FileInput/FileInput.jsx",
-    "./react/Input": "./lib/react/Input/Input.jsx",
-    "./react/Form": "./lib/react/Form/Form.jsx",
     "./composeData": "./lib/composeData.js",
     "./deepDiff": "./lib/deepDiff.js",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./react": "./lib/react/barrel.js",
+    "./react/Button": "./lib/react/Button/Button.jsx",
+    "./react/Field": "./lib/react/Field/Field.jsx",
+    "./react/FileInput": "./lib/react/FileInput/FileInput.jsx",
+    "./react/Form": "./lib/react/Form/Form.jsx"
   },
   "scripts": {
     "build:demo": "rm -rf ./demo/build/* && node ./build.js",
     "preversion": "npm run test:coverage",
     "test": "c8 --check-coverage concurrently --kill-others-on-fail --prefix none npm:test:*",
-    "test:node": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs' node ./node.test.mjs",
+    "test:node": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --test-reporter=spec' node ./node.test.mjs",
     "test:unit": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --loader=./loaders/bin.mjs' mocha --extension '.spec.js' './lib'",
     "test:ui": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --loader=./loaders/bin.mjs' mocha --extension '.test.jsx' -require global-jsdom/register './lib'"
   },
