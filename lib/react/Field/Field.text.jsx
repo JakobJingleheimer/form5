@@ -1,14 +1,14 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import Input from './Input.jsx';
+import Field from './Field.jsx';
 
 
-describe('<Input>', () => {
+describe('<Field>', () => {
 	const labelText = 'foo bar';
 
 	it('should associate field and label', () => {
 		const { getByLabelText } = render(
-			<Input
+			<Field
 				id="bar"
 				label={labelText}
 				name="foo"
@@ -22,7 +22,7 @@ describe('<Input>', () => {
 
 	it('should accept user-input', () => {
 		const { getByLabelText } = render(
-			<Input
+			<Field
 				id="bar"
 				label={labelText}
 				name="foo"
@@ -43,7 +43,7 @@ describe('<Input>', () => {
 		global.console.error = function MOCK_consoleError(...args) { calls.push(args) }
 
 		render(
-			<Input
+			<Field
 				id="bar"
 				label={labelText}
 				name="foo"
@@ -63,7 +63,7 @@ describe('<Input>', () => {
 
 		beforeEach(() => {
 			({ getByLabelText, queryByTestId } = render(
-				<Input
+				<Field
 					id="bar"
 					label={labelText}
 					name="foo"
@@ -76,24 +76,24 @@ describe('<Input>', () => {
 		});
 
 		it('should NOT display an error initially', () => {
-			expect(queryByTestId('input-error')).to.be.null;
+			expect(queryByTestId('field-error')).to.be.null;
 		});
 
 		it('should NOT display an error on focus', () => {
 			fireEvent.focus(input);
-			expect(queryByTestId('input-error')).to.be.null;
+			expect(queryByTestId('field-error')).to.be.null;
 		});
 
 		it('should NOT display an error on change', () => {
 			fireEvent.change(input, { target: { value: '' } });
-			expect(queryByTestId('input-error')).to.be.null;
+			expect(queryByTestId('field-error')).to.be.null;
 		});
 
 		function triggerErrorDisplay() {
 			fireEvent.change(input, { target: { value: '' } });
 			fireEvent.blur(input);
 
-			return queryByTestId('input-error');
+			return queryByTestId('field-error');
 		}
 
 		it('should display an error on blur', () => {
@@ -106,7 +106,7 @@ describe('<Input>', () => {
 
 			fireEvent.change(input, { target: { value: 'jakob@example.com' } });
 
-			expect(queryByTestId('input-error')).to.be.null;
+			expect(queryByTestId('field-error')).to.be.null;
 		});
 	});
 
@@ -116,7 +116,7 @@ describe('<Input>', () => {
 			'def-456': 'bar',
 		};
 		const { queryByTestId } = render(
-			<Input
+			<Field
 				id="bar"
 				label={labelText}
 				name="foo"
@@ -132,7 +132,7 @@ describe('<Input>', () => {
 			let onBlurCalledWith;
 			const name = 'foo';
 			const { getByLabelText } = render(
-				<Input
+				<Field
 					id="bar"
 					label={labelText}
 					name={name}
@@ -155,7 +155,7 @@ describe('<Input>', () => {
 			const id = 'bar';
 			const name = 'foo';
 			const { getByLabelText } = render(
-				<Input
+				<Field
 					id={id}
 					label={labelText}
 					name={name}

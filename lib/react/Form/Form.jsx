@@ -1,6 +1,6 @@
 import _reduce from 'lodash-es/reduce.js';
 
-import classNames from 'classnames';
+import { clsx } from 'clsx';
 import { memo, useRef } from 'react';
 import PropTypes from 'prop-types';
 
@@ -15,12 +15,33 @@ import styles from './Form.module.css';
 
 export { styles as formClasses };
 
+/**
+ * @typedef {import('../../composeData.js').ComposedData} ComposedData
+ */
+/**
+ * @typedef {import('react').FormEvent<HTMLFormElement>} SubmitEvent
+ */
+/**
+ * @typedef {import('react').FormEvent<HTMLFormElement>} ResetEvent
+ */
+/**
+ *
+ * @param {object} props
+ * @param {import('react').ReactNode} props.children
+ * @param {string} props.className
+ * @param {(isDirty: true) => void} props.onDirty
+ * @param {(isDirty: false) => void} props.onPristine
+ * @param {import('react').onReset} props.onReset
+ * @param {(delta: ComposedData, all: ComposedData, event: SubmitEvent) => void} props.onSubmit
+ * `delta` is the difference between the initial values and the current values. `all` is the same
+ * shape, but containing the full current values. `event` is the original submit event.
+ * @returns {HTMLFormElement}
+ */
 export function Form({
 	children,
 	className,
 	onDirty,
 	onPristine,
-	onSubmit: pOnSubmit,
 	...props
 }) {
 	const formElm = useRef();
@@ -37,7 +58,7 @@ export function Form({
 	return (
 		<form
 			{...props}
-			className={classNames(styles.Form, className)}
+			className={clsx(styles.Form, className)}
 			noValidate
 			onBlur={(e) => {
 				if (e.target.form === formElm.current) {
@@ -45,8 +66,12 @@ export function Form({
 				}
 			}}
 			onChange={is.onChange}
+			onReset={(e) => {
+				props.onReset?.(e);
+				is.onSubmit(e);
+			}}
 			onSubmit={(e) => {
-				onSubmit(e, initValues, pOnSubmit);
+				onSubmit(e, initValues, props.onSubmit);
 				// After everything has succeeded
 				is.onSubmit(e);
 			}}
@@ -77,21 +102,23 @@ export default memo(Form);
 export function onSubmit(event, initValues, cb) {
 	event.preventDefault();
 
+	if (event.target.hasAttribute('pristine')) return;
+
 	if (!event.target.reportValidity()) return;
 
 	event.stopPropagation();
 
-	const values = _reduce(
+	const all = _reduce(
 		Array.from(event.target.elements),
 		composeData,
 		{ __proto__: null },
 	);
 
-	const delta = deepDiff(initValues.current, values);
+	const delta = deepDiff(initValues.current, all);
 
-	initValues.current = values; // reset starting values for potential subsequent submit
+	initValues.current = all; // reset starting values for potential subsequent submit
 
-	return cb(delta, values, event);
+	return cb(delta, all, event);
 }
 
 // Exported for testing

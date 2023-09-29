@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import _isEmpty from 'lodash-es/isEmpty.js';
 import _map from 'lodash-es/map.js';
 import PropTypes from 'prop-types';
@@ -9,14 +9,35 @@ import { useInteractiveStates } from '../useInteractiveStates.js';
 import Button from '../Button/Button.jsx';
 import buttonStyles from '../Button/Button.module.css';
 
-import styles from './Input.module.css';
+import styles from './Field.module.css';
 
 
 export { styles as inputClasses };
 
-export default function Input({
+/**
+ *
+ * @param {object} props
+ * @param {import('../Button/Button.jsx').APPEARANCE} props.appearance
+ * @param {ARRANGEMENT} props.arrangement
+ * @param {import('react').ElementType} props.as The element to render.
+ * @param {string} props.className
+ * @param {boolean} props.fluid Whether the field should fill its container.
+ * @param {HTMLElement['id']} props.id
+ * @param {HTMLLabelElement['textContent']} props.label
+ * @param {HTMLInputElement['name']} props.name
+ * @param {(event: import('react').FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>)} props.onBlur
+ * @param {(change: { id: string, name: string, value: boolean | number | string }, event: import('react').ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>)} props.onChange
+ * @param {Array<{[key: HTMLOptionElement['value']]: HTMLOptionElement['textContent'] }>} props.options
+ * @param {HTMLInputElement['readOnly']} props.readOnly
+ * @param {HTMLInputElement['required']} props.required
+ * @param {HTMLInputElement['type']} props.type
+ * @param {typeof Field.VARIANTS} props.variant
+ * @param {import('react').HTMLProps<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>} props.others
+ * @returns {HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement}
+ */
+export default function Field({
 	appearance = Button.APPEARANCES.PRIMARY,
-	arrangement = Input.ARRANGEMENTS.INLINE,
+	arrangement = Field.ARRANGEMENTS.INLINE,
 	as: Tag = 'input',
 	className,
 	fluid,
@@ -86,15 +107,15 @@ export default function Input({
 	const isSwitch = switchTypes.has(type);
 	const isSearch = type === "search";
 
-	if (isSearch) arrangement = Input.ARRANGEMENTS.COMPACT;
+	if (isSearch) arrangement = Field.ARRANGEMENTS.COMPACT;
 
 	if (others.value === null) others.value = ''; // React has a tantrum when `value` is `null`
 
 	return (
 		<div
 			arrangement={arrangement}
-			className={classnames(
-				styles.InputField,
+			className={clsx(
+				styles.FieldContainer,
 				{
 					[styles.Fluid]: fluid,
 					[buttonStyles.Button]: isButton,
@@ -108,7 +129,7 @@ export default function Input({
 			}}
 		>
 			<Tag
-				className={classnames(styles.Input, className)}
+				className={clsx(styles.Field, className)}
 				name={name}
 				id={id}
 				onInvalid={(e) => {
@@ -153,7 +174,7 @@ export default function Input({
 				<div className={styles.InnerWrapper}>
 					{!!label && (
 						<label
-							className={classnames(styles.Label, {
+							className={clsx(styles.Label, {
 								[buttonStyles.Button]: isButton,
 							})}
 							htmlFor={id}
@@ -169,7 +190,7 @@ export default function Input({
 					{isInvalid && (
 						<dialog
 							className={styles.Error}
-							data-testid="input-error"
+							data-testid="field-error"
 							open
 						>
 							{error}
@@ -187,21 +208,27 @@ export default function Input({
 	);
 };
 
-Input.displayName = 'Form5Input';
+Field.displayName = 'Form5Field';
 
-Input.ARRANGEMENTS = {
+/**
+ * @typedef {typeof Field.ARRANGEMENTS[keyof typeof Field.ARRANGEMENTS]} ARRANGEMENT
+ */
+Field.ARRANGEMENTS = {
 	COMPACT: 'compact',
 	INLINE: 'inline',
 	STACKED: 'stacked',
 	STAND_ALONE: 'stand-alone',
 };
-Input.VARIANTS = {
+/**
+ * @typedef {typeof Field.VARIANTS[keyof typeof Field.VARIANTS]} VARIANT
+ */
+Field.VARIANTS = {
 	CTA: Button.VARIANTS.CTA,
 	GLYPH: Button.VARIANTS.GLYPH,
 	TOGGLE: 'toggle',
 };
-Input.propTypes = {
-	arrangement: PropTypes.oneOf(Object.values(Input.ARRANGEMENTS)),
+Field.propTypes = {
+	arrangement: PropTypes.oneOf(Object.values(Field.ARRANGEMENTS)),
 	as: PropTypes.elementType,
 	fluid: PropTypes.bool,
 	label: PropTypes.node,
@@ -209,7 +236,7 @@ Input.propTypes = {
 	onBlur: PropTypes.func,
 	onChange: PropTypes.func,
 	options: PropTypes.object,
-	variant: PropTypes.oneOf(Object.values(Input.VARIANTS)),
+	variant: PropTypes.oneOf(Object.values(Field.VARIANTS)),
 };
 
 const dtTypes = new Set([
@@ -220,8 +247,8 @@ const dtTypes = new Set([
 ]);
 
 const buttonVariants = new Set([
-	Input.VARIANTS.CTA,
-	Input.VARIANTS.GLYPH,
+	Field.VARIANTS.CTA,
+	Field.VARIANTS.GLYPH,
 ]);
 
 const switchTypes = new Set([

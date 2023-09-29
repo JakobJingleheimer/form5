@@ -1,39 +1,39 @@
-.InputField {
+.FieldContainer {
 	gap: calc(var(--grid-gutter) / 2);
 }
-.InputField[arrangement="inline"] {
+.FieldContainer[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-.InputField[arrangement="inline"],
-.InputField[arrangement="stacked"] {
+.FieldContainer[arrangement="inline"],
+.FieldContainer[arrangement="stacked"] {
 	display: grid;
 }
-.InputField[arrangement="stacked"] {
+.FieldContainer[arrangement="stacked"] {
 	justify-content: space-between;
 }
-.InputField[arrangement="compact"],
-.InputField[arrangement="stacked"],
-.InputField[arrangement="stand-alone"] {
+.FieldContainer[arrangement="compact"],
+.FieldContainer[arrangement="stacked"],
+.FieldContainer[arrangement="stand-alone"] {
 	align-items: baseline;
 }
 
-.InputField[arrangement="compact"] {
+.FieldContainer[arrangement="compact"] {
 	gap: unset;
 	position: relative;
 }
 
-.InputField[variant="cta"],
-.InputField[variant="glyph"] {
+.FieldContainer[variant="cta"],
+.FieldContainer[variant="glyph"] {
 	align-items: stretch;
 	box-shadow: unset;
 	display: flex;
 	padding: unset;
 }
 
-/* After InputField[variant] to override display:flex */
-.InputField[arrangement="compact"],
-.InputField[arrangement="stand-alone"] {
+/* After FieldContainer[variant] to override display:flex */
+.FieldContainer[arrangement="compact"],
+.FieldContainer[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .Fluid,
-.Fluid .Input {
+.Fluid .Field {
 	flex: 1;
 }
 
@@ -51,61 +51,61 @@
 	flex: none;
 }
 
-.Input {
+.Field {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-.Input[variant="cta"]:focus + .InnerWrapper > .Label,
-.Input:focus {
+.Field[variant="cta"]:focus + .InnerWrapper > .Label,
+.Field:focus {
 	outline-color: var(--colour-primary);
 }
-.Input:disabled {
+.Field:disabled {
 	cursor: default;
 }
-.Input:disabled,
-.Input[readonly] {
+.Field:disabled,
+.Field[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-.Input[readonly],
-.Input[readonly] + .InnerWrapper > .Label {
+.Field[readonly],
+.Field[readonly] + .InnerWrapper > .Label {
 	cursor: not-allowed;
 }
-.Input:not([variant="cta"]):required + .InnerWrapper > .Label::after {
+.Field:not([variant="cta"]):required + .InnerWrapper > .Label::after {
 	content: '*';
 	margin-left: 0.1em;
 }
 
-.Input[type="checkbox"],
-.Input[type="radio"] {
+.Field[type="checkbox"],
+.Field[type="radio"] {
 	margin: unset;
 }
 
-.Input[type="color"] {
+.Field[type="color"] {
 	box-sizing: content-box;
 }
 
-.Input[type="date"],
-.Input[type="datetime"],
-.Input[type="datetime-local"],
-.Input[type="time"] {
+.Field[type="date"],
+.Field[type="datetime"],
+.Field[type="datetime-local"],
+.Field[type="time"] {
 	font: inherit;
 }
 
-.Input[type="number"] {
+.Field[type="number"] {
 	text-align: right;
 }
 
-.Input[type="search"] {
+.Field[type="search"] {
 	padding:
 		var(--default-padding)
 		calc(var(--default-padding) + 1.5em);
 }
 
-.Input[type="search"]::-webkit-search-cancel-button,
-.Input[type="search"]::-webkit-search-decoration {
+.Field[type="search"]::-webkit-search-cancel-button,
+.Field[type="search"]::-webkit-search-decoration {
   appearance: none;
 }
 
@@ -120,7 +120,7 @@
 	right: 0;
 }
 
-select.Input {
+select.Field {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
 	background-position: right 0.5em center;
@@ -129,32 +129,32 @@ select.Input {
 	padding-right: calc(1em + var(--default-padding)); /* 1em for the icon */
 }
 
-textarea.Input {
+textarea.Field {
 	line-height: inherit;
 }
 
-.InputField:not([switch]) .InnerWrapper {
+.FieldContainer:not([switch]) .InnerWrapper {
 	order: -1;
 }
 
-.InputField[touched] .Input[variant="cta"]:invalid:focus + .InnerWrapper > .Label,
-.InputField[touched] .Input[variant="glyph"]:invalid:focus + .InnerWrapper > .Label {
+.FieldContainer[touched] .Field[variant="cta"]:invalid:focus + .InnerWrapper > .Label,
+.FieldContainer[touched] .Field[variant="glyph"]:invalid:focus + .InnerWrapper > .Label {
 	outline: 2px solid;
 }
 
-.InputField[touched] .Input[variant="cta"]:invalid:focus + .InnerWrapper > .Label,
-.InputField[touched] .Input[variant="glyph"]:invalid:focus + .InnerWrapper > .Label,
-.InputField[touched] .Input:invalid:focus {
+.FieldContainer[touched] .Field[variant="cta"]:invalid:focus + .InnerWrapper > .Label,
+.FieldContainer[touched] .Field[variant="glyph"]:invalid:focus + .InnerWrapper > .Label,
+.FieldContainer[touched] .Field:invalid:focus {
 	outline-color: var(--colour-danger);
 }
 
-.InputField[touched] .Input:invalid,
-.InputField[touched] .Input[variant="cta"]:invalid + .InnerWrapper > .Label,
-.InputField[touched] .Input[variant="glyph"]:invalid + .InnerWrapper > .Label,
+.FieldContainer[touched] .Field:invalid,
+.FieldContainer[touched] .Field[variant="cta"]:invalid + .InnerWrapper > .Label,
+.FieldContainer[touched] .Field[variant="glyph"]:invalid + .InnerWrapper > .Label,
 .Error {
 	border-color: var(--colour-danger);
 }
-.InputField[touched] .Input:invalid + .InnerWrapper {
+.FieldContainer[touched] .Field:invalid + .InnerWrapper {
 	color: var(--colour-danger);
 }
 
@@ -162,15 +162,15 @@ textarea.Input {
  * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
  * and the like are not an option.
  */
-.Input[variant="cta"],
-.Input[variant="glyph"] {
+.Field[variant="cta"],
+.Field[variant="glyph"] {
 	height: 0;
 	position: absolute;
 	width: 0;
 	z-index: -1;
 }
 
-.Input[variant="cta"] + .InnerWrapper > .Label {
+.Field[variant="cta"] + .InnerWrapper > .Label {
 	background-color: var(--colour-light);
 	border: 1px solid var(--colour-medium);
 	border-radius: inherit;
@@ -178,14 +178,14 @@ textarea.Input {
 	fill: var(--colour-text-deemphasised);
 }
 
-.Input[variant="cta"]:checked + .InnerWrapper > .Label {
+.Field[variant="cta"]:checked + .InnerWrapper > .Label {
 	background-color: var(--colour-primary);
 	color: var(--colour-background);
 	fill: var(--colour-background);
 }
 
-.Input[variant="cta"] + .InnerWrapper > .Label,
-.Input[variant="glyph"] + .InnerWrapper > .Label {
+.Field[variant="cta"] + .InnerWrapper > .Label,
+.Field[variant="glyph"] + .InnerWrapper > .Label {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
@@ -193,28 +193,28 @@ textarea.Input {
 	padding: var(--default-padding);
 }
 
-.Input:not(:checked) + .InnerWrapper > .Label[variant="glyph"][appearance] {
+.Field:not(:checked) + .InnerWrapper > .Label[variant="glyph"][appearance] {
 	color: unset;
 	fill: unset;
 }
-.Input:checked + .InnerWrapper > .Label[variant="glyph"][appearance="danger"] {
+.Field:checked + .InnerWrapper > .Label[variant="glyph"][appearance="danger"] {
 	color: var(--colour-danger);
 	fill: var(--colour-danger);
 }
-.Input:checked + .InnerWrapper > .Label[variant="glyph"][appearance="primary"] {
+.Field:checked + .InnerWrapper > .Label[variant="glyph"][appearance="primary"] {
 	color: var(--colour-primary);
 	fill: var(--colour-primary);
 }
-.Input:checked + .InnerWrapper > .Label[variant="glyph"][appearance="affirming"] {
+.Field:checked + .InnerWrapper > .Label[variant="glyph"][appearance="affirming"] {
 	color: var(--colour-success);
 	fill: var(--colour-success);
 }
-.Input:checked + .InnerWrapper > .Label[variant="glyph"][appearance="warning"] {
+.Field:checked + .InnerWrapper > .Label[variant="glyph"][appearance="warning"] {
 	color: var(--colour-warning);
 	fill: var(--colour-warning);
 }
 
-.Input[variant="toggle"] {
+.Field[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -228,7 +228,7 @@ textarea.Input {
 	width: 2em;
 }
 
-.Input[variant="toggle"]::after {
+.Field[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -239,25 +239,26 @@ textarea.Input {
 	transition-property:
 		background-color,
 		translate;
-	transition-duration: var(--default-transition);
+	transition-duration: var(--default-transition-duration);
+	transition-timing-function: var(--default-transition-easing);
 	translate: calc(-50% + 1px);
 	width: 50%;
 }
 
-.Input[variant="toggle"]:checked::after {
+.Field[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
 
-.Input[variant="toggle"]:disabled::after {
+.Field[variant="toggle"]:disabled::after {
 	filter: saturate(0.4);
 }
 
-.Input[variant="toggle"][appearance="danger"]:checked::after {
+.Field[variant="toggle"][appearance="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
 
-.Input[variant="toggle"][appearance="success"]:checked::after {
+.Field[variant="toggle"][appearance="success"]:checked::after {
 	background-color: var(--colour-success);
 }
 
@@ -268,8 +269,8 @@ textarea.Input {
 	position: relative;
 }
 
-.Input:focus + .InnerWrapper > .Error,
-.InputField:hover .Error {
+.Field:focus + .InnerWrapper > .Error,
+.FieldContainer:hover .Error {
 	opacity: 1;
 	pointer-events: all;
 }
@@ -289,7 +290,7 @@ textarea.Input {
 	pointer-events: none;
 	position: absolute;
 	top: 0;
-	transition: opacity var(--default-transition);
+	transition: opacity var(--default-transition-duration) var(--default-transition-easing);
 	translate: 0 calc(-100% - 1em);
 	width: max-content;
 	z-index: 1;

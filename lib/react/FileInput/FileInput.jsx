@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import { clsx } from 'clsx';
 import _map from 'lodash-es/map.js';
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
@@ -10,6 +10,20 @@ import styles from './FileInput.module.css';
 
 export { styles as fileInputClasses };
 
+/**
+ * @typedef {object} FileInputProps
+ * @property {HTMLInputElement['accept']} accept
+ * @property {string} className
+ * @property {ReactNode} icon
+ * @property {HTMLLabelElement['textContent']} label
+ * @property {HTMLInputElement['multiple']} multiple
+ * @property {HTMLInputElement['name']} name
+ * @property {(event: import('react').ChangeEvent<HTMLInputElement>, files: FileList)} onChange
+ * @property {string} previewsClassName
+ * @property {string} wrapperClassName
+ *
+ * @extends {PureComponent<FileInputProps>}
+ */
 export default class FileInput extends PureComponent {
 	static defaultProps = {
 		icon: (<span>📂</span>),
@@ -74,9 +88,9 @@ export default class FileInput extends PureComponent {
 		} = this;
 
 		return (
-			<div className={classnames(styles.FileInputWrapper, wrapperClassName)}>
+			<div className={clsx(styles.FileInputWrapper, wrapperClassName)}>
 				{!!previews.length && (
-					<div className={classnames(styles.FileInputPreviews, previewsClassName)}>
+					<div className={clsx(styles.FileInputPreviews, previewsClassName)}>
 						{_map(previews, ({
 							file,
 							preview,
@@ -93,7 +107,7 @@ export default class FileInput extends PureComponent {
 				)}
 
 				<label
-					className={classnames(styles.FileInput, className)}
+					className={clsx(styles.FileInput, className)}
 					htmlFor={name}
 				>
 					<Button
