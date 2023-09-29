@@ -17,6 +17,10 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
@@ -62,6 +66,10 @@ var require_react_development = __commonJS({
           return null;
         }
         var ReactCurrentDispatcher = {
+          /**
+           * @internal
+           * @type {ReactComponent}
+           */
           current: null
         };
         var ReactCurrentBatchConfig = {
@@ -69,10 +77,15 @@ var require_react_development = __commonJS({
         };
         var ReactCurrentActQueue = {
           current: null,
+          // Used to reproduce behavior of `batchedUpdates` in legacy mode.
           isBatchingLegacy: false,
           didScheduleLegacyUpdate: false
         };
         var ReactCurrentOwner = {
+          /**
+           * @internal
+           * @type {ReactComponent}
+           */
           current: null
         };
         var ReactDebugCurrentFrame = {};
@@ -164,15 +177,62 @@ var require_react_development = __commonJS({
           }
         }
         var ReactNoopUpdateQueue = {
+          /**
+           * Checks whether or not this composite component is mounted.
+           * @param {ReactClass} publicInstance The instance we want to test.
+           * @return {boolean} True if mounted, false otherwise.
+           * @protected
+           * @final
+           */
           isMounted: function(publicInstance) {
             return false;
           },
+          /**
+           * Forces an update. This should only be invoked when it is known with
+           * certainty that we are **not** in a DOM transaction.
+           *
+           * You may want to call this when you know that some deeper aspect of the
+           * component's state has changed but `setState` was not called.
+           *
+           * This will not invoke `shouldComponentUpdate`, but it will invoke
+           * `componentWillUpdate` and `componentDidUpdate`.
+           *
+           * @param {ReactClass} publicInstance The instance that should rerender.
+           * @param {?function} callback Called after component is updated.
+           * @param {?string} callerName name of the calling function in the public API.
+           * @internal
+           */
           enqueueForceUpdate: function(publicInstance, callback, callerName) {
             warnNoop(publicInstance, "forceUpdate");
           },
+          /**
+           * Replaces all of the state. Always use this or `setState` to mutate state.
+           * You should treat `this.state` as immutable.
+           *
+           * There is no guarantee that `this.state` will be immediately updated, so
+           * accessing `this.state` after calling this method may return the old value.
+           *
+           * @param {ReactClass} publicInstance The instance that should rerender.
+           * @param {object} completeState Next state.
+           * @param {?function} callback Called after component is updated.
+           * @param {?string} callerName name of the calling function in the public API.
+           * @internal
+           */
           enqueueReplaceState: function(publicInstance, completeState, callback, callerName) {
             warnNoop(publicInstance, "replaceState");
           },
+          /**
+           * Sets a subset of the state. This only exists because _pendingState is
+           * internal. This provides a merging strategy that is not available to deep
+           * properties which is confusing. TODO: Expose pendingState or don't use it
+           * during the merge.
+           *
+           * @param {ReactClass} publicInstance The instance that should rerender.
+           * @param {object} partialState Next partial state to be merged with state.
+           * @param {?function} callback Called after component is updated.
+           * @param {?string} Name of the calling function in the public API.
+           * @internal
+           */
           enqueueSetState: function(publicInstance, partialState, callback, callerName) {
             warnNoop(publicInstance, "setState");
           }
@@ -417,11 +477,14 @@ var require_react_development = __commonJS({
         }
         var ReactElement = function(type, key, ref, self2, source, owner, props) {
           var element = {
+            // This tag allows us to uniquely identify this as a React Element
             $$typeof: REACT_ELEMENT_TYPE,
+            // Built-in properties that belong on the element
             type,
             key,
             ref,
             props,
+            // Record the component responsible for creating this element.
             _owner: owner
           };
           {
@@ -640,7 +703,14 @@ var require_react_development = __commonJS({
                 }
                 mappedChild = cloneAndReplaceKey(
                   mappedChild,
-                  escapedPrefix + (mappedChild.key && (!_child || _child.key !== mappedChild.key) ? escapeUserProvidedKey("" + mappedChild.key) + "/" : "") + childKey
+                  // Keep both the (mapped) and old keys if they differ, just as
+                  // traverseAllChildren used to do for objects as children
+                  escapedPrefix + // $FlowFixMe Flow incorrectly thinks React.Portal doesn't have a key
+                  (mappedChild.key && (!_child || _child.key !== mappedChild.key) ? (
+                    // $FlowFixMe Flow incorrectly thinks existing element's key can be a number
+                    // eslint-disable-next-line react-internal/safe-string-coercion
+                    escapeUserProvidedKey("" + mappedChild.key) + "/"
+                  ) : "") + childKey
                 );
               }
               array.push(mappedChild);
@@ -721,11 +791,20 @@ var require_react_development = __commonJS({
         function createContext(defaultValue) {
           var context = {
             $$typeof: REACT_CONTEXT_TYPE,
+            // As a workaround to support multiple concurrent renderers, we categorize
+            // some renderers as primary and others as secondary. We only expect
+            // there to be two concurrent renderers at most: React Native (primary) and
+            // Fabric (secondary); React DOM (primary) and React ART (secondary).
+            // Secondary renderers store their context values on separate fields.
             _currentValue: defaultValue,
             _currentValue2: defaultValue,
+            // Used to track how many concurrent renderers this context currently
+            // supports within in a single renderer. Such as parallel server rendering.
             _threadCount: 0,
+            // These are circular
             Provider: null,
             Consumer: null,
+            // Add these to use same hidden class in VM as ServerContext
             _defaultValue: null,
             _globalName: null
           };
@@ -853,6 +932,7 @@ var require_react_development = __commonJS({
         }
         function lazy(ctor) {
           var payload = {
+            // We use these fields to store the result.
             _status: Uninitialized,
             _result: ctor
           };
@@ -946,7 +1026,11 @@ var require_react_development = __commonJS({
             return true;
           }
           if (typeof type === "object" && type !== null) {
-            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== void 0) {
+            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+            // types supported by any Flight configuration anywhere since
+            // we don't know which Flight build this will end up being used
+            // with.
+            type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== void 0) {
               return true;
             }
           }
@@ -1462,7 +1546,9 @@ var require_react_development = __commonJS({
             var propTypes;
             if (typeof type === "function") {
               propTypes = type.propTypes;
-            } else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_MEMO_TYPE)) {
+            } else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+            // Inner props are checked in the reconciler.
+            type.$$typeof === REACT_MEMO_TYPE)) {
               propTypes = type.propTypes;
             } else {
               return;
@@ -2580,6 +2666,9 @@ var require_react_dom_development = __commonJS({
         var reservedProps = [
           "children",
           "dangerouslySetInnerHTML",
+          // TODO: This prevents the assignment of defaultValue to regular
+          // elements (not just inputs). Now that ReactDOMInput assigns to the
+          // defaultValue property -- do we need this?
           "defaultValue",
           "defaultChecked",
           "innerHTML",
@@ -2592,9 +2681,13 @@ var require_react_dom_development = __commonJS({
             name,
             RESERVED,
             false,
+            // mustUseProperty
             name,
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2604,9 +2697,13 @@ var require_react_dom_development = __commonJS({
             name,
             STRING,
             false,
+            // mustUseProperty
             attributeName,
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2615,9 +2712,13 @@ var require_react_dom_development = __commonJS({
             name,
             BOOLEANISH_STRING,
             false,
+            // mustUseProperty
             name.toLowerCase(),
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2626,15 +2727,21 @@ var require_react_dom_development = __commonJS({
             name,
             BOOLEANISH_STRING,
             false,
+            // mustUseProperty
             name,
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
         [
           "allowFullScreen",
           "async",
+          // Note: there is a special case that prevents it from being written to the DOM
+          // on the client side because the browsers are inconsistent. Instead we call focus().
           "autoFocus",
           "autoPlay",
           "controls",
@@ -2655,45 +2762,66 @@ var require_react_dom_development = __commonJS({
           "reversed",
           "scoped",
           "seamless",
+          // Microdata
           "itemScope"
         ].forEach(function(name) {
           properties[name] = new PropertyInfoRecord(
             name,
             BOOLEAN,
             false,
+            // mustUseProperty
             name.toLowerCase(),
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
         [
           "checked",
+          // Note: `option.selected` is not updated if `select.multiple` is
+          // disabled with `removeAttribute`. We have special logic for handling this.
           "multiple",
           "muted",
           "selected"
+          // NOTE: if you add a camelCased prop to this list,
+          // you'll need to set attributeName to name.toLowerCase()
+          // instead in the assignment below.
         ].forEach(function(name) {
           properties[name] = new PropertyInfoRecord(
             name,
             BOOLEAN,
             true,
+            // mustUseProperty
             name,
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
         [
           "capture",
           "download"
+          // NOTE: if you add a camelCased prop to this list,
+          // you'll need to set attributeName to name.toLowerCase()
+          // instead in the assignment below.
         ].forEach(function(name) {
           properties[name] = new PropertyInfoRecord(
             name,
             OVERLOADED_BOOLEAN,
             false,
+            // mustUseProperty
             name,
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2702,14 +2830,21 @@ var require_react_dom_development = __commonJS({
           "rows",
           "size",
           "span"
+          // NOTE: if you add a camelCased prop to this list,
+          // you'll need to set attributeName to name.toLowerCase()
+          // instead in the assignment below.
         ].forEach(function(name) {
           properties[name] = new PropertyInfoRecord(
             name,
             POSITIVE_NUMERIC,
             false,
+            // mustUseProperty
             name,
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2718,9 +2853,13 @@ var require_react_dom_development = __commonJS({
             name,
             NUMERIC,
             false,
+            // mustUseProperty
             name.toLowerCase(),
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2802,15 +2941,21 @@ var require_react_dom_development = __commonJS({
           "writing-mode",
           "xmlns:xlink",
           "x-height"
+          // NOTE: if you add a camelCased prop to this list,
+          // you'll need to set attributeName to name.toLowerCase()
+          // instead in the assignment below.
         ].forEach(function(attributeName) {
           var name = attributeName.replace(CAMELIZE, capitalize);
           properties[name] = new PropertyInfoRecord(
             name,
             STRING,
             false,
+            // mustUseProperty
             attributeName,
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2821,15 +2966,20 @@ var require_react_dom_development = __commonJS({
           "xlink:show",
           "xlink:title",
           "xlink:type"
+          // NOTE: if you add a camelCased prop to this list,
+          // you'll need to set attributeName to name.toLowerCase()
+          // instead in the assignment below.
         ].forEach(function(attributeName) {
           var name = attributeName.replace(CAMELIZE, capitalize);
           properties[name] = new PropertyInfoRecord(
             name,
             STRING,
             false,
+            // mustUseProperty
             attributeName,
             "http://www.w3.org/1999/xlink",
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2837,15 +2987,20 @@ var require_react_dom_development = __commonJS({
           "xml:base",
           "xml:lang",
           "xml:space"
+          // NOTE: if you add a camelCased prop to this list,
+          // you'll need to set attributeName to name.toLowerCase()
+          // instead in the assignment below.
         ].forEach(function(attributeName) {
           var name = attributeName.replace(CAMELIZE, capitalize);
           properties[name] = new PropertyInfoRecord(
             name,
             STRING,
             false,
+            // mustUseProperty
             attributeName,
             "http://www.w3.org/XML/1998/namespace",
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2854,9 +3009,13 @@ var require_react_dom_development = __commonJS({
             attributeName,
             STRING,
             false,
+            // mustUseProperty
             attributeName.toLowerCase(),
+            // attributeName
             null,
+            // attributeNamespace
             false,
+            // sanitizeURL
             false
           );
         });
@@ -2865,9 +3024,11 @@ var require_react_dom_development = __commonJS({
           "xlinkHref",
           STRING,
           false,
+          // mustUseProperty
           "xlink:href",
           "http://www.w3.org/1999/xlink",
           true,
+          // sanitizeURL
           false
         );
         ["src", "href", "action", "formAction"].forEach(function(attributeName) {
@@ -2875,9 +3036,13 @@ var require_react_dom_development = __commonJS({
             attributeName,
             STRING,
             false,
+            // mustUseProperty
             attributeName.toLowerCase(),
+            // attributeName
             null,
+            // attributeNamespace
             true,
+            // sanitizeURL
             true
           );
         });
@@ -3722,7 +3887,9 @@ var require_react_dom_development = __commonJS({
           var type = props.type;
           if (value != null) {
             if (type === "number") {
-              if (value === 0 && node.value === "" || node.value != value) {
+              if (value === 0 && node.value === "" || // We explicitly want to coerce to number here if possible.
+              // eslint-disable-next-line
+              node.value != value) {
                 node.value = toString2(value);
               }
             } else if (node.value !== toString2(value)) {
@@ -3808,7 +3975,10 @@ var require_react_dom_development = __commonJS({
           }
         }
         function setDefaultValue(node, type, value) {
-          if (type !== "number" || getActiveElement(node.ownerDocument) !== node) {
+          if (
+            // Focused number inputs synchronize on blur. See ChangeEventPlugin.js
+            type !== "number" || getActiveElement(node.ownerDocument) !== node
+          ) {
             if (value == null) {
               node.defaultValue = toString2(node._wrapperState.initialValue);
             } else if (node.defaultValue !== toString2(value)) {
@@ -4206,6 +4376,7 @@ var require_react_dom_development = __commonJS({
           widows: true,
           zIndex: true,
           zoom: true,
+          // SVG-related properties
           fillOpacity: true,
           floodOpacity: true,
           stopOpacity: true,
@@ -4266,6 +4437,9 @@ var require_react_dom_development = __commonJS({
             error(
               "Unsupported style property %s. Did you mean %s?",
               name,
+              // As Andi Smith suggests
+              // (http://www.andismith.com/blog/2012/02/modernizr-prefixed/), an `-ms` prefix
+              // is converted to lowercase `ms`.
               camelize(name.replace(msPattern$1, "ms-"))
             );
           };
@@ -4408,6 +4582,7 @@ var require_react_dom_development = __commonJS({
           source: true,
           track: true,
           wbr: true
+          // NOTE: menuitem's close tag should be omitted, but that causes problems.
         };
         var voidElementTags = assign({
           menuitem: true
@@ -4458,6 +4633,7 @@ var require_react_dom_development = __commonJS({
           }
         }
         var possibleStandardNames = {
+          // HTML
           accept: "accept",
           acceptcharset: "acceptCharset",
           "accept-charset": "acceptCharset",
@@ -4607,6 +4783,7 @@ var require_react_dom_development = __commonJS({
           width: "width",
           wmode: "wmode",
           wrap: "wrap",
+          // SVG
           about: "about",
           accentheight: "accentHeight",
           "accent-height": "accentHeight",
@@ -4946,14 +5123,19 @@ var require_react_dom_development = __commonJS({
         };
         var ariaProperties = {
           "aria-current": 0,
+          // state
           "aria-description": 0,
           "aria-details": 0,
           "aria-disabled": 0,
+          // state
           "aria-hidden": 0,
+          // state
           "aria-invalid": 0,
+          // state
           "aria-keyshortcuts": 0,
           "aria-label": 0,
           "aria-roledescription": 0,
+          // Widget Attributes
           "aria-autocomplete": 0,
           "aria-checked": 0,
           "aria-expanded": 0,
@@ -4973,12 +5155,15 @@ var require_react_dom_development = __commonJS({
           "aria-valuemin": 0,
           "aria-valuenow": 0,
           "aria-valuetext": 0,
+          // Live Region Attributes
           "aria-atomic": 0,
           "aria-busy": 0,
           "aria-live": 0,
           "aria-relevant": 0,
+          // Drag-and-Drop Attributes
           "aria-dropeffect": 0,
           "aria-grabbed": 0,
+          // Relationship Attributes
           "aria-activedescendant": 0,
           "aria-colcount": 0,
           "aria-colindex": 0,
@@ -5496,33 +5681,112 @@ var require_react_dom_development = __commonJS({
         function set(key, value) {
           key._reactInternals = value;
         }
-        var NoFlags = 0;
-        var PerformedWork = 1;
-        var Placement = 2;
-        var Update = 4;
-        var ChildDeletion = 16;
-        var ContentReset = 32;
-        var Callback = 64;
-        var DidCapture = 128;
-        var ForceClientRender = 256;
-        var Ref = 512;
-        var Snapshot = 1024;
-        var Passive = 2048;
-        var Hydrating = 4096;
-        var Visibility = 8192;
-        var StoreConsistency = 16384;
+        var NoFlags = (
+          /*                      */
+          0
+        );
+        var PerformedWork = (
+          /*                */
+          1
+        );
+        var Placement = (
+          /*                    */
+          2
+        );
+        var Update = (
+          /*                       */
+          4
+        );
+        var ChildDeletion = (
+          /*                */
+          16
+        );
+        var ContentReset = (
+          /*                 */
+          32
+        );
+        var Callback = (
+          /*                     */
+          64
+        );
+        var DidCapture = (
+          /*                   */
+          128
+        );
+        var ForceClientRender = (
+          /*            */
+          256
+        );
+        var Ref = (
+          /*                          */
+          512
+        );
+        var Snapshot = (
+          /*                     */
+          1024
+        );
+        var Passive = (
+          /*                      */
+          2048
+        );
+        var Hydrating = (
+          /*                    */
+          4096
+        );
+        var Visibility = (
+          /*                   */
+          8192
+        );
+        var StoreConsistency = (
+          /*             */
+          16384
+        );
         var LifecycleEffectMask = Passive | Update | Callback | Ref | Snapshot | StoreConsistency;
-        var HostEffectMask = 32767;
-        var Incomplete = 32768;
-        var ShouldCapture = 65536;
-        var ForceUpdateForLegacySuspense = 131072;
-        var Forked = 1048576;
-        var RefStatic = 2097152;
-        var LayoutStatic = 4194304;
-        var PassiveStatic = 8388608;
-        var MountLayoutDev = 16777216;
-        var MountPassiveDev = 33554432;
-        var BeforeMutationMask = Update | Snapshot | 0;
+        var HostEffectMask = (
+          /*               */
+          32767
+        );
+        var Incomplete = (
+          /*                   */
+          32768
+        );
+        var ShouldCapture = (
+          /*                */
+          65536
+        );
+        var ForceUpdateForLegacySuspense = (
+          /* */
+          131072
+        );
+        var Forked = (
+          /*                       */
+          1048576
+        );
+        var RefStatic = (
+          /*                    */
+          2097152
+        );
+        var LayoutStatic = (
+          /*                 */
+          4194304
+        );
+        var PassiveStatic = (
+          /*                */
+          8388608
+        );
+        var MountLayoutDev = (
+          /*               */
+          16777216
+        );
+        var MountPassiveDev = (
+          /*              */
+          33554432
+        );
+        var BeforeMutationMask = (
+          // TODO: Remove Update flag from before mutation phase by re-landing Visibility
+          // flag logic (see #20043)
+          Update | Snapshot | 0
+        );
         var MutationMask = Placement | Update | ChildDeletion | ContentReset | Ref | Hydrating | Visibility;
         var LayoutMask = Update | Callback | Ref | Visibility;
         var PassiveMask = Passive | ChildDeletion;
@@ -6064,11 +6328,26 @@ var require_react_dom_development = __commonJS({
             }
           }
         }
-        var NoMode = 0;
-        var ConcurrentMode = 1;
-        var ProfileMode = 2;
-        var StrictLegacyMode = 8;
-        var StrictEffectsMode = 16;
+        var NoMode = (
+          /*                         */
+          0
+        );
+        var ConcurrentMode = (
+          /*                 */
+          1
+        );
+        var ProfileMode = (
+          /*                    */
+          2
+        );
+        var StrictLegacyMode = (
+          /*               */
+          8
+        );
+        var StrictEffectsMode = (
+          /*              */
+          16
+        );
         var clz32 = Math.clz32 ? Math.clz32 : clz32Fallback;
         var log = Math.log;
         var LN2 = Math.LN2;
@@ -6080,43 +6359,151 @@ var require_react_dom_development = __commonJS({
           return 31 - (log(asUint) / LN2 | 0) | 0;
         }
         var TotalLanes = 31;
-        var NoLanes = 0;
-        var NoLane = 0;
-        var SyncLane = 1;
-        var InputContinuousHydrationLane = 2;
-        var InputContinuousLane = 4;
-        var DefaultHydrationLane = 8;
-        var DefaultLane = 16;
-        var TransitionHydrationLane = 32;
-        var TransitionLanes = 4194240;
-        var TransitionLane1 = 64;
-        var TransitionLane2 = 128;
-        var TransitionLane3 = 256;
-        var TransitionLane4 = 512;
-        var TransitionLane5 = 1024;
-        var TransitionLane6 = 2048;
-        var TransitionLane7 = 4096;
-        var TransitionLane8 = 8192;
-        var TransitionLane9 = 16384;
-        var TransitionLane10 = 32768;
-        var TransitionLane11 = 65536;
-        var TransitionLane12 = 131072;
-        var TransitionLane13 = 262144;
-        var TransitionLane14 = 524288;
-        var TransitionLane15 = 1048576;
-        var TransitionLane16 = 2097152;
-        var RetryLanes = 130023424;
-        var RetryLane1 = 4194304;
-        var RetryLane2 = 8388608;
-        var RetryLane3 = 16777216;
-        var RetryLane4 = 33554432;
-        var RetryLane5 = 67108864;
+        var NoLanes = (
+          /*                        */
+          0
+        );
+        var NoLane = (
+          /*                          */
+          0
+        );
+        var SyncLane = (
+          /*                        */
+          1
+        );
+        var InputContinuousHydrationLane = (
+          /*    */
+          2
+        );
+        var InputContinuousLane = (
+          /*             */
+          4
+        );
+        var DefaultHydrationLane = (
+          /*            */
+          8
+        );
+        var DefaultLane = (
+          /*                     */
+          16
+        );
+        var TransitionHydrationLane = (
+          /*                */
+          32
+        );
+        var TransitionLanes = (
+          /*                       */
+          4194240
+        );
+        var TransitionLane1 = (
+          /*                        */
+          64
+        );
+        var TransitionLane2 = (
+          /*                        */
+          128
+        );
+        var TransitionLane3 = (
+          /*                        */
+          256
+        );
+        var TransitionLane4 = (
+          /*                        */
+          512
+        );
+        var TransitionLane5 = (
+          /*                        */
+          1024
+        );
+        var TransitionLane6 = (
+          /*                        */
+          2048
+        );
+        var TransitionLane7 = (
+          /*                        */
+          4096
+        );
+        var TransitionLane8 = (
+          /*                        */
+          8192
+        );
+        var TransitionLane9 = (
+          /*                        */
+          16384
+        );
+        var TransitionLane10 = (
+          /*                       */
+          32768
+        );
+        var TransitionLane11 = (
+          /*                       */
+          65536
+        );
+        var TransitionLane12 = (
+          /*                       */
+          131072
+        );
+        var TransitionLane13 = (
+          /*                       */
+          262144
+        );
+        var TransitionLane14 = (
+          /*                       */
+          524288
+        );
+        var TransitionLane15 = (
+          /*                       */
+          1048576
+        );
+        var TransitionLane16 = (
+          /*                       */
+          2097152
+        );
+        var RetryLanes = (
+          /*                            */
+          130023424
+        );
+        var RetryLane1 = (
+          /*                             */
+          4194304
+        );
+        var RetryLane2 = (
+          /*                             */
+          8388608
+        );
+        var RetryLane3 = (
+          /*                             */
+          16777216
+        );
+        var RetryLane4 = (
+          /*                             */
+          33554432
+        );
+        var RetryLane5 = (
+          /*                             */
+          67108864
+        );
         var SomeRetryLane = RetryLane1;
-        var SelectiveHydrationLane = 134217728;
-        var NonIdleLanes = 268435455;
-        var IdleHydrationLane = 268435456;
-        var IdleLane = 536870912;
-        var OffscreenLane = 1073741824;
+        var SelectiveHydrationLane = (
+          /*          */
+          134217728
+        );
+        var NonIdleLanes = (
+          /*                          */
+          268435455
+        );
+        var IdleHydrationLane = (
+          /*               */
+          268435456
+        );
+        var IdleLane = (
+          /*                        */
+          536870912
+        );
+        var OffscreenLane = (
+          /*                   */
+          1073741824
+        );
         function getLabelForLane(lane) {
           {
             if (lane & SyncLane) {
@@ -6244,10 +6631,19 @@ var require_react_dom_development = __commonJS({
           if (nextLanes === NoLanes) {
             return NoLanes;
           }
-          if (wipLanes !== NoLanes && wipLanes !== nextLanes && (wipLanes & suspendedLanes) === NoLanes) {
+          if (wipLanes !== NoLanes && wipLanes !== nextLanes && // If we already suspended with a delay, then interrupting is fine. Don't
+          // bother waiting until the root is complete.
+          (wipLanes & suspendedLanes) === NoLanes) {
             var nextLane = getHighestPriorityLane(nextLanes);
             var wipLane = getHighestPriorityLane(wipLanes);
-            if (nextLane >= wipLane || nextLane === DefaultLane && (wipLane & TransitionLanes) !== NoLanes) {
+            if (
+              // Tests whether the next lane is equal or lower priority than the wip
+              // one. This works because the bits decrease in priority as you go left.
+              nextLane >= wipLane || // Default priority updates should not interrupt transition updates. The
+              // only difference between default updates and transition updates is that
+              // default updates do not support refresh transitions.
+              nextLane === DefaultLane && (wipLane & TransitionLanes) !== NoLanes
+            ) {
               return wipLanes;
             }
           }
@@ -6493,7 +6889,11 @@ var require_react_dom_development = __commonJS({
           while (lanes) {
             var index2 = pickArbitraryLaneIndex(lanes);
             var lane = 1 << index2;
-            if (lane & entangledLanes | entanglements[index2] & entangledLanes) {
+            if (
+              // Is this one of the newly entangled lanes?
+              lane & entangledLanes | // Is this lane transitively entangled with the newly entangled lanes?
+              entanglements[index2] & entangledLanes
+            ) {
               entanglements[index2] |= entangledLanes;
             }
             lanes &= ~lane;
@@ -6682,6 +7082,7 @@ var require_react_dom_development = __commonJS({
           "keyup",
           "input",
           "textInput",
+          // Intentionally camelCase
           "copy",
           "cut",
           "paste",
@@ -7283,8 +7684,18 @@ var require_react_dom_development = __commonJS({
               }
               this.isPropagationStopped = functionThatReturnsTrue;
             },
+            /**
+             * We release all dispatched `SyntheticEvent`s after each event loop, adding
+             * them back into the pool. This allows a way to hold onto a reference that
+             * won't be added back into the pool.
+             */
             persist: function() {
             },
+            /**
+             * Checks if this event should be released back into the pool.
+             *
+             * @return {boolean} True if this should not be released, false otherwise.
+             */
             isPersistent: functionThatReturnsTrue
           });
           return SyntheticBaseEvent;
@@ -7476,6 +7887,7 @@ var require_react_dom_development = __commonJS({
           repeat: 0,
           locale: 0,
           getModifierState: getEventModifierState,
+          // Legacy Interface
           charCode: function(event) {
             if (event.type === "keypress") {
               return getEventCharCode(event);
@@ -7531,12 +7943,25 @@ var require_react_dom_development = __commonJS({
         var SyntheticTransitionEvent = createSyntheticEvent(TransitionEventInterface);
         var WheelEventInterface = assign({}, MouseEventInterface, {
           deltaX: function(event) {
-            return "deltaX" in event ? event.deltaX : "wheelDeltaX" in event ? -event.wheelDeltaX : 0;
+            return "deltaX" in event ? event.deltaX : (
+              // Fallback to `wheelDeltaX` for Webkit and normalize (right is positive).
+              "wheelDeltaX" in event ? -event.wheelDeltaX : 0
+            );
           },
           deltaY: function(event) {
-            return "deltaY" in event ? event.deltaY : "wheelDeltaY" in event ? -event.wheelDeltaY : "wheelDelta" in event ? -event.wheelDelta : 0;
+            return "deltaY" in event ? event.deltaY : (
+              // Fallback to `wheelDeltaY` for Webkit and normalize (down is positive).
+              "wheelDeltaY" in event ? -event.wheelDeltaY : (
+                // Fallback to `wheelDelta` for IE<9 and normalize (down is positive).
+                "wheelDelta" in event ? -event.wheelDelta : 0
+              )
+            );
           },
           deltaZ: 0,
+          // Browsers without "deltaMode" is reporting in raw wheel delta where one
+          // notch on the scroll is always +/- 120, roughly equivalent to pixels.
+          // A good approximation of DOM_DELTA_LINE (1) is 5% of viewport size or
+          // ~40 pixels, for DOM_DELTA_SCREEN (2) it is 87.5% of viewport size.
           deltaMode: 0
         });
         var SyntheticWheelEvent = createSyntheticEvent(WheelEventInterface);
@@ -7559,7 +7984,8 @@ var require_react_dom_development = __commonJS({
         }
         var hasSpaceKeypress = false;
         function isKeypressCommand(nativeEvent) {
-          return (nativeEvent.ctrlKey || nativeEvent.altKey || nativeEvent.metaKey) && !(nativeEvent.ctrlKey && nativeEvent.altKey);
+          return (nativeEvent.ctrlKey || nativeEvent.altKey || nativeEvent.metaKey) && // ctrlKey && altKey is equivalent to AltGr, and is not a command.
+          !(nativeEvent.ctrlKey && nativeEvent.altKey);
         }
         function getCompositionEventType(domEventName) {
           switch (domEventName) {
@@ -8461,7 +8887,11 @@ var require_react_dom_development = __commonJS({
           }
           var inCapturePhase = (eventSystemFlags & IS_CAPTURE_PHASE) !== 0;
           {
-            var accumulateTargetOnly = !inCapturePhase && domEventName === "scroll";
+            var accumulateTargetOnly = !inCapturePhase && // TODO: ideally, we'd eventually add all events from
+            // nonDelegatedEvents list in DOMPluginEventSystem.
+            // Then we can remove this special list.
+            // This is a breaking change that can wait until React 18.
+            domEventName === "scroll";
             var _listeners = accumulateSinglePhaseListeners(targetInst, reactName, nativeEvent.type, inCapturePhase, accumulateTargetOnly);
             if (_listeners.length > 0) {
               var _event = new SyntheticEventCtor(reactName, reactEventType, null, nativeEvent, nativeEventTarget);
@@ -8813,7 +9243,13 @@ var require_react_dom_development = __commonJS({
         var normalizeHTML;
         {
           warnedUnknownTags = {
+            // There are working polyfills for <dialog>. Let people use it.
             dialog: true,
+            // Electron ships a custom <webview> tag to display external web content in
+            // an isolated frame and process.
+            // This tag is not present in non Electron environments such as JSDom which
+            // is often used for testing purposes.
+            // @see https://electronjs.org/docs/api/webview-tag
             webview: true
           };
           validatePropertiesInDevelopment = function(type, props) {
@@ -8973,7 +9409,7 @@ var require_react_dom_development = __commonJS({
             }
             if (type === "script") {
               var div = ownerDocument.createElement("div");
-              div.innerHTML = "<script><\/script>";
+              div.innerHTML = "<script></script>";
               var firstChild = div.firstChild;
               domElement = div.removeChild(firstChild);
             } else if (typeof props.is === "string") {
@@ -9360,12 +9796,15 @@ var require_react_dom_development = __commonJS({
                   listenToNonDelegatedEvent("scroll", domElement);
                 }
               }
-            } else if (shouldWarnDev && true && typeof isCustomComponentTag === "boolean") {
+            } else if (shouldWarnDev && true && // Convince Flow we've calculated it (it's DEV-only in this method.)
+            typeof isCustomComponentTag === "boolean") {
               var serverValue = void 0;
               var propertyInfo = isCustomComponentTag && enableCustomElementPropertySupport ? null : getPropertyInfo(propKey);
               if (rawProps[SUPPRESS_HYDRATION_WARNING] === true)
                 ;
-              else if (propKey === SUPPRESS_CONTENT_EDITABLE_WARNING || propKey === SUPPRESS_HYDRATION_WARNING || propKey === "value" || propKey === "checked" || propKey === "selected")
+              else if (propKey === SUPPRESS_CONTENT_EDITABLE_WARNING || propKey === SUPPRESS_HYDRATION_WARNING || // Controlled attributes are not validated
+              // TODO: Only ignore them on controlled tags.
+              propKey === "value" || propKey === "checked" || propKey === "selected")
                 ;
               else if (propKey === DANGEROUSLY_SET_INNER_HTML) {
                 var serverHTML = domElement.innerHTML;
@@ -9422,7 +9861,10 @@ var require_react_dom_development = __commonJS({
           }
           {
             if (shouldWarnDev) {
-              if (extraAttributeNames.size > 0 && rawProps[SUPPRESS_HYDRATION_WARNING] !== true) {
+              if (
+                // $FlowFixMe - Should be inferred as not undefined.
+                extraAttributeNames.size > 0 && rawProps[SUPPRESS_HYDRATION_WARNING] !== true
+              ) {
                 warnForExtraAttributes(extraAttributeNames);
               }
             }
@@ -9519,6 +9961,9 @@ var require_react_dom_development = __commonJS({
             "marquee",
             "object",
             "template",
+            // https://html.spec.whatwg.org/multipage/syntax.html#html-integration-point
+            // TODO: Distinguish by namespace here -- for <title>, including it here
+            // errs on the side of fewer warnings
             "foreignObject",
             "desc",
             "title"
@@ -10025,9 +10470,9 @@ var require_react_dom_development = __commonJS({
         }
         function getSuspenseInstanceFallbackErrorDetails(instance) {
           var dataset = instance.nextSibling && instance.nextSibling.dataset;
-          var digest7, message, stack;
+          var digest8, message, stack;
           if (dataset) {
-            digest7 = dataset.dgst;
+            digest8 = dataset.dgst;
             {
               message = dataset.msg;
               stack = dataset.stck;
@@ -10036,7 +10481,7 @@ var require_react_dom_development = __commonJS({
           {
             return {
               message,
-              digest: digest7,
+              digest: digest8,
               stack
             };
           }
@@ -10791,6 +11236,7 @@ var require_react_dom_development = __commonJS({
                   returnFiber.memoizedProps,
                   returnFiber.stateNode,
                   instance,
+                  // TODO: Delete this argument when we remove the legacy root API.
                   isConcurrentMode
                 );
                 break;
@@ -10853,6 +11299,7 @@ var require_react_dom_development = __commonJS({
                       parentInstance,
                       _type,
                       _props,
+                      // TODO: Delete this argument when we remove the legacy root API.
                       isConcurrentMode
                     );
                     break;
@@ -10865,6 +11312,7 @@ var require_react_dom_development = __commonJS({
                       parentProps,
                       parentInstance,
                       _text,
+                      // TODO: Delete this argument when we remove the legacy root API.
                       _isConcurrentMode
                     );
                     break;
@@ -11008,6 +11456,7 @@ var require_react_dom_development = __commonJS({
                     parentContainer,
                     textInstance,
                     textContent,
+                    // TODO: Delete this argument when we remove the legacy root API.
                     isConcurrentMode
                   );
                   break;
@@ -11023,6 +11472,7 @@ var require_react_dom_development = __commonJS({
                     parentInstance,
                     textInstance,
                     textContent,
+                    // TODO: Delete this argument when we remove the legacy root API.
                     _isConcurrentMode2
                   );
                   break;
@@ -11165,7 +11615,8 @@ var require_react_dom_development = __commonJS({
             if (didWarnAboutUnsafeLifecycles.has(fiber.type)) {
               return;
             }
-            if (typeof instance.componentWillMount === "function" && instance.componentWillMount.__suppressDeprecationWarning !== true) {
+            if (typeof instance.componentWillMount === "function" && // Don't warn about react-lifecycles-compat polyfilled components.
+            instance.componentWillMount.__suppressDeprecationWarning !== true) {
               pendingComponentWillMountWarnings.push(fiber);
             }
             if (fiber.mode & StrictLegacyMode && typeof instance.UNSAFE_componentWillMount === "function") {
@@ -11898,6 +12349,9 @@ var require_react_dom_development = __commonJS({
                 if (newLastBaseUpdate !== null) {
                   var _clone = {
                     eventTime: updateEventTime,
+                    // This update is going to be committed so we never want uncommit
+                    // it. Using NoLane works because 0 is a subset of all bitmasks, so
+                    // this will never be skipped by the check above.
                     lane: NoLane,
                     tag: update.tag,
                     payload: update.payload,
@@ -11908,7 +12362,9 @@ var require_react_dom_development = __commonJS({
                 }
                 newState = getStateFromUpdate(workInProgress2, queue, update, newState, props, instance);
                 var callback = update.callback;
-                if (callback !== null && update.lane !== NoLane) {
+                if (callback !== null && // If the update was already committed, we should not queue its
+                // callback again.
+                update.lane !== NoLane) {
                   workInProgress2.flags |= Callback;
                   var effects = queue.effects;
                   if (effects === null) {
@@ -12239,7 +12695,10 @@ var require_react_dom_development = __commonJS({
           var contextType = ctor.contextType;
           {
             if ("contextType" in ctor) {
-              var isValid = contextType === null || contextType !== void 0 && contextType.$$typeof === REACT_CONTEXT_TYPE && contextType._context === void 0;
+              var isValid = (
+                // Allow null for conditional declaration
+                contextType === null || contextType !== void 0 && contextType.$$typeof === REACT_CONTEXT_TYPE && contextType._context === void 0
+              );
               if (!isValid && !didWarnAboutInvalidateContextType.has(ctor)) {
                 didWarnAboutInvalidateContextType.add(ctor);
                 var addendum = "";
@@ -12534,7 +12993,11 @@ var require_react_dom_development = __commonJS({
             applyDerivedStateFromProps(workInProgress2, ctor, getDerivedStateFromProps, newProps);
             newState = workInProgress2.memoizedState;
           }
-          var shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(workInProgress2, ctor, oldProps, newProps, oldState, newState, nextContext) || enableLazyContextPropagation;
+          var shouldUpdate = checkHasForceUpdateAfterProcessing() || checkShouldComponentUpdate(workInProgress2, ctor, oldProps, newProps, oldState, newState, nextContext) || // TODO: In some cases, we'll end up checking if context has changed twice,
+          // both before and after `shouldComponentUpdate` has been called. Not ideal,
+          // but I'm loath to refactor this function. This only happens for memoized
+          // components so it's not that common.
+          enableLazyContextPropagation;
           if (shouldUpdate) {
             if (!hasNewLifecycles && (typeof instance.UNSAFE_componentWillUpdate === "function" || typeof instance.componentWillUpdate === "function")) {
               if (typeof instance.componentWillUpdate === "function") {
@@ -12605,7 +13068,10 @@ var require_react_dom_development = __commonJS({
           var mixedRef = element.ref;
           if (mixedRef !== null && typeof mixedRef !== "function" && typeof mixedRef !== "object") {
             {
-              if ((returnFiber.mode & StrictLegacyMode || warnAboutStringRefs) && !(element._owner && element._self && element._owner.stateNode !== element._self)) {
+              if ((returnFiber.mode & StrictLegacyMode || warnAboutStringRefs) && // We warn in ReactElement.js if owner and self are equal for string refs
+              // because these cannot be automatically converted to an arrow function
+              // using a codemod. Therefore, we don't have to warn about string refs again.
+              !(element._owner && element._self && element._owner.stateNode !== element._self)) {
                 var componentName = getComponentNameFromFiber(returnFiber) || "Component";
                 if (!didWarnAboutStringRefs[componentName]) {
                   {
@@ -12765,7 +13231,12 @@ var require_react_dom_development = __commonJS({
               return updateFragment2(returnFiber, current2, element.props.children, lanes, element.key);
             }
             if (current2 !== null) {
-              if (current2.elementType === elementType || isCompatibleFamilyForHotReloading(current2, element) || typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === current2.type) {
+              if (current2.elementType === elementType || // Keep this check inline so it only runs on the false path:
+              isCompatibleFamilyForHotReloading(current2, element) || // Lazy types should reconcile their resolved type.
+              // We need to do this after the Hot Reloading check above,
+              // because hot reloading has different semantics than prod because
+              // it doesn't resuspend. So we can't let the call below suspend.
+              typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === current2.type) {
                 var existing = useFiber(current2, element.props);
                 existing.ref = coerceRef(returnFiber, current2, element);
                 existing.return = returnFiber;
@@ -13058,7 +13529,8 @@ var require_react_dom_development = __commonJS({
               throw new Error("An object is not an iterable. This error is likely caused by a bug in React. Please file an issue.");
             }
             {
-              if (typeof Symbol === "function" && newChildrenIterable[Symbol.toStringTag] === "Generator") {
+              if (typeof Symbol === "function" && // $FlowFixMe Flow doesn't know about toStringTag
+              newChildrenIterable[Symbol.toStringTag] === "Generator") {
                 if (!didWarnAboutGenerators) {
                   error("Using Generators as children is unsupported and will likely yield unexpected results because enumerating a generator mutates it. You may convert it to an array with `Array.from()` or the `[...spread]` operator before rendering. Keep in mind you might need to polyfill these features for older browsers.");
                 }
@@ -13206,7 +13678,12 @@ var require_react_dom_development = __commonJS({
                     return existing;
                   }
                 } else {
-                  if (child.elementType === elementType || isCompatibleFamilyForHotReloading(child, element) || typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === child.type) {
+                  if (child.elementType === elementType || // Keep this check inline so it only runs on the false path:
+                  isCompatibleFamilyForHotReloading(child, element) || // Lazy types should reconcile their resolved type.
+                  // We need to do this after the Hot Reloading check above,
+                  // because hot reloading has different semantics than prod because
+                  // it doesn't resuspend. So we can't let the call below suspend.
+                  typeof elementType === "object" && elementType !== null && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === child.type) {
                     deleteRemainingChildren(returnFiber, child.sibling);
                     var _existing = useFiber(child, element.props);
                     _existing.ref = coerceRef(returnFiber, child, element);
@@ -13417,7 +13894,9 @@ var require_react_dom_development = __commonJS({
                   return node;
                 }
               }
-            } else if (node.tag === SuspenseListComponent && node.memoizedProps.revealOrder !== void 0) {
+            } else if (node.tag === SuspenseListComponent && // revealOrder undefined can't be trusted because it don't
+            // keep track of whether it suspended or not.
+            node.memoizedProps.revealOrder !== void 0) {
               var didSuspend = (node.flags & DidCapture) !== NoFlags;
               if (didSuspend) {
                 return node;
@@ -13441,11 +13920,26 @@ var require_react_dom_development = __commonJS({
           }
           return null;
         }
-        var NoFlags$1 = 0;
-        var HasEffect = 1;
-        var Insertion = 2;
-        var Layout = 4;
-        var Passive$1 = 8;
+        var NoFlags$1 = (
+          /*   */
+          0
+        );
+        var HasEffect = (
+          /* */
+          1
+        );
+        var Insertion = (
+          /*  */
+          2
+        );
+        var Layout = (
+          /*    */
+          4
+        );
+        var Passive$1 = (
+          /*   */
+          8
+        );
         var workInProgressSources = [];
         function resetWorkInProgressVersions() {
           for (var i = 0; i < workInProgressSources.length; i++) {
@@ -13619,7 +14113,12 @@ var require_react_dom_development = __commonJS({
             currentHookNameInDev = null;
             hookTypesDev = null;
             hookTypesUpdateIndexDev = -1;
-            if (current2 !== null && (current2.flags & StaticMask) !== (workInProgress2.flags & StaticMask) && (current2.mode & ConcurrentMode) !== NoMode) {
+            if (current2 !== null && (current2.flags & StaticMask) !== (workInProgress2.flags & StaticMask) && // Disable this warning in legacy mode, because legacy Suspense is weird
+            // and creates false positives. To make this work in legacy mode, we'd
+            // need to mark fibers that commit in an incomplete state, somehow. For
+            // now I'll disable the warning that most of the bugs that would trigger
+            // it are either exclusive to concurrent mode or exist in both.
+            (current2.mode & ConcurrentMode) !== NoMode) {
               error("Internal React error: Expected static flag was missing. Please notify the React team.");
             }
           }
@@ -13809,6 +14308,9 @@ var require_react_dom_development = __commonJS({
               } else {
                 if (newBaseQueueLast !== null) {
                   var _clone = {
+                    // This update is going to be committed so we never want uncommit
+                    // it. Using NoLane works because 0 is a subset of all bitmasks, so
+                    // this will never be skipped by the check above.
                     lane: NoLane,
                     action: update.action,
                     hasEagerState: update.hasEagerState,
@@ -13963,7 +14465,9 @@ var require_react_dom_development = __commonJS({
           }
           var inst = hook.queue;
           updateEffect(subscribeToStore.bind(null, fiber, inst, subscribe), [subscribe]);
-          if (inst.getSnapshot !== getSnapshot || snapshotChanged || workInProgressHook !== null && workInProgressHook.memoizedState.tag & HasEffect) {
+          if (inst.getSnapshot !== getSnapshot || snapshotChanged || // Check if the susbcribe function changed. We can save some memory by
+          // checking whether we scheduled a subscription effect above.
+          workInProgressHook !== null && workInProgressHook.memoizedState.tag & HasEffect) {
             fiber.flags |= Passive;
             pushEffect(HasEffect | Passive$1, updateStoreInstance.bind(null, fiber, inst, nextSnapshot, getSnapshot), void 0, null);
             var root3 = getWorkInProgressRoot();
@@ -14057,6 +14561,7 @@ var require_react_dom_development = __commonJS({
             create,
             destroy,
             deps,
+            // Circular
             next: null
           };
           var componentUpdateQueue = currentlyRenderingFiber$1.updateQueue;
@@ -15399,12 +15904,12 @@ var require_react_dom_development = __commonJS({
             digest: null
           };
         }
-        function createCapturedValue(value, digest7, stack) {
+        function createCapturedValue(value, digest8, stack) {
           return {
             value,
             source: null,
             stack: stack != null ? stack : null,
-            digest: digest7 != null ? digest7 : null
+            digest: digest8 != null ? digest8 : null
           };
         }
         function showErrorDialog(boundary, errorInfo) {
@@ -15710,6 +16215,7 @@ var require_react_dom_development = __commonJS({
                 checkPropTypes(
                   innerPropTypes,
                   nextProps,
+                  // Resolved props
                   "prop",
                   getComponentNameFromType(Component)
                 );
@@ -15757,7 +16263,8 @@ var require_react_dom_development = __commonJS({
         function updateMemoComponent(current2, workInProgress2, Component, nextProps, renderLanes2) {
           if (current2 === null) {
             var type = Component.type;
-            if (isSimpleFunctionComponent(type) && Component.compare === null && Component.defaultProps === void 0) {
+            if (isSimpleFunctionComponent(type) && Component.compare === null && // SimpleMemoComponent codepath doesn't resolve outer props either.
+            Component.defaultProps === void 0) {
               var resolvedType = type;
               {
                 resolvedType = resolveFunctionForHotReloading(type);
@@ -15775,6 +16282,7 @@ var require_react_dom_development = __commonJS({
                 checkPropTypes(
                   innerPropTypes,
                   nextProps,
+                  // Resolved props
                   "prop",
                   getComponentNameFromType(type)
                 );
@@ -15793,6 +16301,7 @@ var require_react_dom_development = __commonJS({
               checkPropTypes(
                 _innerPropTypes,
                 nextProps,
+                // Resolved props
                 "prop",
                 getComponentNameFromType(_type)
               );
@@ -15833,6 +16342,7 @@ var require_react_dom_development = __commonJS({
                   checkPropTypes(
                     outerPropTypes,
                     nextProps,
+                    // Resolved (SimpleMemoComponent has no defaultProps)
                     "prop",
                     getComponentNameFromType(outerMemoType)
                   );
@@ -15842,7 +16352,8 @@ var require_react_dom_development = __commonJS({
           }
           if (current2 !== null) {
             var prevProps = current2.memoizedProps;
-            if (shallowEqual(prevProps, nextProps) && current2.ref === workInProgress2.ref && workInProgress2.type === current2.type) {
+            if (shallowEqual(prevProps, nextProps) && current2.ref === workInProgress2.ref && // Prevent bailout if the implementation changed due to hot reload.
+            workInProgress2.type === current2.type) {
               didReceiveUpdate = false;
               workInProgress2.pendingProps = nextProps = prevProps;
               if (!checkScheduledUpdateOrContext(current2, renderLanes2)) {
@@ -15951,6 +16462,7 @@ var require_react_dom_development = __commonJS({
                 checkPropTypes(
                   innerPropTypes,
                   nextProps,
+                  // Resolved props
                   "prop",
                   getComponentNameFromType(Component)
                 );
@@ -16026,6 +16538,7 @@ var require_react_dom_development = __commonJS({
                 checkPropTypes(
                   innerPropTypes,
                   nextProps,
+                  // Resolved props
                   "prop",
                   getComponentNameFromType(Component)
                 );
@@ -16246,6 +16759,7 @@ var require_react_dom_development = __commonJS({
                     checkPropTypes(
                       outerPropTypes,
                       resolvedProps,
+                      // Resolved for outer only
                       "prop",
                       getComponentNameFromType(Component)
                     );
@@ -16257,6 +16771,7 @@ var require_react_dom_development = __commonJS({
                 workInProgress2,
                 Component,
                 resolveDefaultProps(Component.type, resolvedProps),
+                // The inner type can have defaults too
                 renderLanes2
               );
               return child;
@@ -16329,7 +16844,11 @@ var require_react_dom_development = __commonJS({
               }
             }
           }
-          if (typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0) {
+          if (
+            // Run these checks in production only if the flag is off.
+            // Eventually we'll delete this branch altogether.
+            typeof value === "object" && value !== null && typeof value.render === "function" && value.$$typeof === void 0
+          ) {
             {
               var _componentName2 = getComponentNameFromType(Component) || "Unknown";
               if (!didWarnAboutModulePatternComponent[_componentName2]) {
@@ -16594,7 +17113,17 @@ var require_react_dom_development = __commonJS({
             children: primaryChildren
           };
           var primaryChildFragment;
-          if ((mode & ConcurrentMode) === NoMode && workInProgress2.child !== currentPrimaryChildFragment) {
+          if (
+            // In legacy mode, we commit the primary tree as if it successfully
+            // completed, even though it's in an inconsistent state.
+            (mode & ConcurrentMode) === NoMode && // Make sure we're on the second pass, i.e. the primary child fragment was
+            // already cloned. In legacy mode, the only case where this isn't true is
+            // when DevTools forces us to display a fallback; we skip the first render
+            // pass entirely and go straight to rendering the fallback. (In Concurrent
+            // Mode, SuspenseList can also trigger this scenario, but this is a legacy-
+            // only codepath.)
+            workInProgress2.child !== currentPrimaryChildFragment
+          ) {
             var progressedPrimaryFragment = workInProgress2.child;
             primaryChildFragment = progressedPrimaryFragment;
             primaryChildFragment.childLanes = NoLanes;
@@ -16674,14 +17203,17 @@ var require_react_dom_development = __commonJS({
                 current2,
                 workInProgress2,
                 renderLanes2,
+                // TODO: When we delete legacy mode, we should make this error argument
+                // required — every concurrent mode path that causes hydration to
+                // de-opt to client rendering should have an error message.
                 null
               );
             }
             if (isSuspenseInstanceFallback(suspenseInstance)) {
-              var digest7, message, stack;
+              var digest8, message, stack;
               {
                 var _getSuspenseInstanceF = getSuspenseInstanceFallbackErrorDetails(suspenseInstance);
-                digest7 = _getSuspenseInstanceF.digest;
+                digest8 = _getSuspenseInstanceF.digest;
                 message = _getSuspenseInstanceF.message;
                 stack = _getSuspenseInstanceF.stack;
               }
@@ -16691,7 +17223,7 @@ var require_react_dom_development = __commonJS({
               } else {
                 error2 = new Error("The server could not finish this Suspense boundary, likely due to an error during server rendering. Switched to client rendering.");
               }
-              var capturedValue = createCapturedValue(error2, digest7, stack);
+              var capturedValue = createCapturedValue(error2, digest8, stack);
               return retrySuspenseComponentWithoutHydrating(current2, workInProgress2, renderLanes2, capturedValue);
             }
             var hasContextChanged2 = includesSomeLane(renderLanes2, current2.childLanes);
@@ -16931,6 +17463,7 @@ var require_react_dom_development = __commonJS({
                 initSuspenseListRenderState(
                   workInProgress2,
                   false,
+                  // isBackwards
                   tail,
                   lastContentRow,
                   tailMode
@@ -16955,8 +17488,10 @@ var require_react_dom_development = __commonJS({
                 initSuspenseListRenderState(
                   workInProgress2,
                   true,
+                  // isBackwards
                   _tail,
                   null,
+                  // last
                   tailMode
                 );
                 break;
@@ -16965,8 +17500,11 @@ var require_react_dom_development = __commonJS({
                 initSuspenseListRenderState(
                   workInProgress2,
                   false,
+                  // isBackwards
                   null,
+                  // tail
                   null,
+                  // last
                   void 0
                 );
                 break;
@@ -17242,11 +17780,14 @@ var require_react_dom_development = __commonJS({
           if (current2 !== null) {
             var oldProps = current2.memoizedProps;
             var newProps = workInProgress2.pendingProps;
-            if (oldProps !== newProps || hasContextChanged() || workInProgress2.type !== current2.type) {
+            if (oldProps !== newProps || hasContextChanged() || // Force a re-render if the implementation changed due to hot reload:
+            workInProgress2.type !== current2.type) {
               didReceiveUpdate = true;
             } else {
               var hasScheduledUpdateOrContext = checkScheduledUpdateOrContext(current2, renderLanes2);
-              if (!hasScheduledUpdateOrContext && (workInProgress2.flags & DidCapture) === NoFlags) {
+              if (!hasScheduledUpdateOrContext && // If this is the second pass of an error or suspense boundary, there
+              // may not be work scheduled on `current`, so we check for this flag.
+              (workInProgress2.flags & DidCapture) === NoFlags) {
                 didReceiveUpdate = false;
                 return attemptEarlyBailoutIfNoScheduledUpdate(current2, workInProgress2, renderLanes2);
               }
@@ -17322,6 +17863,7 @@ var require_react_dom_development = __commonJS({
                     checkPropTypes(
                       outerPropTypes,
                       _resolvedProps3,
+                      // Resolved for outer only
                       "prop",
                       getComponentNameFromType(_type2)
                     );
@@ -17604,7 +18146,11 @@ var require_react_dom_development = __commonJS({
                 } else {
                   if (current2 !== null) {
                     var prevState = current2.memoizedState;
-                    if (!prevState.isDehydrated || (workInProgress2.flags & ForceClientRender) !== NoFlags) {
+                    if (
+                      // Check if this is a client root
+                      !prevState.isDehydrated || // Check if we reverted to client rendering (e.g. due to an error)
+                      (workInProgress2.flags & ForceClientRender) !== NoFlags
+                    ) {
                       workInProgress2.flags |= Snapshot;
                       upgradeHydrationErrorsToRecoverable();
                     }
@@ -17810,7 +18356,12 @@ var require_react_dom_development = __commonJS({
                       bubbleProperties(workInProgress2);
                       return null;
                     }
-                  } else if (now() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane) {
+                  } else if (
+                    // The time it took to render last row is greater than the remaining
+                    // time we have to render. So rendering one more row would likely
+                    // exceed it.
+                    now() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane
+                  ) {
                     workInProgress2.flags |= DidCapture;
                     didSuspendAlready = true;
                     cutOffTailIfNeeded(renderState, false);
@@ -17859,7 +18410,8 @@ var require_react_dom_development = __commonJS({
               if (current2 !== null) {
                 var _prevState = current2.memoizedState;
                 var prevIsHidden = _prevState !== null;
-                if (prevIsHidden !== nextIsHidden && !enableLegacyHidden) {
+                if (prevIsHidden !== nextIsHidden && // LegacyHidden doesn't do any hiding — it only pre-renders.
+                !enableLegacyHidden) {
                   workInProgress2.flags |= Visibility;
                 }
               }
@@ -18946,7 +19498,10 @@ var require_react_dom_development = __commonJS({
               return;
             }
             case OffscreenComponent: {
-              if (deletedFiber.mode & ConcurrentMode) {
+              if (
+                // TODO: Remove this dead flag
+                deletedFiber.mode & ConcurrentMode
+              ) {
                 var prevOffscreenSubtreeWasHidden = offscreenSubtreeWasHidden;
                 offscreenSubtreeWasHidden = prevOffscreenSubtreeWasHidden || deletedFiber.memoizedState !== null;
                 recursivelyTraverseDeletionEffects(finishedRoot, nearestMountedAncestor, deletedFiber);
@@ -19192,7 +19747,10 @@ var require_react_dom_development = __commonJS({
             }
             case OffscreenComponent: {
               var _wasHidden = current2 !== null && current2.memoizedState !== null;
-              if (finishedWork.mode & ConcurrentMode) {
+              if (
+                // TODO: Remove this dead flag
+                finishedWork.mode & ConcurrentMode
+              ) {
                 var prevOffscreenSubtreeWasHidden = offscreenSubtreeWasHidden;
                 offscreenSubtreeWasHidden = prevOffscreenSubtreeWasHidden || _wasHidden;
                 recursivelyTraverseMutationEffects(root3, finishedWork);
@@ -19296,6 +19854,7 @@ var require_react_dom_development = __commonJS({
                   nextEffect = child;
                   commitLayoutEffects_begin(
                     child,
+                    // New root; bubble back up to here and stop.
                     root3,
                     committedLanes
                   );
@@ -19738,14 +20297,20 @@ var require_react_dom_development = __commonJS({
         var ReactCurrentActQueue = ReactSharedInternals.ReactCurrentActQueue;
         function isLegacyActEnvironment(fiber) {
           {
-            var isReactActEnvironmentGlobal = typeof IS_REACT_ACT_ENVIRONMENT !== "undefined" ? IS_REACT_ACT_ENVIRONMENT : void 0;
+            var isReactActEnvironmentGlobal = (
+              // $FlowExpectedError – Flow doesn't know about IS_REACT_ACT_ENVIRONMENT global
+              typeof IS_REACT_ACT_ENVIRONMENT !== "undefined" ? IS_REACT_ACT_ENVIRONMENT : void 0
+            );
             var jestIsDefined = typeof jest !== "undefined";
             return jestIsDefined && isReactActEnvironmentGlobal !== false;
           }
         }
         function isConcurrentActEnvironment() {
           {
-            var isReactActEnvironmentGlobal = typeof IS_REACT_ACT_ENVIRONMENT !== "undefined" ? IS_REACT_ACT_ENVIRONMENT : void 0;
+            var isReactActEnvironmentGlobal = (
+              // $FlowExpectedError – Flow doesn't know about IS_REACT_ACT_ENVIRONMENT global
+              typeof IS_REACT_ACT_ENVIRONMENT !== "undefined" ? IS_REACT_ACT_ENVIRONMENT : void 0
+            );
             if (!isReactActEnvironmentGlobal && ReactCurrentActQueue.current !== null) {
               error("The current testing environment is not configured to support act(...)");
             }
@@ -19754,10 +20319,22 @@ var require_react_dom_development = __commonJS({
         }
         var ceil = Math.ceil;
         var ReactCurrentDispatcher$2 = ReactSharedInternals.ReactCurrentDispatcher, ReactCurrentOwner$2 = ReactSharedInternals.ReactCurrentOwner, ReactCurrentBatchConfig$3 = ReactSharedInternals.ReactCurrentBatchConfig, ReactCurrentActQueue$1 = ReactSharedInternals.ReactCurrentActQueue;
-        var NoContext = 0;
-        var BatchedContext = 1;
-        var RenderContext = 2;
-        var CommitContext = 4;
+        var NoContext = (
+          /*             */
+          0
+        );
+        var BatchedContext = (
+          /*               */
+          1
+        );
+        var RenderContext = (
+          /*                */
+          2
+        );
+        var CommitContext = (
+          /*                */
+          4
+        );
         var RootInProgress = 0;
         var RootFatalErrored = 1;
         var RootErrored = 2;
@@ -19888,7 +20465,8 @@ var require_react_dom_development = __commonJS({
               }
             }
             ensureRootIsScheduled(root3, eventTime);
-            if (lane === SyncLane && executionContext === NoContext && (fiber.mode & ConcurrentMode) === NoMode && !ReactCurrentActQueue$1.isBatchingLegacy) {
+            if (lane === SyncLane && executionContext === NoContext && (fiber.mode & ConcurrentMode) === NoMode && // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.
+            !ReactCurrentActQueue$1.isBatchingLegacy) {
               resetRenderTimer();
               flushSyncCallbacksOnlyInLegacyMode();
             }
@@ -19901,7 +20479,11 @@ var require_react_dom_development = __commonJS({
           ensureRootIsScheduled(root3, eventTime);
         }
         function isUnsafeClassRenderPhaseUpdate(fiber) {
-          return (executionContext & RenderContext) !== NoContext;
+          return (
+            // TODO: Remove outdated deferRenderPhaseUpdateToNextBatch experiment. We
+            // decided not to enable it.
+            (executionContext & RenderContext) !== NoContext
+          );
         }
         function ensureRootIsScheduled(root3, currentTime) {
           var existingCallbackNode = root3.callbackNode;
@@ -19917,7 +20499,10 @@ var require_react_dom_development = __commonJS({
           }
           var newCallbackPriority = getHighestPriorityLane(nextLanes);
           var existingCallbackPriority = root3.callbackPriority;
-          if (existingCallbackPriority === newCallbackPriority && !(ReactCurrentActQueue$1.current !== null && existingCallbackNode !== fakeActCallbackNode)) {
+          if (existingCallbackPriority === newCallbackPriority && // Special case related to `act`. If the currently scheduled task is a
+          // Scheduler task, rather than an `act` task, cancel it and re-scheduled
+          // on the `act` queue.
+          !(ReactCurrentActQueue$1.current !== null && existingCallbackNode !== fakeActCallbackNode)) {
             {
               if (existingCallbackNode == null && existingCallbackPriority !== SyncLane) {
                 error("Expected scheduled callback to exist. This error is likely caused by a bug in React. Please file an issue.");
@@ -20082,7 +20667,8 @@ var require_react_dom_development = __commonJS({
             }
             case RootSuspended: {
               markRootSuspended$1(root3, lanes);
-              if (includesOnlyRetries(lanes) && !shouldForceFlushFallbacksInDEV()) {
+              if (includesOnlyRetries(lanes) && // do not delay if we're inside an act() scope
+              !shouldForceFlushFallbacksInDEV()) {
                 var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now();
                 if (msUntilTimeout > 10) {
                   var nextLanes = getNextLanes(root3, NoLanes);
@@ -20232,7 +20818,8 @@ var require_react_dom_development = __commonJS({
             return fn(a);
           } finally {
             executionContext = prevExecutionContext;
-            if (executionContext === NoContext && !ReactCurrentActQueue$1.isBatchingLegacy) {
+            if (executionContext === NoContext && // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.
+            !ReactCurrentActQueue$1.isBatchingLegacy) {
               resetRenderTimer();
               flushSyncCallbacksOnlyInLegacyMode();
             }
@@ -20717,10 +21304,10 @@ var require_react_dom_development = __commonJS({
             for (var i = 0; i < recoverableErrors.length; i++) {
               var recoverableError = recoverableErrors[i];
               var componentStack = recoverableError.stack;
-              var digest7 = recoverableError.digest;
+              var digest8 = recoverableError.digest;
               onRecoverableError(recoverableError.value, {
                 componentStack,
-                digest: digest7
+                digest: digest8
               });
             }
           }
@@ -21852,6 +22439,7 @@ var require_react_dom_development = __commonJS({
           fiber.stateNode = {
             containerInfo: portal.containerInfo,
             pendingChildren: null,
+            // Used by persistent updates
             implementation: portal.implementation
           };
           return fiber;
@@ -21953,6 +22541,7 @@ var require_react_dom_development = __commonJS({
               element: initialChildren,
               isDehydrated: hydrate2,
               cache: null,
+              // not enabled yet
               transitions: null,
               pendingSuspenseBoundaries: null
             };
@@ -21968,6 +22557,7 @@ var require_react_dom_development = __commonJS({
             checkKeyStringCoercion(key);
           }
           return {
+            // This tag allow us to uniquely identify this as a React Portal
             $$typeof: REACT_PORTAL_TYPE,
             key: key == null ? null : "" + key,
             children,
@@ -22226,6 +22816,7 @@ var require_react_dom_development = __commonJS({
               }
             } else {
               updated[oldKey] = copyWithRenameImpl(
+                // $FlowFixMe number or string is fine here
                 obj[oldKey],
                 oldPath,
                 newPath,
@@ -22383,15 +22974,23 @@ var require_react_dom_development = __commonJS({
             currentDispatcherRef: ReactCurrentDispatcher2,
             findHostInstanceByFiber,
             findFiberByHostInstance: findFiberByHostInstance || emptyFindFiberByHostInstance,
+            // React Refresh
             findHostInstancesForRefresh,
             scheduleRefresh,
             scheduleRoot,
             setRefreshHandler,
+            // Enables DevTools to append owner stacks to error messages in DEV mode.
             getCurrentFiber: getCurrentFiberForDevTools,
+            // Enables DevTools to detect reconciler version rather than renderer version
+            // which may not match for third party renderers.
             reconcilerVersion: ReactVersion
           });
         }
-        var defaultOnRecoverableError = typeof reportError === "function" ? reportError : function(error2) {
+        var defaultOnRecoverableError = typeof reportError === "function" ? (
+          // In modern browsers, reportError will dispatch an error event,
+          // emulating an uncaught JavaScript error.
+          reportError
+        ) : function(error2) {
           console["error"](error2);
         };
         function ReactDOMRoot(internalRoot) {
@@ -22599,9 +23198,13 @@ var require_react_dom_development = __commonJS({
               container,
               LegacyRoot,
               null,
+              // hydrationCallbacks
               false,
+              // isStrictMode
               false,
+              // concurrentUpdatesByDefaultOverride,
               "",
+              // identifierPrefix
               noopOnRecoverableError
             );
             container._reactRootContainer = root3;
@@ -22626,9 +23229,13 @@ var require_react_dom_development = __commonJS({
               container,
               LegacyRoot,
               null,
+              // hydrationCallbacks
               false,
+              // isStrictMode
               false,
+              // concurrentUpdatesByDefaultOverride,
               "",
+              // identifierPrefix
               noopOnRecoverableError
             );
             container._reactRootContainer = _root;
@@ -22776,7 +23383,9 @@ var require_react_dom_development = __commonJS({
         setGetCurrentUpdatePriority(getCurrentUpdatePriority);
         setAttemptHydrationAtPriority(runWithPriority);
         {
-          if (typeof Map !== "function" || Map.prototype == null || typeof Map.prototype.forEach !== "function" || typeof Set !== "function" || Set.prototype == null || typeof Set.prototype.clear !== "function" || typeof Set.prototype.forEach !== "function") {
+          if (typeof Map !== "function" || // $FlowIssue Flow incorrectly thinks Map has no prototype
+          Map.prototype == null || typeof Map.prototype.forEach !== "function" || typeof Set !== "function" || // $FlowIssue Flow incorrectly thinks Set has no prototype
+          Set.prototype == null || typeof Set.prototype.clear !== "function" || typeof Set.prototype.forEach !== "function") {
             error("React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills");
           }
         }
@@ -22794,6 +23403,8 @@ var require_react_dom_development = __commonJS({
         }
         var Internals = {
           usingClientEntryPoint: false,
+          // Keep in sync with ReactTestUtils.js.
+          // This is an array for better minification.
           Events: [getInstanceFromNode, getNodeFromInstance, getFiberCurrentPropsFromNode, enqueueStateRestore, restoreStateIfNeeded, batchedUpdates$1]
         };
         function createRoot$1(container, options2) {
@@ -22900,50 +23511,6 @@ var require_client = __commonJS({
   }
 });
 
-// node_modules/classnames/index.js
-var require_classnames = __commonJS({
-  "node_modules/classnames/index.js"(exports2, module2) {
-    (function() {
-      "use strict";
-      var hasOwn = {}.hasOwnProperty;
-      function classNames2() {
-        var classes = [];
-        for (var i = 0; i < arguments.length; i++) {
-          var arg = arguments[i];
-          if (!arg)
-            continue;
-          var argType = typeof arg;
-          if (argType === "string" || argType === "number") {
-            classes.push(arg);
-          } else if (Array.isArray(arg) && arg.length) {
-            var inner = classNames2.apply(null, arg);
-            if (inner) {
-              classes.push(inner);
-            }
-          } else if (argType === "object") {
-            for (var key in arg) {
-              if (hasOwn.call(arg, key) && arg[key]) {
-                classes.push(key);
-              }
-            }
-          }
-        }
-        return classes.join(" ");
-      }
-      if (typeof module2 !== "undefined" && module2.exports) {
-        classNames2.default = classNames2;
-        module2.exports = classNames2;
-      } else if (typeof define === "function" && typeof define.amd === "object" && define.amd) {
-        define("classnames", [], function() {
-          return classNames2;
-        });
-      } else {
-        window.classNames = classNames2;
-      }
-    })();
-  }
-});
-
 // node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js
 var require_react_is_development = __commonJS({
   "node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js"(exports2) {
@@ -22971,7 +23538,8 @@ var require_react_is_development = __commonJS({
         var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for("react.responder") : 60118;
         var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for("react.scope") : 60119;
         function isValidElementType(type) {
-          return typeof type === "string" || typeof type === "function" || type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === "object" && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+          return typeof type === "string" || typeof type === "function" || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+          type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === "object" && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
         }
         function typeOf(object) {
           if (typeof object === "object" && object !== null) {
@@ -23189,6 +23757,13 @@ var require_ReactPropTypesSecret = __commonJS({
   }
 });
 
+// node_modules/prop-types/lib/has.js
+var require_has = __commonJS({
+  "node_modules/prop-types/lib/has.js"(exports2, module2) {
+    module2.exports = Function.call.bind(Object.prototype.hasOwnProperty);
+  }
+});
+
 // node_modules/prop-types/checkPropTypes.js
 var require_checkPropTypes = __commonJS({
   "node_modules/prop-types/checkPropTypes.js"(exports2, module2) {
@@ -23198,7 +23773,7 @@ var require_checkPropTypes = __commonJS({
     if (true) {
       ReactPropTypesSecret = require_ReactPropTypesSecret();
       loggedTypeFailures = {};
-      has = Function.call.bind(Object.prototype.hasOwnProperty);
+      has = require_has();
       printWarning = function(text) {
         var message = "Warning: " + text;
         if (typeof console !== "undefined") {
@@ -23221,7 +23796,7 @@ var require_checkPropTypes = __commonJS({
             try {
               if (typeof typeSpecs[typeSpecName] !== "function") {
                 var err = Error(
-                  (componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`."
+                  (componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`."
                 );
                 err.name = "Invariant Violation";
                 throw err;
@@ -23262,8 +23837,8 @@ var require_factoryWithTypeCheckers = __commonJS({
     var ReactIs = require_react_is();
     var assign = require_object_assign();
     var ReactPropTypesSecret = require_ReactPropTypesSecret();
+    var has = require_has();
     var checkPropTypes = require_checkPropTypes();
-    var has = Function.call.bind(Object.prototype.hasOwnProperty);
     var printWarning = function() {
     };
     if (true) {
@@ -23293,6 +23868,7 @@ var require_factoryWithTypeCheckers = __commonJS({
       var ANONYMOUS = "<<anonymous>>";
       var ReactPropTypes = {
         array: createPrimitiveTypeChecker("array"),
+        bigint: createPrimitiveTypeChecker("bigint"),
         bool: createPrimitiveTypeChecker("boolean"),
         func: createPrimitiveTypeChecker("function"),
         number: createPrimitiveTypeChecker("number"),
@@ -23318,8 +23894,9 @@ var require_factoryWithTypeCheckers = __commonJS({
           return x !== x && y !== y;
         }
       }
-      function PropTypeError(message) {
+      function PropTypeError(message, data) {
         this.message = message;
+        this.data = data && typeof data === "object" ? data : {};
         this.stack = "";
       }
       PropTypeError.prototype = Error.prototype;
@@ -23340,7 +23917,8 @@ var require_factoryWithTypeCheckers = __commonJS({
               throw err;
             } else if (typeof console !== "undefined") {
               var cacheKey = componentName + ":" + propName;
-              if (!manualPropTypeCallCache[cacheKey] && manualPropTypeWarningCount < 3) {
+              if (!manualPropTypeCallCache[cacheKey] && // Avoid spamming the console because they are often not actionable except for lib authors
+              manualPropTypeWarningCount < 3) {
                 printWarning(
                   "You are manually calling a React.PropTypes validation function for the `" + propFullName + "` prop on `" + componentName + "`. This is deprecated and will throw in the standalone `prop-types` package. You may be seeing this warning due to a third-party PropTypes library. See https://fb.me/react-warning-dont-call-proptypes for details."
                 );
@@ -23371,7 +23949,10 @@ var require_factoryWithTypeCheckers = __commonJS({
           var propType = getPropType(propValue);
           if (propType !== expectedType) {
             var preciseType = getPreciseType(propValue);
-            return new PropTypeError("Invalid " + location + " `" + propFullName + "` of type " + ("`" + preciseType + "` supplied to `" + componentName + "`, expected ") + ("`" + expectedType + "`."));
+            return new PropTypeError(
+              "Invalid " + location + " `" + propFullName + "` of type " + ("`" + preciseType + "` supplied to `" + componentName + "`, expected ") + ("`" + expectedType + "`."),
+              { expectedType }
+            );
           }
           return null;
         }
@@ -23501,13 +24082,19 @@ var require_factoryWithTypeCheckers = __commonJS({
           }
         }
         function validate(props, propName, componentName, location, propFullName) {
+          var expectedTypes = [];
           for (var i2 = 0; i2 < arrayOfTypeCheckers.length; i2++) {
             var checker2 = arrayOfTypeCheckers[i2];
-            if (checker2(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+            var checkerResult = checker2(props, propName, componentName, location, propFullName, ReactPropTypesSecret);
+            if (checkerResult == null) {
               return null;
             }
+            if (checkerResult.data && has(checkerResult.data, "expectedType")) {
+              expectedTypes.push(checkerResult.data.expectedType);
+            }
           }
-          return new PropTypeError("Invalid " + location + " `" + propFullName + "` supplied to " + ("`" + componentName + "`."));
+          var expectedTypesMessage = expectedTypes.length > 0 ? ", expected one of type [" + expectedTypes.join(", ") + "]" : "";
+          return new PropTypeError("Invalid " + location + " `" + propFullName + "` supplied to " + ("`" + componentName + "`" + expectedTypesMessage + "."));
         }
         return createChainableTypeChecker(validate);
       }
@@ -23520,6 +24107,11 @@ var require_factoryWithTypeCheckers = __commonJS({
         }
         return createChainableTypeChecker(validate);
       }
+      function invalidValidatorError(componentName, location, propFullName, key, type) {
+        return new PropTypeError(
+          (componentName || "React class") + ": " + location + " type `" + propFullName + "." + key + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + type + "`."
+        );
+      }
       function createShapeTypeChecker(shapeTypes) {
         function validate(props, propName, componentName, location, propFullName) {
           var propValue = props[propName];
@@ -23529,8 +24121,8 @@ var require_factoryWithTypeCheckers = __commonJS({
           }
           for (var key in shapeTypes) {
             var checker = shapeTypes[key];
-            if (!checker) {
-              continue;
+            if (typeof checker !== "function") {
+              return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
             }
             var error = checker(propValue, key, componentName, location, propFullName + "." + key, ReactPropTypesSecret);
             if (error) {
@@ -23551,6 +24143,9 @@ var require_factoryWithTypeCheckers = __commonJS({
           var allKeys = assign({}, props[propName], shapeTypes);
           for (var key in allKeys) {
             var checker = shapeTypes[key];
+            if (has(shapeTypes, key) && typeof checker !== "function") {
+              return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+            }
             if (!checker) {
               return new PropTypeError(
                 "Invalid " + location + " `" + propFullName + "` key `" + key + "` supplied to `" + componentName + "`.\nBad object: " + JSON.stringify(props[propName], null, "  ") + "\nValid keys: " + JSON.stringify(Object.keys(shapeTypes), null, "  ")
@@ -23769,7 +24364,11 @@ var require_react_jsx_runtime_development = __commonJS({
             return true;
           }
           if (typeof type === "object" && type !== null) {
-            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== void 0) {
+            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+            // types supported by any Flight configuration anywhere since
+            // we don't know which Flight build this will end up being used
+            // with.
+            type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== void 0) {
               return true;
             }
           }
@@ -24249,11 +24848,14 @@ var require_react_jsx_runtime_development = __commonJS({
         }
         var ReactElement = function(type, key, ref, self2, source, owner, props) {
           var element = {
+            // This tag allows us to uniquely identify this as a React Element
             $$typeof: REACT_ELEMENT_TYPE,
+            // Built-in properties that belong on the element
             type,
             key,
             ref,
             props,
+            // Record the component responsible for creating this element.
             _owner: owner
           };
           {
@@ -24447,7 +25049,9 @@ var require_react_jsx_runtime_development = __commonJS({
             var propTypes;
             if (typeof type === "function") {
               propTypes = type.propTypes;
-            } else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_MEMO_TYPE)) {
+            } else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+            // Inner props are checked in the reconciler.
+            type.$$typeof === REACT_MEMO_TYPE)) {
               propTypes = type.propTypes;
             } else {
               return;
@@ -24578,22 +25182,43 @@ var require_jsx_runtime = __commonJS({
 var import_react5 = __toESM(require_react(), 1);
 var import_client = __toESM(require_client(), 1);
 
+// node_modules/clsx/dist/clsx.mjs
+function r(e) {
+  var t, f, n = "";
+  if ("string" == typeof e || "number" == typeof e)
+    n += e;
+  else if ("object" == typeof e)
+    if (Array.isArray(e))
+      for (t = 0; t < e.length; t++)
+        e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+    else
+      for (t in e)
+        e[t] && (n && (n += " "), n += t);
+  return n;
+}
+function clsx() {
+  for (var e, t, f = 0, n = ""; f < arguments.length; )
+    (e = arguments[f++]) && (t = r(e)) && (n && (n += " "), n += t);
+  return n;
+}
+
 // lib/react/Button/Button.jsx
-var import_classnames2 = __toESM(require_classnames(), 1);
 var import_prop_types2 = __toESM(require_prop_types(), 1);
 
 // lib/react/Group/Group.jsx
-var import_classnames = __toESM(require_classnames(), 1);
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/Group/Group.module.css.js
-var digest = "00de830701909b32fecc40eb0fb3173a4a7dbfe09570587f1b796fe5a732bcb0";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-BKl6YOHigNGr/form5/lib/react/Group/Group.module.css.js
+var digest = "9959ac54c36c5967d6b13f12b4eadec6289d12e9b905358800942b244f3dab9f";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
 }
 `;
 (function() {
+  if (typeof document === "undefined") {
+    return;
+  }
   if (!document.getElementById(digest)) {
     var el = document.createElement("style");
     el.id = digest;
@@ -24610,18 +25235,21 @@ function Group({
   className,
   ...others
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
-    ...others,
-    className: (0, import_classnames.default)(Group_module_css_default.Group, className),
-    role: "group"
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+    Tag,
+    {
+      ...others,
+      className: clsx(Group_module_css_default.Group, className),
+      role: "group"
+    }
+  );
 }
 Group.displayname = "Form5Group";
 Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-ZO2NoZou8XV1/form5/lib/react/Button/Button.module.css.js
 var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
 var css2 = `._Button_154t5_1 {
 	font: unset;
@@ -24695,6 +25323,9 @@ var css2 = `._Button_154t5_1 {
 }
 `;
 (function() {
+  if (typeof document === "undefined") {
+    return;
+  }
   if (!document.getElementById(digest2)) {
     var el = document.createElement("style");
     el.id = digest2;
@@ -24705,7 +25336,7 @@ var css2 = `._Button_154t5_1 {
 var Button_module_css_default = { "Button": "_Button_154t5_1", "fluid": "_fluid_154t5_9", "ButtonGroup": "_ButtonGroup_154t5_60" };
 
 // lib/react/Button/Button.jsx
-var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
 function Button({
   children: label,
   className,
@@ -24713,17 +25344,20 @@ function Button({
   icon: Icon,
   ...others
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-    ...others,
-    className: (0, import_classnames2.default)(
-      Button_module_css_default.Button,
-      className,
-      {
-        [Button_module_css_default.fluid]: fluid
-      }
-    ),
-    children: !!Icon ? Icon : label
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+    "button",
+    {
+      ...others,
+      className: clsx(
+        Button_module_css_default.Button,
+        className,
+        {
+          [Button_module_css_default.fluid]: fluid
+        }
+      ),
+      children: !!Icon ? Icon : label
+    }
+  );
 }
 Button.displayName = "Form5Button";
 Button.APPEARANCES = {
@@ -24754,13 +25388,7 @@ Button.propTypes = {
   type: import_prop_types2.default.oneOf(Object.values(Button.TYPES)),
   variant: import_prop_types2.default.oneOf(Object.values(Button.VARIANTS))
 };
-Button.Group = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Group, {
-  className: (0, import_classnames2.default)(className, Button_module_css_default.ButtonGroup),
-  ...props
-});
-
-// lib/react/FileInput/FileInput.jsx
-var import_classnames3 = __toESM(require_classnames(), 1);
+Button.Group = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Group, { className: clsx(className, Button_module_css_default.ButtonGroup), ...props });
 
 // node_modules/lodash-es/_arrayMap.js
 function arrayMap(array, iteratee) {
@@ -25570,7 +26198,11 @@ var hasOwnProperty6 = objectProto8.hasOwnProperty;
 function arrayLikeKeys(value, inherited) {
   var isArr = isArray_default(value), isArg = !isArr && isArguments_default(value), isBuff = !isArr && !isArg && isBuffer_default(value), isType = !isArr && !isArg && !isBuff && isTypedArray_default(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes_default(value.length, String) : [], length = result.length;
   for (var key in value) {
-    if ((inherited || hasOwnProperty6.call(value, key)) && !(skipIndexes && (key == "length" || isBuff && (key == "offset" || key == "parent") || isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || isIndex_default(key, length)))) {
+    if ((inherited || hasOwnProperty6.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
+    (key == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
+    isBuff && (key == "offset" || key == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
+    isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || // Skip index properties.
+    isIndex_default(key, length)))) {
       result.push(key);
     }
   }
@@ -26153,7 +26785,7 @@ var map_default = map;
 var import_prop_types3 = __toESM(require_prop_types(), 1);
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/FileInput/FileInput.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-qcC9iV06vty0/form5/lib/react/FileInput/FileInput.module.css.js
 var digest3 = "6f78220d70cc366790b5a736c571ed191928222270c58eccf59e5c662d097c8f";
 var css3 = `._FileInputWrapper_1kmbs_1 {
 	display: flex;
@@ -26196,6 +26828,9 @@ var css3 = `._FileInputWrapper_1kmbs_1 {
 }
 `;
 (function() {
+  if (typeof document === "undefined") {
+    return;
+  }
   if (!document.getElementById(digest3)) {
     var el = document.createElement("style");
     el.id = digest3;
@@ -26206,7 +26841,7 @@ var css3 = `._FileInputWrapper_1kmbs_1 {
 var FileInput_module_css_default = { "FileInputWrapper": "_FileInputWrapper_1kmbs_1", "FileInputPreviews": "_FileInputPreviews_1kmbs_7", "FileInputPreview": "_FileInputPreview_1kmbs_7", "FileInput": "_FileInput_1kmbs_1", "FileInputControl": "_FileInputControl_1kmbs_31", "FileInputButton": "_FileInputButton_1kmbs_35" };
 
 // lib/react/FileInput/FileInput.jsx
-var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
 var FileInput = class extends import_react.PureComponent {
   state = {
     previews: new Array(0)
@@ -26249,58 +26884,51 @@ var FileInput = class extends import_react.PureComponent {
         previews
       }
     } = this;
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-      className: (0, import_classnames3.default)(FileInput_module_css_default.FileInputWrapper, wrapperClassName),
-      children: [
-        !!previews.length && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-          className: (0, import_classnames3.default)(FileInput_module_css_default.FileInputPreviews, previewsClassName),
-          children: map_default(previews, ({
-            file,
-            preview
-          }) => {
-            if (preview)
-              return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("figure", {
-                className: FileInput_module_css_default.FileInputPreview,
-                children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("object", {
-                  data: preview,
-                  type: file.type
-                })
-              }, file.name);
-            if (file)
-              return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-                children: file.name
-              }, file.name);
-          })
-        }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-          className: (0, import_classnames3.default)(FileInput_module_css_default.FileInput, className),
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: clsx(FileInput_module_css_default.FileInputWrapper, wrapperClassName), children: [
+      !!previews.length && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: clsx(FileInput_module_css_default.FileInputPreviews, previewsClassName), children: map_default(previews, ({
+        file,
+        preview
+      }) => {
+        if (preview)
+          return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("figure", { className: FileInput_module_css_default.FileInputPreview, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("object", { data: preview, type: file.type }) }, file.name);
+        if (file)
+          return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { children: file.name }, file.name);
+      }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+        "label",
+        {
+          className: clsx(FileInput_module_css_default.FileInput, className),
           htmlFor: name,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-              appearance: Button.APPEARANCES.BASIC,
-              className: FileInput_module_css_default.FileInputButton,
-              icon,
-              children: label
-            }),
-            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-              accept,
-              className: FileInput_module_css_default.FileInputControl,
-              id: name,
-              multiple,
-              name,
-              onChange: (e) => handleChange(e, onChange),
-              type: "file"
-            })
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              Button,
+              {
+                appearance: Button.APPEARANCES.BASIC,
+                className: FileInput_module_css_default.FileInputButton,
+                icon,
+                children: label
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+              "input",
+              {
+                accept,
+                className: FileInput_module_css_default.FileInputControl,
+                id: name,
+                multiple,
+                name,
+                onChange: (e) => handleChange(e, onChange),
+                type: "file"
+              }
+            )
           ]
-        })
-      ]
-    });
+        }
+      )
+    ] });
   }
 };
 __publicField(FileInput, "defaultProps", {
-  icon: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-    children: "\u{1F4C2}"
-  }),
+  icon: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "\u{1F4C2}" }),
   label: "Select file(s)",
   multiple: false,
   onChange: () => {
@@ -26338,9 +26966,6 @@ function generatePreview(input) {
   }
 }
 
-// lib/react/Input/Input.jsx
-var import_classnames4 = __toESM(require_classnames(), 1);
-
 // node_modules/lodash-es/isEmpty.js
 var mapTag4 = "[object Map]";
 var setTag4 = "[object Set]";
@@ -26369,7 +26994,7 @@ function isEmpty(value) {
 }
 var isEmpty_default = isEmpty;
 
-// lib/react/Input/Input.jsx
+// lib/react/Field/Field.jsx
 var import_prop_types4 = __toESM(require_prop_types(), 1);
 var import_react3 = __toESM(require_react(), 1);
 
@@ -26388,27 +27013,27 @@ function useInteractiveStates({
       setTouched("");
     }
   };
-  const onChange = (e) => {
+  const onChange = () => {
     if (touched !== "") {
       setTouched("");
     }
     if (pristine !== null) {
       setPristine(null);
-      onDirty(e);
+      onDirty(true);
     }
   };
-  const onInvalid = (e) => {
+  const onInvalid = () => {
     if (touched !== "") {
       setTouched("");
     }
   };
-  const onSubmit2 = (e) => {
+  const onSubmit2 = () => {
     if (touched !== null) {
       setTouched(null);
     }
     if (pristine !== "") {
       setPristine("");
-      onPristine(e);
+      onPristine(false);
     }
   };
   return {
@@ -26416,136 +27041,228 @@ function useInteractiveStates({
     onChange,
     onInvalid,
     onSubmit: onSubmit2,
+    /**
+     * @type {''|null}
+     */
     pristine,
+    /**
+     * @type {''|null}
+     */
     touched
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/Input/Input.module.css.js
-var digest4 = "df100b74adb42e5e73de342264cd35fc2e84fe9997cd09e79274e0179edd819b";
-var css4 = `._InputField_1sqqi_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-Q9zCKgKwnEue/form5/lib/react/Button/Button.module.css.js
+var digest4 = "b9d7a398749c0d81cf35ebc54a38ed3389c8e9cdb3ecc5c2d05bea87dbf13cad";
+var css4 = `._Button_154t5_1 {
+	font: unset;
+	border: none;
+	cursor: pointer;
+	padding: var(--default-padding);
+	text-align: center;
+}
+
+._fluid_154t5_9 { width: 100% }
+
+._Button_154t5_1[variant="cta"] {
+	color: var(--colour-background);
+	border-radius: var(--default-border-radius);
+	box-shadow: var(--default-boxshadow);
+	fill: var(--colour-background);
+	text-transform: capitalize;
+}
+._Button_154t5_1[variant="cta"][appearance="affirming"] {
+	background-color: var(--colour-success);
+}
+._Button_154t5_1[variant="cta"][appearance="basic"] {
+	background-color: var(--colour-light);
+	border-color: var(--colour-medium);
+	color: var(--colour-text-deemphasised);
+	fill: var(--colour-text-deemphasised);
+}
+._Button_154t5_1[variant="cta"][appearance="danger"] {
+	background-color: var(--colour-danger);
+}
+._Button_154t5_1[variant="cta"][appearance="primary"] {
+	background-color: var(--colour-primary);
+}
+._Button_154t5_1[variant="cta"][appearance="warning"] {
+	background-color: var(--colour-warning);
+}
+._Button_154t5_1[variant="cta"] > i[role="img"] {
+	font-size: 2em;
+}
+
+._Button_154t5_1[variant="glyph"] {
+	background-color: unset;
+}
+._Button_154t5_1[variant="glyph"][appearance="danger"] {
+	color: var(--colour-danger);
+	fill: var(--colour-danger);
+}
+._Button_154t5_1[variant="glyph"][appearance="primary"] {
+	color: var(--colour-primary);
+	fill: var(--colour-primary);
+}
+._Button_154t5_1[variant="glyph"][appearance="affirming"] {
+	color: var(--colour-success);
+	fill: var(--colour-success);
+}
+._Button_154t5_1[variant="glyph"][appearance="warning"] {
+	color: var(--colour-warning);
+	fill: var(--colour-warning);
+}
+
+._ButtonGroup_154t5_60 > ._Button_154t5_1 {
+	flex: 1;
+}
+._ButtonGroup_154t5_60 > ._Button_154t5_1:not(:last-child) {
+	border-top-right-radius: unset;
+	border-bottom-right-radius: unset;
+}
+._ButtonGroup_154t5_60 > ._Button_154t5_1:not(:first-child) {
+	border-top-left-radius: unset;
+	border-bottom-left-radius: unset;
+}
+`;
+(function() {
+  if (typeof document === "undefined") {
+    return;
+  }
+  if (!document.getElementById(digest4)) {
+    var el = document.createElement("style");
+    el.id = digest4;
+    el.textContent = css4;
+    document.head.appendChild(el);
+  }
+})();
+var Button_module_css_default2 = { "Button": "_Button_154t5_1", "fluid": "_fluid_154t5_9", "ButtonGroup": "_ButtonGroup_154t5_60" };
+
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-xN8fFUOfIoX9/form5/lib/react/Field/Field.module.css.js
+var digest5 = "f3fe8d72ba7b02c1ec579227a9dcbb7a47bba99b9d3f370abc877584f8945078";
+var css5 = `._FieldContainer_gkvdk_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
-._InputField_1sqqi_1[arrangement="inline"] {
+._FieldContainer_gkvdk_1[arrangement="inline"] {
 	align-items: baseline;
 	grid-template-columns: max-content 1fr;
 }
-._InputField_1sqqi_1[arrangement="inline"],
-._InputField_1sqqi_1[arrangement="stacked"] {
+._FieldContainer_gkvdk_1[arrangement="inline"],
+._FieldContainer_gkvdk_1[arrangement="stacked"] {
 	display: grid;
 }
-._InputField_1sqqi_1[arrangement="stacked"] {
+._FieldContainer_gkvdk_1[arrangement="stacked"] {
 	justify-content: space-between;
 }
-._InputField_1sqqi_1[arrangement="compact"],
-._InputField_1sqqi_1[arrangement="stacked"],
-._InputField_1sqqi_1[arrangement="stand-alone"] {
+._FieldContainer_gkvdk_1[arrangement="compact"],
+._FieldContainer_gkvdk_1[arrangement="stacked"],
+._FieldContainer_gkvdk_1[arrangement="stand-alone"] {
 	align-items: baseline;
 }
 
-._InputField_1sqqi_1[arrangement="compact"] {
+._FieldContainer_gkvdk_1[arrangement="compact"] {
 	gap: unset;
 	position: relative;
 }
 
-._InputField_1sqqi_1[variant="cta"],
-._InputField_1sqqi_1[variant="glyph"] {
+._FieldContainer_gkvdk_1[variant="cta"],
+._FieldContainer_gkvdk_1[variant="glyph"] {
 	align-items: stretch;
 	box-shadow: unset;
 	display: flex;
 	padding: unset;
 }
 
-/* After InputField[variant] to override display:flex */
-._InputField_1sqqi_1[arrangement="compact"],
-._InputField_1sqqi_1[arrangement="stand-alone"] {
+/* After FieldContainer[variant] to override display:flex */
+._FieldContainer_gkvdk_1[arrangement="compact"],
+._FieldContainer_gkvdk_1[arrangement="stand-alone"] {
 	display: inline-flex;
 }
 
-._Fluid_1sqqi_40 {
+._Fluid_gkvdk_40 {
 	grid-template-columns: 100%;
 }
 
-._Fluid_1sqqi_40,
-._Fluid_1sqqi_40 ._Input_1sqqi_1 {
+._Fluid_gkvdk_40,
+._Fluid_gkvdk_40 ._Field_gkvdk_1 {
 	flex: 1;
 }
 
 
-._Fluid_1sqqi_40 ._InnerWrapper_1sqqi_50 {
+._Fluid_gkvdk_40 ._InnerWrapper_gkvdk_50 {
 	flex: none;
 }
 
-._Input_1sqqi_1 {
+._Field_gkvdk_1 {
 	background-color: var(--colour-background);
 	border: 1px solid var(--colour-medium);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 }
-._Input_1sqqi_1[variant="cta"]:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
-._Input_1sqqi_1:focus {
+._Field_gkvdk_1[variant="cta"]:focus + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60,
+._Field_gkvdk_1:focus {
 	outline-color: var(--colour-primary);
 }
-._Input_1sqqi_1:disabled {
+._Field_gkvdk_1:disabled {
 	cursor: default;
 }
-._Input_1sqqi_1:disabled,
-._Input_1sqqi_1[readonly] {
+._Field_gkvdk_1:disabled,
+._Field_gkvdk_1[readonly] {
 	background-color: var(--colour-medium);
 	color: var(--colour-muted);
 }
-._Input_1sqqi_1[readonly],
-._Input_1sqqi_1[readonly] + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
+._Field_gkvdk_1[readonly],
+._Field_gkvdk_1[readonly] + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60 {
 	cursor: not-allowed;
 }
-._Input_1sqqi_1:not([variant="cta"]):required + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60::after {
+._Field_gkvdk_1:not([variant="cta"]):required + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60::after {
 	content: '*';
 	margin-left: 0.1em;
 }
 
-._Input_1sqqi_1[type="checkbox"],
-._Input_1sqqi_1[type="radio"] {
+._Field_gkvdk_1[type="checkbox"],
+._Field_gkvdk_1[type="radio"] {
 	margin: unset;
 }
 
-._Input_1sqqi_1[type="color"] {
+._Field_gkvdk_1[type="color"] {
 	box-sizing: content-box;
 }
 
-._Input_1sqqi_1[type="date"],
-._Input_1sqqi_1[type="datetime"],
-._Input_1sqqi_1[type="datetime-local"],
-._Input_1sqqi_1[type="time"] {
+._Field_gkvdk_1[type="date"],
+._Field_gkvdk_1[type="datetime"],
+._Field_gkvdk_1[type="datetime-local"],
+._Field_gkvdk_1[type="time"] {
 	font: inherit;
 }
 
-._Input_1sqqi_1[type="number"] {
+._Field_gkvdk_1[type="number"] {
 	text-align: right;
 }
 
-._Input_1sqqi_1[type="search"] {
+._Field_gkvdk_1[type="search"] {
 	padding:
 		var(--default-padding)
 		calc(var(--default-padding) + 1.5em);
 }
 
-._Input_1sqqi_1[type="search"]::-webkit-search-cancel-button,
-._Input_1sqqi_1[type="search"]::-webkit-search-decoration {
+._Field_gkvdk_1[type="search"]::-webkit-search-cancel-button,
+._Field_gkvdk_1[type="search"]::-webkit-search-decoration {
   appearance: none;
 }
 
-._SearchSubmit_1sqqi_112 {
+._SearchSubmit_gkvdk_112 {
 	left: 0;
 	order: -1;
 	position: absolute;
 }
 
-._SearchReset_1sqqi_118 {
+._SearchReset_gkvdk_118 {
 	position: absolute;
 	right: 0;
 }
 
-select._Input_1sqqi_1 {
+select._Field_gkvdk_1 {
 	appearance: none;
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22currentColor%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20d%3D%22M1.646%204.646a.5.5%200%200%201%20.708%200L8%2010.293l5.646-5.647a.5.5%200%200%201%20.708.708l-6%206a.5.5%200%200%201-.708%200l-6-6a.5.5%200%200%201%200-.708z%22%2F%3E%3C%2Fsvg%3E');
 	background-position: right 0.5em center;
@@ -26554,32 +27271,32 @@ select._Input_1sqqi_1 {
 	padding-right: calc(1em + var(--default-padding)); /* 1em for the icon */
 }
 
-textarea._Input_1sqqi_1 {
+textarea._Field_gkvdk_1 {
 	line-height: inherit;
 }
 
-._InputField_1sqqi_1:not([switch]) ._InnerWrapper_1sqqi_50 {
+._FieldContainer_gkvdk_1:not([switch]) ._InnerWrapper_gkvdk_50 {
 	order: -1;
 }
 
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="cta"]:invalid:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="glyph"]:invalid:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1[variant="cta"]:invalid:focus + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60,
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1[variant="glyph"]:invalid:focus + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60 {
 	outline: 2px solid;
 }
 
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="cta"]:invalid:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="glyph"]:invalid:focus + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1:invalid:focus {
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1[variant="cta"]:invalid:focus + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60,
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1[variant="glyph"]:invalid:focus + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60,
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1:invalid:focus {
 	outline-color: var(--colour-danger);
 }
 
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1:invalid,
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="cta"]:invalid + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1[variant="glyph"]:invalid + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
-._Error_1sqqi_154 {
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1:invalid,
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1[variant="cta"]:invalid + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60,
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1[variant="glyph"]:invalid + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60,
+._Error_gkvdk_154 {
 	border-color: var(--colour-danger);
 }
-._InputField_1sqqi_1[touched] ._Input_1sqqi_1:invalid + ._InnerWrapper_1sqqi_50 {
+._FieldContainer_gkvdk_1[touched] ._Field_gkvdk_1:invalid + ._InnerWrapper_gkvdk_50 {
 	color: var(--colour-danger);
 }
 
@@ -26587,15 +27304,15 @@ textarea._Input_1sqqi_1 {
  * The Element exist in the doc flow in order to get focused by checkValidity, so 'display: none'
  * and the like are not an option.
  */
-._Input_1sqqi_1[variant="cta"],
-._Input_1sqqi_1[variant="glyph"] {
+._Field_gkvdk_1[variant="cta"],
+._Field_gkvdk_1[variant="glyph"] {
 	height: 0;
 	position: absolute;
 	width: 0;
 	z-index: -1;
 }
 
-._Input_1sqqi_1[variant="cta"] + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
+._Field_gkvdk_1[variant="cta"] + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60 {
 	background-color: var(--colour-light);
 	border: 1px solid var(--colour-medium);
 	border-radius: inherit;
@@ -26603,14 +27320,14 @@ textarea._Input_1sqqi_1 {
 	fill: var(--colour-text-deemphasised);
 }
 
-._Input_1sqqi_1[variant="cta"]:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
+._Field_gkvdk_1[variant="cta"]:checked + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60 {
 	background-color: var(--colour-primary);
 	color: var(--colour-background);
 	fill: var(--colour-background);
 }
 
-._Input_1sqqi_1[variant="cta"] + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60,
-._Input_1sqqi_1[variant="glyph"] + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60 {
+._Field_gkvdk_1[variant="cta"] + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60,
+._Field_gkvdk_1[variant="glyph"] + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60 {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
@@ -26618,28 +27335,28 @@ textarea._Input_1sqqi_1 {
 	padding: var(--default-padding);
 }
 
-._Input_1sqqi_1:not(:checked) + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance] {
+._Field_gkvdk_1:not(:checked) + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60[variant="glyph"][appearance] {
 	color: unset;
 	fill: unset;
 }
-._Input_1sqqi_1:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance="danger"] {
+._Field_gkvdk_1:checked + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60[variant="glyph"][appearance="danger"] {
 	color: var(--colour-danger);
 	fill: var(--colour-danger);
 }
-._Input_1sqqi_1:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance="primary"] {
+._Field_gkvdk_1:checked + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60[variant="glyph"][appearance="primary"] {
 	color: var(--colour-primary);
 	fill: var(--colour-primary);
 }
-._Input_1sqqi_1:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance="affirming"] {
+._Field_gkvdk_1:checked + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60[variant="glyph"][appearance="affirming"] {
 	color: var(--colour-success);
 	fill: var(--colour-success);
 }
-._Input_1sqqi_1:checked + ._InnerWrapper_1sqqi_50 > ._Label_1sqqi_60[variant="glyph"][appearance="warning"] {
+._Field_gkvdk_1:checked + ._InnerWrapper_gkvdk_50 > ._Label_gkvdk_60[variant="glyph"][appearance="warning"] {
 	color: var(--colour-warning);
 	fill: var(--colour-warning);
 }
 
-._Input_1sqqi_1[variant="toggle"] {
+._Field_gkvdk_1[variant="toggle"] {
 	align-items: center;
 	appearance: none;
 	-webkit-appearance: none;
@@ -26653,7 +27370,7 @@ textarea._Input_1sqqi_1 {
 	width: 2em;
 }
 
-._Input_1sqqi_1[variant="toggle"]::after {
+._Field_gkvdk_1[variant="toggle"]::after {
 	align-self: flex-end;
 	background-color: #aaa;
 	border-radius: 100%;
@@ -26664,42 +27381,43 @@ textarea._Input_1sqqi_1 {
 	transition-property:
 		background-color,
 		translate;
-	transition-duration: var(--default-transition);
+	transition-duration: var(--default-transition-duration);
+	transition-timing-function: var(--default-transition-easing);
 	translate: calc(-50% + 1px);
 	width: 50%;
 }
 
-._Input_1sqqi_1[variant="toggle"]:checked::after {
+._Field_gkvdk_1[variant="toggle"]:checked::after {
 	background-color: var(--colour-primary);
 	translate: 50%;
 }
 
-._Input_1sqqi_1[variant="toggle"]:disabled::after {
+._Field_gkvdk_1[variant="toggle"]:disabled::after {
 	filter: saturate(0.4);
 }
 
-._Input_1sqqi_1[variant="toggle"][appearance="danger"]:checked::after {
+._Field_gkvdk_1[variant="toggle"][appearance="danger"]:checked::after {
 	background-color: var(--colour-danger);
 }
 
-._Input_1sqqi_1[variant="toggle"][appearance="success"]:checked::after {
+._Field_gkvdk_1[variant="toggle"][appearance="success"]:checked::after {
 	background-color: var(--colour-success);
 }
 
-._InnerWrapper_1sqqi_50 {
+._InnerWrapper_gkvdk_50 {
 	border-radius: inherit;
 	display: flex;
 	flex: 1;
 	position: relative;
 }
 
-._Input_1sqqi_1:focus + ._InnerWrapper_1sqqi_50 > ._Error_1sqqi_154,
-._InputField_1sqqi_1:hover ._Error_1sqqi_154 {
+._Field_gkvdk_1:focus + ._InnerWrapper_gkvdk_50 > ._Error_gkvdk_154,
+._FieldContainer_gkvdk_1:hover ._Error_gkvdk_154 {
 	opacity: 1;
 	pointer-events: all;
 }
 
-._Error_1sqqi_154 {
+._Error_gkvdk_154 {
 	background-color: var(--colour-background);
 	border-radius: var(--default-border-radius);
 	border: 1px solid;
@@ -26714,12 +27432,12 @@ textarea._Input_1sqqi_1 {
 	pointer-events: none;
 	position: absolute;
 	top: 0;
-	transition: opacity var(--default-transition);
+	transition: opacity var(--default-transition-duration) var(--default-transition-easing);
 	translate: 0 calc(-100% - 1em);
 	width: max-content;
 	z-index: 1;
 }
-._Error_1sqqi_154::after {
+._Error_gkvdk_154::after {
 	background-color: inherit;
 	border: inherit;
 	bottom: calc(-0.5em - 2px);
@@ -26735,20 +27453,23 @@ textarea._Input_1sqqi_1 {
 }
 `;
 (function() {
-  if (!document.getElementById(digest4)) {
+  if (typeof document === "undefined") {
+    return;
+  }
+  if (!document.getElementById(digest5)) {
     var el = document.createElement("style");
-    el.id = digest4;
-    el.textContent = css4;
+    el.id = digest5;
+    el.textContent = css5;
     document.head.appendChild(el);
   }
 })();
-var Input_module_css_default = { "InputField": "_InputField_1sqqi_1", "Fluid": "_Fluid_1sqqi_40", "Input": "_Input_1sqqi_1", "InnerWrapper": "_InnerWrapper_1sqqi_50", "Label": "_Label_1sqqi_60", "SearchSubmit": "_SearchSubmit_1sqqi_112", "SearchReset": "_SearchReset_1sqqi_118", "Error": "_Error_1sqqi_154" };
+var Field_module_css_default = { "FieldContainer": "_FieldContainer_gkvdk_1", "Fluid": "_Fluid_gkvdk_40", "Field": "_Field_gkvdk_1", "InnerWrapper": "_InnerWrapper_gkvdk_50", "Label": "_Label_gkvdk_60", "SearchSubmit": "_SearchSubmit_gkvdk_112", "SearchReset": "_SearchReset_gkvdk_118", "Error": "_Error_gkvdk_154" };
 
-// lib/react/Input/Input.jsx
-var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
-function Input({
+// lib/react/Field/Field.jsx
+var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
+function Field({
   appearance = Button.APPEARANCES.PRIMARY,
-  arrangement = Input.ARRANGEMENTS.INLINE,
+  arrangement = Field.ARRANGEMENTS.INLINE,
   as: Tag = "input",
   className,
   fluid,
@@ -26813,125 +27534,115 @@ function Input({
   const isSwitch = switchTypes.has(type);
   const isSearch = type === "search";
   if (isSearch)
-    arrangement = Input.ARRANGEMENTS.COMPACT;
+    arrangement = Field.ARRANGEMENTS.COMPACT;
   if (others.value === null)
     others.value = "";
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-    arrangement,
-    className: (0, import_classnames4.default)(
-      Input_module_css_default.InputField,
-      {
-        [Input_module_css_default.Fluid]: fluid,
-        [Button_module_css_default.Button]: isButton
-      }
-    ),
-    pristine,
-    switch: isSwitch ? "" : null,
-    touched,
-    ...isButton && {
-      variant
-    },
-    children: [
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag, {
-        className: (0, import_classnames4.default)(Input_module_css_default.Input, className),
-        name,
-        id,
-        onInvalid: (e) => {
-          e.nativeEvent.stopImmediatePropagation();
-          setError(e.target.validationMessage);
-          is.onInvalid(e);
-        },
-        readOnly,
-        required,
-        type,
-        variant,
-        ...others
-      }),
-      isSearch && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-            appearance: Button.APPEARANCES.BASIC,
-            className: Input_module_css_default.SearchSubmit,
-            disabled: others.disabled,
-            readOnly,
-            type: Button.TYPES.SUBMIT,
-            variant: Button.VARIANTS.GLYPH,
-            children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              fill: "currentColor",
-              viewBox: "0 0 16 16",
-              style: { height: "0.8em" },
-              children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-                d: "M6.663 0C2.991 0 0 2.991 0 6.663s2.991 6.663 6.663 6.663a6.628 6.628 0 0 0 4.213-1.508l3.978 3.979a.667.667 0 1 0 .943-.943l-3.978-3.978a6.628 6.628 0 0 0 1.507-4.213C13.326 2.991 10.336 0 6.663 0Zm0 1.333a5.32 5.32 0 0 1 5.33 5.33 5.32 5.32 0 0 1-5.33 5.33 5.32 5.32 0 0 1-5.33-5.33 5.32 5.32 0 0 1 5.33-5.33Z"
-              })
-            })
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-            appearance: Button.APPEARANCES.BASIC,
-            className: Input_module_css_default.SearchReset,
-            disabled: others.disabled,
-            readOnly,
-            type: Button.TYPES.RESET,
-            variant: Button.VARIANTS.GLYPH,
-            children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              fill: "currentColor",
-              viewBox: "0 0 16 16",
-              style: { height: "0.8em" },
-              children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
-                d: "M13.162 2.326a.5.5 0 0 0-.349.154L8 7.293 3.187 2.48a.5.5 0 1 0-.707.707L7.293 8 2.48 12.813a.499.499 0 1 0 .707.707L8 8.707l4.813 4.813a.5.5 0 1 0 .707-.707L8.707 8l4.813-4.813a.5.5 0 0 0-.358-.86Z"
-              })
-            })
-          })
-        ]
-      }),
-      (!!label || isInvalid) && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-        className: Input_module_css_default.InnerWrapper,
-        children: [
-          !!label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", {
-            className: (0, import_classnames4.default)(Input_module_css_default.Label, {
-              [Button_module_css_default.Button]: isButton
-            }),
-            htmlFor: id,
-            ...isButton && {
-              appearance,
-              variant
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+    "div",
+    {
+      arrangement,
+      className: clsx(
+        Field_module_css_default.FieldContainer,
+        {
+          [Field_module_css_default.Fluid]: fluid,
+          [Button_module_css_default2.Button]: isButton
+        }
+      ),
+      pristine,
+      switch: isSwitch ? "" : null,
+      touched,
+      ...isButton && {
+        variant
+      },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+          Tag,
+          {
+            className: clsx(Field_module_css_default.Field, className),
+            name,
+            id,
+            onInvalid: (e) => {
+              e.nativeEvent.stopImmediatePropagation();
+              setError(e.target.validationMessage);
+              is.onInvalid(e);
             },
-            children: label
-          }),
-          isInvalid && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("dialog", {
-            className: Input_module_css_default.Error,
-            "data-testid": "input-error",
-            open: true,
-            children: error
-          })
-        ]
-      }),
-      !isEmpty_default(options) && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("datalist", {
-        "data-testid": others.list,
-        id: others.list,
-        children: map_default(options, (label2, key) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-          value: key,
-          children: label2
-        }, key))
-      })
-    ]
-  });
+            readOnly,
+            required,
+            type,
+            variant,
+            ...others
+          }
+        ),
+        isSearch && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            Button,
+            {
+              appearance: Button.APPEARANCES.BASIC,
+              className: Field_module_css_default.SearchSubmit,
+              disabled: others.disabled,
+              readOnly,
+              type: Button.TYPES.SUBMIT,
+              variant: Button.VARIANTS.GLYPH,
+              children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 16 16", style: { height: "0.8em" }, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M6.663 0C2.991 0 0 2.991 0 6.663s2.991 6.663 6.663 6.663a6.628 6.628 0 0 0 4.213-1.508l3.978 3.979a.667.667 0 1 0 .943-.943l-3.978-3.978a6.628 6.628 0 0 0 1.507-4.213C13.326 2.991 10.336 0 6.663 0Zm0 1.333a5.32 5.32 0 0 1 5.33 5.33 5.32 5.32 0 0 1-5.33 5.33 5.32 5.32 0 0 1-5.33-5.33 5.32 5.32 0 0 1 5.33-5.33Z" }) })
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            Button,
+            {
+              appearance: Button.APPEARANCES.BASIC,
+              className: Field_module_css_default.SearchReset,
+              disabled: others.disabled,
+              readOnly,
+              type: Button.TYPES.RESET,
+              variant: Button.VARIANTS.GLYPH,
+              children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 16 16", style: { height: "0.8em" }, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M13.162 2.326a.5.5 0 0 0-.349.154L8 7.293 3.187 2.48a.5.5 0 1 0-.707.707L7.293 8 2.48 12.813a.499.499 0 1 0 .707.707L8 8.707l4.813 4.813a.5.5 0 1 0 .707-.707L8.707 8l4.813-4.813a.5.5 0 0 0-.358-.86Z" }) })
+            }
+          )
+        ] }),
+        (!!label || isInvalid) && /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: Field_module_css_default.InnerWrapper, children: [
+          !!label && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            "label",
+            {
+              className: clsx(Field_module_css_default.Label, {
+                [Button_module_css_default2.Button]: isButton
+              }),
+              htmlFor: id,
+              ...isButton && {
+                appearance,
+                variant
+              },
+              children: label
+            }
+          ),
+          isInvalid && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+            "dialog",
+            {
+              className: Field_module_css_default.Error,
+              "data-testid": "field-error",
+              open: true,
+              children: error
+            }
+          )
+        ] }),
+        !isEmpty_default(options) && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("datalist", { "data-testid": others.list, id: others.list, children: map_default(options, (label2, key) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: key, children: label2 }, key)) })
+      ]
+    }
+  );
 }
-Input.displayName = "Form5Input";
-Input.ARRANGEMENTS = {
+Field.displayName = "Form5Field";
+Field.ARRANGEMENTS = {
   COMPACT: "compact",
   INLINE: "inline",
   STACKED: "stacked",
   STAND_ALONE: "stand-alone"
 };
-Input.VARIANTS = {
+Field.VARIANTS = {
   CTA: Button.VARIANTS.CTA,
   GLYPH: Button.VARIANTS.GLYPH,
   TOGGLE: "toggle"
 };
-Input.propTypes = {
-  arrangement: import_prop_types4.default.oneOf(Object.values(Input.ARRANGEMENTS)),
+Field.propTypes = {
+  arrangement: import_prop_types4.default.oneOf(Object.values(Field.ARRANGEMENTS)),
   as: import_prop_types4.default.elementType,
   fluid: import_prop_types4.default.bool,
   label: import_prop_types4.default.node,
@@ -26939,11 +27650,11 @@ Input.propTypes = {
   onBlur: import_prop_types4.default.func,
   onChange: import_prop_types4.default.func,
   options: import_prop_types4.default.object,
-  variant: import_prop_types4.default.oneOf(Object.values(Input.VARIANTS))
+  variant: import_prop_types4.default.oneOf(Object.values(Field.VARIANTS))
 };
 var buttonVariants = /* @__PURE__ */ new Set([
-  Input.VARIANTS.CTA,
-  Input.VARIANTS.GLYPH
+  Field.VARIANTS.CTA,
+  Field.VARIANTS.GLYPH
 ]);
 var switchTypes = /* @__PURE__ */ new Set([
   "checkbox",
@@ -26981,7 +27692,6 @@ function reduce(collection, iteratee, accumulator) {
 var reduce_default = reduce;
 
 // lib/react/Form/Form.jsx
-var import_classnames5 = __toESM(require_classnames(), 1);
 var import_react4 = __toESM(require_react(), 1);
 var import_prop_types5 = __toESM(require_prop_types(), 1);
 
@@ -26994,7 +27704,10 @@ var FIELD_TAGS = {
 };
 var listNameRgx = /\[\d*\]$/;
 var isListName = (name) => listNameRgx.test(name);
-function composeData(values, element, i, form) {
+function composeData(values, element, i, collection) {
+  const tag = FIELD_TAGS[element.tagName];
+  if (!tag)
+    return values;
   let {
     checked,
     dataTransfer,
@@ -27004,30 +27717,29 @@ function composeData(values, element, i, form) {
     multiple,
     name,
     selectedOptions,
-    tagName,
     type,
     value
   } = element;
-  const tag = FIELD_TAGS[tagName];
-  if (!tag)
-    return values;
   const readOnly = element.hasAttribute("readonly");
+  const { __exclude } = values;
+  delete values.__exclude;
   if (tag === "fieldset")
     return handleFieldset(
-      values,
+      { ...values, ...__exclude && { __exclude } },
       {
+        // SyntheticEvent properties must be passed as values (React aggressively destroys references)
         disabled,
         elements: element.elements,
         name,
         readOnly
       },
       i,
-      form
+      collection
     );
   name ||= id;
   if (!name)
     return values;
-  if (readOnly)
+  if (__exclude && readOnly)
     return values;
   if (values[name] === null)
     return values;
@@ -27063,10 +27775,11 @@ function handleFieldset(values, {
   elements,
   name,
   readOnly
-}, i, form) {
-  if (disabled && readOnly || name) {
+}, i, collection) {
+  const { __exclude } = values;
+  if (disabled && readOnly && __exclude || name) {
     const nestedFieldCount = elements.length;
-    form.splice(
+    collection.splice(
       i + 1,
       nestedFieldCount,
       ...Array(nestedFieldCount).fill({ tagName: "NESTED_FIELD" })
@@ -27078,11 +27791,11 @@ function handleFieldset(values, {
       vs[nestedField.name || nestedField.id] = null;
   }
   if (name) {
-    if (!readOnly)
+    if (!readOnly || readOnly && !__exclude)
       values[name] = reduce_default(
         Array.from(elements),
         composeData,
-        values[name] ?? { __proto__: null }
+        values[name] ?? { __proto__: null, ...__exclude && { __exclude } }
       );
   }
   return values;
@@ -27154,32 +27867,34 @@ function isEmptyValue(val) {
   return typeof val === "undefined" || val === "";
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/lib/react/Form/Form.module.css.js
-var digest5 = "31652bf8e3bf2177ebcb50a9db6960a5c9eb6619d98dc4d202009d9db5b5aa0c";
-var css5 = `._Form_13cn9_1,
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-3g0tm7aWdgk8/form5/lib/react/Form/Form.module.css.js
+var digest6 = "c5eeb0c2155e2588bcd9e8c7e3b1ec23809402651b4fc2c269be20a05ad776d3";
+var css6 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
 	gap: var(--grid-gutter);
 }
 `;
 (function() {
-  if (!document.getElementById(digest5)) {
+  if (typeof document === "undefined") {
+    return;
+  }
+  if (!document.getElementById(digest6)) {
     var el = document.createElement("style");
-    el.id = digest5;
-    el.textContent = css5;
+    el.id = digest6;
+    el.textContent = css6;
     document.head.appendChild(el);
   }
 })();
 var Form_module_css_default = { "Form": "_Form_13cn9_1" };
 
 // lib/react/Form/Form.jsx
-var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
 function Form({
   children,
   className,
   onDirty,
   onPristine,
-  onSubmit: pOnSubmit,
   ...props
 }) {
   const formElm = (0, import_react4.useRef)();
@@ -27190,28 +27905,35 @@ function Form({
     ...is
   } = useInteractiveStates({ onDirty, onPristine });
   props.id ||= props.name;
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("form", {
-    ...props,
-    className: (0, import_classnames5.default)(Form_module_css_default.Form, className),
-    noValidate: true,
-    onBlur: (e) => {
-      if (e.target.form === formElm.current) {
-        is.onBlur(e);
-      }
-    },
-    onChange: is.onChange,
-    onSubmit: (e) => {
-      onSubmit(e, initValues, pOnSubmit);
-      is.onSubmit(e);
-    },
-    ref: (el) => {
-      setup(el, initValues);
-      formElm.current = el;
-    },
-    pristine,
-    touched,
-    children
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+    "form",
+    {
+      ...props,
+      className: clsx(Form_module_css_default.Form, className),
+      noValidate: true,
+      onBlur: (e) => {
+        if (e.target.form === formElm.current) {
+          is.onBlur(e);
+        }
+      },
+      onChange: is.onChange,
+      onReset: (e) => {
+        props.onReset?.(e);
+        is.onSubmit(e);
+      },
+      onSubmit: (e) => {
+        onSubmit(e, initValues, props.onSubmit);
+        is.onSubmit(e);
+      },
+      ref: (el) => {
+        setup(el, initValues);
+        formElm.current = el;
+      },
+      pristine,
+      touched,
+      children
+    }
+  );
 }
 Form.FIELD_TAGS = FIELD_TAGS;
 Form.displayName = "Form5Form";
@@ -27223,17 +27945,19 @@ Form.propTypes = {
 var Form_default = (0, import_react4.memo)(Form);
 function onSubmit(event, initValues, cb) {
   event.preventDefault();
+  if (event.target.hasAttribute("pristine"))
+    return;
   if (!event.target.reportValidity())
     return;
   event.stopPropagation();
-  const values = reduce_default(
+  const all = reduce_default(
     Array.from(event.target.elements),
     composeData,
     { __proto__: null }
   );
-  const delta = deepDiff(initValues.current, values);
-  initValues.current = values;
-  return cb(delta, values, event);
+  const delta = deepDiff(initValues.current, all);
+  initValues.current = all;
+  return cb(delta, all, event);
 }
 function setup(formElement, initValues) {
   if (!formElement || initValues.current)
@@ -27245,9 +27969,9 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-14487-V7S87raZioIY/form5/docs/Demo.module.css.js
-var digest6 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
-var css6 = `._Column_n1l6i_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-PoIisU2zz1BO/form5/docs/Demo.module.css.js
+var digest7 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
+var css7 = `._Column_n1l6i_1 {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
@@ -27278,17 +28002,20 @@ var css6 = `._Column_n1l6i_1 {
 }
 `;
 (function() {
-  if (!document.getElementById(digest6)) {
+  if (typeof document === "undefined") {
+    return;
+  }
+  if (!document.getElementById(digest7)) {
     var el = document.createElement("style");
-    el.id = digest6;
-    el.textContent = css6;
+    el.id = digest7;
+    el.textContent = css7;
     document.head.appendChild(el);
   }
 })();
 var Demo_module_css_default = { "Column": "_Column_n1l6i_1", "Output": "_Output_n1l6i_8", "DataHeading": "_DataHeading_n1l6i_12", "Data": "_Data_n1l6i_12" };
 
 // docs/app.jsx
-var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
 Object.defineProperty(File.prototype, "toJSON", {
   value(...args) {
     return `File { name: '${this.name}', size: ${this.size} bytes }`;
@@ -27298,323 +28025,336 @@ function TestForm() {
   const [{ delta, values }, setData] = (0, import_react5.useState)({ delta: null, values: null });
   const [{ query }, setSearch] = (0, import_react5.useState)({ query: "" });
   const [isDirty, setDirty] = (0, import_react5.useState)(false);
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, {
-    children: [
-      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-        className: Demo_module_css_default.Column,
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-            className: Demo_module_css_default.Output,
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("section", { className: Demo_module_css_default.Column, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: Demo_module_css_default.Output, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("header", { className: Demo_module_css_default.DataHeading, children: "Search" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+          "output",
+          {
+            className: Demo_module_css_default.Data,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-                className: Demo_module_css_default.DataHeading,
-                children: "Search"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("output", {
-                className: Demo_module_css_default.Data,
-                children: [
-                  "query: ",
-                  JSON.stringify(query, null, 2)
-                ]
-              })
+              "query: ",
+              JSON.stringify(query, null, 2)
             ]
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Form_default, {
-            name: "search",
-            role: "search",
-            onReset: setSearch,
-            onSubmit: setSearch,
-            children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-              name: "query",
-              type: "search"
-            })
-          })
-        ]
-      }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-        className: Demo_module_css_default.Column,
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-            className: Demo_module_css_default.Output,
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-                className: Demo_module_css_default.DataHeading,
-                children: "Delta"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("output", {
-                className: Demo_module_css_default.Data,
-                children: JSON.stringify(delta, null, 2)
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-                className: Demo_module_css_default.DataHeading,
-                children: "Current values"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("output", {
-                className: Demo_module_css_default.Data,
-                children: JSON.stringify(values, null, 2)
-              })
-            ]
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Form_default, {
-            className: Demo_module_css_default.Column,
-            name: "test",
-            onDirty: () => setDirty(true),
-            onSubmit: (d, v) => setData({ delta: d, values: v }),
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        Form_default,
+        {
+          name: "search",
+          role: "search",
+          onReset: setSearch,
+          onSubmit: setSearch,
+          children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Field, { name: "query", type: "search" })
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("section", { className: Demo_module_css_default.Column, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: Demo_module_css_default.Output, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("header", { className: Demo_module_css_default.DataHeading, children: "Delta" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          "output",
+          {
+            className: Demo_module_css_default.Data,
+            children: JSON.stringify(delta, null, 2)
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("header", { className: Demo_module_css_default.DataHeading, children: "Current values" }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          "output",
+          {
+            className: Demo_module_css_default.Data,
+            children: JSON.stringify(values, null, 2)
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+        Form_default,
+        {
+          className: Demo_module_css_default.Column,
+          name: "test",
+          onDirty: () => setDirty(true),
+          onSubmit: (d, v) => setData({ delta: d, values: v }),
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              Button,
+              {
                 disabled: !isDirty,
                 title: !isDirty ? "No changes to submit" : null,
                 type: "submit",
                 children: "Submit"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              Field,
+              {
                 defaultValue: "Jacob",
                 fluid: true,
                 label: "Forename",
                 name: "forename",
                 type: "text"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              Field,
+              {
                 defaultValue: "Jingleheimer",
                 fluid: true,
                 label: "Surname",
                 name: "surname",
                 type: "text"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              Field,
+              {
                 as: "textarea",
                 fluid: true,
                 label: "Bio",
                 name: "bio"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              Field,
+              {
                 fluid: true,
                 label: "Age",
                 name: "age",
                 type: "number"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+              "fieldset",
+              {
                 name: "contact",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                    fluid: true,
-                    label: "Email",
-                    name: "email",
-                    placeholder: "john.doe@example.com",
-                    required: true,
-                    type: "email"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                    fluid: true,
-                    label: "Phone",
-                    name: "phoneNumber",
-                    onKeyPress: ({ target }) => {
-                      target.value = target.value.replace(/\D/, "");
-                    },
-                    placeholder: "555-5555-555",
-                    type: "tel"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                    id: "preferEmail",
-                    label: "Prefer email",
-                    name: "preferedContact",
-                    type: "radio",
-                    value: "email"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                    id: "preferPhone",
-                    label: "Prefer phone",
-                    name: "preferedContact",
-                    type: "radio",
-                    value: "phone"
-                  })
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                    Field,
+                    {
+                      fluid: true,
+                      label: "Email",
+                      name: "email",
+                      placeholder: "john.doe@example.com",
+                      required: true,
+                      type: "email"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                    Field,
+                    {
+                      fluid: true,
+                      label: "Phone",
+                      name: "phoneNumber",
+                      onKeyPress: ({ target }) => {
+                        target.value = target.value.replace(/\D/, "");
+                      },
+                      placeholder: "555-5555-555",
+                      type: "tel"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                    Field,
+                    {
+                      id: "preferEmail",
+                      label: "Prefer email",
+                      name: "preferedContact",
+                      type: "radio",
+                      value: "email"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                    Field,
+                    {
+                      id: "preferPhone",
+                      label: "Prefer phone",
+                      name: "preferedContact",
+                      type: "radio",
+                      value: "phone"
+                    }
+                  )
                 ]
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Input, {
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+              Field,
+              {
                 as: "select",
                 label: "Current continent",
                 name: "continent",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                    value: "AF",
-                    children: "Africa"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                    value: "AN",
-                    children: "Antarctica"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                    value: "AS",
-                    children: "Asia"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                    value: "EU",
-                    children: "Europe"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                    value: "NA",
-                    children: "North America"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                    value: "OC",
-                    children: "Oceania"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("option", {
-                    value: "SA",
-                    children: "South America"
-                  })
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "AF", children: "Africa" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "AN", children: "Antarctica" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "AS", children: "Asia" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "EU", children: "Europe" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "NA", children: "North America" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "OC", children: "Oceania" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("option", { value: "SA", children: "South America" })
                 ]
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("fieldset", {
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("legend", {
-                    className: "required",
-                    children: "Favourite colour"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button.Group, {
-                    children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                        id: "favouriteBlue",
-                        label: "blue",
-                        name: "favouriteColour",
-                        required: true,
-                        type: "radio",
-                        value: "blue",
-                        variant: Input.VARIANTS.CTA
-                      }),
-                      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                        id: "favouriteGreen",
-                        label: "green",
-                        name: "favouriteColour",
-                        type: "radio",
-                        value: "green",
-                        variant: Input.VARIANTS.CTA
-                      }),
-                      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-                        id: "favouriteRed",
-                        label: "red",
-                        name: "favouriteColour",
-                        type: "radio",
-                        value: "red",
-                        variant: Input.VARIANTS.CTA
-                      })
-                    ]
-                  })
-                ]
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("fieldset", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("legend", { className: "required", children: "Favourite colour" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(Button.Group, { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                  Field,
+                  {
+                    id: "favouriteBlue",
+                    label: "blue",
+                    name: "favouriteColour",
+                    required: true,
+                    type: "radio",
+                    value: "blue",
+                    variant: Field.VARIANTS.CTA
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                  Field,
+                  {
+                    id: "favouriteGreen",
+                    label: "green",
+                    name: "favouriteColour",
+                    type: "radio",
+                    value: "green",
+                    variant: Field.VARIANTS.CTA
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+                  Field,
+                  {
+                    id: "favouriteRed",
+                    label: "red",
+                    name: "favouriteColour",
+                    type: "radio",
+                    value: "red",
+                    variant: Field.VARIANTS.CTA
+                  }
+                )
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              Field,
+              {
                 label: "Favourite date",
                 name: "favouriteDate",
                 type: "date"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              Field,
+              {
                 label: "Togglable",
                 name: "togglable",
                 type: "checkbox",
-                variant: Input.VARIANTS.TOGGLE
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+                variant: Field.VARIANTS.TOGGLE
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              Field,
+              {
                 checked: true,
                 label: "Read-only",
                 name: "readonly",
                 readOnly: true,
                 type: "checkbox",
-                variant: Input.VARIANTS.TOGGLE
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileInput, {
+                variant: Field.VARIANTS.TOGGLE
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+              FileInput,
+              {
                 icon: "\u{1F4C2}",
                 label: "Profile photo",
                 name: "profilePhoto"
-              }),
-              /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button.Group, {
-                children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-                    appearance: Button.APPEARANCES.WARNING,
-                    children: "Group"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-                    appearance: Button.APPEARANCES.BASIC,
-                    children: "of"
-                  }),
-                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-                    appearance: Button.APPEARANCES.AFFIRMING,
-                    children: "Buttons"
-                  })
-                ]
-              })
-            ]
-          })
-        ]
-      })
-    ]
-  });
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(Button.Group, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Button, { appearance: Button.APPEARANCES.WARNING, children: "Group" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Button, { appearance: Button.APPEARANCES.BASIC, children: "of" }),
+              /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Button, { appearance: Button.APPEARANCES.AFFIRMING, children: "Buttons" })
+            ] })
+          ]
+        }
+      )
+    ] })
+  ] });
 }
-(0, import_client.createRoot)(document.getElementById("app")).render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TestForm, {}));
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
+(0, import_client.createRoot)(document.getElementById("app")).render(/* @__PURE__ */ (0, import_jsx_runtime6.jsx)(TestForm, {}));
+/*! Bundled license information:
+
+react/cjs/react.development.js:
+  (**
+   * @license React
+   * react.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   *)
+
+scheduler/cjs/scheduler.development.js:
+  (**
+   * @license React
+   * scheduler.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   *)
+
+react-dom/cjs/react-dom.development.js:
+  (**
+   * @license React
+   * react-dom.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   *)
+  (**
+   * Checks if an event is supported in the current execution environment.
+   *
+   * NOTE: This will not work correctly for non-generic events such as `change`,
+   * `reset`, `load`, `error`, and `select`.
+   *
+   * Borrows from Modernizr.
+   *
+   * @param {string} eventNameSuffix Event name, e.g. "click".
+   * @return {boolean} True if the event is supported.
+   * @internal
+   * @license Modernizr 3.0.0pre (Custom Build) | MIT
+   *)
+
+react-is/cjs/react-is.development.js:
+  (** @license React v16.13.1
+   * react-is.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   *)
+
+object-assign/index.js:
+  (*
+  object-assign
+  (c) Sindre Sorhus
+  @license MIT
+  *)
+
+react/cjs/react-jsx-runtime.development.js:
+  (**
+   * @license React
+   * react-jsx-runtime.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   *)
 */
-/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/**
- * @license React
- * react-dom.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-/**
- * @license React
- * react-jsx-runtime.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-/**
- * @license React
- * react.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-/**
- * @license React
- * scheduler.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-/**
- * Checks if an event is supported in the current execution environment.
- *
- * NOTE: This will not work correctly for non-generic events such as `change`,
- * `reset`, `load`, `error`, and `select`.
- *
- * Borrows from Modernizr.
- *
- * @param {string} eventNameSuffix Event name, e.g. "click".
- * @return {boolean} True if the event is supported.
- * @internal
- * @license Modernizr 3.0.0pre (Custom Build) | MIT
- */
-/** @license React v16.13.1
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
 //# sourceMappingURL=app.js.map

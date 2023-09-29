@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 
 import Button from 'form5/react/Button';
 import FileInput from 'form5/react/FileInput';
-import Input from 'form5/react/Input';
+import Field from 'form5/react/Field';
 import Form from 'form5/react/Form';
 
 import '../node_modules/reset.css/reset.css';
@@ -36,7 +36,7 @@ function TestForm() {
 					onReset={setSearch}
 					onSubmit={setSearch}
 				>
-					<Input name="query" type="search" />
+					<Field name="query" type="search" />
 				</Form>
 			</section>
 
@@ -63,14 +63,14 @@ function TestForm() {
 						type="submit"
 					>Submit</Button>
 
-					<Input
+					<Field
 						defaultValue="Jacob"
 						fluid
 						label="Forename"
 						name="forename"
 						type="text"
 					/>
-					<Input
+					<Field
 						defaultValue="Jingleheimer"
 						fluid
 						label="Surname"
@@ -78,14 +78,14 @@ function TestForm() {
 						type="text"
 					/>
 
-					<Input
+					<Field
 						as="textarea"
 						fluid
 						label="Bio"
 						name="bio"
 					/>
 
-					<Input
+					<Field
 						fluid
 						label="Age"
 						name="age"
@@ -95,7 +95,7 @@ function TestForm() {
 					<fieldset
 						name="contact"
 					>
-						<Input
+						<Field
 							fluid
 							label="Email"
 							name="email"
@@ -103,7 +103,7 @@ function TestForm() {
 							required
 							type="email"
 						/>
-						<Input
+						<Field
 							fluid
 							label="Phone"
 							name="phoneNumber"
@@ -112,14 +112,14 @@ function TestForm() {
 							type="tel"
 						/>
 
-						<Input
+						<Field
 							id="preferEmail"
 							label="Prefer email"
 							name="preferedContact"
 							type="radio"
 							value="email"
 						/>
-						<Input
+						<Field
 							id="preferPhone"
 							label="Prefer phone"
 							name="preferedContact"
@@ -128,7 +128,7 @@ function TestForm() {
 						/>
 					</fieldset>
 
-					<Input
+					<Field
 						as="select"
 						label="Current continent"
 						name="continent"
@@ -140,62 +140,62 @@ function TestForm() {
 						<option value="NA">North America</option>
 						<option value="OC">Oceania</option>
 						<option value="SA">South America</option>
-					</Input>
+					</Field>
 
 					<fieldset>
 						<legend className="required">Favourite colour</legend>
 
 						<Button.Group>
-							<Input
+							<Field
 								id="favouriteBlue"
 								label="blue"
 								name="favouriteColour"
 								required
 								type="radio"
 								value="blue"
-								variant={Input.VARIANTS.CTA}
+								variant={Field.VARIANTS.CTA}
 							/>
 
-							<Input
+							<Field
 								id="favouriteGreen"
 								label="green"
 								name="favouriteColour"
 								type="radio"
 								value="green"
-								variant={Input.VARIANTS.CTA}
+								variant={Field.VARIANTS.CTA}
 							/>
 
-							<Input
+							<Field
 								id="favouriteRed"
 								label="red"
 								name="favouriteColour"
 								type="radio"
 								value="red"
-								variant={Input.VARIANTS.CTA}
+								variant={Field.VARIANTS.CTA}
 							/>
 						</Button.Group>
 					</fieldset>
 
-					<Input
+					<Field
 						label="Favourite date"
 						name="favouriteDate"
 						type="date"
 					/>
 
-					<Input
+					<Field
 						label="Togglable"
 						name="togglable"
 						type="checkbox"
-						variant={Input.VARIANTS.TOGGLE}
+						variant={Field.VARIANTS.TOGGLE}
 					/>
 
-					<Input
+					<Field
 						checked
 						label="Read-only"
 						name="readonly"
 						readOnly
 						type="checkbox"
-						variant={Input.VARIANTS.TOGGLE}
+						variant={Field.VARIANTS.TOGGLE}
 					/>
 
 					<FileInput
