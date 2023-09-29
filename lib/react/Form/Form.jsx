@@ -102,6 +102,8 @@ export default memo(Form);
 export function onSubmit(event, initValues, cb) {
 	event.preventDefault();
 
+	if (event.target.hasAttribute('pristine')) return;
+
 	if (!event.target.reportValidity()) return;
 
 	event.stopPropagation();
