@@ -239,7 +239,8 @@ textarea.Field {
 	transition-property:
 		background-color,
 		translate;
-	transition-duration: var(--default-transition);
+	transition-duration: var(--default-transition-duration);
+	transition-timing-function: var(--default-transition-easing);
 	translate: calc(-50% + 1px);
 	width: 50%;
 }
@@ -289,7 +290,7 @@ textarea.Field {
 	pointer-events: none;
 	position: absolute;
 	top: 0;
-	transition: opacity var(--default-transition);
+	transition: opacity var(--default-transition-duration) var(--default-transition-easing);
 	translate: 0 calc(-100% - 1em);
 	width: max-content;
 	z-index: 1;

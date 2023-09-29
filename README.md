@@ -60,8 +60,9 @@ css var | purpose
 `--default-border-radius` | field corner rounding
 `--default-boxshadow` | drop shadow on buttons and fields
 `--default-padding` | inner spacing of fields and minimum inner spacing for buttons
-`--default-transition` | css transitions applied to changes on buttons and fields
-`--grid-gutter` | space between css grid layout cells (labels + fields, fields + fields)
+`--default-transition-duration` | value used for [`transition-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration) on various Fields
+`--default-transition-easing` | value used for [`transition-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function) on various Fields
+`--grid-gutter` | space between css grid layout cells (labels + fields, fields + fields); value used for [`gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
 
 Labels of fields set to required are automatically styled with an "*" in an accessibility-friendly way.
 
