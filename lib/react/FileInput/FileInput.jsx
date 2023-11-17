@@ -155,7 +155,7 @@ export function generatePreview(input) {
 	// `File` doesn't exist in node, so its `createObjectURL` expects a `Blob`
 	// `File` inherits from `Blob`, so checking for `Blob` also catches `File`
 	if (input instanceof Blob) {
-		if (input.type.match('^(audio|application|image|video)\/.*')) {
+		if (PREVIEWABLE_MIME_REGEX.test(input.type)) {
 			output.preview = URL.createObjectURL(input);
 		}
 		return output;
@@ -169,7 +169,7 @@ export function generatePreview(input) {
 				|| input.startsWith('file')
 			)
 		) throw 'not a URL';
-		const name = (new URL(input)).pathname.split('/').pop();
+		const name = (new URL(input)).pathname.split('/').at(-1);
 
 		output.file = { name };
 		output.preview = input;
@@ -177,3 +177,5 @@ export function generatePreview(input) {
 		return output;
 	} catch { }
 }
+
+const PREVIEWABLE_MIME_REGEX = /^audio|application(?!\/vnd)|image|video/;
