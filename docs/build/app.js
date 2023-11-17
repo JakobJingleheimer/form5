@@ -25208,8 +25208,8 @@ var import_prop_types2 = __toESM(require_prop_types(), 1);
 // lib/react/Group/Group.jsx
 var import_prop_types = __toESM(require_prop_types(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-BKl6YOHigNGr/form5/lib/react/Group/Group.module.css.js
-var digest = "9959ac54c36c5967d6b13f12b4eadec6289d12e9b905358800942b244f3dab9f";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20424-3RS8lfGU5Yhq/form5/lib/react/Group/Group.module.css.js
+var digest = "c38e4e1e39313365a1c0c8dd1ee3e4553f1d1fea778ced18f860b40ae50dd0c2";
 var css = `._Group_4f7x4_1 {
     display: flex;
     gap: 0.1em;
@@ -25249,7 +25249,7 @@ Group.propTypes = {
   as: import_prop_types.default.elementType
 };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-ZO2NoZou8XV1/form5/lib/react/Button/Button.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20424-QD7Fm7NGOEX6/form5/lib/react/Button/Button.module.css.js
 var digest2 = "ecfd78e5441a35ea89a4d562f171f55004877bd21614ab697e85f161224ef0e2";
 var css2 = `._Button_154t5_1 {
 	font: unset;
@@ -26785,20 +26785,37 @@ var map_default = map;
 var import_prop_types3 = __toESM(require_prop_types(), 1);
 var import_react = __toESM(require_react(), 1);
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-qcC9iV06vty0/form5/lib/react/FileInput/FileInput.module.css.js
-var digest3 = "6f78220d70cc366790b5a736c571ed191928222270c58eccf59e5c662d097c8f";
-var css3 = `._FileInputWrapper_1kmbs_1 {
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20424-1DCWn9t23FUq/form5/lib/react/FileInput/FileInput.module.css.js
+var digest3 = "69463dbde406471c88ea1b60322dd88d10133a5c620ef748a1ada967967b8e3a";
+var css3 = `._FileInput_1ipp2_1 {
+	cursor: pointer;
 	display: flex;
-	flex-flow: column wrap;
+	flex-direction: column;
+	flex-wrap: wrap;
 	gap: calc(var(--grid-gutter) / 2);
 }
 
-._FileInputPreviews_1kmbs_7 {
-	display: flex;
-	flex-flow: column wrap;
+._FileInputPreviews_1ipp2_9 {
+	flex-direction: row;
+	position: relative;
 }
 
-._FileInputPreview_1kmbs_7 {
+._FileInputPreviews_1ipp2_9 > ._FileInputButton_1ipp2_14 {
+	--default-border-radius: unset;
+
+	bottom: 0;
+	opacity: 0;
+	position: absolute;
+	transition-duration: var(--default-transition-duration);
+	transition-property: opacity;
+	transition-timing-function: var(--default-transition-easing);
+}
+
+._FileInputPreviews_1ipp2_9:hover > ._FileInputButton_1ipp2_14 {
+	opacity: 1;
+}
+
+._FileInputPreview_1ipp2_9 {
 	align-content: center;
 	background-image: repeating-conic-gradient(
 		rgb(0 0 0 / 1%) 0% 25%,
@@ -26809,21 +26826,16 @@ var css3 = `._FileInputWrapper_1kmbs_1 {
 	border: 1px solid var(--border-colour-normal);
 	display: flex;
 	justify-content: center;
+	max-width: 100%;
 	width: max-content;
 }
 
-._FileInput_1kmbs_1 {
-	cursor: pointer;
-	display: inline-block;
-}
-
-._FileInputControl_1kmbs_31 {
+._FileInputControl_1ipp2_44 {
 	display: none;
 }
 
-._FileInputButton_1kmbs_35 {
+._FileInputButton_1ipp2_14 {
 	display: block;
-	pointer-events: none;
 	width: 100%;
 }
 `;
@@ -26838,7 +26850,7 @@ var css3 = `._FileInputWrapper_1kmbs_1 {
     document.head.appendChild(el);
   }
 })();
-var FileInput_module_css_default = { "FileInputWrapper": "_FileInputWrapper_1kmbs_1", "FileInputPreviews": "_FileInputPreviews_1kmbs_7", "FileInputPreview": "_FileInputPreview_1kmbs_7", "FileInput": "_FileInput_1kmbs_1", "FileInputControl": "_FileInputControl_1kmbs_31", "FileInputButton": "_FileInputButton_1kmbs_35" };
+var FileInput_module_css_default = { "FileInput": "_FileInput_1ipp2_1", "FileInputPreviews": "_FileInputPreviews_1ipp2_9", "FileInputButton": "_FileInputButton_1ipp2_14", "FileInputPreview": "_FileInputPreview_1ipp2_9", "FileInputControl": "_FileInputControl_1ipp2_44" };
 
 // lib/react/FileInput/FileInput.jsx
 var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
@@ -26856,15 +26868,12 @@ var FileInput = class extends import_react.PureComponent {
     const { files } = e.target;
     if (!files?.length)
       return console.error("[File Preview] Files is empty");
-    this.setState({
-      previews: map_default(files, generatePreview)
-    });
-    cb(e, files);
+    this.setState({ previews: map_default(files, generatePreview) });
+    cb?.(e, files);
   };
   componentWillUnmount() {
-    for (const { preview } of this.state.previews) {
+    for (const { preview } of this.state.previews)
       URL.revokeObjectURL(preview);
-    }
   }
   render() {
     const {
@@ -26876,63 +26885,71 @@ var FileInput = class extends import_react.PureComponent {
         label,
         multiple,
         name,
-        onChange,
-        previewsClassName,
-        wrapperClassName
+        onChange
       },
       state: {
         previews
       }
     } = this;
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: clsx(FileInput_module_css_default.FileInputWrapper, wrapperClassName), children: [
-      !!previews.length && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: clsx(FileInput_module_css_default.FileInputPreviews, previewsClassName), children: map_default(previews, ({
-        file,
-        preview
-      }) => {
-        if (preview)
-          return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("figure", { className: FileInput_module_css_default.FileInputPreview, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("object", { data: preview, type: file.type }) }, file.name);
-        if (file)
-          return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { children: file.name }, file.name);
-      }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-        "label",
-        {
-          className: clsx(FileInput_module_css_default.FileInput, className),
-          htmlFor: name,
-          children: [
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
-              Button,
-              {
-                appearance: Button.APPEARANCES.BASIC,
-                className: FileInput_module_css_default.FileInputButton,
-                icon,
-                children: label
-              }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
-              "input",
-              {
-                accept,
-                className: FileInput_module_css_default.FileInputControl,
-                id: name,
-                multiple,
-                name,
-                onChange: (e) => handleChange(e, onChange),
-                type: "file"
-              }
-            )
-          ]
-        }
-      )
-    ] });
+    let hasMediaPreview = false;
+    const Previews = map_default(previews, ({ file, preview }) => {
+      if (preview) {
+        hasMediaPreview = true;
+        return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+          "object",
+          {
+            className: FileInput_module_css_default.FileInputPreview,
+            data: preview,
+            type: file.type
+          },
+          file.name
+        );
+      }
+      if (file)
+        return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("p", { children: file.name }, file.name);
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
+      "label",
+      {
+        className: clsx(
+          FileInput_module_css_default.FileInput,
+          className,
+          { [FileInput_module_css_default.FileInputPreviews]: hasMediaPreview }
+        ),
+        htmlFor: name,
+        children: [
+          Previews,
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+            "span",
+            {
+              appearance: Button.APPEARANCES.BASIC,
+              className: clsx(Button_module_css_default.Button, FileInput_module_css_default.FileInputButton),
+              title: label,
+              variant: Button.VARIANTS.CTA,
+              children: icon
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+            "input",
+            {
+              accept,
+              className: FileInput_module_css_default.FileInputControl,
+              id: name,
+              multiple,
+              name,
+              onChange: (e) => handleChange(e, onChange),
+              type: "file"
+            }
+          )
+        ]
+      }
+    );
   }
 };
 __publicField(FileInput, "defaultProps", {
-  icon: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("span", { children: "\u{1F4C2}" }),
+  icon: "\u{1F4C2}",
   label: "Select file(s)",
-  multiple: false,
-  onChange: () => {
-  }
+  multiple: false
 });
 FileInput.displayName = "Form5FileInput";
 FileInput.propTypes = {
@@ -26942,15 +26959,13 @@ FileInput.propTypes = {
   label: import_prop_types3.default.string,
   multiple: import_prop_types3.default.bool,
   name: import_prop_types3.default.string.isRequired,
-  onChange: import_prop_types3.default.func,
-  previewsClassName: import_prop_types3.default.string,
-  wrapperClassName: import_prop_types3.default.string
+  onChange: import_prop_types3.default.func
 };
 function generatePreview(input) {
   const output = {};
   output.file = input;
   if (input instanceof Blob) {
-    if (input.type.match("^(audio|application|image|video)/.*")) {
+    if (PREVIEWABLE_MIME_REGEX.test(input.type)) {
       output.preview = URL.createObjectURL(input);
     }
     return output;
@@ -26958,13 +26973,14 @@ function generatePreview(input) {
   try {
     if (typeof input !== "string" && !(input.startsWith("http") || input.startsWith("file")))
       throw "not a URL";
-    const name = new URL(input).pathname.split("/").pop();
+    const name = new URL(input).pathname.split("/").at(-1);
     output.file = { name };
     output.preview = input;
     return output;
   } catch {
   }
 }
+var PREVIEWABLE_MIME_REGEX = /^audio|application(?!\/vnd)|image|video/;
 
 // node_modules/lodash-es/isEmpty.js
 var mapTag4 = "[object Map]";
@@ -27052,8 +27068,8 @@ function useInteractiveStates({
   };
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-Q9zCKgKwnEue/form5/lib/react/Button/Button.module.css.js
-var digest4 = "b9d7a398749c0d81cf35ebc54a38ed3389c8e9cdb3ecc5c2d05bea87dbf13cad";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20424-cvGme3XrySgV/form5/lib/react/Button/Button.module.css.js
+var digest4 = "ae7a5ffbb80e877f7ae01610297026d401d977261e37f8cf4ae4c39f1ad4a97e";
 var css4 = `._Button_154t5_1 {
 	font: unset;
 	border: none;
@@ -27138,8 +27154,8 @@ var css4 = `._Button_154t5_1 {
 })();
 var Button_module_css_default2 = { "Button": "_Button_154t5_1", "fluid": "_fluid_154t5_9", "ButtonGroup": "_ButtonGroup_154t5_60" };
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-xN8fFUOfIoX9/form5/lib/react/Field/Field.module.css.js
-var digest5 = "f3fe8d72ba7b02c1ec579227a9dcbb7a47bba99b9d3f370abc877584f8945078";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20424-BaPbF5SlTZMf/form5/lib/react/Field/Field.module.css.js
+var digest5 = "25f3affcb1ed9b9cfd3878873dd2f71020280106d17c27c4eb7fa6459d66c726";
 var css5 = `._FieldContainer_gkvdk_1 {
 	gap: calc(var(--grid-gutter) / 2);
 }
@@ -27510,8 +27526,12 @@ function Field({
       setError("");
   };
   others.onChange = (e) => {
-    if (readOnly)
-      return;
+    if (readOnly) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.nativeEvent.stopImmediatePropagation();
+      return false;
+    }
     is.onChange(e);
     let {
       checked,
@@ -27867,8 +27887,8 @@ function isEmptyValue(val) {
   return typeof val === "undefined" || val === "";
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-3g0tm7aWdgk8/form5/lib/react/Form/Form.module.css.js
-var digest6 = "c5eeb0c2155e2588bcd9e8c7e3b1ec23809402651b4fc2c269be20a05ad776d3";
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20424-lUQA5abuPAUJ/form5/lib/react/Form/Form.module.css.js
+var digest6 = "70ba3f2b1df4fc187c0b17a6b4116c4445a4aebb944eba14d403b771a6918915";
 var css6 = `._Form_13cn9_1,
 fieldset {
 	display: grid;
@@ -27969,7 +27989,7 @@ function setup(formElement, initValues) {
   );
 }
 
-// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-93209-PoIisU2zz1BO/form5/docs/Demo.module.css.js
+// esbuild-css-modules-plugin-namespace:/var/folders/ft/9v8l3d9x1ks3pv14ygr6qrz80000gn/T/tmp-20424-orN7xQK9raLD/form5/docs/Demo.module.css.js
 var digest7 = "087bfbf6a0eafa85f21c1425a5a2e66a12695d3af1d3a5fb4c3346c6b47a9441";
 var css7 = `._Column_n1l6i_1 {
 	display: flex;
