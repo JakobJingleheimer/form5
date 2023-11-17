@@ -80,7 +80,15 @@ export default function Field({
 	};
 
 	others.onChange = (e) => {
-		if (readOnly) return;
+		if (readOnly) {
+			// ! Contrary to what anyone would want, `readonly` does NOT affect checkboxes or radio buttons
+			// ! because `readonly` prevents `value` being changed, they use `checked` not  `value`.
+			e.preventDefault();
+			// These stop*Propagations are necessary to prevent <Form> pristine/touched being updated
+			e.stopPropagation(); // Prevent other handlers registered via React being called
+			e.nativeEvent.stopImmediatePropagation(); // Prevent other handlers registered not via React being called
+			return false;
+		}
 
 		is.onChange(e);
 
