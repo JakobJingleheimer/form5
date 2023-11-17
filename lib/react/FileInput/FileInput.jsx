@@ -3,7 +3,7 @@ import _map from 'lodash-es/map.js';
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
-import Button from '../Button/Button.jsx';
+import Button, { buttonClasses } from '../Button/Button.jsx';
 
 import styles from './FileInput.module.css';
 
@@ -19,17 +19,14 @@ export { styles as fileInputClasses };
  * @property {HTMLInputElement['multiple']} multiple
  * @property {HTMLInputElement['name']} name
  * @property {(event: import('react').ChangeEvent<HTMLInputElement>, files: FileList)} onChange
- * @property {string} previewsClassName
- * @property {string} wrapperClassName
  *
  * @extends {PureComponent<FileInputProps>}
  */
 export default class FileInput extends PureComponent {
 	static defaultProps = {
-		icon: (<span>📂</span>),
+		icon: '📂',
 		label: 'Select file(s)',
 		multiple: false,
-		onChange: () => {},
 	}
 
 	state = {
@@ -55,17 +52,13 @@ export default class FileInput extends PureComponent {
 
 		if (!files?.length) return console.error('[File Preview] Files is empty');
 
-		this.setState({
-			previews: _map(files, generatePreview),
-		});
+		this.setState({ previews: _map(files, generatePreview) });
 
-		cb(e, files);
+		cb?.(e, files);
 	}
 
 	componentWillUnmount() {
-		for (const { preview } of this.state.previews) {
-			URL.revokeObjectURL(preview);
-		}
+		for (const { preview } of this.state.previews) URL.revokeObjectURL(preview);
 	}
 
 	render() {
@@ -79,56 +72,59 @@ export default class FileInput extends PureComponent {
 				multiple,
 				name,
 				onChange,
-				previewsClassName,
-				wrapperClassName,
 			},
 			state: {
 				previews,
 			},
 		} = this;
 
-		return (
-			<div className={clsx(styles.FileInputWrapper, wrapperClassName)}>
-				{!!previews.length && (
-					<div className={clsx(styles.FileInputPreviews, previewsClassName)}>
-						{_map(previews, ({
-							file,
-							preview,
-						}) => {
-							if (preview) return (
-								<figure className={styles.FileInputPreview} key={file.name}>
-									<object data={preview} type={file.type} />
-								</figure>
-							);
+		let hasMediaPreview = false;
 
-							if (file) return (<p key={file.name}>{file.name}</p>);
-						})}
-					</div>
-				)}
+		const Previews = _map(previews, ({ file, preview }) => {
+			if (preview) {
+				hasMediaPreview = true;
 
-				<label
-					className={clsx(styles.FileInput, className)}
-					htmlFor={name}
-				>
-					<Button
-						appearance={Button.APPEARANCES.BASIC}
-						className={styles.FileInputButton}
-						icon={icon}
-					>
-						{label}
-					</Button>
-
-					<input
-						accept={accept}
-						className={styles.FileInputControl}
-						id={name}
-						multiple={multiple}
-						name={name}
-						onChange={(e) => handleChange(e, onChange)}
-						type="file"
+				return (
+					<object
+						className={styles.FileInputPreview}
+						data={preview}
+						key={file.name}
+						type={file.type}
 					/>
-				</label>
-			</div>
+				);
+			}
+
+			if (file) return (<p key={file.name}>{file.name}</p>);
+		});
+
+		return (
+			<label
+				className={clsx(
+					styles.FileInput,
+					className,
+					{[styles.FileInputPreviews]: hasMediaPreview},
+				)}
+				htmlFor={name}
+			>
+				{Previews}
+
+				<span
+					appearance={Button.APPEARANCES.BASIC}
+					className={clsx(buttonClasses.Button, styles.FileInputButton)}
+					title={label}
+					variant={Button.VARIANTS.CTA}
+				>{icon}</span>
+
+				<input
+					accept={accept}
+					className={styles.FileInputControl}
+					id={name}
+					multiple={multiple}
+					name={name}
+					onChange={(e) => handleChange(e, onChange)}
+					type="file"
+				/>
+			</label>
 		);
 	}
 }
@@ -141,8 +137,6 @@ FileInput.propTypes = {
 	multiple: PropTypes.bool,
 	name: PropTypes.string.isRequired,
 	onChange: PropTypes.func,
-	previewsClassName: PropTypes.string,
-	wrapperClassName: PropTypes.string,
 };
 
 /**

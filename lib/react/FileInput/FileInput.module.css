@@ -1,12 +1,29 @@
-.FileInputWrapper {
+.FileInput {
+	cursor: pointer;
 	display: flex;
-	flex-flow: column wrap;
+	flex-direction: column;
+	flex-wrap: wrap;
 	gap: calc(var(--grid-gutter) / 2);
 }
 
 .FileInputPreviews {
-	display: flex;
-	flex-flow: column wrap;
+	flex-direction: row;
+	position: relative;
+}
+
+.FileInputPreviews > .FileInputButton {
+	--default-border-radius: unset;
+
+	bottom: 0;
+	opacity: 0;
+	position: absolute;
+	transition-duration: var(--default-transition-duration);
+	transition-property: opacity;
+	transition-timing-function: var(--default-transition-easing);
+}
+
+.FileInputPreviews:hover > .FileInputButton {
+	opacity: 1;
 }
 
 .FileInputPreview {
@@ -20,12 +37,8 @@
 	border: 1px solid var(--border-colour-normal);
 	display: flex;
 	justify-content: center;
+	max-width: 100%;
 	width: max-content;
-}
-
-.FileInput {
-	cursor: pointer;
-	display: inline-block;
 }
 
 .FileInputControl {
@@ -34,6 +47,5 @@
 
 .FileInputButton {
 	display: block;
-	pointer-events: none;
 	width: 100%;
 }
