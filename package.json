@@ -1,6 +1,6 @@
 {
   "name": "form5",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A set of mostly unopinionated react components leveraging native APIs; supports controlled and uncontrolled state.",
   "type": "module",
   "directories": {
@@ -72,7 +72,8 @@
       "loaders/*",
       "*.setup.*",
       "**/*.fixture.js",
-      "**/*.spec.{js,cjs,mjs,ts,tsx,jsx}"
+      "**/*.spec.{js,cjs,mjs,ts,tsx,jsx}",
+      "**/*.test.{js,cjs,mjs,ts,tsx,jsx}"
     ]
   },
   "mocha": {
