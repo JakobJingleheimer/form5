@@ -25,17 +25,22 @@ export { styles as formClasses };
  * @typedef {import('react').FormEvent<HTMLFormElement>} ResetEvent
  */
 /**
+ * @typedef {(delta: ComposedData, all: ComposedData, SubmitEvent) => void} OnSubmit
+ */
+/**
+ * @typedef {import('react').MutableRefObject<ComposedData>} Values
+ */
+/**
  *
  * @param {object} props
  * @param {import('react').ReactNode} props.children
  * @param {string} props.className
  * @param {(isDirty: true) => void} props.onDirty
  * @param {(isDirty: false) => void} props.onPristine
- * @param {import('react').onReset} props.onReset
- * @param {(delta: ComposedData, all: ComposedData, event: SubmitEvent) => void} props.onSubmit
+ * @param {import('react').DOMAttributes<HTMLFormElement>['onReset']} props.onReset
+ * @param {OnSubmit} props.onSubmit
  * `delta` is the difference between the initial values and the current values. `all` is the same
  * shape, but containing the full current values. `event` is the original submit event.
- * @returns {HTMLFormElement}
  */
 export function Form({
 	children,
@@ -45,7 +50,7 @@ export function Form({
 	...props
 }) {
 	const formElm = useRef();
-	const initValues = useRef(); // `useRef` to avoid needless re-renders
+	const initValues = useRef(/** @type {ComposedData} */ ({})); // `useRef` to avoid needless re-renders
 	const {
 		pristine,
 		touched,
@@ -89,7 +94,8 @@ export function Form({
 
 Form.FIELD_TAGS = FIELD_TAGS;
 
-Form.displayName = 'Form5Form';
+Form.displayName = /** @type {const} */ ('Form5Form');
+/** @internal */
 Form.propTypes = {
 	onDirty: PropTypes.func,
 	onPristine: PropTypes.func,
@@ -98,7 +104,13 @@ Form.propTypes = {
 
 export default memo(Form);
 
-// Exported for testing
+/**
+ * @internal Exported for testing
+ * @param {SubmitEvent} event
+ * @param {Values} initValues
+ * @param {OnSubmit} cb
+ * @returns void
+ */
 export function onSubmit(event, initValues, cb) {
 	event.preventDefault();
 
@@ -121,7 +133,11 @@ export function onSubmit(event, initValues, cb) {
 	return cb(delta, all, event);
 }
 
-// Exported for testing
+/**
+ * @internal Exported for testing
+ * @param {HTMLFormElement} formElement
+ * @param {Values} initValues
+ */
 export function setup(formElement, initValues) {
 	if (!formElement || initValues.current) return;
 
