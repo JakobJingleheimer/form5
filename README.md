@@ -30,7 +30,7 @@ Form5 supports a 1:1 DOM to data model mapping: To create nested data objects, u
 
 ### Native
 
-This package leverages as much native APIs as possible: HTML5's [Constraints Validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation), CSS variables, latest media queries and properties, etc. Anything that doesn't is as closely aligned and friendly as possible to any existing native APIs (with a couple small but personally frustrating exceptions—the lesser of two evils).
+This package leverages as many native APIs as possible: HTML5's [Constraints Validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation), CSS variables, latest media queries and properties, etc. Anything that doesn't is as closely aligned and friendly as possible to any existing native APIs (with a couple small but personally frustrating exceptions—the lesser of two evils).
 
 ### Performance
 
@@ -45,6 +45,9 @@ State can be controlled or uncontrolled without impacting the validation this pa
 ### Styling configuration
 
 General layout structure and basic validation state appearance is handled by this package. There are some css variables that are consumed if available:
+
+<details>
+<summary>CSS variables</summary>
 
 css var | purpose
 :--- | :---
@@ -63,6 +66,7 @@ css var | purpose
 `--default-transition-duration` | value used for [`transition-duration`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration) on various Fields
 `--default-transition-easing` | value used for [`transition-timing-function`](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function) on various Fields
 `--grid-gutter` | space between css grid layout cells (labels + fields, fields + fields); value used for [`gap`](https://developer.mozilla.org/en-US/docs/Web/CSS/gap)
+</details>
 
 Labels of fields set to required are automatically styled with an "*" in an accessibility-friendly way.
 
@@ -72,14 +76,18 @@ Implementer's css modules are consumed via css modules (passed as normal via `cl
 
 #### `composeData()`
 
-Produce a key-value map of field `name`s (or `id`s) to their `value` (or equivalent, like an `<input checked>`).
+Produce a key-value map of field `name`s (or `id`s) to their `value` (or equivalent, like an `<input checked>`). If you want to roll your own instead of having form5's `<Form>` do it for you, it would look something like this:
 
-```js
+```jsx
 function onSubmit(event) {
   const formControlsList = Array.from(event.target.elements);
   const data = {};
   formControlsList.reduce(composeData, data);
 }
+
+<form onSubmit={onSubmit}>
+  {/* … */}
+</form>
 ```
 
 This utility has a couple noteworthy extras related to `<fieldset>`:
@@ -92,10 +100,7 @@ object).
 
 #### `deepDiff()`
 
-Produce a delta of A & B, maintaining the shape of the inputs. In form5, this is used in
-combination with `composeData()`: On mount, `<Form>` runs `composeData()` on all its fields to
-create the initial state ("A"), and then on submit, runs `composeData()` again to get its fields
-current values ("B"), feeding A & B into deepDiff (`deepDiff(A, B)`), and finally resets A to B (for
+Produce a delta of A & B, maintaining the shape of the inputs. In form5, this is used in combination with `composeData()`: On mount, `<Form>` runs `composeData()` on all its fields to create the initial state ("A"), and then on submit, runs `composeData()` again to get its fields' current values ("B"), feeding A & B into deepDiff (`deepDiff(A, B)`), and finally resets A to B (for
 a potential subsequent submission).
 
 ```js
@@ -112,9 +117,12 @@ deepDiff(initial, current); // { country: 'Holland' }
 
 ### Component consumption
 
-If a field is supplied validation props (`minLength`, `required`, etc), the component will automatically trigger its fields ("form controls") to self-validate and display relevant errors upon submit. Each field supports supplying custom validation messages via the Constraints Validation API—when no custom message(s) are supplied, browser defaults (which are pretty good and support i18n for free) are used. A Form submitted with invalid fields will abort the submission (the supplied `onSubmit` callback will not be called).
+If a field is supplied validation props (`minLength`, `required`, etc), the component will automatically trigger its fields ("form controls") to self-validate and display relevant errors upon submit. Each field supports supplying custom validation messages via the Constraints Validation API—when no custom message(s) are supplied, browser defaults (which are pretty good and support i18n for free) are used. A Form submitted with no changes or invalid fields will abort the submission (the supplied `onSubmit` callback will not be called).
 
 Any props not specific to this package are passed to the relative element.
+
+<details>
+<summary>Code example</summary>
 
 ```jsx
 import {
@@ -176,6 +184,8 @@ const SFC = (props) => (
   <Form
     className={yourCustomStyles.SignupForm}
     name="signup"
+    onDirty={setIsDirty}
+    onPristine={setIsDirty}
     onSubmit={sendToCloud}
   >
     <Field
@@ -220,16 +230,23 @@ const SFC = (props) => (
       type="submit"
     />
   </Form>
-)
+);
 ```
+</details>
 
 #### `<Form>`
 
 This component facilitates validation and provides a data model object for uncontrolled fields. Fields wrapped in a name `fieldset` result in a nested object.
 
-It also provides a `delta` of data changes, useful for `PATCH`ing existing field(s) changed by the user: the delta object contains only properties differing from their initial value. Ex an existing user changes their forename: `delta = { forename: 'Jakob' }`.
+It also provides a `delta` of data changes, useful for [`PATCH`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH)ing existing field(s) changed by the user: the delta object contains only properties differing from their initial value. Ex an existing user changes their forename: `delta = { forename: 'Jakob' }`; if a Form is submitted multiple times, note that its delta changes—the delta is the difference from the last "clean" state until "now" (so it will reflect changes since the last submit).
 
-`<Form>` accepts a number of event handlers (the usual `onChange`, `onSubmit`, etc), as well as `onDirty` and `onPristine`, which are called when the form's `pristine` state changes; each is called only once per change (eg when the form becomes dirty and when it becomes `pristine` again after submit). These can be leveraged to, for instance, prevent submitting a pristine form (as you can partially see in the demo: the submit button is disabled, but the form itself doesn't consume `isDirty` so data objects can still be observed).
+`<Form>` accepts a number of event handlers (the usual `onChange`, `onSubmit`, etc), as well as some other useful extras:
+
+##### `onDirty` and `onPristine`
+
+These optional handlers are called with `true` and `false` respectively as they're typically used to track `isDirty` (so `onDirty={setIsDirty}` and `onPristine={setIsDirty}`).
+
+`<Form>` tracks `pristine` and `touched` regardless of whether handlers are supplied because it uses them internally (such as to abort a submission when `pristine`). Each handler is called only once per change (eg when the form becomes dirty and then when it becomes `pristine` again after submit). These can be leveraged to, for instance, warn the user they are about to abandon the current changes.
 
 #### `<fieldset>`
 
@@ -242,6 +259,9 @@ disabled readonly>`. `composeData()` ordinarily outputs descendants' value as `n
 disabled>`, but when it is _also_ `readonly`, it instead ignores them.
 
 In order to create nested data, a named fieldset can be used:
+
+<details>
+<summary>Code example</summary>
 
 ```html
 <fieldset name="something">
@@ -276,18 +296,11 @@ Results in `composeData()` outputting:
   }
 }
 ```
+</details>
 
 #### `<Button>`
 
 The most important difference here is the `type` prop defaults to `button` instead of `submit` because forgetting to override "submit" has confusing, adverse behaviour.
-
-Button supports the following configuration via props:
-
-prop | purpose | default
-:--- | :--- | :---
-appearance | alter the aesthetics of the element | `primary`
-fluid | whether the button should act like a liquid: fill its container | `false`
-variant | the kind of appearance the button takes on (classic CTA, icon, etc) | `cta`
 
 #### `<FileInput>`
 
@@ -295,16 +308,10 @@ A file picker for uploading from disk. The main difference between this componen
 
 #### `<Field>`
 
-This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`) that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange` listeners to track `pristine` and `touched` (to avoid erroneously invalidating the field); its internal handlers are first called and then handlers passed via props.
+This component is a thin wrapper for native `label` and form fields (`input`, `select`, `textarea`) that helps to ensure accessibility and facilitate validation. It leverages `onBlur` and `onChange` listeners to track `pristine` and `touched` (to avoid erroneously invalidating the field); its internal handlers are called first, and then handlers optionally supplied via props.
 
 To create a list of values within a single property, append `[]` to the `name` attribute, like `<Field name="foo[]" />`; to avoid conflicting with the likes of react, a number may optionally be included within the brackets, like `<Field name="foo[0]" />`, but the number (index) itself will be ignored (sequence in data objects is determined by the input's place in the DOM).
 
-When you have existing data with which to pre-populate form fields that users will subsequently change, you can still have an uncontrolled component (meaning you don't need to manage `onChange` etc) by using React's `defaultChecked={valueFromDb}` or `defaultValue={valueFromDb}` (also works with native `<input>`).
+When you have existing data with which to pre-populate form fields that users will subsequently change, you can still have an uncontrolled component (meaning you don't need to manage `onChange` etc) by using React's `defaultChecked={valueFromDb}` or `defaultValue={valueFromDb}` (which also works with a native `<input>`). Note that unlike native HTML checkboxes and radio "buttons", form5 enforces the expected behaviour of `readOnly` on these fields (natively, `readOnly` only affects setting `value`, and checkboxes and radios change `checked`—seemingly a distinction without a difference). So `<Field checked readOnly type="checkbox" />` cannot be unchecked.
 
 `<Field>` also offers a small easter-egg: a toggle, which is effectively a checkbox with fancy styling.
-
-prop | purpose | default
-:--- | :--- | :---
-arrangement | the fields position relative to its field | `inline`
-as | the element or react component to use | `input`
-variant | display a checkbox as a toggle | `null`
