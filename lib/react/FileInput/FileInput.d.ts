@@ -18,15 +18,6 @@ declare class FileInput extends PureComponent<FileInputProps, any, any> {
 }
 declare namespace FileInput {
     let displayName: "Form5FileInput";
-    namespace propTypes {
-        let accept: PropTypes.Requireable<string>;
-        let className: PropTypes.Requireable<string>;
-        let icon: PropTypes.Requireable<PropTypes.ReactNodeLike>;
-        let label: PropTypes.Requireable<string>;
-        let multiple: PropTypes.Requireable<boolean>;
-        let name: PropTypes.Validator<string>;
-        let onChange: PropTypes.Requireable<(...args: any[]) => any>;
-    }
 }
 export default FileInput;
 export type Preview = {
@@ -43,5 +34,4 @@ export type FileInputProps = {
     onChange: (event: import('react').ChangeEvent<HTMLInputElement>, files: FileList) => void;
 };
 import { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 //# sourceMappingURL=FileInput.d.ts.map

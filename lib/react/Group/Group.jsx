@@ -1,5 +1,4 @@
 import { clsx } from 'clsx';
-import PropTypes from 'prop-types';
 
 import styles from './Group.module.css';
 
@@ -27,6 +26,3 @@ export default function Group({
 }
 
 Group.displayname = 'Form5Group';
-Group.propTypes = {
-	as: PropTypes.elementType,
-};

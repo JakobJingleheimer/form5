@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import _map from 'lodash-es/map.js';
-import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
 import Button, { buttonClasses } from '../Button/Button.jsx';
@@ -133,16 +132,6 @@ export default class FileInput extends PureComponent {
 	}
 }
 FileInput.displayName = /** @type {const} */ ('Form5FileInput');
-/** @internal */
-FileInput.propTypes = {
-	accept: PropTypes.string,
-	className: PropTypes.string,
-	icon: PropTypes.node,
-	label: PropTypes.string,
-	multiple: PropTypes.bool,
-	name: PropTypes.string.isRequired,
-	onChange: PropTypes.func,
-};
 
 /**
 	 * @typedef {{ file: File, preview?: URL['href'] }} Preview

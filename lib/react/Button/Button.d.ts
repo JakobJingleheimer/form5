@@ -26,12 +26,6 @@ declare namespace Button {
         let CTA: "cta";
         let GLYPH: "glyph";
     }
-    namespace propTypes {
-        let appearance: PropTypes.Requireable<"basic" | "affirming" | "danger" | "primary" | "warning">;
-        let fluid: PropTypes.Requireable<boolean>;
-        let type: PropTypes.Requireable<"button" | "reset" | "submit">;
-        let variant: PropTypes.Requireable<"cta" | "glyph">;
-    }
     function Group({ className, ...props }: {
         [x: string]: any;
         className: any;
@@ -42,5 +36,4 @@ export { styles as buttonClasses };
 export type Appearance = (typeof Button.APPEARANCES)[keyof typeof Button.APPEARANCES];
 export type Type = (typeof Button.TYPES)[keyof typeof Button.TYPES];
 export type Variant = (typeof Button.VARIANTS)[keyof typeof Button.VARIANTS];
-import PropTypes from 'prop-types';
 //# sourceMappingURL=Button.d.ts.map

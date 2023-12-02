@@ -1,5 +1,4 @@
 import { clsx } from 'clsx';
-import PropTypes from 'prop-types';
 
 import Group from '../Group/Group.jsx';
 
@@ -77,13 +76,6 @@ Button.VARIANTS = /** @type {const} */ ({
 	CTA: 'cta',
 	GLYPH: 'glyph',
 });
-/** @internal */
-Button.propTypes = {
-	appearance: PropTypes.oneOf(Object.values(Button.APPEARANCES)),
-	fluid: PropTypes.bool,
-	type: PropTypes.oneOf(Object.values(Button.TYPES)),
-	variant: PropTypes.oneOf(Object.values(Button.VARIANTS)),
-};
 
 Button.Group = ({ className, ...props }) => (
 	<Group className={clsx(className, styles.ButtonGroup)} {...props} />

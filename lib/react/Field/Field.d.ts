@@ -35,22 +35,9 @@ declare namespace Field {
         let GLYPH: "glyph";
         let TOGGLE: "toggle";
     }
-    namespace propTypes {
-        export let arrangement: PropTypes.Requireable<"inline" | "compact" | "stacked" | "stand-alone">;
-        export let as: PropTypes.Requireable<PropTypes.ReactComponentLike>;
-        export let fluid: PropTypes.Requireable<boolean>;
-        export let label: PropTypes.Requireable<PropTypes.ReactNodeLike>;
-        let name_1: PropTypes.Validator<string>;
-        export { name_1 as name };
-        export let onBlur: PropTypes.Requireable<(...args: any[]) => any>;
-        export let onChange: PropTypes.Requireable<(...args: any[]) => any>;
-        export let options: PropTypes.Requireable<object>;
-        export let variant: PropTypes.Requireable<"toggle" | "cta" | "glyph">;
-    }
 }
 export default Field;
 export { styles as inputClasses };
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];
 export type Variant = (typeof Field.VARIANTS)[keyof typeof Field.VARIANTS];
-import PropTypes from 'prop-types';
 //# sourceMappingURL=Field.d.ts.map

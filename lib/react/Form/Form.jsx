@@ -2,7 +2,6 @@ import _reduce from 'lodash-es/reduce.js';
 
 import { clsx } from 'clsx';
 import { memo, useRef } from 'react';
-import PropTypes from 'prop-types';
 
 import composeData, {
 	FIELD_TAGS,
@@ -95,12 +94,6 @@ export function Form({
 Form.FIELD_TAGS = FIELD_TAGS;
 
 Form.displayName = /** @type {const} */ ('Form5Form');
-/** @internal */
-Form.propTypes = {
-	onDirty: PropTypes.func,
-	onPristine: PropTypes.func,
-	onSubmit: PropTypes.func.isRequired,
-};
 
 export default memo(Form);
 

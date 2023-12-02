@@ -9,11 +9,6 @@ export function Form({ children, className, onDirty, onPristine, ...props }: {
 export namespace Form {
     export { FIELD_TAGS };
     export let displayName: "Form5Form";
-    export namespace propTypes {
-        let onDirty: PropTypes.Requireable<(...args: any[]) => any>;
-        let onPristine: PropTypes.Requireable<(...args: any[]) => any>;
-        let onSubmit: PropTypes.Validator<(...args: any[]) => any>;
-    }
 }
 export function onSubmit(event: SubmitEvent, initValues: import("react").MutableRefObject<import("../../composeData.js").ComposedData>, cb: OnSubmit): void;
 export function setup(formElement: HTMLFormElement, initValues: import("react").MutableRefObject<import("../../composeData.js").ComposedData>): void;
@@ -26,5 +21,4 @@ export type ResetEvent = import('react').FormEvent<HTMLFormElement>;
 export type OnSubmit = (delta: ComposedData, all: ComposedData, SubmitEvent: any) => void;
 export type Values = import('react').MutableRefObject<ComposedData>;
 import { FIELD_TAGS } from '../../composeData.js';
-import PropTypes from 'prop-types';
 //# sourceMappingURL=Form.d.ts.map

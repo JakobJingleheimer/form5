@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
 import _isEmpty from 'lodash-es/isEmpty.js';
 import _map from 'lodash-es/map.js';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import { useInteractiveStates } from '../useInteractiveStates.js';
@@ -238,20 +237,6 @@ Field.VARIANTS = /** @type {const} */ ({
 	GLYPH: Button.VARIANTS.GLYPH,
 	TOGGLE: 'toggle',
 });
-/**
- * @internal Skip for type generation export
- */
-Field.propTypes = {
-	arrangement: PropTypes.oneOf(Object.values(Field.ARRANGEMENTS)),
-	as: PropTypes.elementType,
-	fluid: PropTypes.bool,
-	label: PropTypes.node,
-	name: PropTypes.string.isRequired,
-	onBlur: PropTypes.func,
-	onChange: PropTypes.func,
-	options: PropTypes.object,
-	variant: PropTypes.oneOf(Object.values(Field.VARIANTS)),
-};
 
 const dtTypes = new Set([
 	'date',
