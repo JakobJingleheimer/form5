@@ -20,6 +20,16 @@ function TestForm() {
 	const [{ delta, values}, setData] = useState({ delta: null, values: null });
 	const [{ query }, setSearch] = useState({ query: '' });
 	const [isDirty, setDirty] = useState(false);
+	const [favouriteColours, setFavouriteColours] = useState(new Set(['blue', 'green', 'red']));
+
+	function addFavouriteColour({ colour }, all, { target }) {
+		setFavouriteColours((prev) => {
+			const updated = new Set(prev);
+			return updated.add(colour);
+		});
+
+		target.reset();
+	}
 
 	return (
 		<>
@@ -37,6 +47,17 @@ function TestForm() {
 					onSubmit={setSearch}
 				>
 					<Field name="query" type="search" />
+				</Form>
+
+				<Form
+					name="favourite-colours"
+					onSubmit={addFavouriteColour}
+				>
+					<Field
+						label="Add a colour option"
+						name="colour"
+						type="text"
+					/>
 				</Form>
 			</section>
 
@@ -146,33 +167,18 @@ function TestForm() {
 						<legend className="required">Favourite colour</legend>
 
 						<Button.Group>
-							<Field
-								id="favouriteBlue"
-								label="blue"
-								name="favouriteColour"
-								required
-								type="radio"
-								value="blue"
-								variant={Field.VARIANTS.CTA}
-							/>
-
-							<Field
-								id="favouriteGreen"
-								label="green"
-								name="favouriteColour"
-								type="radio"
-								value="green"
-								variant={Field.VARIANTS.CTA}
-							/>
-
-							<Field
-								id="favouriteRed"
-								label="red"
-								name="favouriteColour"
-								type="radio"
-								value="red"
-								variant={Field.VARIANTS.CTA}
-							/>
+							{Array.from(favouriteColours).map((colour) => (
+								<Field
+									key={colour}
+									id={`favouriteColour[${colour}]`}
+									label={colour}
+									name="favouriteColour"
+									required
+									type="radio"
+									value={colour}
+									variant={Field.VARIANTS.CTA}
+								/>
+							))}
 						</Button.Group>
 					</fieldset>
 
