@@ -111,8 +111,6 @@ export default memo(Form);
 export function onSubmit(event, initValues, cb) {
 	event.preventDefault();
 
-	if (event.target.hasAttribute('pristine')) return;
-
 	if (!event.target.reportValidity()) return;
 
 	event.stopPropagation();
@@ -124,6 +122,8 @@ export function onSubmit(event, initValues, cb) {
 	);
 
 	const delta = deepDiff(initValues.current, all);
+
+	if (!Object.keys(delta).length) return;
 
 	initValues.current = all; // reset starting values for potential subsequent submit
 
