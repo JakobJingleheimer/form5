@@ -10,14 +10,18 @@ import styles from './FileInput.module.css';
 export { styles as fileInputClasses };
 
 /**
+ * @typedef {import('react')} React
+ */
+
+/**
  * @typedef {object} FileInputProps
- * @property {HTMLInputElement['accept']} accept
- * @property {HTMLElement['className']} className
- * @property {import('react').ReactNode} icon
- * @property {HTMLLabelElement['textContent']} label
- * @property {HTMLInputElement['multiple']} multiple
+ * @property {HTMLInputElement['accept']} [accept]
+ * @property {HTMLElement['className']} [className]
+ * @property {React.ReactNode} [icon]
+ * @property {HTMLLabelElement['textContent']} [label]
+ * @property {HTMLInputElement['multiple']} [multiple]
  * @property {HTMLInputElement['name']} name
- * @property {(event: import('react').ChangeEvent<HTMLInputElement>, files: FileList) => void} onChange
+ * @property {(event: React.ChangeEvent<HTMLInputElement>, files: FileList) => void} [onChange]
  *
  * @extends {PureComponent<FileInputProps>}
  */

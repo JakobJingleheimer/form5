@@ -6,10 +6,14 @@ import styles from './Group.module.css';
 export { styles as grouptClasses };
 
 /**
+ * @typedef {import('react')} React
+ */
+
+/**
  * Visually group form elements (buttons) together.
  * @param {object} props
- * @param {import('react').ElementType} props.as The element to render.
- * @param {HTMLElement['className']} props.className
+ * @param {React.ElementType} [props.as] The element to render.
+ * @param {HTMLElement['className']} [props.className]
  */
 export default function Group({
 	as: Tag = 'div',

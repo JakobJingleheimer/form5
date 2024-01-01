@@ -1,26 +1,26 @@
 declare function Field({ appearance, arrangement, as: Tag, className, fluid, id, label, name, onBlur, onChange, options, readOnly, required, type, variant, ...others }: {
-    appearance: import('../Button/Button.jsx').Appearance;
-    arrangement: Arrangement;
-    as: import('react').ElementType;
-    className: HTMLElement['className'];
-    fluid: boolean;
-    id: HTMLElement['id'];
+    appearance?: import("../Button/Button.jsx").Appearance | undefined;
+    arrangement?: Arrangement | undefined;
+    as?: import("react").ElementType<any> | undefined;
+    className?: string | undefined;
+    fluid?: boolean | undefined;
+    id?: string | undefined;
     label: HTMLLabelElement['textContent'];
     name: HTMLInputElement['name'];
-    onBlur: (event: import('react').FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+    onBlur: (event: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
     onChange: (change: {
         id: string;
         name: string;
         value: boolean | number | string;
-    }, event: import('react').ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+    }, event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
     options: {
         [key: string]: string | null;
     }[];
-    readOnly: HTMLInputElement['readOnly'];
-    required: HTMLInputElement['required'];
-    type: HTMLInputElement['type'];
-    variant: Variant;
-    others: import('react').HTMLProps<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
+    readOnly?: boolean | undefined;
+    required?: boolean | undefined;
+    type?: string | undefined;
+    variant?: Variant | undefined;
+    others?: import("react").HTMLProps<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> | undefined;
 }): JSX.Element;
 declare namespace Field {
     let displayName: "Form5Field";
@@ -38,6 +38,7 @@ declare namespace Field {
 }
 export default Field;
 export { styles as inputClasses };
+export type React = typeof import("react");
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];
 export type Variant = (typeof Field.VARIANTS)[keyof typeof Field.VARIANTS];
 //# sourceMappingURL=Field.d.ts.map

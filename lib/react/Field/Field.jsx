@@ -14,28 +14,32 @@ import styles from './Field.module.css';
 export { styles as inputClasses };
 
 /**
+ * @typedef {import('react')} React
+ */
+
+/**
  *
  * @param {object} props
- * @param {import('../Button/Button.jsx').Appearance} props.appearance
- * @param {Arrangement} props.arrangement
- * @param {import('react').ElementType} props.as The element to render.
- * @param {HTMLElement['className']} props.className
- * @param {boolean} props.fluid Whether the field should fill its container.
- * @param {HTMLElement['id']} props.id
+ * @param {import('../Button/Button.jsx').Appearance} [props.appearance=Button.APPEARANCES.PRIMARY]
+ * @param {Arrangement} [props.arrangement=Field.ARRANGEMENTS.INLINE]
+ * @param {React.ElementType} [props.as='input'] The element to render.
+ * @param {HTMLElement['className']} [props.className]
+ * @param {boolean} [props.fluid] Whether the field should fill its container.
+ * @param {HTMLElement['id']} [props.id]
  * @param {HTMLLabelElement['textContent']} props.label
  * @param {HTMLInputElement['name']} props.name
  * @param {(event:
- * import('react').FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void}
+ * React.FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void}
  * props.onBlur
  * @param {(change: { id: string, name: string, value: boolean | number | string }, event:
- * import('react').ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void}
+ * React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void}
  * props.onChange
- * @param {Array<{[key: HTMLOptionElement['value']]: HTMLOptionElement['textContent'] }>} props.options
- * @param {HTMLInputElement['readOnly']} props.readOnly
- * @param {HTMLInputElement['required']} props.required
- * @param {HTMLInputElement['type']} props.type
- * @param {Variant} props.variant
- * @param {import('react').HTMLProps<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>} props.others
+ * @param {Array<{ [key: HTMLOptionElement['value']]: HTMLOptionElement['textContent'] }>} props.options
+ * @param {HTMLInputElement['readOnly']} [props.readOnly]
+ * @param {HTMLInputElement['required']} [props.required]
+ * @param {HTMLInputElement['type']} [props.type='text']
+ * @param {Variant} [props.variant]
+ * @param {React.HTMLProps<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>} [props.others]
  */
 export default function Field({
 	appearance = Button.APPEARANCES.PRIMARY,
@@ -46,8 +50,8 @@ export default function Field({
 	id,
 	label,
 	name,
-	onBlur = () => {},
-	onChange = () => {},
+	onBlur,
+	onChange,
 	options,
 	readOnly,
 	required,
@@ -76,7 +80,7 @@ export default function Field({
 
 		is.onBlur(e);
 
-		onBlur(e);
+		onBlur?.(e);
 
 		if (e.target.checkValidity()) setError('');
 	};
@@ -104,7 +108,7 @@ export default function Field({
 
 		if (type === 'checkbox') value = checked;
 
-		onChange({
+		onChange?.({
 			id,
 			name,
 			value: options?.[value] ?? value,

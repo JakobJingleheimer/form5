@@ -24,14 +24,15 @@ export type Preview = {
     file: File;
     preview?: URL['href'];
 };
+export type React = typeof import("react");
 export type FileInputProps = {
-    accept: HTMLInputElement['accept'];
-    className: HTMLElement['className'];
-    icon: import('react').ReactNode;
-    label: HTMLLabelElement['textContent'];
-    multiple: HTMLInputElement['multiple'];
+    accept?: string | undefined;
+    className?: string | undefined;
+    icon?: React.ReactNode;
+    label?: string | null | undefined;
+    multiple?: boolean | undefined;
     name: HTMLInputElement['name'];
-    onChange: (event: import('react').ChangeEvent<HTMLInputElement>, files: FileList) => void;
+    onChange?: ((event: React.ChangeEvent<HTMLInputElement>, files: FileList) => void) | undefined;
 };
 import { PureComponent } from 'react';
 //# sourceMappingURL=FileInput.d.ts.map

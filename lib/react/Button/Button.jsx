@@ -8,16 +8,20 @@ import styles from './Button.module.css';
 export { styles as buttonClasses };
 
 /**
+ * @typedef {import('react')} React
+ */
+
+/**
  *
  * @param {object} props
  * @param {Appearance} [props.appearance=Button.APPEARANCES.PRIMARY]
- * @param {import('react').ReactNode} props.children
- * @param {HTMLElement['className']} props.className
+ * @param {React.ReactNode} [props.children]
+ * @param {HTMLElement['className']} [props.className]
  * @param {boolean} [props.fluid=false]
- * @param {import('react').ReactNode} props.icon
+ * @param {React.ReactNode} [props.icon]
  * @param {HTMLButtonElement['type']} [props.type=Button.TYPES.BUTTON]
  * @param {Variant} [props.variant=Button.VARIANTS.CTA]
- * @param {import('react').HTMLProps<HTMLButtonElement>} props.others
+ * @param {React.HTMLProps<HTMLButtonElement>} [props.others]
  */
 export default function Button({
 	appearance = Button.APPEARANCES.PRIMARY,

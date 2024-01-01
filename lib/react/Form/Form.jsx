@@ -15,28 +15,32 @@ import styles from './Form.module.css';
 export { styles as formClasses };
 
 /**
+ * @typedef {import('react')} React
+ */
+
+/**
  * @typedef {import('../../composeData.js').ComposedData} ComposedData
  */
 /**
- * @typedef {import('react').FormEvent<HTMLFormElement>} SubmitEvent
+ * @typedef {React.FormEvent<HTMLFormElement>} SubmitEvent
  */
 /**
- * @typedef {import('react').FormEvent<HTMLFormElement>} ResetEvent
+ * @typedef {React.FormEvent<HTMLFormElement>} ResetEvent
  */
 /**
- * @typedef {(delta: ComposedData, all: ComposedData, SubmitEvent) => void} OnSubmit
+ * @typedef {(delta: ComposedData, all: ComposedData, event: SubmitEvent) => void} OnSubmit
  */
 /**
- * @typedef {import('react').MutableRefObject<ComposedData>} Values
+ * @typedef {React.MutableRefObject<ComposedData>} Values
  */
 /**
  *
  * @param {object} props
- * @param {import('react').ReactNode} props.children
- * @param {string} props.className
- * @param {(isDirty: true) => void} props.onDirty
- * @param {(isDirty: false) => void} props.onPristine
- * @param {import('react').DOMAttributes<HTMLFormElement>['onReset']} props.onReset
+ * @param {React.ReactNode} props.children
+ * @param {string} [props.className]
+ * @param {(isDirty: true) => void} [props.onDirty]
+ * @param {(isDirty: false) => void} [props.onPristine]
+ * @param {React.DOMAttributes<HTMLFormElement>['onReset']} [props.onReset]
  * @param {OnSubmit} props.onSubmit
  * `delta` is the difference between the initial values and the current values. `all` is the same
  * shape, but containing the full current values. `event` is the original submit event.
