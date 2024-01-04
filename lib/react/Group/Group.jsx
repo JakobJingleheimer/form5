@@ -32,4 +32,4 @@ export default function Group({
 	);
 }
 
-Group.displayname = 'Form5Group';
+Group.displayName = /** @type {const} */ ('Form5Group');
