@@ -24,11 +24,11 @@ export type FieldProps = {
     label: HTMLLabelElement['textContent'];
     name: HTMLInputElement['name'];
     onBlur?: ((event: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void) | undefined;
-    onChange: (change: {
+    onChange?: ((change: {
         id: string;
         name: string;
         value: boolean | number | string;
-    }, event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+    }, event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void) | undefined;
     options?: {
         [key: string]: string | null;
     }[] | undefined;

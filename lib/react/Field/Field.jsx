@@ -26,7 +26,7 @@ export { styles as inputClasses };
  * @property {HTMLLabelElement['textContent']} FieldProps.label
  * @property {HTMLInputElement['name']} FieldProps.name
  * @property {(event: React.FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} [FieldProps.onBlur]
- * @property {(change: { id: string, name: string, value: boolean | number | string }, event: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} FieldProps.onChange
+ * @property {(change: { id: string, name: string, value: boolean | number | string }, event: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} [FieldProps.onChange]
  * @property {Array<{ [key: HTMLOptionElement['value']]: HTMLOptionElement['textContent'] }>} [FieldProps.options]
  * @property {Variant} [FieldProps.variant]
  */
