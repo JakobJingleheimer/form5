@@ -83,7 +83,7 @@ Button.VARIANTS = /** @type {const} */ ({
 });
 
 /**
- * @param {import('../Group/Group.jsx').GroupProps} props
+ * @param {import('../Group/Group.jsx').GroupProps & React.HTMLAttributes<HTMLElement>} props
  */
 Button.Group = ({ className, ...props }) => (
 	<Group className={clsx(className, styles.ButtonGroup)} {...props} />

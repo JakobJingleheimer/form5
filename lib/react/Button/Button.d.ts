@@ -17,7 +17,7 @@ declare namespace Button {
         let CTA: "cta";
         let GLYPH: "glyph";
     }
-    function Group({ className, ...props }: import("../Group/Group.jsx").GroupProps): JSX.Element;
+    function Group({ className, ...props }: import("../Group/Group.jsx").GroupProps & import("react").HTMLAttributes<HTMLElement>): JSX.Element;
 }
 export default Button;
 export { styles as buttonClasses };
