@@ -28,10 +28,10 @@ export { styles as formClasses };
  * @typedef {React.FormEvent<HTMLFormElement>} ResetEvent
  */
 /**
- * @callback OnSubmit
- * @param {ComposedData} delta The difference between the initial values and the current values
- * @param {ComposedData} all The same shape, but containing the full current values
- * @param {SubmitEvent} event The original submit event
+ * @typedef {<D extends ComposedData>(delta: Partial<D>, all: D, event: SubmitEvent) => void} OnSubmit
+ * @param delta The difference between the initial values and the current values
+ * @param all The same shape, but containing the full current values
+ * @param event The original submit event
  * @returns {void}
  */
 /**

@@ -12,7 +12,7 @@ export type React = typeof import("react");
 export type ComposedData = import('../../composeData.js').ComposedData;
 export type SubmitEvent = React.FormEvent<HTMLFormElement>;
 export type ResetEvent = React.FormEvent<HTMLFormElement>;
-export type OnSubmit = (delta: ComposedData, all: ComposedData, event: SubmitEvent) => void;
+export type OnSubmit = <D extends import("../../composeData.js").ComposedData>(delta: Partial<D>, all: D, event: SubmitEvent) => void;
 export type Values = React.MutableRefObject<ComposedData>;
 export type FormProps = {
     children: React.ReactNode;
