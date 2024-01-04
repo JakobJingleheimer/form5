@@ -23,7 +23,7 @@ export { styles as inputClasses };
  * @property {Arrangement} [FieldProps.arrangement=Field.ARRANGEMENTS.INLINE]
  * @property {React.ElementType} [FieldProps.as='input'] The element to render.
  * @property {boolean} [FieldProps.fluid] Whether the field should fill its container.
- * @property {HTMLLabelElement['textContent']} FieldProps.label
+ * @property {React.ReactNode} FieldProps.label
  * @property {HTMLInputElement['name']} FieldProps.name
  * @property {(event: React.FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} [FieldProps.onBlur]
  * @property {(change: { id: string, name: string, value: boolean | number | string }, event: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} [FieldProps.onChange]
