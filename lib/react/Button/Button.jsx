@@ -12,16 +12,20 @@ export { styles as buttonClasses };
  */
 
 /**
+ * @typedef {object} ButtonProps
+ * @property {Appearance} [ButtonProps.appearance=Button.APPEARANCES.PRIMARY]
+ * @property {React.ReactNode} [ButtonProps.children]
+ * @property {HTMLElement['className']} [ButtonProps.className]
+ * @property {boolean} [ButtonProps.fluid=false]
+ * @property {React.ReactNode} [ButtonProps.icon]
+ * @property {HTMLButtonElement['type']} [ButtonProps.type=Button.TYPES.BUTTON]
+ * @property {Variant} [ButtonProps.variant=Button.VARIANTS.CTA]
+ * @property {React.HTMLProps<HTMLButtonElement>} [ButtonProps.others]
+ */
+
+/**
  *
- * @param {object} props
- * @param {Appearance} [props.appearance=Button.APPEARANCES.PRIMARY]
- * @param {React.ReactNode} [props.children]
- * @param {HTMLElement['className']} [props.className]
- * @param {boolean} [props.fluid=false]
- * @param {React.ReactNode} [props.icon]
- * @param {HTMLButtonElement['type']} [props.type=Button.TYPES.BUTTON]
- * @param {Variant} [props.variant=Button.VARIANTS.CTA]
- * @param {React.HTMLProps<HTMLButtonElement>} [props.others]
+ * @param {ButtonProps} props
  */
 export default function Button({
 	appearance = Button.APPEARANCES.PRIMARY,

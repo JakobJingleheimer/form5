@@ -10,10 +10,13 @@ export { styles as grouptClasses };
  */
 
 /**
+ * @typedef {object} GroupProps
+ * @property {React.ElementType} [props.as] The element to render.
+ * @property {HTMLElement['className']} [props.className]
+ */
+/**
  * Visually group form elements (buttons) together.
- * @param {object} props
- * @param {React.ElementType} [props.as] The element to render.
- * @param {HTMLElement['className']} [props.className]
+ * @param {GroupProps} props
  */
 export default function Group({
 	as: Tag = 'div',

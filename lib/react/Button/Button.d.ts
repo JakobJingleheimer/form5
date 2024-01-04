@@ -1,13 +1,4 @@
-declare function Button({ appearance, children: label, className, fluid, icon: Icon, type, variant, ...others }: {
-    appearance?: Appearance | undefined;
-    children?: React.ReactNode;
-    className?: string | undefined;
-    fluid?: boolean | undefined;
-    icon?: React.ReactNode;
-    type?: "button" | "reset" | "submit" | undefined;
-    variant?: Variant | undefined;
-    others?: import("react").HTMLProps<HTMLButtonElement> | undefined;
-}): JSX.Element;
+declare function Button({ appearance, children: label, className, fluid, icon: Icon, type, variant, ...others }: ButtonProps): JSX.Element;
 declare namespace Button {
     let displayName: "Form5Button";
     namespace APPEARANCES {
@@ -34,6 +25,16 @@ declare namespace Button {
 export default Button;
 export { styles as buttonClasses };
 export type React = typeof import("react");
+export type ButtonProps = {
+    appearance?: Appearance | undefined;
+    children?: React.ReactNode;
+    className?: string | undefined;
+    fluid?: boolean | undefined;
+    icon?: React.ReactNode;
+    type?: "button" | "reset" | "submit" | undefined;
+    variant?: Variant | undefined;
+    others?: import("react").HTMLProps<HTMLButtonElement> | undefined;
+};
 export type Appearance = (typeof Button.APPEARANCES)[keyof typeof Button.APPEARANCES];
 export type Type = (typeof Button.TYPES)[keyof typeof Button.TYPES];
 export type Variant = (typeof Button.VARIANTS)[keyof typeof Button.VARIANTS];

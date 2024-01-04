@@ -18,28 +18,27 @@ export { styles as inputClasses };
  */
 
 /**
- *
- * @param {object} props
- * @param {import('../Button/Button.jsx').Appearance} [props.appearance=Button.APPEARANCES.PRIMARY]
- * @param {Arrangement} [props.arrangement=Field.ARRANGEMENTS.INLINE]
- * @param {React.ElementType} [props.as='input'] The element to render.
- * @param {HTMLElement['className']} [props.className]
- * @param {boolean} [props.fluid] Whether the field should fill its container.
- * @param {HTMLElement['id']} [props.id]
- * @param {HTMLLabelElement['textContent']} props.label
- * @param {HTMLInputElement['name']} props.name
- * @param {(event:
- * React.FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void}
- * props.onBlur
- * @param {(change: { id: string, name: string, value: boolean | number | string }, event:
- * React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void}
- * props.onChange
- * @param {Array<{ [key: HTMLOptionElement['value']]: HTMLOptionElement['textContent'] }>} props.options
- * @param {HTMLInputElement['readOnly']} [props.readOnly]
- * @param {HTMLInputElement['required']} [props.required]
- * @param {HTMLInputElement['type']} [props.type='text']
- * @param {Variant} [props.variant]
- * @param {React.HTMLProps<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>} [props.others]
+ * @typedef {object} FieldProps
+ * @property {import('../Button/Button.jsx').Appearance} [FieldProps.appearance=Button.APPEARANCES.PRIMARY]
+ * @property {Arrangement} [FieldProps.arrangement=Field.ARRANGEMENTS.INLINE]
+ * @property {React.ElementType} [FieldProps.as='input'] The element to render.
+ * @property {HTMLElement['className']} [FieldProps.className]
+ * @property {boolean} [FieldProps.fluid] Whether the field should fill its container.
+ * @property {HTMLElement['id']} [FieldProps.id]
+ * @property {HTMLLabelElement['textContent']} FieldProps.label
+ * @property {HTMLInputElement['name']} FieldProps.name
+ * @property {(event: React.FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} FieldProps.onBlur
+ * @property {(change: { id: string, name: string, value: boolean | number | string }, event: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} FieldProps.onChange
+ * @property {Array<{ [key: HTMLOptionElement['value']]: HTMLOptionElement['textContent'] }>} FieldProps.options
+ * @property {HTMLInputElement['readOnly']} [FieldProps.readOnly]
+ * @property {HTMLInputElement['required']} [FieldProps.required]
+ * @property {HTMLInputElement['type']} [FieldProps.type='text']
+ * @property {Variant} [FieldProps.variant]
+ * @property {React.HTMLProps<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>} [FieldProps.others]
+ */
+
+/**
+ * @param {FieldProps} props
  */
 export default function Field({
 	appearance = Button.APPEARANCES.PRIMARY,

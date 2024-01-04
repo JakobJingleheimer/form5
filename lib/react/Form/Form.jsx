@@ -28,22 +28,27 @@ export { styles as formClasses };
  * @typedef {React.FormEvent<HTMLFormElement>} ResetEvent
  */
 /**
- * @typedef {(delta: ComposedData, all: ComposedData, event: SubmitEvent) => void} OnSubmit
+ * @callback OnSubmit
+ * @param {ComposedData} delta The difference between the initial values and the current values
+ * @param {ComposedData} all The same shape, but containing the full current values
+ * @param {SubmitEvent} event The original submit event
+ * @returns {void}
  */
 /**
  * @typedef {React.MutableRefObject<ComposedData>} Values
  */
 /**
+ * @typedef {object} FormProps
+ * @property {React.ReactNode} FormProps.children
+ * @property {string} [FormProps.className]
+ * @property {(isDirty: true) => void} [FormProps.onDirty]
+ * @property {(isDirty: false) => void} [FormProps.onPristine]
+ * @property {React.DOMAttributes<HTMLFormElement>['onReset']} [FormProps.onReset]
+ * @property {OnSubmit} FormProps.onSubmit
+ */
+/**
  *
- * @param {object} props
- * @param {React.ReactNode} props.children
- * @param {string} [props.className]
- * @param {(isDirty: true) => void} [props.onDirty]
- * @param {(isDirty: false) => void} [props.onPristine]
- * @param {React.DOMAttributes<HTMLFormElement>['onReset']} [props.onReset]
- * @param {OnSubmit} props.onSubmit
- * `delta` is the difference between the initial values and the current values. `all` is the same
- * shape, but containing the full current values. `event` is the original submit event.
+ * @param {FormProps} props
  */
 export function Form({
 	children,
