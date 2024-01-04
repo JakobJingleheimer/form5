@@ -22,8 +22,10 @@ export { styles as fileInputClasses };
  * @property {HTMLInputElement['multiple']} [multiple]
  * @property {HTMLInputElement['name']} name
  * @property {(event: React.ChangeEvent<HTMLInputElement>, files: FileList) => void} [onChange]
- *
- * @extends {PureComponent<FileInputProps>}
+ */
+
+/**
+ * @extends React.PureComponent<(FileInputProps & React.InputHTMLAttributes<HTMLInputElement>)>
  */
 export default class FileInput extends PureComponent {
 	static defaultProps = {

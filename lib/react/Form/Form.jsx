@@ -48,7 +48,7 @@ export { styles as formClasses };
  */
 /**
  *
- * @param {FormProps} props
+ * @param {FormProps & React.FormHTMLAttributes<HTMLFormElement>} props
  */
 export function Form({
 	children,

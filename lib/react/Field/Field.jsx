@@ -34,11 +34,10 @@ export { styles as inputClasses };
  * @property {HTMLInputElement['required']} [FieldProps.required]
  * @property {HTMLInputElement['type']} [FieldProps.type='text']
  * @property {Variant} [FieldProps.variant]
- * @property {React.HTMLProps<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>} [FieldProps.others]
  */
 
 /**
- * @param {FieldProps} props
+ * @param {FieldProps & React.InputHTMLAttributes<HTMLInputElement>} props
  */
 export default function Field({
 	appearance = Button.APPEARANCES.PRIMARY,

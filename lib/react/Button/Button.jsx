@@ -20,12 +20,11 @@ export { styles as buttonClasses };
  * @property {React.ReactNode} [ButtonProps.icon]
  * @property {HTMLButtonElement['type']} [ButtonProps.type=Button.TYPES.BUTTON]
  * @property {Variant} [ButtonProps.variant=Button.VARIANTS.CTA]
- * @property {React.HTMLProps<HTMLButtonElement>} [ButtonProps.others]
  */
 
 /**
  *
- * @param {ButtonProps} props
+ * @param {ButtonProps & React.BaseHTMLAttributes} props
  */
 export default function Button({
 	appearance = Button.APPEARANCES.PRIMARY,

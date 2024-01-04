@@ -1,14 +1,14 @@
 export function generatePreview(input: URL['href'] | File): Preview | undefined;
 export { styles as fileInputClasses };
-declare class FileInput extends PureComponent<FileInputProps, any, any> {
+declare class FileInput extends PureComponent<FileInputProps & import("react").InputHTMLAttributes<HTMLInputElement>, any, any> {
     static defaultProps: {
         icon: string;
         label: string;
         multiple: boolean;
     };
     static getDerivedStateFromProps(props: any, state: any): any;
-    constructor(props: FileInputProps | Readonly<FileInputProps>);
-    constructor(props: FileInputProps, context: any);
+    constructor(props: (FileInputProps & import("react").InputHTMLAttributes<HTMLInputElement>) | Readonly<FileInputProps & import("react").InputHTMLAttributes<HTMLInputElement>>);
+    constructor(props: FileInputProps & import("react").InputHTMLAttributes<HTMLInputElement>, context: any);
     state: {
         previews: Array<URL['href']>;
     };

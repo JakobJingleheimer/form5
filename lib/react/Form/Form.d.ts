@@ -1,4 +1,4 @@
-export function Form({ children, className, onDirty, onPristine, ...props }: FormProps): JSX.Element;
+export function Form({ children, className, onDirty, onPristine, ...props }: FormProps & React.FormHTMLAttributes<HTMLFormElement>): JSX.Element;
 export namespace Form {
     export { FIELD_TAGS };
     export let displayName: "Form5Form";

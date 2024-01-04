@@ -1,4 +1,4 @@
-declare function Button({ appearance, children: label, className, fluid, icon: Icon, type, variant, ...others }: ButtonProps): JSX.Element;
+declare function Button({ appearance, children: label, className, fluid, icon: Icon, type, variant, ...others }: ButtonProps & import("react").BaseHTMLAttributes<any>): JSX.Element;
 declare namespace Button {
     let displayName: "Form5Button";
     namespace APPEARANCES {
@@ -33,7 +33,6 @@ export type ButtonProps = {
     icon?: React.ReactNode;
     type?: "button" | "reset" | "submit" | undefined;
     variant?: Variant | undefined;
-    others?: import("react").HTMLProps<HTMLButtonElement> | undefined;
 };
 export type Appearance = (typeof Button.APPEARANCES)[keyof typeof Button.APPEARANCES];
 export type Type = (typeof Button.TYPES)[keyof typeof Button.TYPES];

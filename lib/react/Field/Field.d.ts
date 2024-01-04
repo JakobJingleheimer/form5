@@ -1,4 +1,4 @@
-declare function Field({ appearance, arrangement, as: Tag, className, fluid, id, label, name, onBlur, onChange, options, readOnly, required, type, variant, ...others }: FieldProps): JSX.Element;
+declare function Field({ appearance, arrangement, as: Tag, className, fluid, id, label, name, onBlur, onChange, options, readOnly, required, type, variant, ...others }: FieldProps & React.InputHTMLAttributes<HTMLInputElement>): JSX.Element;
 declare namespace Field {
     let displayName: "Form5Field";
     namespace ARRANGEMENTS {
@@ -38,7 +38,6 @@ export type FieldProps = {
     required?: boolean | undefined;
     type?: string | undefined;
     variant?: Variant | undefined;
-    others?: import("react").HTMLProps<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> | undefined;
 };
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];
 export type Variant = (typeof Field.VARIANTS)[keyof typeof Field.VARIANTS];
