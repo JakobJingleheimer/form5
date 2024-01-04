@@ -12,6 +12,7 @@ export { styles as grouptClasses };
 /**
  * @typedef {object} GroupProps
  * @property {React.ElementType} [props.as] The element to render.
+ * @property {React.ReactNode} FormProps.children
  */
 /**
  * Visually group form elements (buttons) together.

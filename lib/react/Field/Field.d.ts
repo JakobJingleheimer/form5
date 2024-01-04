@@ -21,7 +21,7 @@ export type FieldProps = {
     arrangement?: Arrangement | undefined;
     as?: import("react").ElementType<any> | undefined;
     fluid?: boolean | undefined;
-    label: HTMLLabelElement['textContent'];
+    label: React.ReactNode;
     name: HTMLInputElement['name'];
     onBlur?: ((event: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void) | undefined;
     onChange?: ((change: {

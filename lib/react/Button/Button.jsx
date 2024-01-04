@@ -22,7 +22,6 @@ export { styles as buttonClasses };
  */
 
 /**
- *
  * @param {ButtonProps & React.BaseHTMLAttributes} props
  */
 export default function Button({
@@ -83,6 +82,9 @@ Button.VARIANTS = /** @type {const} */ ({
 	GLYPH: 'glyph',
 });
 
+/**
+ * @param {import('../Group/Group.jsx').GroupProps} props
+ */
 Button.Group = ({ className, ...props }) => (
 	<Group className={clsx(className, styles.ButtonGroup)} {...props} />
 );

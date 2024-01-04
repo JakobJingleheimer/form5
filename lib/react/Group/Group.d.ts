@@ -7,5 +7,6 @@ export { styles as grouptClasses };
 export type React = typeof import("react");
 export type GroupProps = {
     as?: import("react").ElementType<any> | undefined;
+    children: React.ReactNode;
 };
 //# sourceMappingURL=Group.d.ts.map
