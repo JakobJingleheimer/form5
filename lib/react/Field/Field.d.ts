@@ -29,9 +29,7 @@ export type FieldProps = {
         name: string;
         value: boolean | number | string;
     }, event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void) | undefined;
-    options?: {
-        [key: string]: string | null;
-    }[] | undefined;
+    options?: Record<string, import("react").ReactNode> | undefined;
     variant?: Variant | undefined;
 };
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];
