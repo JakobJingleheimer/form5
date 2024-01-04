@@ -24,6 +24,7 @@ export { styles as buttonClasses };
 export type React = typeof import("react");
 export type ButtonProps = {
     appearance?: Appearance | undefined;
+    disabled?: boolean | undefined;
     children?: React.ReactNode;
     fluid?: boolean | undefined;
     icon?: React.ReactNode;
