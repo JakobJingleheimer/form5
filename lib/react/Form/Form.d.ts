@@ -1,4 +1,4 @@
-export function Form({ children, className, onDirty, onPristine, ...props }: FormProps & React.FormHTMLAttributes<HTMLFormElement>): JSX.Element;
+export function Form({ children, className, onDirty, onPristine, ...props }: FormProps & Omit<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit'>): JSX.Element;
 export namespace Form {
     export { FIELD_TAGS };
     export let displayName: "Form5Form";
@@ -16,10 +16,8 @@ export type OnSubmit = (delta: ComposedData, all: ComposedData, event: SubmitEve
 export type Values = React.MutableRefObject<ComposedData>;
 export type FormProps = {
     children: React.ReactNode;
-    className?: string | undefined;
     onDirty?: ((isDirty: true) => void) | undefined;
     onPristine?: ((isDirty: false) => void) | undefined;
-    onReset?: React.DOMAttributes<HTMLFormElement>['onReset'];
     onSubmit: OnSubmit;
 };
 import { FIELD_TAGS } from '../../composeData.js';

@@ -15,12 +15,7 @@ export { styles as fileInputClasses };
 
 /**
  * @typedef {object} FileInputProps
- * @property {HTMLInputElement['accept']} [accept]
- * @property {HTMLElement['className']} [className]
  * @property {React.ReactNode} [icon]
- * @property {HTMLLabelElement['textContent']} [label]
- * @property {HTMLInputElement['multiple']} [multiple]
- * @property {HTMLInputElement['name']} name
  * @property {(event: React.ChangeEvent<HTMLInputElement>, files: FileList) => void} [onChange]
  */
 

@@ -28,7 +28,6 @@ export type React = typeof import("react");
 export type ButtonProps = {
     appearance?: Appearance | undefined;
     children?: React.ReactNode;
-    className?: string | undefined;
     fluid?: boolean | undefined;
     icon?: React.ReactNode;
     type?: "button" | "reset" | "submit" | undefined;

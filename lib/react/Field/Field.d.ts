@@ -1,4 +1,4 @@
-declare function Field({ appearance, arrangement, as: Tag, className, fluid, id, label, name, onBlur, onChange, options, readOnly, required, type, variant, ...others }: FieldProps & React.InputHTMLAttributes<HTMLInputElement>): JSX.Element;
+declare function Field({ appearance, arrangement, as: Tag, className, fluid, id, label, name, onBlur, onChange, options, readOnly, required, type, variant, ...others }: FieldProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>): JSX.Element;
 declare namespace Field {
     let displayName: "Form5Field";
     namespace ARRANGEMENTS {
@@ -20,23 +20,18 @@ export type FieldProps = {
     appearance?: import("../Button/Button.jsx").Appearance | undefined;
     arrangement?: Arrangement | undefined;
     as?: import("react").ElementType<any> | undefined;
-    className?: string | undefined;
     fluid?: boolean | undefined;
-    id?: string | undefined;
     label: HTMLLabelElement['textContent'];
     name: HTMLInputElement['name'];
-    onBlur: (event: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+    onBlur?: ((event: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void) | undefined;
     onChange: (change: {
         id: string;
         name: string;
         value: boolean | number | string;
     }, event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
-    options: {
+    options?: {
         [key: string]: string | null;
-    }[];
-    readOnly?: boolean | undefined;
-    required?: boolean | undefined;
-    type?: string | undefined;
+    }[] | undefined;
     variant?: Variant | undefined;
 };
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];

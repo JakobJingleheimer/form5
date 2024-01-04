@@ -15,7 +15,6 @@ export { styles as buttonClasses };
  * @typedef {object} ButtonProps
  * @property {Appearance} [ButtonProps.appearance=Button.APPEARANCES.PRIMARY]
  * @property {React.ReactNode} [ButtonProps.children]
- * @property {HTMLElement['className']} [ButtonProps.className]
  * @property {boolean} [ButtonProps.fluid=false]
  * @property {React.ReactNode} [ButtonProps.icon]
  * @property {HTMLButtonElement['type']} [ButtonProps.type=Button.TYPES.BUTTON]

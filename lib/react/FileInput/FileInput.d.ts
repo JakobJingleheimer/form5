@@ -26,12 +26,7 @@ export type Preview = {
 };
 export type React = typeof import("react");
 export type FileInputProps = {
-    accept?: string | undefined;
-    className?: string | undefined;
     icon?: React.ReactNode;
-    label?: string | null | undefined;
-    multiple?: boolean | undefined;
-    name: HTMLInputElement['name'];
     onChange?: ((event: React.ChangeEvent<HTMLInputElement>, files: FileList) => void) | undefined;
 };
 import { PureComponent } from 'react';

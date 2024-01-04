@@ -5,5 +5,7 @@ declare namespace Group {
 export default Group;
 export { styles as grouptClasses };
 export type React = typeof import("react");
-export type GroupProps = object;
+export type GroupProps = {
+    as?: import("react").ElementType<any> | undefined;
+};
 //# sourceMappingURL=Group.d.ts.map

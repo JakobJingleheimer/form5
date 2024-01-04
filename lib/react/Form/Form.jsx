@@ -40,15 +40,13 @@ export { styles as formClasses };
 /**
  * @typedef {object} FormProps
  * @property {React.ReactNode} FormProps.children
- * @property {string} [FormProps.className]
  * @property {(isDirty: true) => void} [FormProps.onDirty]
  * @property {(isDirty: false) => void} [FormProps.onPristine]
- * @property {React.DOMAttributes<HTMLFormElement>['onReset']} [FormProps.onReset]
  * @property {OnSubmit} FormProps.onSubmit
  */
 /**
  *
- * @param {FormProps & React.FormHTMLAttributes<HTMLFormElement>} props
+ * @param {FormProps & Omit<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit'>} props
  */
 export function Form({
 	children,
