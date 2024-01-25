@@ -1,0 +1,4 @@
+*.fixture.js
+*.mock.js
+*.spec.js
+*.test.jsx

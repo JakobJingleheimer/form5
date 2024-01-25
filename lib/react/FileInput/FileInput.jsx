@@ -1,6 +1,5 @@
 import { clsx } from 'clsx';
 import _map from 'lodash-es/map.js';
-import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
 import Button, { buttonClasses } from '../Button/Button.jsx';
@@ -11,16 +10,17 @@ import styles from './FileInput.module.css';
 export { styles as fileInputClasses };
 
 /**
+ * @typedef {import('react')} React
+ */
+
+/**
  * @typedef {object} FileInputProps
- * @property {HTMLInputElement['accept']} accept
- * @property {string} className
- * @property {ReactNode} icon
- * @property {HTMLLabelElement['textContent']} label
- * @property {HTMLInputElement['multiple']} multiple
- * @property {HTMLInputElement['name']} name
- * @property {(event: import('react').ChangeEvent<HTMLInputElement>, files: FileList)} onChange
- *
- * @extends {PureComponent<FileInputProps>}
+ * @property {React.ReactNode} [icon]
+ * @property {(event: React.ChangeEvent<HTMLInputElement>, files: FileList) => void} [onChange]
+ */
+
+/**
+ * @extends React.PureComponent<(FileInputProps & React.InputHTMLAttributes<HTMLInputElement>)>
  */
 export default class FileInput extends PureComponent {
 	static defaultProps = {
@@ -30,9 +30,11 @@ export default class FileInput extends PureComponent {
 	}
 
 	state = {
+		/** @type {Array<URL['href']>} */
 		previews: new Array(0),
 	};
 
+	/** @internal */
 	static getDerivedStateFromProps(props, state) {
 		if (
 			props.value
@@ -47,6 +49,7 @@ export default class FileInput extends PureComponent {
 		return state;
 	}
 
+	/** @internal */
 	handleChange = (e, cb) => {
 		const { files } = e.target;
 
@@ -57,6 +60,7 @@ export default class FileInput extends PureComponent {
 		cb?.(e, files);
 	}
 
+	/** @internal */
 	componentWillUnmount() {
 		for (const { preview } of this.state.previews) URL.revokeObjectURL(preview);
 	}
@@ -128,23 +132,15 @@ export default class FileInput extends PureComponent {
 		);
 	}
 }
-FileInput.displayName = 'Form5FileInput';
-FileInput.propTypes = {
-	accept: PropTypes.string,
-	className: PropTypes.string,
-	icon: PropTypes.node,
-	label: PropTypes.string,
-	multiple: PropTypes.bool,
-	name: PropTypes.string.isRequired,
-	onChange: PropTypes.func,
-};
+FileInput.displayName = /** @type {const} */ ('Form5FileInput');
 
 /**
+	 * @typedef {{ file: File, preview?: URL['href'] }} Preview
  * @param {URL['href'] | File} input
  */
 export function generatePreview(input) {
-	const output = {};
-	output.file = input;
+	/** @type {Preview} */
+	const output = { file: input };
 
 	// `File` doesn't exist in node, so its `createObjectURL` expects a `Blob`
 	// `File` inherits from `Blob`, so checking for `Blob` also catches `File`

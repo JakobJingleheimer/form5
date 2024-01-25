@@ -2,7 +2,6 @@ import _reduce from 'lodash-es/reduce.js';
 
 import { clsx } from 'clsx';
 import { memo, useRef } from 'react';
-import PropTypes from 'prop-types';
 
 import composeData, {
 	FIELD_TAGS,
@@ -16,26 +15,38 @@ import styles from './Form.module.css';
 export { styles as formClasses };
 
 /**
+ * @typedef {import('react')} React
+ */
+
+/**
  * @typedef {import('../../composeData.js').ComposedData} ComposedData
  */
 /**
- * @typedef {import('react').FormEvent<HTMLFormElement>} SubmitEvent
+ * @typedef {React.FormEvent<HTMLFormElement>} SubmitEvent
  */
 /**
- * @typedef {import('react').FormEvent<HTMLFormElement>} ResetEvent
+ * @typedef {React.FormEvent<HTMLFormElement>} ResetEvent
+ */
+/**
+ * @typedef {<D extends ComposedData>(delta: Partial<D>, all: D, event: SubmitEvent) => void} OnSubmit
+ * @param delta The difference between the initial values and the current values
+ * @param all The same shape, but containing the full current values
+ * @param event The original submit event
+ * @returns {void}
+ */
+/**
+ * @typedef {React.MutableRefObject<ComposedData>} Values
+ */
+/**
+ * @typedef {object} FormProps
+ * @property {React.ReactNode} FormProps.children
+ * @property {(isDirty: true) => void} [FormProps.onDirty]
+ * @property {(isDirty: false) => void} [FormProps.onPristine]
+ * @property {OnSubmit} FormProps.onSubmit
  */
 /**
  *
- * @param {object} props
- * @param {import('react').ReactNode} props.children
- * @param {string} props.className
- * @param {(isDirty: true) => void} props.onDirty
- * @param {(isDirty: false) => void} props.onPristine
- * @param {import('react').onReset} props.onReset
- * @param {(delta: ComposedData, all: ComposedData, event: SubmitEvent) => void} props.onSubmit
- * `delta` is the difference between the initial values and the current values. `all` is the same
- * shape, but containing the full current values. `event` is the original submit event.
- * @returns {HTMLFormElement}
+ * @param {FormProps & Omit<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit'>} props
  */
 export function Form({
 	children,
@@ -45,7 +56,7 @@ export function Form({
 	...props
 }) {
 	const formElm = useRef();
-	const initValues = useRef(); // `useRef` to avoid needless re-renders
+	const initValues = useRef(/** @type {ComposedData} */ ({})); // `useRef` to avoid needless re-renders
 	const {
 		pristine,
 		touched,
@@ -89,16 +100,17 @@ export function Form({
 
 Form.FIELD_TAGS = FIELD_TAGS;
 
-Form.displayName = 'Form5Form';
-Form.propTypes = {
-	onDirty: PropTypes.func,
-	onPristine: PropTypes.func,
-	onSubmit: PropTypes.func.isRequired,
-};
+Form.displayName = /** @type {const} */ ('Form5Form');
 
 export default memo(Form);
 
-// Exported for testing
+/**
+ * @internal Exported for testing
+ * @param {SubmitEvent} event
+ * @param {Values} initValues
+ * @param {OnSubmit} cb
+ * @returns void
+ */
 export function onSubmit(event, initValues, cb) {
 	event.preventDefault();
 
@@ -121,7 +133,11 @@ export function onSubmit(event, initValues, cb) {
 	return cb(delta, all, event);
 }
 
-// Exported for testing
+/**
+ * @internal Exported for testing
+ * @param {HTMLFormElement} formElement
+ * @param {Values} initValues
+ */
 export function setup(formElement, initValues) {
 	if (!formElement || initValues.current) return;
 

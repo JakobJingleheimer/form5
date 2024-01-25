@@ -1,23 +1,48 @@
 {
   "name": "form5",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "A set of mostly unopinionated react components leveraging native APIs; supports controlled and uncontrolled state.",
   "type": "module",
-  "directories": {
-    "lib": "lib"
-  },
+  "files": [
+    "./lib/**/*"
+  ],
   "exports": {
-    "./composeData": "./lib/composeData.js",
-    "./deepDiff": "./lib/deepDiff.js",
-    "./package.json": "./package.json",
-    "./react": "./lib/react/barrel.js",
-    "./react/Button": "./lib/react/Button/Button.jsx",
-    "./react/Field": "./lib/react/Field/Field.jsx",
-    "./react/FileInput": "./lib/react/FileInput/FileInput.jsx",
-    "./react/Form": "./lib/react/Form/Form.jsx"
+    "./composeData": {
+      "import": "./lib/composeData.js",
+      "types": "./lib/composeData.d.ts"
+    },
+    "./deepDiff": {
+      "import": "./lib/deepDiff.js",
+      "types": "./lib/deepDiff.d.ts"
+    },
+    "./package.json": {
+      "import": "./package.json",
+      "types": "./package.d.ts"
+    },
+    "./react": {
+      "import": "./lib/react/barrel.js",
+      "types": "./lib/react/barrel.d.ts"
+    },
+    "./react/Button": {
+      "import": "./lib/react/Button/Button.jsx",
+      "types": "./lib/react/Button/Button.d.ts"
+    },
+    "./react/Field": {
+      "import": "./lib/react/Field/Field.jsx",
+      "types": "./lib/react/Field/Field.d.ts"
+    },
+    "./react/FileInput": {
+      "import": "./lib/react/FileInput/FileInput.jsx",
+      "types": "./lib/react/FileInput/FileInput.d.ts"
+    },
+    "./react/Form": {
+      "import": "./lib/react/Form/Form.jsx",
+      "types": "./lib/react/Form/Form.d.ts"
+    }
   },
   "scripts": {
     "build:demo": "rm -rf ./demo/build/* && node ./build.js",
+    "build:types": "find ./lib -name '*.d.ts' -delete && find ./lib -name '*.d.ts.map' -delete && tsc --project ./tsconfig.json",
     "preversion": "npm run test:coverage",
     "test": "c8 --check-coverage concurrently --kill-others-on-fail --prefix none npm:test:*",
     "test:node": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --test-reporter=spec' node ./node.test.mjs",
@@ -43,7 +68,6 @@
   },
   "peerDependencies": {
     "clsx": "*",
-    "prop-types": "*",
     "react": "17 - 18",
     "react-dom": "17 - 18"
   },
@@ -61,7 +85,8 @@
     "mocha": "^10.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "reset.css": "^2.0.2"
+    "reset.css": "^2.0.2",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.6.0"
