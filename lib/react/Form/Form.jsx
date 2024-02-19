@@ -79,7 +79,7 @@ export function Form({
 			onReset={(e) => {
 				props.onReset?.(e);
 				// After everything has succeeded
-				setup(e.currentTarget, initValues);
+				initValues.current = { __proto__: null };
 				is.onSubmit(e);
 			}}
 			onSubmit={(e) => {

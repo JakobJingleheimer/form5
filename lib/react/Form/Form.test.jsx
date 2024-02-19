@@ -140,7 +140,7 @@ describe('<Form>', () => {
 			fireEvent.change(field, { target: { value: sameSearchValue } });
 			fireEvent.submit(form, { elements: [field] });
 			expect(onResetCalled, 'reset count (after subsequent submit)').to.equal(1);
-			expect(onSubmitCalled, 'submit count').to.equal(1);
+			expect(onSubmitCalled, 'submit count').to.equal(2);
 		});
 
 		it('should reset pristine & touched and call handler', () => {
