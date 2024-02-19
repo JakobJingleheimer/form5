@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import cssModulesPlugin from 'esbuild-css-modules-plugin';
+
 
 build({
 	bundle: true,
@@ -14,14 +14,12 @@ build({
 	],
 	format: 'esm',
 	jsx: 'automatic',
+	loader: {
+		'.module.css': 'local-css',
+	},
 	logLevel: 'debug',
 	outdir: './docs/build',
 	platform: 'neutral',
-	plugins: [
-		cssModulesPlugin({
-			localsConvention: 'dashesOnly',
-		}),
-	],
 	sourcemap: true,
 	target: 'esnext',
 })
