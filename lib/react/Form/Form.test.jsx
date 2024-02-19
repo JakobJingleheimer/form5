@@ -108,6 +108,41 @@ describe('<Form>', () => {
 	}
 
 	describe('onReset', () => {
+		it('should void initial values, allowing a subsequent submit with the same value(s)', () => {
+			const sameSearchValue = 'foo';
+
+			let onResetCalled = 0;
+			let onSubmitCalled = 0;
+			function onReset() { onResetCalled++ }
+			function onSubmit() { onSubmitCalled++ }
+
+			const {
+				container: { firstChild: form },
+				getByTestId,
+			} = render(
+				<Form onReset={onReset} onSubmit={onSubmit}>
+					<Field data-testid="search" name="q" type="search" />
+				</Form>
+			);
+
+			const field = getByTestId('search');
+
+			fireEvent.change(field, { target: { value: sameSearchValue } });
+
+			fireEvent.submit(form, { elements: [field] });
+			expect(onResetCalled, 'reset count (after submit)').to.equal(0);
+			expect(onSubmitCalled, 'submit count').to.equal(1);
+
+			fireEvent.reset(form, { elements: [field] });
+			expect(onResetCalled, 'reset count (after reset)').to.equal(1);
+			expect(onSubmitCalled, 'submit count').to.equal(1);
+
+			fireEvent.change(field, { target: { value: sameSearchValue } });
+			fireEvent.submit(form, { elements: [field] });
+			expect(onResetCalled, 'reset count (after subsequent submit)').to.equal(1);
+			expect(onSubmitCalled, 'submit count').to.equal(1);
+		});
+
 		it('should reset pristine & touched and call handler', () => {
 			resetOrSubmitForm('reset');
 		});

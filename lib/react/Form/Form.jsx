@@ -72,13 +72,14 @@ export function Form({
 			className={clsx(styles.Form, className)}
 			noValidate
 			onBlur={(e) => {
-				if (e.target.form === formElm.current) {
-					is.onBlur(e); // We only care when the blur bubbled from a field
-				}
+				// We only care when the blur bubbled from a field
+				if (e.target.form === formElm.current) is.onBlur(e);
 			}}
 			onChange={is.onChange}
 			onReset={(e) => {
 				props.onReset?.(e);
+				// After everything has succeeded
+				setup(e.currentTarget, initValues);
 				is.onSubmit(e);
 			}}
 			onSubmit={(e) => {
