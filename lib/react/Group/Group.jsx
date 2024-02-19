@@ -1,5 +1,4 @@
 import { clsx } from 'clsx';
-import PropTypes from 'prop-types';
 
 import styles from './Group.module.css';
 
@@ -7,11 +6,17 @@ import styles from './Group.module.css';
 export { styles as grouptClasses };
 
 /**
+ * @typedef {import('react')} React
+ */
+
+/**
+ * @typedef {object} GroupProps
+ * @property {React.ElementType} [props.as] The element to render.
+ * @property {React.ReactNode} FormProps.children
+ */
+/**
  * Visually group form elements (buttons) together.
- * @param {object} props
- * @param {import('react').ElementType} props.as The element to render.
- * @param {string} props.className
- * @returns {JSX.Element}
+ * @param {GroupProps & React.HTMLAttributes<HTMLElement>} props
  */
 export default function Group({
 	as: Tag = 'div',
@@ -27,7 +32,4 @@ export default function Group({
 	);
 }
 
-Group.displayname = 'Form5Group';
-Group.propTypes = {
-	as: PropTypes.elementType,
-};
+Group.displayName = /** @type {const} */ ('Form5Group');

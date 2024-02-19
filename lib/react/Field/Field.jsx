@@ -1,7 +1,6 @@
 import { clsx } from 'clsx';
 import _isEmpty from 'lodash-es/isEmpty.js';
 import _map from 'lodash-es/map.js';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import { useInteractiveStates } from '../useInteractiveStates.js';
@@ -15,25 +14,25 @@ import styles from './Field.module.css';
 export { styles as inputClasses };
 
 /**
- *
- * @param {object} props
- * @param {import('../Button/Button.jsx').APPEARANCE} props.appearance
- * @param {ARRANGEMENT} props.arrangement
- * @param {import('react').ElementType} props.as The element to render.
- * @param {string} props.className
- * @param {boolean} props.fluid Whether the field should fill its container.
- * @param {HTMLElement['id']} props.id
- * @param {HTMLLabelElement['textContent']} props.label
- * @param {HTMLInputElement['name']} props.name
- * @param {(event: import('react').FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>)} props.onBlur
- * @param {(change: { id: string, name: string, value: boolean | number | string }, event: import('react').ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>)} props.onChange
- * @param {Array<{[key: HTMLOptionElement['value']]: HTMLOptionElement['textContent'] }>} props.options
- * @param {HTMLInputElement['readOnly']} props.readOnly
- * @param {HTMLInputElement['required']} props.required
- * @param {HTMLInputElement['type']} props.type
- * @param {typeof Field.VARIANTS} props.variant
- * @param {import('react').HTMLProps<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>} props.others
- * @returns {HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement}
+ * @typedef {import('react')} React
+ */
+
+/**
+ * @typedef {object} FieldProps
+ * @property {import('../Button/Button.jsx').Appearance} [FieldProps.appearance=Button.APPEARANCES.PRIMARY]
+ * @property {Arrangement} [FieldProps.arrangement=Field.ARRANGEMENTS.INLINE]
+ * @property {React.ElementType} [FieldProps.as='input'] The element to render.
+ * @property {boolean} [FieldProps.fluid] Whether the field should fill its container.
+ * @property {React.ReactNode} FieldProps.label
+ * @property {HTMLInputElement['name']} FieldProps.name
+ * @property {(event: React.FocusEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} [FieldProps.onBlur]
+ * @property {(change: { id: string, name: string, value: boolean | number | string }, event: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => void} [FieldProps.onChange]
+ * @property {Record<HTMLOptionElement['value'], React.ReactNode>} [FieldProps.options]
+ * @property {Variant} [FieldProps.variant]
+ */
+
+/**
+ * @param {FieldProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>} props
  */
 export default function Field({
 	appearance = Button.APPEARANCES.PRIMARY,
@@ -44,8 +43,8 @@ export default function Field({
 	id,
 	label,
 	name,
-	onBlur = () => {},
-	onChange = () => {},
+	onBlur,
+	onChange,
 	options,
 	readOnly,
 	required,
@@ -74,7 +73,7 @@ export default function Field({
 
 		is.onBlur(e);
 
-		onBlur(e);
+		onBlur?.(e);
 
 		if (e.target.checkValidity()) setError('');
 	};
@@ -102,7 +101,7 @@ export default function Field({
 
 		if (type === 'checkbox') value = checked;
 
-		onChange({
+		onChange?.({
 			id,
 			name,
 			value: options?.[value] ?? value,
@@ -216,36 +215,25 @@ export default function Field({
 	);
 };
 
-Field.displayName = 'Form5Field';
+Field.displayName = /** @type {const} */ ('Form5Field');
 
 /**
- * @typedef {typeof Field.ARRANGEMENTS[keyof typeof Field.ARRANGEMENTS]} ARRANGEMENT
+ * @typedef {typeof Field.ARRANGEMENTS[keyof typeof Field.ARRANGEMENTS]} Arrangement
  */
-Field.ARRANGEMENTS = {
+Field.ARRANGEMENTS = /** @type {const} */ ({
 	COMPACT: 'compact',
 	INLINE: 'inline',
 	STACKED: 'stacked',
 	STAND_ALONE: 'stand-alone',
-};
+});
 /**
- * @typedef {typeof Field.VARIANTS[keyof typeof Field.VARIANTS]} VARIANT
+ * @typedef {typeof Field.VARIANTS[keyof typeof Field.VARIANTS]} Variant
  */
-Field.VARIANTS = {
+Field.VARIANTS = /** @type {const} */ ({
 	CTA: Button.VARIANTS.CTA,
 	GLYPH: Button.VARIANTS.GLYPH,
 	TOGGLE: 'toggle',
-};
-Field.propTypes = {
-	arrangement: PropTypes.oneOf(Object.values(Field.ARRANGEMENTS)),
-	as: PropTypes.elementType,
-	fluid: PropTypes.bool,
-	label: PropTypes.node,
-	name: PropTypes.string.isRequired,
-	onBlur: PropTypes.func,
-	onChange: PropTypes.func,
-	options: PropTypes.object,
-	variant: PropTypes.oneOf(Object.values(Field.VARIANTS)),
-};
+});
 
 const dtTypes = new Set([
 	'date',
