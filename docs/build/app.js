@@ -26536,7 +26536,7 @@ function Form({
   const formElm = (0, import_react4.useRef)();
   const initValues = (0, import_react4.useRef)(
     /** @type {ComposedData} */
-    {}
+    null
   );
   const {
     pristine,
