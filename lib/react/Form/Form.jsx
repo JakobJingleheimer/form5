@@ -56,7 +56,7 @@ export function Form({
 	...props
 }) {
 	const formElm = useRef();
-	const initValues = useRef(/** @type {ComposedData} */ ({})); // `useRef` to avoid needless re-renders
+	const initValues = useRef(/** @type {ComposedData} */ (null)); // `useRef` to avoid needless re-renders
 	const {
 		pristine,
 		touched,
