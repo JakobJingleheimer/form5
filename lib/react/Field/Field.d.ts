@@ -18,14 +18,12 @@ export { styles as inputClasses };
 export type React = typeof import("react");
 export type FieldElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 export type As = 'input' | 'select' | 'textarea';
-export type OnChange<V extends Value> = (change: {
+export type OnChange<Value> = (change: {
     id: string;
     name: string;
-    value: V;
+    value: Value;
 }, event: React.ChangeEvent<FieldElement>) => void;
-export type Type = 'checkbox' | 'color' | 'date' | 'date-time-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
-export type Value = boolean | number | string;
-export type FieldProps<V extends Value = string> = {
+export type BaseFieldProps<Value> = {
     appearance?: import("../Button/Button.jsx").Appearance | undefined;
     arrangement?: Arrangement | undefined;
     as?: As | undefined;
@@ -33,11 +31,13 @@ export type FieldProps<V extends Value = string> = {
     label: React.ReactNode;
     name: HTMLInputElement['name'];
     onBlur?: ((event: React.FocusEvent<FieldElement>) => void) | undefined;
-    onChange?: OnChange<V> | undefined;
-    options?: Record<string, import("react").ReactNode> | undefined;
-    type?: Type | undefined;
-    variant?: Variant | undefined;
+    onChange?: OnChange<Value> | undefined;
 };
+export type NumberFieldProps<Value = number> = BaseFieldProps<Value>;
+export type TextFieldProps<Value = string> = BaseFieldProps<Value>;
+export type EnumerableFieldProps = TextFieldProps;
+export type ToggleFieldProps<Value = boolean> = BaseFieldProps<Value>;
+export type FieldProps = EnumerableFieldProps | NumberFieldProps | TextFieldProps | ToggleFieldProps;
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];
 export type Variant = (typeof Field.VARIANTS)[keyof typeof Field.VARIANTS];
 //# sourceMappingURL=Field.d.ts.map

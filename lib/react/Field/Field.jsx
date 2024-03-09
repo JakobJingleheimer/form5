@@ -19,45 +19,62 @@ export { styles as inputClasses };
 
 /**
  * @typedef {HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement} FieldElement
- */
-
-/**
  * @typedef {'input'|'select'|'textarea'} As
  */
 
 /**
- * @template {Value} V
+ * @template Value
  * @callback OnChange
  * @param {Object} change The new state of the field.
  * @param {string} change.id When no `id` prop was supplied, this is the same as `name`.
  * @param {string} change.name
- * @param {V} change.value When the field is a checkbox or radio, `checked` is supplied.
+ * @param {Value} change.value When the field is a checkbox or radio, `checked` is supplied.
  * @param {React.ChangeEvent<FieldElement>} event
  * @returns {void}
  */
 
 /**
- * @typedef {'checkbox'|'color'|'date'|'date-time-local'|'email'|'file'|'hidden'|'image'|'month'|'number'|'password'|'radio'|'search'|'tel'|'text'|'time'|'url'|'week'} Type
- */
-
-/**
- * @typedef {boolean|number|string} Value
- */
-
-/**
- * @template {Value} [V=string]
- * @typedef {object} FieldProps
- * @property {import('../Button/Button.jsx').Appearance} [FieldProps.appearance=Button.APPEARANCES.PRIMARY]
+ * @template Value
+ * @typedef {Object} BaseFieldProps
+ * @property {import('../Button/Button.jsx').Appearance} [BaseFieldProps.appearance=Button.APPEARANCES.PRIMARY]
  * @property {Arrangement} [FieldProps.arrangement=Field.ARRANGEMENTS.INLINE]
  * @property {As} [FieldProps.as='input'] The element to render.
  * @property {boolean} [FieldProps.fluid] Whether the field should fill its container.
  * @property {React.ReactNode} FieldProps.label
  * @property {HTMLInputElement['name']} FieldProps.name
  * @property {(event: React.FocusEvent<FieldElement>) => void} [FieldProps.onBlur]
- * @property {OnChange<V>} [FieldProps.onChange]
- * @property {Record<HTMLOptionElement['value'], React.ReactNode>} [FieldProps.options]
- * @property {Type} [FieldProps.type='text']
- * @property {Variant} [FieldProps.variant]
+ * @property {OnChange<Value>} [BaseFieldProps.onChange]
+ */
+
+/**
+ * @template [Value=number]
+ * @typedef {BaseFieldProps<Value>} NumberFieldProps
+ * @property {'number'} ToggleFieldProps.type
+ * @property {Value} ToggleFieldProps.value
+ */
+
+/**
+ * @template [Value=string]
+ * @typedef {BaseFieldProps<Value>} TextFieldProps
+ * @property {'color'|'date'|'date-time-local'|'email'|'image'|'month'|'password'|'search'|'tel'|'text'|'time'|'url'|'week'} ToggleFieldProps.type
+ * @property {Value} ToggleFieldProps.value
+ */
+/**
+ * @typedef {TextFieldProps} EnumerableFieldProps
+ * @property {'color'|'date'|'date-time-local'|'email'|'file'|'image'|'month'|'number'|'search'|'tel'|'text'|'time'|'url'|'week'} EnumerableFieldProps.type
+ * @property {Record<HTMLOptionElement['value'], React.ReactNode>} [EnumerableFieldProps.options]
+ */
+
+/**
+ * @template [Value=boolean]
+ * @typedef {BaseFieldProps<Value>} ToggleFieldProps
+ * @property {'checkbox'|'radio'} ToggleFieldProps.type
+ * @property {Value} ToggleFieldProps.value
+ * @property {Variant} [ToggleFieldProps.variant]
+ */
+
+/**
+ * @typedef {EnumerableFieldProps|NumberFieldProps|TextFieldProps|ToggleFieldProps} FieldProps
  */
 
 /**
