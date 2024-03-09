@@ -1,4 +1,4 @@
-declare function Field({ appearance, arrangement, as: Tag, className, fluid, id, label, name, onBlur, onChange, options, readOnly, required, type, variant, ...others }: FieldProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'>): JSX.Element;
+declare function Field({ appearance, arrangement, as: Tag, className, fluid, id, label, name, onBlur, onChange, options, readOnly, required, type, variant, ...others }: FieldProps & Omit<React.InputHTMLAttributes<FieldElement>, 'onChange'>): JSX.Element;
 declare namespace Field {
     let displayName: "Form5Field";
     namespace ARRANGEMENTS {
@@ -16,20 +16,26 @@ declare namespace Field {
 export default Field;
 export { styles as inputClasses };
 export type React = typeof import("react");
-export type FieldProps = {
+export type FieldElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+export type As = 'input' | 'select' | 'textarea';
+export type OnChange<V extends Value> = (change: {
+    id: string;
+    name: string;
+    value: V;
+}, event: React.ChangeEvent<FieldElement>) => void;
+export type Type = 'checkbox' | 'color' | 'date' | 'date-time-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
+export type Value = boolean | number | string;
+export type FieldProps<V extends Value = string> = {
     appearance?: import("../Button/Button.jsx").Appearance | undefined;
     arrangement?: Arrangement | undefined;
-    as?: import("react").ElementType<any> | undefined;
+    as?: As | undefined;
     fluid?: boolean | undefined;
     label: React.ReactNode;
     name: HTMLInputElement['name'];
-    onBlur?: ((event: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void) | undefined;
-    onChange?: ((change: {
-        id: string;
-        name: string;
-        value: boolean | number | string;
-    }, event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void) | undefined;
+    onBlur?: ((event: React.FocusEvent<FieldElement>) => void) | undefined;
+    onChange?: OnChange<V> | undefined;
     options?: Record<string, import("react").ReactNode> | undefined;
+    type?: Type | undefined;
     variant?: Variant | undefined;
 };
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];
