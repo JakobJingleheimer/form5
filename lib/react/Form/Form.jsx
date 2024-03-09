@@ -28,21 +28,24 @@ export { styles as formClasses };
  * @typedef {React.FormEvent<HTMLFormElement>} ResetEvent
  */
 /**
- * @typedef {<D extends ComposedData>(delta: Partial<D>, all: D, event: SubmitEvent) => void} OnSubmit
- * @param delta The difference between the initial values and the current values
- * @param all The same shape, but containing the full current values
- * @param event The original submit event
+ * @template {ComposedData} [FormSnapshot={}]
+ * @callback OnSubmit
+ * @param {Partial<FormSnapshot>} delta The subset of data that has changed since the last snapshot
+ * was taken (ex the form was initialised, submitted, or reset).
+ * @param {FormSnapshot} all The current full snapshot of form data.
+ * @param {SubmitEvent} event
  * @returns {void}
  */
 /**
  * @typedef {React.MutableRefObject<ComposedData>} Values
  */
 /**
+ * @template {ComposedData} [Model={}]
  * @typedef {object} FormProps
  * @property {React.ReactNode} FormProps.children
  * @property {(isDirty: true) => void} [FormProps.onDirty]
  * @property {(isDirty: false) => void} [FormProps.onPristine]
- * @property {OnSubmit} FormProps.onSubmit
+ * @property {OnSubmit<Model>} FormProps.onSubmit
  */
 /**
  *
@@ -106,6 +109,7 @@ export default memo(Form);
 
 /**
  * @internal Exported for testing
+ * @template {ComposedData} Snapshot
  * @param {SubmitEvent} event
  * @param {Values} initValues
  * @param {OnSubmit} cb
@@ -118,13 +122,13 @@ export function onSubmit(event, initValues, cb) {
 
 	event.stopPropagation();
 
-	const all = _reduce(
+	const all = /** @type {Snapshot} */ (_reduce(
 		Array.from(event.target.elements),
 		composeData,
 		{ __proto__: null },
-	);
+	));
 
-	const delta = deepDiff(initValues.current, all);
+	const delta = /** @type {Snapshot} */ (deepDiff(initValues.current, all));
 
 	if (!Object.keys(delta).length) return;
 
@@ -135,15 +139,16 @@ export function onSubmit(event, initValues, cb) {
 
 /**
  * @internal Exported for testing
+ * @template {ComposedData} Snapshot
  * @param {HTMLFormElement} formElement
  * @param {Values} initValues
  */
 export function setup(formElement, initValues) {
 	if (!formElement || initValues.current) return;
 
-	initValues.current = _reduce(
+	initValues.current = /** @type {Snapshot} */ (_reduce(
 		Array.from(formElement.elements),
 		composeData,
 		{ __proto__: null },
-	);
+	));
 };
