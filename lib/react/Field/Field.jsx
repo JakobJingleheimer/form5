@@ -44,6 +44,7 @@ export { styles as inputClasses };
  * @property {HTMLInputElement['name']} FieldProps.name
  * @property {(event: React.FocusEvent<FieldElement>) => void} [FieldProps.onBlur]
  * @property {OnChange<Value>} [BaseFieldProps.onChange]
+ * @property {'checkbox'|'color'|'date'|'date-time-local'|'email'|'hidden'|'image'|'month'|'number'|'password'|'radio'|'search'|'tel'|'text'|'time'|'url'|'week'} BaseFieldProps.type
  */
 
 /**
@@ -56,8 +57,8 @@ export { styles as inputClasses };
 /**
  * @template [Value=string]
  * @typedef {BaseFieldProps<Value>} TextFieldProps
- * @property {'color'|'date'|'date-time-local'|'email'|'image'|'month'|'password'|'search'|'tel'|'text'|'time'|'url'|'week'} ToggleFieldProps.type
- * @property {Value} ToggleFieldProps.value
+ * @property {'color'|'date'|'date-time-local'|'email'|'image'|'month'|'password'|'search'|'tel'|'text'|'time'|'url'|'week'} TextFieldProps.type
+ * @property {Value} TextFieldProps.value
  */
 /**
  * @typedef {TextFieldProps} EnumerableFieldProps
