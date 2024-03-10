@@ -32,11 +32,27 @@ export type BaseFieldProps<Value> = {
     name: HTMLInputElement['name'];
     onBlur?: ((event: React.FocusEvent<FieldElement>) => void) | undefined;
     onChange?: OnChange<Value> | undefined;
+    type: 'checkbox' | 'color' | 'date' | 'date-time-local' | 'email' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'radio' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
+    value: Value;
 };
-export type NumberFieldProps<Value = number> = BaseFieldProps<Value>;
-export type TextFieldProps<Value = string> = BaseFieldProps<Value>;
-export type EnumerableFieldProps = TextFieldProps;
-export type ToggleFieldProps<Value = boolean> = BaseFieldProps<Value>;
+export type NumberFieldOwnProps = {
+    type: 'number';
+};
+export type NumberFieldProps = BaseFieldProps<number> & NumberFieldOwnProps;
+export type TextFieldOwnProps = {
+    type: 'color' | 'date' | 'date-time-local' | 'email' | 'image' | 'month' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
+};
+export type TextFieldProps = BaseFieldProps<string>;
+export type EnumerableFieldOwnProps = {
+    type: 'color' | 'date' | 'date-time-local' | 'email' | 'file' | 'image' | 'month' | 'number' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
+    options?: Record<string, import("react").ReactNode> | undefined;
+};
+export type EnumerableFieldProps = TextFieldProps & EnumerableFieldOwnProps;
+export type ToggleFieldOwnProps = {
+    type: 'checkbox' | 'radio';
+    variant?: Variant | undefined;
+};
+export type ToggleFieldProps = BaseFieldProps<boolean> & ToggleFieldOwnProps;
 export type FieldProps = EnumerableFieldProps | NumberFieldProps | TextFieldProps | ToggleFieldProps;
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];
 export type Variant = (typeof Field.VARIANTS)[keyof typeof Field.VARIANTS];

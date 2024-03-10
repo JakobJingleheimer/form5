@@ -45,33 +45,36 @@ export { styles as inputClasses };
  * @property {(event: React.FocusEvent<FieldElement>) => void} [FieldProps.onBlur]
  * @property {OnChange<Value>} [BaseFieldProps.onChange]
  * @property {'checkbox'|'color'|'date'|'date-time-local'|'email'|'hidden'|'image'|'month'|'number'|'password'|'radio'|'search'|'tel'|'text'|'time'|'url'|'week'} BaseFieldProps.type
+ * @property {Value} BaseFieldProps.value
  */
 
 /**
- * @template [Value=number]
- * @typedef {BaseFieldProps<Value>} NumberFieldProps
- * @property {'number'} ToggleFieldProps.type
- * @property {Value} ToggleFieldProps.value
+ * @typedef {Object} NumberFieldOwnProps
+ * @property {'number'} NumberFieldProps.type
+ *
+ * @typedef {BaseFieldProps<number> & NumberFieldOwnProps} NumberFieldProps
  */
 
 /**
- * @template [Value=string]
- * @typedef {BaseFieldProps<Value>} TextFieldProps
+ * @typedef {Object} TextFieldOwnProps
  * @property {'color'|'date'|'date-time-local'|'email'|'image'|'month'|'password'|'search'|'tel'|'text'|'time'|'url'|'week'} TextFieldProps.type
- * @property {Value} TextFieldProps.value
+ *
+ * @typedef {BaseFieldProps<string>} TextFieldProps
  */
 /**
- * @typedef {TextFieldProps} EnumerableFieldProps
+ * @typedef {Object} EnumerableFieldOwnProps
  * @property {'color'|'date'|'date-time-local'|'email'|'file'|'image'|'month'|'number'|'search'|'tel'|'text'|'time'|'url'|'week'} EnumerableFieldProps.type
  * @property {Record<HTMLOptionElement['value'], React.ReactNode>} [EnumerableFieldProps.options]
+ *
+ * @typedef {TextFieldProps & EnumerableFieldOwnProps} EnumerableFieldProps
  */
 
 /**
- * @template [Value=boolean]
- * @typedef {BaseFieldProps<Value>} ToggleFieldProps
+ * @typedef {Object} ToggleFieldOwnProps
  * @property {'checkbox'|'radio'} ToggleFieldProps.type
- * @property {Value} ToggleFieldProps.value
  * @property {Variant} [ToggleFieldProps.variant]
+ *
+ * @typedef {BaseFieldProps<boolean> & ToggleFieldOwnProps} ToggleFieldProps
  */
 
 /**
