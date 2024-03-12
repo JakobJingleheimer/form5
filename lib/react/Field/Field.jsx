@@ -56,6 +56,14 @@ export { styles as inputClasses };
  */
 
 /**
+ * @typedef {Object} SearchFieldOwnProps
+ * @property {BaseFieldProps<string>['label']} [SearchFieldOwnProps.label]
+ * @property {'search'} TextFieldProps.type
+ *
+ * @typedef {BaseFieldProps<string>} SearchFieldProps
+ */
+
+/**
  * @typedef {Object} TextFieldOwnProps
  * @property {'color'|'date'|'date-time-local'|'email'|'image'|'month'|'password'|'search'|'tel'|'text'|'time'|'url'|'week'} TextFieldProps.type
  *
@@ -78,7 +86,7 @@ export { styles as inputClasses };
  */
 
 /**
- * @typedef {EnumerableFieldProps|NumberFieldProps|TextFieldProps|ToggleFieldProps} FieldProps
+ * @typedef {EnumerableFieldProps|NumberFieldProps|SearchFieldProps|TextFieldProps|ToggleFieldProps} FieldProps
  */
 
 /**
@@ -114,7 +122,6 @@ export default function Field({
 
 	if (options) others.list = `${name}_options`;
 	if (Tag === 'textarea') others.rows ??= 3;
-
 	if (Tag !== 'input') type = null;
 
 	others.onBlur = (e) => {

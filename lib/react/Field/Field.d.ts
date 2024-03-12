@@ -39,6 +39,11 @@ export type NumberFieldOwnProps = {
     type: 'number';
 };
 export type NumberFieldProps = BaseFieldProps<number> & NumberFieldOwnProps;
+export type SearchFieldOwnProps = {
+    label?: BaseFieldProps<string>['label'];
+    type: 'search';
+};
+export type SearchFieldProps = BaseFieldProps<string>;
 export type TextFieldOwnProps = {
     type: 'color' | 'date' | 'date-time-local' | 'email' | 'image' | 'month' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
 };
@@ -53,7 +58,7 @@ export type ToggleFieldOwnProps = {
     variant?: Variant | undefined;
 };
 export type ToggleFieldProps = BaseFieldProps<boolean> & ToggleFieldOwnProps;
-export type FieldProps = EnumerableFieldProps | NumberFieldProps | TextFieldProps | ToggleFieldProps;
+export type FieldProps = EnumerableFieldProps | NumberFieldProps | SearchFieldProps | TextFieldProps | ToggleFieldProps;
 export type Arrangement = (typeof Field.ARRANGEMENTS)[keyof typeof Field.ARRANGEMENTS];
 export type Variant = (typeof Field.VARIANTS)[keyof typeof Field.VARIANTS];
 //# sourceMappingURL=Field.d.ts.map
