@@ -65,6 +65,7 @@ export default function Field({
 	if (options) others.list = `${name}_options`;
 	if (Tag === 'textarea') others.rows ??= 3;
 	if (Tag !== 'input') type = null;
+	if (type === 'search') fluid ??= true;
 
 	others.onBlur = (e) => {
 		if (readOnly) return;
