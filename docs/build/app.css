@@ -65,11 +65,13 @@
 .Button_ButtonGroup .Button_Button {
   flex: 1;
 }
-.Button_ButtonGroup .Button_Button:not(:last-child) {
+.Button_ButtonGroup > *:not(:last-child) .Button_Button,
+.Button_ButtonGroup > .Button_Button:not(:last-child) {
   border-top-right-radius: unset;
   border-bottom-right-radius: unset;
 }
-.Button_ButtonGroup .Button_Button:not(:first-child) {
+.Button_ButtonGroup > *:not(:first-child) .Button_Button,
+.Button_ButtonGroup > .Button_Button:not(:first-child) {
   border-top-left-radius: unset;
   border-bottom-left-radius: unset;
 }
