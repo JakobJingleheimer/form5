@@ -45,9 +45,9 @@
     "build:types": "find ./lib -name '*.d.ts' -delete && find ./lib -name '*.d.ts.map' -delete && tsc --project ./tsconfig.json",
     "preversion": "npm run test:coverage",
     "test": "c8 --check-coverage concurrently --kill-others-on-fail --prefix none npm:test:*",
-    "test:node": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --test-reporter=spec' node ./node.test.mjs",
-    "test:unit": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --loader=./loaders/bin.mjs' mocha --extension '.spec.js' './lib'",
-    "test:ui": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=./loaders/tsx.mjs --loader=./loaders/css.mjs --loader=./loaders/bin.mjs' mocha --extension '.test.jsx' -require global-jsdom/register './lib'"
+    "test:node": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=nodejs-loaders/dev/tsx --loader=nodejs-loaders/testing/css-module --test-reporter=spec' node ./node.test.mjs",
+    "test:unit": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=nodejs-loaders/dev/tsx --loader=nodejs-loaders/testing/css-module' mocha --extension '.spec.js' './lib'",
+    "test:ui": "NODE_ENV=test NODE_OPTIONS='--no-warnings --loader=nodejs-loaders/dev/tsx --loader=nodejs-loaders/testing/css-module' mocha --extension '.test.jsx' -require global-jsdom/register './lib'"
   },
   "repository": "github:JakobJingleheimer/react-form5",
   "keywords": [
@@ -78,11 +78,12 @@
     "clsx": "*",
     "concurrently": "^8.1.0",
     "css-parse": "^2.0.0",
-    "esbuild": "^0.17.19",
+    "esbuild": "^0.19.5",
     "esbuild-css-modules-plugin": "^2.7.1",
     "global-jsdom": "^9.0.1",
     "jsdom": "^22.1.0",
     "mocha": "^10.2.0",
+    "nodejs-loaders": "github:JakobJingleheimer/nodejs-loaders",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reset.css": "^2.0.2",
