@@ -66,6 +66,13 @@ export default function Field({
 	if (Tag === 'textarea') others.rows ??= 3;
 	if (Tag !== 'input') type = null;
 	if (type === 'search') fluid ??= true;
+	if (others.value === null) others.value = ''; // React has a tantrum when `value` is `null`
+
+	const isButton = buttonVariants.has(variant);
+	const isSwitch = switchTypes.has(type);
+	const isSearch = type === "search";
+
+	if (isSearch) arrangement = Field.ARRANGEMENTS.COMPACT;
 
 	others.onBlur = (e) => {
 		if (readOnly) return;
@@ -108,14 +115,6 @@ export default function Field({
 
 		if (isInvalid && e.target.checkValidity()) setError('');
 	};
-
-	const isButton = buttonVariants.has(variant);
-	const isSwitch = switchTypes.has(type);
-	const isSearch = type === "search";
-
-	if (isSearch) arrangement = Field.ARRANGEMENTS.COMPACT;
-
-	if (others.value === null) others.value = ''; // React has a tantrum when `value` is `null`
 
 	return (
 		<div

@@ -1,12 +1,13 @@
 import chai from 'chai';
 
-class File {
+class File extends Blob {
 	#bits;
 	#lastModified = Date.now();
 	#name = '';
 	#type = '';
 
 	constructor(bits, name, { lastModified, type } = {}) {
+		super(bits);
 		this.#bits = bits;
 		this.#name = name;
 

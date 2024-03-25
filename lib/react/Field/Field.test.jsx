@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 
 import Field from './Field.jsx';
 
@@ -125,6 +125,67 @@ describe('<Field>', () => {
 		);
 
 		expect(queryByTestId('foo_options')).to.be.not.null;
+	});
+
+	describe('element variations', () => {
+		it('should respect `as`', () => {
+			const select = render(
+				<Field
+					as="select"
+					id="bar"
+					label={labelText}
+					name="foo"
+				/>
+			)
+			.getByLabelText(labelText);
+
+			expect(select.tagName).to.equal('SELECT');
+
+			cleanup();
+
+			const textarea = render(
+				<Field
+					as="textarea"
+					id="bar"
+					label={labelText}
+					name="foo"
+				/>
+			)
+			.getByLabelText(labelText);
+
+			expect(textarea.tagName).to.equal('TEXTAREA');
+		});
+
+		it('should appear as the specified `variant`', () => {
+			const input = render(
+				<Field
+					id="bar"
+					label={labelText}
+					name="foo"
+					variant="cta"
+				/>
+			)
+			.getByLabelText(labelText);
+
+			expect(input.getAttribute('variant')).to.equal('cta');
+		});
+
+		describe('textarea', () => {
+			it('should set a default number of `rows`', () => {
+				const { getByLabelText } = render(
+					<Field
+						as="textarea"
+						id="bar"
+						label={labelText}
+						name="foo"
+					/>
+				);
+
+				const field = getByLabelText(labelText);
+
+				expect(field.rows).to.equal(3);
+			});
+		});
 	});
 
 	describe('event callbacks', () => {
