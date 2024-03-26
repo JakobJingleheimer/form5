@@ -154,7 +154,7 @@ export function generatePreview(input) {
 	try { // check if `file` is a URL
 		if (
 			typeof input !== 'string'
-			&& !(
+			|| !(
 				input.startsWith('http')
 				|| input.startsWith('file')
 			)

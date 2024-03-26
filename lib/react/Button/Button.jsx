@@ -17,7 +17,6 @@ export { styles as buttonClasses };
  * @property {boolean} [ButtonProps.disabled]
  * @property {React.ReactNode} [ButtonProps.children]
  * @property {boolean} [ButtonProps.fluid=false]
- * @property {React.ReactNode} [ButtonProps.icon]
  * @property {HTMLButtonElement['type']} [ButtonProps.type=Button.TYPES.BUTTON]
  * @property {Variant} [ButtonProps.variant=Button.VARIANTS.CTA]
  */
@@ -30,7 +29,6 @@ export default function Button({
 	children: label,
 	className,
 	fluid,
-	icon: Icon,
 	type = Button.TYPES.BUTTON,
 	variant = Button.VARIANTS.CTA,
 	...others
@@ -47,10 +45,7 @@ export default function Button({
 				},
 			)}
 		>
-			{!!Icon
-				? Icon
-				: label
-			}
+			{label}
 		</button>
 	);
 }
