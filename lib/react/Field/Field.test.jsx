@@ -156,18 +156,55 @@ describe('<Field>', () => {
 			expect(textarea.tagName).to.equal('TEXTAREA');
 		});
 
-		it('should appear as the specified `variant`', () => {
+		it.skip('should use checkbox state as value', () => {
+			let onChangeCalledWith;
 			const input = render(
 				<Field
 					id="bar"
 					label={labelText}
 					name="foo"
-					variant="cta"
+					onChange={(...args) => onChangeCalledWith = args}
+					type="checkbox"
 				/>
-			)
-			.getByLabelText(labelText);
+			).getByLabelText(labelText);
 
-			expect(input.getAttribute('variant')).to.equal('cta');
+			// FIXME: fireEvent.change does not trigger on checkbox
+			fireEvent.change(input, { target: { checked: true } });
+
+			console.log('onChangeCalledWith:', onChangeCalledWith)
+
+			expect(onChangeCalledWith[0].value).to.be.true;
+		});
+
+		describe('`variant`', () => {
+			it('should appear as `cta`', () => {
+				const input = render(
+					<Field
+						id="bar"
+						label={labelText}
+						name="foo"
+						variant="cta"
+					/>
+				)
+				.getByLabelText(labelText);
+
+				expect(input.getAttribute('variant')).to.equal('cta');
+			});
+
+			it('should appear as `toggle`', () => {
+				const input = render(
+					<Field
+						id="bar"
+						label={labelText}
+						name="foo"
+						type="checkbox"
+						variant="toggle"
+					/>
+				)
+				.getByLabelText(labelText);
+
+				expect(input.getAttribute('variant')).to.equal('toggle');
+			});
 		});
 
 		describe('textarea', () => {
@@ -192,16 +229,15 @@ describe('<Field>', () => {
 		it('should trigger a provided onBlur handler', () => {
 			let onBlurCalledWith;
 			const name = 'foo';
-			const { getByLabelText } = render(
+			const input = render(
 				<Field
 					id="bar"
 					label={labelText}
 					name={name}
 					onBlur={(...args) => onBlurCalledWith = args}
 				/>
-			);
-
-			const input = getByLabelText(labelText);
+			)
+			.getByLabelText(labelText);
 
 			fireEvent.focus(input);
 			fireEvent.blur(input);
@@ -215,16 +251,14 @@ describe('<Field>', () => {
 			let onChangeCalledWith;
 			const id = 'bar';
 			const name = 'foo';
-			const { getByLabelText } = render(
+			const input = render(
 				<Field
 					id={id}
 					label={labelText}
 					name={name}
 					onChange={(...args) => onChangeCalledWith = args}
 				/>
-			);
-
-			const input = getByLabelText(labelText);
+			).getByLabelText(labelText);
 			const value = 'xyz';
 
 			fireEvent.change(input, { target: { value } });
@@ -233,6 +267,61 @@ describe('<Field>', () => {
 			expect(onChangeCalledWith[0]).to.eql({ name, id, value });
 			expect(onChangeCalledWith[1].type).to.equal('change');
 			expect(onChangeCalledWith[1].target).to.equal(input);
+		});
+
+		describe('when readonly', () => {
+			it('should prevent blur events', () => {
+				let onBlurCalled;
+
+				const input = render(
+					<Field
+						id="bar"
+						label={labelText}
+						name="foo"
+						onBlur={(...args) => onBlurCalled = true}
+						readOnly
+					/>
+				)
+				.getByLabelText(labelText);
+
+				fireEvent.blur(input);
+
+				expect(onBlurCalled).to.be.undefined;
+			});
+
+			it('should prevent change actions', () => {
+				let onChangeCalled;
+				let preventDefaultCalled;
+				let stopImmediatePropagationCalled;
+				let stopPropagationCalled;
+
+				const input = render(
+					<Field
+						id="bar"
+						label={labelText}
+						name="foo"
+						onChange={(...args) => onChangeCalled = true}
+						readOnly
+					/>
+				)
+				.getByLabelText(labelText);
+
+				const value = 'xyz';
+
+				fireEvent.change(input, {
+					nativeEvent: {
+						stopImmediatePropagation: () => stopImmediatePropagationCalled = true,
+					},
+					preventDefault: () => preventDefaultCalled = true,
+					stopPropagation: () => stopPropagationCalled = true,
+					target: { value },
+				});
+
+				expect(onChangeCalled).to.be.undefined;
+				expect(preventDefaultCalled).to.be.undefined;
+				expect(stopImmediatePropagationCalled).to.be.undefined;
+				expect(stopPropagationCalled).to.be.undefined;
+			});
 		});
 	});
 });

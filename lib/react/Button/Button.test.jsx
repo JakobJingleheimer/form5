@@ -65,10 +65,10 @@ describe('<Button>', () => {
 describe('<Button.Group>', () => {
 	it('should render an augmented <Group>', () => {
 		const group = render(
-			<Button.Group fluid />
+			<Button.Group />
 		)
 		.getByRole('group');
 
-		expect(button.className).to.include('ButtonGroup');
+		expect(group.className).to.include('ButtonGroup');
 	});
 });
